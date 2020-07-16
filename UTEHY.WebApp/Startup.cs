@@ -1,23 +1,25 @@
-﻿
+﻿using System;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Microsoft.Owin;
 using Owin;
-using System.Reflection;
-using System.Web.Mvc;
 using UTEHY.Infrastructure.Implementation;
 using UTEHY.Infrastructure.Interfaces;
 using UTEHY.Service.Implementation;
 using UTEHY.Service.Interfaces;
 
-[assembly: OwinStartup(typeof(FIT.WebApp.Startup))]
+[assembly: OwinStartup(typeof(UTEHY.WebApp.Startup))]
 
-namespace FIT.WebApp
+namespace UTEHY.WebApp
 {
     public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
+            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
         }
         private void ConfigAutofac(IAppBuilder app)

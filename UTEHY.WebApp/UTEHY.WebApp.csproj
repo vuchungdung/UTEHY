@@ -2646,6 +2646,7 @@
     <Content Include="ckeditor\skins\bootstrapck\scss\config\_config.scss" />
     <Content Include="ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.woff" />
@@ -2665,11 +2666,10 @@
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\FORMATTING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\NAMING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\uploaders\plupload\files\Moxie.xap" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Authen\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

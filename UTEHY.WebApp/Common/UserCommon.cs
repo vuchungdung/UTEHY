@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FIT.WebApp.Common
+namespace UTEHY.WebApp.Common
 {
     public class UserCommon
     {

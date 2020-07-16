@@ -1,24 +1,23 @@
-﻿using FIT.WebApp.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
+using UTEHY.WebApp.Common;
 
-namespace FIT.WebApp.Areas.Admin.Controllers
+namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
-    [RouteArea("Admin")]
     public class AuthenController : Controller
     {
         IUserService _userService;
         IPermissionService _permissionService;
-        public AuthenController(IUserService userService,IPermissionService permissionService)
+        public AuthenController(IUserService userService, IPermissionService permissionService)
         {
             _userService = userService;
             _permissionService = permissionService;
-        }    
+        }
         public ActionResult Index()
         {
             return View();

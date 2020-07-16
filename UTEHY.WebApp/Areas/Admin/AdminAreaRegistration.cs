@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace FIT.WebApp.Areas.Admin
+namespace UTEHY.WebApp.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration 
     {

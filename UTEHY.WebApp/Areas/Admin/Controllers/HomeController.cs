@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FIT.WebApp.Areas.Admin.Controllers
+namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
