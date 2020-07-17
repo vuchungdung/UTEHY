@@ -8,7 +8,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class GroupUserViewModel
     {
-        public Guid GroupId { get; set; }
+        public string GroupId { get; set; }
         public string Name { get; set; }
     }
 }

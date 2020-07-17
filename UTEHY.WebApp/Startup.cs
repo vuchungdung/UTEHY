@@ -27,20 +27,17 @@ namespace UTEHY.WebApp
             var builder = new ContainerBuilder();
             // register controllers
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-
-            // register services
-            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
-            builder.RegisterType<PostService>().As<IPostService>().InstancePerRequest();
-            builder.RegisterType<CommandService>().As<ICommandService>().InstancePerRequest();
-            builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
-            builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
-
+          
             // register data infrastructure
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             // register repositories
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
+
+            // register services
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
+            builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
 
             // build and setup resolver
             IContainer container = builder.Build();

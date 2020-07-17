@@ -24,7 +24,7 @@ namespace UTEHY.Service.Implementation
         {
             var model = new User()
             {
-                UserId = new Guid().ToString(),
+                UserId = Guid.NewGuid().ToString(),
                 Name = userVm.Name,
                 Email =userVm.Email,
                 PhoneNumber = userVm.PhoneNumber,
@@ -50,7 +50,7 @@ namespace UTEHY.Service.Implementation
         {
             var result = _userRepository.FindAll().Select(x => new UserViewModel()
             {
-                UserId = Guid.Parse(x.UserId),
+                UserId = x.UserId,
                 Name = x.Name,
                 Email = x.Email,
                 PhoneNumber = x.PhoneNumber,
@@ -60,7 +60,7 @@ namespace UTEHY.Service.Implementation
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Dob = x.Dob,
-                GroupId = Guid.Parse(x.GroupId)
+                GroupId = x.GroupId
             });
             return result.ToList();
         }
@@ -75,7 +75,7 @@ namespace UTEHY.Service.Implementation
             var user = _userRepository.FindById(id);
             var model = new UserViewModel()
             {
-                UserId = Guid.Parse(user.UserId),
+                UserId = user.UserId,
                 Name = user.Name,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
@@ -85,7 +85,7 @@ namespace UTEHY.Service.Implementation
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Dob = user.Dob,
-                GroupId = Guid.Parse(user.GroupId)
+                GroupId = user.GroupId
             };
             return model;
         }
@@ -95,7 +95,7 @@ namespace UTEHY.Service.Implementation
             var user = _userRepository.FindSingle(x=>x.UserName == username);
             var model = new UserViewModel()
             {
-                UserId = Guid.Parse(user.UserId),
+                UserId = user.UserId,
                 Name = user.Name,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
@@ -105,7 +105,7 @@ namespace UTEHY.Service.Implementation
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Dob = user.Dob,
-                GroupId = Guid.Parse(user.GroupId)
+                GroupId = user.GroupId
             };
             return model;
         }

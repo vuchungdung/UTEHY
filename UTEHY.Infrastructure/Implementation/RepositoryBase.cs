@@ -15,18 +15,18 @@ namespace UTEHY.Infrastructure.Implementation
         private FITEntities _db;
         private readonly IDbSet<T> _dbSet;
 
-        protected IDbFactory DbFactory
+        public IDbFactory DbFactory
         {
             get;
             private set;
         }
 
-        protected FITEntities DbContext
+        public FITEntities DbContext
         {
             get { return _db ?? (_db = DbFactory.Init()); }
         }
 
-        protected RepositoryBase(IDbFactory dbFactory)
+        public RepositoryBase(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
             _dbSet = DbContext.Set<T>();

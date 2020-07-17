@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using UTEHY.Service.Interfaces;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,12 +15,10 @@ namespace UTEHY.Service.Implementation
 {
     public class PermissionService : IPermissionService
     {
-        private readonly IConfiguration _configuration;
         private readonly IRepositoryBase<Permission, string> _permissionRepository;
 
-        public PermissionService(IConfiguration configuration,IRepositoryBase<Permission,string> permissionRepository)
+        public PermissionService(IRepositoryBase<Permission,string> permissionRepository)
         {
-            _configuration = configuration;
             _permissionRepository = permissionRepository;
         }
         public List<PermissionScreenViewModel> GetCommandViews()
@@ -36,7 +33,7 @@ namespace UTEHY.Service.Implementation
 			                    inner join Commands as c on cif.CommandId = c.CommandId
 			                    inner join Permissions as p on p.FunctionId = f.FunctionId and p.CommandId = cif.CommandId
 	                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
-            using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("metadata=res://*/Entities.FITEntities.csdl|res://*/Entities.FITEntities.ssdl|res://*/Entities.FITEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-6HF17VS\\SQLEXPRESS;initial catalog=FIT;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;")))
+            using (SqlConnection conn = new SqlConnection("metadata=res://*/Entities.FITEntities.csdl|res://*/Entities.FITEntities.ssdl|res://*/Entities.FITEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-6HF17VS\\SQLEXPRESS;initial catalog=FIT;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"))
             {
                 if (conn.State == ConnectionState.Closed)
                 {
@@ -52,7 +49,7 @@ namespace UTEHY.Service.Implementation
             {
                 FunctionId = x.FunctionId,
                 CommandId = x.CommandId,
-                GroupId = Guid.Parse(x.GroupId)
+                GroupId = x.GroupId
             });
             return result.ToList();
         }

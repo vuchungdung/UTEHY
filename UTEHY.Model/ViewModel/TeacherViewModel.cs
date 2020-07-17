@@ -8,7 +8,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class TeacherViewModel
     {
-        public Guid TecherId { get; set; }
+        public string TecherId { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
