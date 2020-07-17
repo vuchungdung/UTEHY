@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Model.Constants
 {
-    public enum CommandCode
+    public class CommandCode
     {
-        CREATE,
-        UPDATE,
-        DELETE,
-        VIEW,
-        APPROVE
+        public string CREATE = "CREATE";
+        public string UPDATE = "UPDATE";
+        public string DELETE = "DELETE";
+        public string VIEW = "VIEW";
+        public string APPROVE = "APPROVE";
     }
 }
