@@ -7,7 +7,12 @@ app.controller('loginCtrl', ['$scope', '$http', function ($scope, $http) {
             method: "POST",
             params: { UserName: $scope.username, Password: $scope.password }
         }).then(function (response) {
-            window.location.href = "/Admin/Home/Index";
+            if (response.data.Success) {
+                window.location.href = "/Admin/Home/Index";
+            }
+            else {
+                alert("error");
+            }
         }).catch(function (error) {
             alert("error");
         });

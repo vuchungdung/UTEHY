@@ -14,11 +14,24 @@ namespace UTEHY.Service.Implementation
     public class UserService : IUserService
     {
         private IRepositoryBase<User, string> _userRepository;
+        private IRepositoryBase<Function, string> _functionRepository;
+        private IRepositoryBase<Command, string> _commandRepository;
+        private IRepositoryBase<Permission, string> _permissionRepository;
+        private IRepositoryBase<GroupUser, string> _groupUsersRepository;
         private IUnitOfWork _unitOfWork;
-        public UserService(IRepositoryBase<User,string> userRepository, IUnitOfWork unitOfWork)
+        public UserService(IRepositoryBase<User,string> userRepository,
+            IUnitOfWork unitOfWork,
+            IRepositoryBase<Function,string> functionRepository,
+            IRepositoryBase<Command, string> commandRepository,
+            IRepositoryBase<Permission, string> permissionRepository,
+            IRepositoryBase<GroupUser, string> groupUsersRepository)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
+            _functionRepository = functionRepository;
+            _commandRepository = commandRepository;
+            _permissionRepository = permissionRepository;
+            _groupUsersRepository = groupUsersRepository;
         }
         public void Add(UserViewModel userVm)
         {
@@ -68,6 +81,42 @@ namespace UTEHY.Service.Implementation
         public PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request)
         {
             throw new NotImplementedException();
+        }
+
+        public List<FunctionViewModel> GetMenuByUserPermission(string userId)
+        {
+            try
+            {
+                var functions = _functionRepository.FindAll();
+                var permissions = _permissionRepository.FindAll();
+                var commands = _commandRepository.FindAll();
+                var groupusers = _groupUsersRepository.FindAll();
+                var user = _userRepository.FindById(userId);
+                var groupuser = _groupUsersRepository.FindById(user.GroupId);
+                var query = from f in functions
+                            join p in permissions
+                                on f.FunctionId equals p.FunctionId
+                            join g in groupusers on p.GroupId equals g.GroupId
+                            join c in commands
+                                on p.CommandId equals c.CommandId
+                            where groupuser.GroupId == g.GroupId && c.CommandId == "VIEW"
+                            select new FunctionViewModel()
+                            {
+                                FunctionId = f.FunctionId,
+                                Name = f.Name,
+                                Url = f.Url,
+                                ParentId = f.ParentId,
+                                SortOrder = f.SortOrder
+                            };
+                var data = query.Distinct()
+                    .OrderBy(x => x.ParentId)
+                    .ThenBy(x => x.SortOrder)
+                    .ToList();
+                return data;
+            }catch(Exception error)
+            {
+                return null;
+            }
         }
 
         public UserViewModel GetUserById(string id)

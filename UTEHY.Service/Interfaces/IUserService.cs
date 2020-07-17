@@ -22,6 +22,8 @@ namespace UTEHY.Service.Interfaces
 
         bool Login(LoginViewModel model);
 
+        List<FunctionViewModel> GetMenuByUserPermission(string userId);
+
         string Delete(string id);
         void Save();
 
