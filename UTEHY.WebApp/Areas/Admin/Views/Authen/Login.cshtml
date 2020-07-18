@@ -1,4 +1,4 @@
-﻿
+﻿@model UTEHY.Model.ViewModel.LoginViewModel
 @{
     Layout = null;
 }
@@ -37,9 +37,6 @@
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/pages/login_validation.js"></script>
     <!-- /theme JS files -->
-    <script src="~/Assets/angular.min.js"></script>
-    <script src="~/Assets/angular-route.min.js"></script>
-    <script src="~/Areas/Admin/app/components/loginController.js"></script>
 </head>
 
 <body class="login-container login-cover pace-done">
@@ -57,55 +54,54 @@
         <div class="page-content">
 
             <!-- Main content -->
-            <div class="content-wrapper" ng-app="loginModule">
+            <div class="content-wrapper">
                 <!-- Form with validation -->
-                <div ng-controller="loginCtrl">
-                    <form action="/" class="form-validate">
-                        <div class="panel panel-body login-form">
-                            <div class="text-center">
-                                <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
-                                <h5 class="content-group">Đăng Nhập<small class="display-block">Xin chào</small></h5>
-                            </div>
-
-                            <div class="form-group has-feedback has-feedback-left">
-                                <input type="text" class="form-control" placeholder="Tài khoản" ng-model="username" required="required" aria-required="true">
-                                <div class="form-control-feedback">
-                                    <i class="icon-user text-muted"></i>
-                                </div>
-                            </div>
-
-                            <div class="form-group has-feedback has-feedback-left">
-                                <input type="password" class="form-control" placeholder="Mật khẩu" ng-model="password" required="required" aria-required="true">
-                                <div class="form-control-feedback">
-                                    <i class="icon-lock2 text-muted"></i>
-                                </div>
-                            </div>
-
-                            <div class="form-group login-options">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="checkbox-inline">
-                                            <span class="checked">
-                                                <input type="checkbox" class="styled" checked="checked">
-                                            </span>
-                                            Ghi nhớ
-                                        </label>
-                                    </div>
-
-                                    <div class="col-sm-6 text-right">
-                                        <a href="login_password_recover.html">Quên mật khẩu?</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="button" ng-click="submit()" class="btn bg-blue btn-block">Đăng nhập <i class="icon-arrow-right14 position-right"></i></button>
-                            </div>
-                            <div class="content-divider text-muted form-group"><span>Bạn chưa có tài khoản?</span></div>
-                            <a href="login_registration.html" class="btn btn-default btn-block content-group">Đăng ký</a>
+                <form method="post" class="form-validate" novalidate="novalidate">
+                    <div class="panel panel-body login-form">
+                        <div class="text-center">
+                            <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+                            <h5 style="margin-bottom:8px;" class="content-group">Đăng Nhập<small class="display-block">Xin chào</small></h5>
+                            <div class="text-center text-danger" style="margin-bottom:8px;">@ViewBag.Error</div>
                         </div>
-                    </form>
-                </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Tài khoản", @class="form-control", @name="username", @required="required"})
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback has-feedback-left">
+                            @Html.PasswordFor(m => m.Password, new { @placeholder = "Mật khẩu", @class = "form-control", @name = "password", @required = "required" })
+                            <div class="form-control-feedback">
+                                <i class="icon-lock2 text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group login-options">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="checkbox-inline">
+                                        <span class="checked">
+                                            <input type="checkbox" class="styled" checked="checked">
+                                        </span>
+                                        Ghi nhớ
+                                    </label>
+                                </div>
+
+                                <div class="col-sm-6 text-right">
+                                    <a href="login_password_recover.html">Quên mật khẩu?</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn bg-blue btn-block">Đăng nhập <i class="icon-arrow-right14 position-right"></i></button>
+                        </div>
+                        <div class="content-divider text-muted form-group"><span>Bạn chưa có tài khoản?</span></div>
+                        <a href="login_registration.html" style="margin-bottom:8px;" class="btn btn-default btn-block content-group">Đăng ký</a>
+                    </div>
+                </form>
                 <!-- /form with validation -->
 
             </div>

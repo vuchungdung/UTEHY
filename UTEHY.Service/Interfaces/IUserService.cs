@@ -20,7 +20,7 @@ namespace UTEHY.Service.Interfaces
         void Add(UserViewModel userVm);
         void Update(UserViewModel userVm);
 
-        bool Login(LoginViewModel model);
+        int Login(LoginViewModel model);
 
         List<FunctionViewModel> GetMenuByUserPermission(string userId);
 

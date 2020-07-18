@@ -1,5 +1,8 @@
-﻿using System.Web;
+﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using UTEHY.Model.Entities;
+using UTEHY.WebApp.Common;
 
 namespace UTEHY.WebApp
 {
@@ -7,7 +10,7 @@ namespace UTEHY.WebApp
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
-        }
+            filters.Add(new HandleErrorAttribute());            
+        }       
     }
 }

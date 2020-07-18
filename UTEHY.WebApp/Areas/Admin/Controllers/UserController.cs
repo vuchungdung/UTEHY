@@ -8,7 +8,7 @@ using UTEHY.WebApp.Common;
 
 namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IUserService _userService;
 

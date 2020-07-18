@@ -159,16 +159,24 @@ namespace UTEHY.Service.Implementation
             return model;
         }
 
-        public bool Login(LoginViewModel model)
+        public int Login(LoginViewModel model)
         {
-            var user = _userRepository.FindSingle(x => x.UserName == model.UserName && x.Password == model.Password);
-            if(user != null)
+            var username = _userRepository.FindAll(x => x.UserName == model.UserName);
+            if(username != null)
             {
-                return true;
+                var userpass = username.Where(x => x.Password == model.Password).SingleOrDefault();
+                if (userpass != null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             else
             {
-                return false;
+                return -1;
             }
         }
 

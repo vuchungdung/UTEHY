@@ -154,10 +154,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\FunctionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Authorization\AuthorizationAttribute.cs" />
+    <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\UserCommon.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -168,7 +170,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\app\components\loginController.js" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.css" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.min.css" />
     <Content Include="Areas\Admin\Assets\css\colors.css" />
@@ -2700,6 +2701,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\app\components\" />
     <Folder Include="Areas\Admin\app\shared\services\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Function\" />

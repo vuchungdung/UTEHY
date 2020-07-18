@@ -8,8 +8,8 @@ using UTEHY.WebApp.Authorization;
 
 namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
-    {       
+    public class HomeController : BaseController
+    {
         public ActionResult Index()
         {
             return View();
