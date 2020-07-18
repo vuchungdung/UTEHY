@@ -170,6 +170,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\app\app.js" />
+    <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
+    <Content Include="Areas\Admin\app\shared\services\notificationService.js" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.css" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.min.css" />
     <Content Include="Areas\Admin\Assets\css\colors.css" />
@@ -2282,9 +2285,20 @@
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\echarts.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\theme\limitless.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\sparkline.min.js" />
-    <Content Include="Assets\angular-route.min.js" />
-    <Content Include="Assets\angular.min.js" />
-    <Content Include="Assets\notify-ui\angular-ui-notification.js" />
+    <Content Include="Assets\angular-ui-router\karma.conf.js" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.js" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.min.js" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.js" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.min.js" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.js" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.min.js" />
+    <Content Include="Assets\angular-ui-router\rollup.config.js" />
+    <Content Include="Assets\angular\angular-csp.css" />
+    <Content Include="Assets\angular\angular.js" />
+    <Content Include="Assets\angular\angular.min.js" />
+    <Content Include="Assets\angular\index.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -2606,7 +2620,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Assets\notify-ui\angular-ui-notification.less" />
     <Content Include="ckeditor\CHANGES.md" />
     <Content Include="ckeditor\LICENSE.md" />
     <Content Include="ckeditor\plugins\pbckcode\CHANGELOG.md" />
@@ -2673,6 +2686,35 @@
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Authen\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\app\shared\modules\UTEHY.Common.js" />
+    <Content Include="Assets\angular-ui-router\.bower.json" />
+    <Content Include="Assets\angular-ui-router\artifacts.json" />
+    <Content Include="Assets\angular-ui-router\bower.json" />
+    <Content Include="Assets\angular-ui-router\CHANGELOG.md" />
+    <Content Include="Assets\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="Assets\angular-ui-router\DOCS.md" />
+    <Content Include="Assets\angular-ui-router\downstream_projects.json" />
+    <Content Include="Assets\angular-ui-router\ISSUE_TEMPLATE.md" />
+    <Content Include="Assets\angular-ui-router\LICENSE" />
+    <Content Include="Assets\angular-ui-router\README.md" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.js.map" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.js.map" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.js.map" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.js.map" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.min.js.map" />
+    <Content Include="Assets\angular-ui-router\tslint.json" />
+    <Content Include="Assets\angular-ui-router\yarn.lock" />
+    <Content Include="Assets\angular\.bower.json" />
+    <Content Include="Assets\angular\angular.min.js.gzip" />
+    <Content Include="Assets\angular\angular.min.js.map" />
+    <Content Include="Assets\angular\bower.json" />
+    <Content Include="Assets\angular\LICENSE.md" />
+    <Content Include="Assets\angular\package.json" />
+    <Content Include="Assets\angular\README.md" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2701,11 +2743,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\app\components\" />
-    <Folder Include="Areas\Admin\app\shared\services\" />
+    <Folder Include="Areas\Admin\app\components\functions\" />
+    <Folder Include="Areas\Admin\app\components\groupusers\" />
+    <Folder Include="Areas\Admin\app\components\posts\" />
+    <Folder Include="Areas\Admin\app\components\post_categories\" />
+    <Folder Include="Areas\Admin\app\components\teachers\" />
+    <Folder Include="Areas\Admin\app\components\users\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Function\" />
-    <Folder Include="Areas\Admin\Views\User\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

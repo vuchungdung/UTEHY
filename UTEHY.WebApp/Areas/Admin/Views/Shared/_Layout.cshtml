@@ -31,12 +31,17 @@
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/pickers/daterangepicker.js"></script>
 
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
-    <script type="text/javascript" src="~/Areas/Admin/Assets/js/pages/dashboard.js"></script>
     <!-- /theme JS files -->
-
+    <!--Nhúng link thư viện Angular js-->
+    <script src="~/Assets/angular/angular.min.js"></script>
+    <script src="~/Assets/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="~/Areas/Admin/app/app.js"></script>
+    <script src="~/Areas/Admin/app/shared/modules/UTEHY.Common.js"></script>
+    <script src="~/Areas/Admin/app/shared/services/notificationService.js"></script>
+    <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
 </head>
 
-<body class="pace-done">
+<body class="pace-done" >
     <div class="pace  pace-inactive">
         <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
             <div class="pace-progress-inner"></div>
@@ -335,8 +340,9 @@
         </ul>
 
         <div class="navbar-collapse collapse" id="navbar-second-toggle">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html"><i class="icon-display4 position-left"></i> TRANG CHỦ</a></li>
+            <ul class="nav navbar-nav" ng-app="UTEHY" ng-controller="navbarController">
+                
+                <li class="active"><a href="index.html"><i class="icon-display4 position-left"></i>TRANG CHỦ</a></li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
