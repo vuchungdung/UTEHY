@@ -23,7 +23,7 @@ namespace UTEHY.Service.Implementation
         }
         public List<PermissionScreenViewModel> GetCommandViews()
         {
-            var sql = @"select f.FunctionId,f.Name,
+            var sql = @"select f.FunctionId as FunctionId,f.Name as Name,f.ParentId as ParentId,
 		                        sum((case when c.CommandId = 'CREATE' then 1 else 0 end)) as HasCreate,
 		                        sum((case when c.CommandId = 'VIEW' then 1 else 0 end)) as HasView,
 		                        sum((case when c.CommandId = 'UPDATE' then 1 else 0 end)) as HasUpdate,
@@ -33,7 +33,7 @@ namespace UTEHY.Service.Implementation
 			                    inner join Commands as c on cif.CommandId = c.CommandId
 			                    inner join Permissions as p on p.FunctionId = f.FunctionId and p.CommandId = cif.CommandId
 	                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
-            using (SqlConnection conn = new SqlConnection("metadata=res://*/Entities.FITEntities.csdl|res://*/Entities.FITEntities.ssdl|res://*/Entities.FITEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-6HF17VS\\SQLEXPRESS;initial catalog=FIT;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-6HF17VS\SQLEXPRESS;Initial Catalog=FIT;Integrated Security=True;"))
             {
                 if (conn.State == ConnectionState.Closed)
                 {

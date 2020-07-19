@@ -8,7 +8,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class PermissionScreenViewModel
     {
-        public string Id { get; set; }
+        public string FunctionId { get; set; }
 
         public string Name { get; set; }
 

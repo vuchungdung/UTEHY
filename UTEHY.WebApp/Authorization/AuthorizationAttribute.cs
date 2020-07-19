@@ -40,8 +40,8 @@ namespace UTEHY.WebApp.Authorization
         }
         private List<PermissionViewModel> GetAllPermissionByUserName(string userName)
         {
-            var credentials = (List<PermissionViewModel>)HttpContext.Current.Session[UserCommon.PERMISSION_SESSION];
-            return credentials;
+            var listPermission = (List<PermissionViewModel>)HttpContext.Current.Session[UserCommon.PERMISSION_SESSION];
+            return listPermission;
         }
     }
 }

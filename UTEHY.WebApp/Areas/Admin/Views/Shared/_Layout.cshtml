@@ -56,8 +56,8 @@
     <!-- Main navbar -->
     <div class="navbar navbar-inverse" style="background-color: mediumblue;border:none;padding:4px 20px;">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html" style="font-weight:600;">
-                TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN
+            <a class="navbar-brand" href="index.html" style="font-weight:600">
+                <span>TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</span>
             </a>
 
             <ul class="nav navbar-nav pull-right visible-xs-block">
@@ -84,6 +84,7 @@
         </div>
     </div>
     <!-- /main navbar -->
+
     <!-- Second navbar -->
     <div class="navbar navbar-default" id="navbar-second">
         <ul class="nav navbar-nav no-border visible-xs-block">
@@ -99,7 +100,7 @@
                     </a>
                     <ul class="dropdown-menu width-200" ng-if="item.children.length > 0">
                         <li ng-repeat="children in item.children">
-                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:14px">
+                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:13px">
                                 <i class="{{children.Icons}}"></i> {{children.Name}}
                             </a>
                         </li>
@@ -110,38 +111,21 @@
     </div>
     <!-- /second navbar -->
     <!-- Page header -->
-    <div class="page-header">
-        <div class="page-header-content">
-            <div class="page-title">
-                <h4>
-                    <i class="icon-arrow-left52 position-left"></i>
-                    <span class="text-semibold">Trang chủ</span>
-                    <small class="display-block">Xin chào, @user.Name</small>
-                </h4>
-                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-            </div>
-
-            <div class="heading-elements">
-                <div class="heading-btn-group">
-                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
-                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- /page header -->
-    <!-- Page container -->
-    <div class="page-container" style="min-height:46px">
 
+    <!-- Page container -->
+    <div class="page-container">
         <!-- Page content -->
         @RenderBody()
         <!-- /page content -->
 
     </div>
     <!-- /page container -->
+
     <!-- Footer -->
     <div class="footer text-muted">
-        © 2020. <a href="#">kHOA CÔNG NGHỆ THÔNG TIN</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Trung Tâm Phần Mềm</a>
+        © 2020. <a href="#">kHOA CÔNG NGHỆ THÔNG TIN</a> by <a href="http://facebook.com/chungdung" target="_blank">Trung Tâm Phần Mềm</a>
     </div>
     <!-- /footer -->
 

@@ -152,6 +152,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Dob" Type="datetime" />
           <Property Name="GroupId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Img" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <Association Name="FK_CommandInFunctions_Commands">
           <End Role="Commands" Type="Self.Commands" Multiplicity="1" />
@@ -453,6 +454,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Dob" Type="DateTime" Precision="3" />
           <Property Name="GroupId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GroupUser" Relationship="Self.FK_Users_GroupUsers" FromRole="Users" ToRole="GroupUsers" />
         </EntityType>
         <Association Name="FK_Permissions_Commands">
@@ -726,6 +728,7 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Dob" ColumnName="Dob" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

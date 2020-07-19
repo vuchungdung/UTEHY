@@ -25,6 +25,7 @@ namespace UTEHY.Model.Entities
         public string LastName { get; set; }
         public Nullable<System.DateTime> Dob { get; set; }
         public string GroupId { get; set; }
+        public string Img { get; set; }
     
         public virtual GroupUser GroupUser { get; set; }
     }

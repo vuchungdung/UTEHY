@@ -9,7 +9,6 @@
             headers: { "Content-Type": "application/json" }
         });
         result.then(function (respone) {
-            debugger
             const map = {};
             $scope.functions = [];
             for (let i = 0; i < respone.data.result.length; i++) {

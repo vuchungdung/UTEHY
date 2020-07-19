@@ -20,7 +20,7 @@ namespace UTEHY.Model.ViewModel
         public string LastName { get; set; }
         public DateTime? Dob { get; set; }
         public string GroupId { get; set; }
-
+        public string Img { get; set; }
         public GroupUser GroupUser { get; set; }
     }
 }

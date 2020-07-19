@@ -33,30 +33,46 @@ namespace UTEHY.Service.Implementation
             _permissionRepository = permissionRepository;
             _groupUsersRepository = groupUsersRepository;
         }
-        public void Add(UserViewModel userVm)
+        public bool Add(UserViewModel userVm)
         {
-            var model = new User()
+            try
             {
-                UserId = Guid.NewGuid().ToString(),
-                Name = userVm.Name,
-                Email =userVm.Email,
-                PhoneNumber = userVm.PhoneNumber,
-                Address =userVm.Address,
-                UserName = userVm.UserName,
-                Password = userVm.Password,
-                FirstName =userVm.FirstName,
-                LastName =userVm.LastName,
-                Dob =userVm.Dob,
-                GroupId = userVm.GroupId.ToString()
-            };
-            _userRepository.Add(model);
+                var model = new User()
+                {
+                    UserId = Guid.NewGuid().ToString(),
+                    Name = userVm.Name,
+                    Email = userVm.Email,
+                    PhoneNumber = userVm.PhoneNumber,
+                    Address = userVm.Address,
+                    UserName = userVm.UserName,
+                    Password = userVm.Password,
+                    FirstName = userVm.FirstName,
+                    LastName = userVm.LastName,
+                    Dob = userVm.Dob,
+                    GroupId = userVm.GroupId.ToString()
+                };
+                _userRepository.Add(model);
+                return true;
+            }catch(Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
-        public string Delete(string id)
+        public bool Delete(string id)
         {
-            var model = _userRepository.FindById(id);
-            _userRepository.Remove(id);
-            return model.UserId;
+            try
+            {
+                var model = _userRepository.FindById(id);
+                _userRepository.Remove(id);
+                return true;
+            }catch(Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
+            
         }
 
         public List<UserViewModel> GetAll()
@@ -78,9 +94,40 @@ namespace UTEHY.Service.Implementation
             return result.ToList();
         }
 
-        public PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request)
+        public PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string groupId)
         {
-            throw new NotImplementedException();
+            var query = _userRepository.FindAll();
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(x => x.Equals(keyword));
+            }
+            if (!String.IsNullOrEmpty(groupId))
+            {
+                query = query.Where(x => x.GroupId == groupId);
+            }
+            var totalRecords = query.Count();
+            var listItems = query.Skip((request.pageIndex - 1) * request.pageSize)
+                .Take(request.pageSize)
+                .Select(x => new UserViewModel()
+                {
+                    UserId = x.UserId,
+                    Name = x.Name,
+                    Email = x.Email,
+                    PhoneNumber = x.PhoneNumber,
+                    Address = x.Address,
+                    UserName = x.UserName,
+                    Password = x.Password,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Dob = x.Dob,
+                    GroupId = x.GroupId
+                }).ToList();
+            var pagination = new PageResult<UserViewModel>()
+            {
+                ListItem = listItems,
+                TotalRecords = totalRecords
+            };
+            return pagination;
         }
 
         public List<FunctionViewModel> GetMenuByUserPermission(string userId)
@@ -116,6 +163,7 @@ namespace UTEHY.Service.Implementation
                 return data;
             }catch(Exception error)
             {
+                Console.WriteLine(error);
                 return null;
             }
         }
@@ -186,23 +234,31 @@ namespace UTEHY.Service.Implementation
             _unitOfWork.Commit();
         }
 
-        public void Update(UserViewModel userVm)
+        public bool Update(UserViewModel userVm)
         {
-            var model = new User()
+            try
             {
-                UserId = userVm.UserId.ToString(),
-                Name = userVm.Name,
-                Email = userVm.Email,
-                PhoneNumber = userVm.PhoneNumber,
-                Address = userVm.Address,
-                UserName = userVm.UserName,
-                Password = userVm.Password,
-                FirstName = userVm.FirstName,
-                LastName = userVm.LastName,
-                Dob = userVm.Dob,
-                GroupId = userVm.GroupId.ToString()
-            };
-            _userRepository.Update(model);
+                var model = new User()
+                {
+                    UserId = userVm.UserId.ToString(),
+                    Name = userVm.Name,
+                    Email = userVm.Email,
+                    PhoneNumber = userVm.PhoneNumber,
+                    Address = userVm.Address,
+                    UserName = userVm.UserName,
+                    Password = userVm.Password,
+                    FirstName = userVm.FirstName,
+                    LastName = userVm.LastName,
+                    Dob = userVm.Dob,
+                    GroupId = userVm.GroupId.ToString()
+                };
+                _userRepository.Update(model);
+                return true;
+            }catch(Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
         }
     }
 }

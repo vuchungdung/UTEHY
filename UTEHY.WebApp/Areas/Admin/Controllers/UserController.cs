@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UTEHY.Model.Dtos;
+using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
 using UTEHY.WebApp.Common;
 
@@ -16,7 +18,6 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
         {
             _userService = userService;
         }
-        // GET: Admin/User
         public ActionResult Index()
         {
             return View();
@@ -33,6 +34,60 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
             else
             {
                 return Json(new { }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpGet]
+        public JsonResult GetAllPaging(string keyword, PageRequest request, string groupId)
+        {
+            var result = _userService.GetAllPaging(keyword, request, groupId);
+            if(result != null)
+            {
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public JsonResult AddUser(UserViewModel userVm)
+        {
+            var result = _userService.Add(userVm);
+            if(result == true)
+            {
+                _userService.Save();
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPut]
+        public JsonResult UpdateUser(UserViewModel userVm)
+        {
+            var result = _userService.Update(userVm);
+            if (result == true)
+            {
+                _userService.Save();
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpDelete]
+        public JsonResult DeleteUser(string userId)
+        {
+            var result = _userService.Delete(userId);
+            if (result == true)
+            {
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
             }
         }
     }

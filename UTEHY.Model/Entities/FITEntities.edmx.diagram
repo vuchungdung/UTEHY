@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e0bfde203f92447e8bd704fe718d9abf" Name="Diagram1">
+      <Diagram DiagramId="75caf84ad1b54717aa7af22103926394" Name="Diagram1">
         <EntityTypeShape EntityType="FITModel.Command" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FITModel.Comment" Width="1.5" PointX="10.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FITModel.Footer" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="FITModel.Post" Width="1.5" PointX="8" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FITModel.Slide" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FITModel.Teacher" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FITModel.User" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FITModel.User" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
         <AssociationConnector Association="FITModel.FK_Permissions_Commands" ManuallyRouted="false" />
         <AssociationConnector Association="FITModel.FK_Comments_Posts" ManuallyRouted="false" />
         <AssociationConnector Association="FITModel.FK_Permissions_Funtions" ManuallyRouted="false" />
