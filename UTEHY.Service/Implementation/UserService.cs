@@ -106,7 +106,8 @@ namespace UTEHY.Service.Implementation
                                 Name = f.Name,
                                 Url = f.Url,
                                 ParentId = f.ParentId,
-                                SortOrder = f.SortOrder
+                                SortOrder = f.SortOrder,
+                                Icons = f.Icons
                             };
                 var data = query.Distinct()
                     .OrderBy(x => x.ParentId)

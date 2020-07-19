@@ -14,9 +14,9 @@ namespace UTEHY.Model.Entities
     
     public partial class Permission
     {
+        public string FunctionId { get; set; }
         public string GroupId { get; set; }
         public string CommandId { get; set; }
-        public string FunctionId { get; set; }
     
         public virtual Command Command { get; set; }
         public virtual Function Function { get; set; }

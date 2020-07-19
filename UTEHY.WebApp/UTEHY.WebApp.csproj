@@ -155,8 +155,16 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\FunctionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GroupUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Authorization\AuthorizationAttribute.cs" />
     <Compile Include="Common\CommonHelper.cs" />
@@ -187,6 +195,7 @@
     <Content Include="Areas\Admin\Assets\css\icons\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Admin\Assets\css\icons\icomoon\fonts\icomoon.svg" />
     <Content Include="Areas\Admin\Assets\css\icons\icomoon\styles.css" />
+    <Content Include="Areas\Admin\Assets\images\admin.png" />
     <Content Include="Areas\Admin\Assets\images\backgrounds\boxed_bg.png" />
     <Content Include="Areas\Admin\Assets\images\backgrounds\boxed_bg_retina.png" />
     <Content Include="Areas\Admin\Assets\images\backgrounds\panel_bg.png" />
@@ -450,6 +459,8 @@
     <Content Include="Areas\Admin\Assets\images\flags\zm.png" />
     <Content Include="Areas\Admin\Assets\images\flags\zw.png" />
     <Content Include="Areas\Admin\Assets\images\login_cover.jpg" />
+    <Content Include="Areas\Admin\Assets\images\logo-web.ico" />
+    <Content Include="Areas\Admin\Assets\images\logo.png" />
     <Content Include="Areas\Admin\Assets\images\logo_dark.png" />
     <Content Include="Areas\Admin\Assets\images\logo_demo.png" />
     <Content Include="Areas\Admin\Assets\images\logo_icon_dark.png" />
@@ -2750,7 +2761,16 @@
     <Folder Include="Areas\Admin\app\components\teachers\" />
     <Folder Include="Areas\Admin\app\components\users\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Comment\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Areas\Admin\Views\Function\" />
+    <Folder Include="Areas\Admin\Views\GroupUser\" />
+    <Folder Include="Areas\Admin\Views\Permission\" />
+    <Folder Include="Areas\Admin\Views\PostCategory\" />
+    <Folder Include="Areas\Admin\Views\Post\" />
+    <Folder Include="Areas\Admin\Views\StatisticComment\" />
+    <Folder Include="Areas\Admin\Views\StatisticPost\" />
+    <Folder Include="Areas\Admin\Views\Teacher\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

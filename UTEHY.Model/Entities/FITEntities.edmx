@@ -50,6 +50,7 @@
           <Property Name="Url" Type="nvarchar" MaxLength="200" />
           <Property Name="SortOrder" Type="int" />
           <Property Name="ParentId" Type="varchar" MaxLength="50" />
+          <Property Name="Icons" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GroupUsers">
           <Key>
@@ -72,13 +73,13 @@
         </EntityType>
         <EntityType Name="Permissions">
           <Key>
+            <PropertyRef Name="FunctionId" />
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CommandId" />
-            <PropertyRef Name="FunctionId" />
           </Key>
+          <Property Name="FunctionId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GroupId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="CommandId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FunctionId" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PostCategorys">
           <Key>
@@ -340,6 +341,7 @@
           <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Icons" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Funtions" FromRole="Functions" ToRole="Permissions" />
           <NavigationProperty Name="Commands" Relationship="Self.CommandInFunctions" FromRole="Functions" ToRole="Commands" />
         </EntityType>
@@ -366,13 +368,13 @@
         </EntityType>
         <EntityType Name="Permission">
           <Key>
+            <PropertyRef Name="FunctionId" />
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CommandId" />
-            <PropertyRef Name="FunctionId" />
           </Key>
+          <Property Name="FunctionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GroupId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CommandId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FunctionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Command" Relationship="Self.FK_Permissions_Commands" FromRole="Permissions" ToRole="Commands" />
           <NavigationProperty Name="Function" Relationship="Self.FK_Permissions_Funtions" FromRole="Permissions" ToRole="Functions" />
           <NavigationProperty Name="GroupUser" Relationship="Self.FK_Permissions_GroupUsers" FromRole="Permissions" ToRole="GroupUsers" />
@@ -616,6 +618,7 @@
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Icons" ColumnName="Icons" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -643,9 +646,9 @@
           <EntitySetMapping Name="Permissions">
             <EntityTypeMapping TypeName="FITModel.Permission">
               <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="CommandId" ColumnName="CommandId" />
-                <ScalarProperty Name="FunctionId" ColumnName="FunctionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -2,15 +2,16 @@
     app.controller('navbarController', navbarController);
     navbarController.$inject = ['$scope','$http']
     function navbarController($scope, $http) {
-        $http({
+        var result = $http({
             method: "GET",
             url: "/User/GetMenuByUserPermission",
             dataType: 'json',
             headers: { "Content-Type": "application/json" }
-        }).then(function (respone) {
+        });
+        result.then(function (respone) {
             debugger
             const map = {};
-            var functions = [];
+            $scope.functions = [];
             for (let i = 0; i < respone.data.result.length; i++) {
                 const node = respone.data.result[i];
                 node.children = [];
@@ -19,10 +20,10 @@
                     delete node.children;
                     respone.data.result[map[node.ParentId]].children.push(node);
                 } else {
-                    functions.push(node);
+                    $scope.functions.push(node);
                 }
             }
-            
-        });  
+            console.log($scope.functions);
+        });
     }     
 })(angular.module('UTEHY'));

@@ -12,6 +12,8 @@
     <link href="~/Areas/Admin/Assets/css/core.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/components.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/colors.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/logo-web.ico" type="image/png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
     <!-- /global stylesheets -->
     <!-- Core JS files -->
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/loaders/pace.min.js"></script>
@@ -41,18 +43,22 @@
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
 </head>
 
-<body class="pace-done" >
+<body class="pace-done" ng-app="UTEHY">
     <div class="pace  pace-inactive">
         <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
             <div class="pace-progress-inner"></div>
         </div>
         <div class="pace-activity"></div>
     </div>
-
+    @{
+        var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
+    }
     <!-- Main navbar -->
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse" style="background-color: mediumblue;border:none;padding:4px 20px;">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">KHOA CÔNG NGHỆ THÔNG TIN</a>
+            <a class="navbar-brand" href="index.html" style="font-weight:600;">
+                TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN
+            </a>
 
             <ul class="nav navbar-nav pull-right visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -60,273 +66,18 @@
         </div>
 
         <div class="navbar-collapse collapse" id="navbar-mobile">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-git-compare"></i>
-                        <span class="visible-xs-inline-block position-right">Git updates</span>
-                        <span class="badge bg-warning-400">9</span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-content">
-                        <div class="dropdown-content-heading">
-                            Git updates
-                            <ul class="icons-list">
-                                <li><a href="#"><i class="icon-sync"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <ul class="media-list dropdown-content-body width-350">
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Drop the IE <a href="#">specific hacks</a> for temporal inputs
-                                    <div class="media-annotation">4 minutes ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" class="btn border-warning text-warning btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-commit"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Add full font overrides for popovers and tooltips
-                                    <div class="media-annotation">36 minutes ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" class="btn border-info text-info btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-branch"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="#">Chris Arney</a> created a new <span class="text-semibold">Design</span> branch
-                                    <div class="media-annotation">2 hours ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" class="btn border-success text-success btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-merge"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="#">Eugene Kopyov</a> merged <span class="text-semibold">Master</span> and <span class="text-semibold">Dev</span> branches
-                                    <div class="media-annotation">Dec 18, 18:36</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Have Carousel ignore keyboard events
-                                    <div class="media-annotation">Dec 12, 05:46</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <div class="dropdown-content-footer">
-                            <a href="#" data-popup="tooltip" title="" data-original-title="All activity"><i class="icon-menu display-block"></i></a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-people"></i>
-                        <span class="visible-xs-inline-block position-right">Users</span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-content">
-                        <div class="dropdown-content-heading">
-                            Users online
-                            <ul class="icons-list">
-                                <li><a href="#"><i class="icon-gear"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <ul class="media-list dropdown-content-body width-300">
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading text-semibold">Jordana Ansley</a>
-                                    <span class="display-block text-muted text-size-small">Lead web developer</span>
-                                </div>
-                                <div class="media-right media-middle"><span class="status-mark border-success"></span></div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading text-semibold">Will Brason</a>
-                                    <span class="display-block text-muted text-size-small">Marketing manager</span>
-                                </div>
-                                <div class="media-right media-middle"><span class="status-mark border-danger"></span></div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading text-semibold">Hanna Walden</a>
-                                    <span class="display-block text-muted text-size-small">Project manager</span>
-                                </div>
-                                <div class="media-right media-middle"><span class="status-mark border-success"></span></div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading text-semibold">Dori Laperriere</a>
-                                    <span class="display-block text-muted text-size-small">Business developer</span>
-                                </div>
-                                <div class="media-right media-middle"><span class="status-mark border-warning-300"></span></div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading text-semibold">Vanessa Aurelius</a>
-                                    <span class="display-block text-muted text-size-small">UX expert</span>
-                                </div>
-                                <div class="media-right media-middle"><span class="status-mark border-grey-400"></span></div>
-                            </li>
-                        </ul>
-
-                        <div class="dropdown-content-footer">
-                            <a href="#" data-popup="tooltip" title="" data-original-title="All users"><i class="icon-menu display-block"></i></a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <p class="navbar-text"><span class="label bg-success-400">Online</span></p>
-
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown language-switch">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="~/Areas/Admin/Assets/images/flags/gb.png" class="position-left" alt="">
-                        English
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a class="english"><img src="~/Areas/Admin/Assets/images/flags/gb.png" alt=""> English</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-bubbles4"></i>
-                        <span class="visible-xs-inline-block position-right">Messages</span>
-                        <span class="badge bg-warning-400">2</span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-content width-350">
-                        <div class="dropdown-content-heading">
-                            Messages
-                            <ul class="icons-list">
-                                <li><a href="#"><i class="icon-compose"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <ul class="media-list dropdown-content-body">
-                            <li class="media">
-                                <div class="media-left">
-                                    <img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
-                                    <span class="badge bg-danger-400 media-badge">5</span>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="#" class="media-heading">
-                                        <span class="text-semibold">James Alexander</span>
-                                        <span class="media-annotation pull-right">04:58</span>
-                                    </a>
-
-                                    <span class="text-muted">who knows, maybe that would be the best thing for me...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left">
-                                    <img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
-                                    <span class="badge bg-danger-400 media-badge">4</span>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="#" class="media-heading">
-                                        <span class="text-semibold">Margo Baker</span>
-                                        <span class="media-annotation pull-right">12:16</span>
-                                    </a>
-
-                                    <span class="text-muted">That was something he was unable to do because...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading">
-                                        <span class="text-semibold">Jeremy Victorino</span>
-                                        <span class="media-annotation pull-right">22:48</span>
-                                    </a>
-
-                                    <span class="text-muted">But that would be extremely strained and suspicious...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading">
-                                        <span class="text-semibold">Beatrix Diaz</span>
-                                        <span class="media-annotation pull-right">Tue</span>
-                                    </a>
-
-                                    <span class="text-muted">What a strenuous career it is that I've chosen...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="media-left"><img src="~/Areas/Admin/Assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
-                                <div class="media-body">
-                                    <a href="#" class="media-heading">
-                                        <span class="text-semibold">Richard Vango</span>
-                                        <span class="media-annotation pull-right">Mon</span>
-                                    </a>
-
-                                    <span class="text-muted">Other travelling salesmen live a life of luxury...</span>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <div class="dropdown-content-footer">
-                            <a href="#" data-popup="tooltip" title="" data-original-title="All messages"><i class="icon-menu display-block"></i></a>
-                        </div>
-                    </div>
-                </li>
-
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="~/Areas/Admin/Assets/images/placeholder.jpg" alt="">
-                        <span>Victoria</span>
+                        <img src="~/Areas/Admin/Assets/images/admin.png" alt="">
+                        <span>@user.Name</span>
                         <i class="caret"></i>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                        <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-                        <li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-                        <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                        <li><a href="#"><i class="icon-user"></i>Tài khoản</a></li>
+                        <li><a href="#"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
+                        <li><a href="#"><i class="icon-switch2"></i> Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -339,67 +90,19 @@
             <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
         </ul>
 
-        <div class="navbar-collapse collapse" id="navbar-second-toggle">
-            <ul class="nav navbar-nav" ng-app="UTEHY" ng-controller="navbarController">
-                
-                <li class="active"><a href="index.html"><i class="icon-display4 position-left"></i>TRANG CHỦ</a></li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-puzzle4 position-left"></i> HỆ THỐNG <span class="caret"></span>
+        <div class="navbar-collapse collapse" id="navbar-second-toggle" ng-controller="navbarController">           
+            <ul class="nav navbar-nav">
+                <li><a href="/Admin/Home"><i class="icon-display4 position-left"></i>TRANG CHỦ</a></li>
+                <li class="dropdown" ng-repeat="item in functions">
+                    <a href="/Admin{{item.Url}}" class="dropdown-toggle" style="font-size:13px" data-toggle="dropdown">
+                        <i class="{{item.Icons}}"></i> {{item.Name}} <span class="caret"></span>
                     </a>
-
-                    <ul class="dropdown-menu width-250">
-                        <li class="dropdown-header">Phân quyền người dùng</li>
-                        <li><a href="general_widgets_content.html">Quyền Hạn</a></li>
-                        <li><a href="general_widgets_content.html">Chức năng</a></li>
-                        <li><a href="general_widgets_content.html">Nhóm quyền</a></li>
-                        <li><a href="general_widgets_content.html">Người dùng</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-grid6 position-left"></i> ĐIỀU HÀNH HỆ THỐNG <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu width-250">
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-grid6 position-left"></i> THEO DÕI NHẬP LIỆU <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu width-250">
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-grid6 position-left"></i> CÁC HỆ THỐNG KHÁC <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu width-250">
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <i class="icon-cog3"></i>
-                        <span class="visible-xs-inline-block position-right">Share</span>
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
-                        <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-                        <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                    <ul class="dropdown-menu width-200" ng-if="item.children.length > 0">
+                        <li ng-repeat="children in item.children">
+                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:14px">
+                                <i class="{{children.Icons}}"></i> {{children.Name}}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -413,7 +116,7 @@
                 <h4>
                     <i class="icon-arrow-left52 position-left"></i>
                     <span class="text-semibold">Trang chủ</span>
-                    <small class="display-block">Xin chào, Victoria Baker!</small>
+                    <small class="display-block">Xin chào, @user.Name</small>
                 </h4>
                 <a class="heading-elements-toggle"><i class="icon-more"></i></a>
             </div>
