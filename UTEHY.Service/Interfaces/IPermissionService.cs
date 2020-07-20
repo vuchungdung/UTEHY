@@ -11,5 +11,7 @@ namespace UTEHY.Service.Interfaces
         List<PermissionScreenViewModel> GetCommandViews();
 
         List<PermissionViewModel> GetAllPermission();
+
+        
     }
 }

@@ -1,19 +1,21 @@
-﻿<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang quản trị</title>
+    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Assets/css/core.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Assets/css/components.css" rel="stylesheet" type="text/css">
-    <link href="~/Areas/Admin/Assets/css/colors.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Assets/css/core.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Assets/css/colors.min.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/logo-web.ico" type="image/png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+
     <!-- /global stylesheets -->
     <!-- Core JS files -->
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/loaders/pace.min.js"></script>
@@ -33,32 +35,26 @@
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/pickers/daterangepicker.js"></script>
 
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
+
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/ui/ripple.min.js"></script>
     <!-- /theme JS files -->
-    <!--Nhúng link thư viện Angular js-->
-    <script src="~/Assets/angular/angular.min.js"></script>
-    <script src="~/Assets/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!--Nhúng link angularjs và các ui của angularjs-->
+    <script src="~/Assets/angular/angular.js"></script>
     <script src="~/Areas/Admin/app/app.js"></script>
     <script src="~/Areas/Admin/app/shared/modules/UTEHY.Common.js"></script>
     <script src="~/Areas/Admin/app/shared/services/notificationService.js"></script>
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
 </head>
 
-<body class="pace-done" ng-app="UTEHY">
-    <div class="pace  pace-inactive">
-        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
-            <div class="pace-progress-inner"></div>
-        </div>
-        <div class="pace-activity"></div>
-    </div>
+<body ng-app="UTEHY">
+
     @{
         var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
     }
     <!-- Main navbar -->
-    <div class="navbar navbar-inverse" style="background-color: mediumblue;border:none;padding:4px 20px;">
+    <div class="navbar navbar-inverse bg-indigo">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html" style="font-weight:600">
-                <span>TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</span>
-            </a>
+            <a class="navbar-brand" href="/Admin/Home">ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</a>
 
             <ul class="nav navbar-nav pull-right visible-xs-block">
                 <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -67,15 +63,28 @@
 
         <div class="navbar-collapse collapse" id="navbar-mobile">
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown language-switch">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Areas/Admin/Assets/images/flags/vn.png" class="position-left" alt="">
+                        Việt Nam
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="vietnam"><img src="~/Areas/Admin/Assets/images/flags/vn.png" alt=""> Việt Nam</a></li>
+                        <li><a class="english"><img src="~/Areas/Admin/Assets/images/flags/gb.png" alt=""> English</a></li>
+                    </ul>
+                </li>
+
                 <li class="dropdown dropdown-user">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         <img src="~/Areas/Admin/Assets/images/admin.png" alt="">
                         <span>@user.Name</span>
                         <i class="caret"></i>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="icon-user"></i>Tài khoản</a></li>
+                        <li><a href="#"><i class="icon-user-plus"></i> Thông tin</a></li>
                         <li><a href="#"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
                         <li><a href="#"><i class="icon-switch2"></i> Đăng xuất</a></li>
                     </ul>
@@ -84,23 +93,23 @@
         </div>
     </div>
     <!-- /main navbar -->
-
     <!-- Second navbar -->
     <div class="navbar navbar-default" id="navbar-second">
         <ul class="nav navbar-nav no-border visible-xs-block">
             <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
         </ul>
 
-        <div class="navbar-collapse collapse" id="navbar-second-toggle" ng-controller="navbarController">           
-            <ul class="nav navbar-nav">
-                <li><a href="/Admin/Home"><i class="icon-display4 position-left"></i>TRANG CHỦ</a></li>
+        <div class="navbar-collapse collapse" id="navbar-second-toggle" ng-controller="navbarController">
+            <ul class="nav navbar-nav navbar-nav-material">
+                <li class="active"><a href="/Admin/Home"><i class="icon-display4 position-left"></i> TRANG CHỦ</a></li>
+
                 <li class="dropdown" ng-repeat="item in functions">
-                    <a href="/Admin{{item.Url}}" class="dropdown-toggle" style="font-size:13px" data-toggle="dropdown">
+                    <a href="/Admin{{item.Url}}" class="dropdown-toggle" style="font-size:11px;" data-toggle="dropdown">
                         <i class="{{item.Icons}}"></i> {{item.Name}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu width-200" ng-if="item.children.length > 0">
                         <li ng-repeat="children in item.children">
-                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:13px">
+                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:11px">
                                 <i class="{{children.Icons}}"></i> {{children.Name}}
                             </a>
                         </li>
@@ -111,26 +120,26 @@
     </div>
     <!-- /second navbar -->
     <!-- Page header -->
-    
     <!-- /page header -->
-
     <!-- Page container -->
     <div class="page-container">
+
         <!-- Page content -->
-        @RenderBody()
+        <div class="page-content">
+
+            <!-- Main content -->
+            @RenderBody()
+            <!-- /main content -->
+
+        </div>
         <!-- /page content -->
 
     </div>
     <!-- /page container -->
-
     <!-- Footer -->
-    <div class="footer text-muted">
-        © 2020. <a href="#">kHOA CÔNG NGHỆ THÔNG TIN</a> by <a href="http://facebook.com/chungdung" target="_blank">Trung Tâm Phần Mềm</a>
+    <div class="footer text-muted" style="bottom: 16px">
+        &copy; 2020. <a href="#" style="color:black">TRUNG TÂM PHẦN MỀM.</a>
     </div>
     <!-- /footer -->
-
-
-
-    <div class="daterangepicker dropdown-menu ltr opensleft"><div class="calendars"><div class="calendar left"><div class="calendar-table"></div><div class="daterangepicker_input"><div class="calendar-time" style="display: none;"><div></div></div></div></div><div class="calendar right"><div class="calendar-table"></div><div class="daterangepicker_input"><div class="calendar-time" style="display: none;"><div></div></div></div></div></div><div class="ranges"><ul><li data-range-key="Today">Today</li><li data-range-key="Yesterday">Yesterday</li><li data-range-key="Last 7 Days">Last 7 Days</li><li data-range-key="Last 30 Days">Last 30 Days</li><li data-range-key="This Month">This Month</li><li data-range-key="Last Month">Last Month</li><li data-range-key="Custom Range">Custom Range</li></ul><div class="daterangepicker-inputs"><div class="daterangepicker_input"><span class="start-date-label">Start date:</span><input class="form-control" type="text" name="daterangepicker_start" value=""><i class="icon-calendar3"></i></div><div class="daterangepicker_input"><span class="end-date-label">End date:</span><input class="form-control" type="text" name="daterangepicker_end" value=""><i class="icon-calendar3"></i></div></div><div class="range_inputs"><button class="applyBtn btn btn-sm btn-small bg-slate-600 btn-block" disabled="disabled" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-small btn-default btn-block" type="button">Cancel</button></div></div></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div><div class="d3-tip" style="position: absolute; top: 0px; display: none; pointer-events: none; box-sizing: border-box;"></div>
 </body>
 </html>

@@ -19,9 +19,7 @@ $(function() {
     $('#single').select2({
         width: 180,
         minimumResultsForSearch: Infinity,
-        allowClear: true,
-        containerCssClass: 'bg-slate-600',
-        dropdownCssClass: 'bg-slate-600'
+        allowClear: true
     });
 
 
@@ -29,9 +27,7 @@ $(function() {
     $('#multiple').select2({
         width: 180,
         minimumResultsForSearch: Infinity,
-        allowClear: true,
-        containerCssClass: 'bg-slate-600',
-        dropdownCssClass: 'bg-slate-600'
+        allowClear: true
     });
 
 
@@ -106,20 +102,22 @@ $(function() {
             }).resize();
         }
         else {
-            $('#navbar-second').removeClass('navbar-affix-xs');
+            $('#navbar-second').removeClass('navbar-affix-md');
             $(window).off('.affix');
-            $('#navbar-second').removeData('bs.affix').removeClass('affix affix-top affix-bottom')
+            $('#navbar-second').removeData('bs.affix').removeClass('affix affix-top affix-bottom');
         }
 
 
         // Main bottom
         if (vals == 'main_bottom') {
             $('#navbar-main').addClass('navbar-fixed-bottom');
-            $('body').addClass('navbar-bottom')
+            //$('body').addClass('navbar-bottom');
+            $('.footer').hide();
         }
         else {
             $('#navbar-main').removeClass('navbar-fixed-bottom');
-            $('body').removeClass('navbar-bottom')
+            //$('body').removeClass('navbar-bottom');
+            $('.footer').show();
         }
     });
 
@@ -151,7 +149,7 @@ $(function() {
         }
         else {
             $('body').removeClass('navbar-top-md-md');
-            $('body').children('.navbar-fixed-top').children().unwrap();
+            $('.page-header').children('.navbar-fixed-top').children().unwrap();
         }
 
 
@@ -159,11 +157,12 @@ $(function() {
         if (vals == 'multiple_bottom') {
             $('body').addClass('navbar-bottom-md-md');
             $('#navbar-main, #navbar-second').wrapAll('<div class="navbar-fixed-bottom" />');
-            
+            $('.footer').hide();
         }
         else {
             $('body').removeClass('navbar-bottom-md-md');
-            $('body').children('.navbar-fixed-bottom').children().unwrap();
+            $('.page-header').children('.navbar-fixed-bottom').children().unwrap();
+            $('.footer').show();
         }
     });
 

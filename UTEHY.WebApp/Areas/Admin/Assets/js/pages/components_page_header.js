@@ -139,7 +139,6 @@ $(function() {
 
     // Styled file input
     $(".file-styled").uniform({
-        fileButtonClass: 'action btn bg-warning-400 btn-icon',
-        fileButtonHtml: '<i class="icon-upload"></i>'
+        fileButtonClass: 'action btn bg-warning-400'
     });
 });

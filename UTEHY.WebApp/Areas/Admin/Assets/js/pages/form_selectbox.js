@@ -26,13 +26,6 @@ $(function() {
         autoWidth: false,
         theme: "bootstrap"
     });
-    
-    
-    // Allow copying classes to container
-    $(".selectbox-container").selectBoxIt({
-        autoWidth: false,
-        copyClasses: 'container'
-    });
 
 
     // Custom arrow icon

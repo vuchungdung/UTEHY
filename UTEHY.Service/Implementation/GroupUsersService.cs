@@ -40,22 +40,50 @@ namespace UTEHY.Service.Implementation
 
         public bool Delete(string groupId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = _groupUserRepository.FindById(groupId);
+                _groupUserRepository.Remove(model);
+                return true;
+            }catch(Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
         public List<GroupUserViewModel> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _groupUserRepository.FindAll().Select(x => new GroupUserViewModel()
+            {
+                GroupId = x.GroupId,
+                Name = x.Name
+            }).ToList();
+            return result;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public bool Update(GroupUserViewModel groupUserVm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var model = new GroupUser()
+                {
+                    GroupId = groupUserVm.GroupId,
+                    Name = groupUserVm.Name
+                };
+                _groupUserRepository.Update(model);
+                return true;
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
         }
     }
 }

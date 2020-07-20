@@ -60,6 +60,7 @@ $(function() {
 
             // Toggle necessary body and navbar classes
             $('body').find('#navbar-main').addClass('navbar-fixed-bottom');
+            $('.page-container').addClass('pb-20');
             $('body').addClass('navbar-bottom');
         }
         else {
@@ -69,6 +70,7 @@ $(function() {
 
             // Toggle necessary body and navbar classes
             $('body').find('#navbar-main').removeClass('navbar-fixed-bottom');
+            $('.page-container').removeClass('pb-20');
             $('body').removeClass('navbar-bottom');
         }
     };

@@ -3,22 +3,78 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+@{
+    var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
+}
 
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title" style="padding: 0px 36px 24px 0;">
             <h4>
                 <i class="icon-arrow-left52 position-left"></i>
-                <span>Hệ thống - Quản lý người dùng</span>
-                <small class="display-block"> </small>
+                <span>Hệ thống - Người dùng</span>
+                <small class="display-block">Xin chào, @user.Name </small>
             </h4>
             <a class="heading-elements-toggle"><i class="icon-more"></i></a>
         </div>
 
         <div class="heading-elements">
             <div class="heading-btn-group">
-                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
-                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-flat">
+    <div class="no-footer">
+        <div class="datatable-header">
+            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" class="" placeholder="Nhập nội dung cần tìm..."></label></div>
+            <div class="dataTables_filter" style="padding-top:5px;">
+                <button type="button" style="font-size:10px;" class="btn btn-sm btn-success"><i style="padding-right: 8px" class="fas fa-plus"></i>Thêm mới</button>
+                <button type="button" style="font-size:10px;" class="btn btn-sm btn-primary"><i style="padding-right: 8px" class="fas fa-sign-in-alt"></i>Nạp Excel</button>
+                <button type="button" style="font-size:10px;" class="btn btn-sm btn-warning"><i style="padding-right: 8px" class="fas fa-sign-out-alt"></i>Xuất Execl</button>
+            </div>
+            <div class="dataTables_length">
+                <label>
+                    <span>Hiển thị:</span>
+                    <select>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="datatable-scroll">
+            <table class="table datatable-basic dataTable no-footer">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HÌNH ẢNH</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HỌ TÊN</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">NGÀY SINH</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÀI KHOẢN</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">EMAIL</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">SỐ ĐIỆN THOẠI</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">ĐỊA CHỈ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">NHÓM QUYỀN</th>
+                        <th rowspan="1" colspan="1">THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="datatable-footer">
+            <div>Hiển thị 1 đến 10 của 15 dòng</div>
+            <div class="dataTables_paginate paging_simple_numbers">
+                <a class="paginate_button previous disabled">←</a>
+                <span>
+                    <a class="paginate_button current">1</a>
+                    <a class="paginate_button">2</a>
+                </span>
+                <a class="paginate_button next">→</a>
             </div>
         </div>
     </div>

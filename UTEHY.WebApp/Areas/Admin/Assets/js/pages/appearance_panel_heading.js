@@ -42,8 +42,7 @@ $(function() {
 
     // SelectBoxIt dropdowns
     $(".selectbox").selectBoxIt({
-        autoWidth: false,
-        width: 220
+        autoWidth: false
     });
 
 
@@ -54,7 +53,7 @@ $(function() {
     // Select2 selects
     $('.select').select2({
         minimumResultsForSearch: Infinity,
-        width: 220
+        width: 150
     });
 
 
@@ -106,8 +105,8 @@ $(function() {
 
     // Single file uploader
     $('.file-styled').uniform({
-        fileButtonClass: 'action btn bg-warning-400 btn-icon',
-        fileButtonHtml: '<i class="icon-upload"></i>'
+        fileClass: 'uploader uploader-xs',
+        fileButtonClass: 'action btn bg-blue btn-xs'
     });
 
 
