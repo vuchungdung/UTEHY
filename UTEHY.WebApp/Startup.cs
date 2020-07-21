@@ -38,6 +38,8 @@ namespace UTEHY.WebApp
             // register services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
+            builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();
+            builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
 
             // build and setup resolver
             IContainer container = builder.Build();

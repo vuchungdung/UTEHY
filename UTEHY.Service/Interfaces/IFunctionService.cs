@@ -10,10 +10,10 @@ namespace UTEHY.Service.Interfaces
 {
     public interface IFunctionService
     {
-        void Add(FunctionViewModel functionVm);
-        void Update(FunctionViewModel functionVm);
+        bool Add(FunctionViewModel functionVm);
+        bool Update(FunctionViewModel functionVm);
 
-        string Delete(string funcId);
+        bool Delete(string funcId);
 
         List<FunctionViewModel> GellAll();
 

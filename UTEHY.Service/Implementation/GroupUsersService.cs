@@ -40,14 +40,14 @@ namespace UTEHY.Service.Implementation
 
         public bool Delete(string groupId)
         {
-            try
+            var model = _groupUserRepository.FindById(groupId);
+            if (model != null)
             {
-                var model = _groupUserRepository.FindById(groupId);
                 _groupUserRepository.Remove(model);
                 return true;
-            }catch(Exception error)
+            }
+            else
             {
-                Console.WriteLine(error);
                 return false;
             }
         }

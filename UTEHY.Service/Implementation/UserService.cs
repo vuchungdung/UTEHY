@@ -62,14 +62,14 @@ namespace UTEHY.Service.Implementation
 
         public bool Delete(string id)
         {
-            try
+            var model = _userRepository.FindById(id);
+            if (model != null)
             {
-                var model = _userRepository.FindById(id);
                 _userRepository.Remove(id);
                 return true;
-            }catch(Exception error)
+            }
+            else
             {
-                Console.WriteLine(error);
                 return false;
             }
             

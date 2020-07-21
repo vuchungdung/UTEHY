@@ -180,6 +180,12 @@
   <ItemGroup>
     <Content Include="Areas\Admin\app\app.js" />
     <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\category.module.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\categoryAddController.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\categoryListController.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\categoryUpdateController.js" />
+    <Content Include="Areas\Admin\app\shared\services\ajaxService.js" />
+    <Content Include="Areas\Admin\app\shared\services\commonService.js" />
     <Content Include="Areas\Admin\app\shared\services\notificationService.js" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.css" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.min.css" />
@@ -2312,6 +2318,10 @@
     <Content Include="Assets\angular\angular.js" />
     <Content Include="Assets\angular\angular.min.js" />
     <Content Include="Assets\angular\index.js" />
+    <Content Include="Assets\toastr\toastr.css" />
+    <Content Include="Assets\toastr\toastr.js" />
+    <Content Include="Assets\toastr\toastr.min.css" />
+    <Content Include="Assets\toastr\toastr.min.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -2734,6 +2744,13 @@
     <Content Include="Areas\Admin\Views\PostCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PostCategory\_ModalCategory.cshtml" />
     <Content Include="Areas\Admin\Views\PostCategory\_ModalWarning.cshtml" />
+    <Content Include="Assets\toastr\.bower.json" />
+    <Content Include="Assets\toastr\bower.json" />
+    <Content Include="Assets\toastr\LICENSE" />
+    <Content Include="Assets\toastr\README.md" />
+    <Content Include="Assets\toastr\toastr.js.map" />
+    <Content Include="Assets\toastr\toastr.less" />
+    <Content Include="Assets\toastr\toastr.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2765,7 +2782,6 @@
     <Folder Include="Areas\Admin\app\components\functions\" />
     <Folder Include="Areas\Admin\app\components\groupusers\" />
     <Folder Include="Areas\Admin\app\components\posts\" />
-    <Folder Include="Areas\Admin\app\components\post_categories\" />
     <Folder Include="Areas\Admin\app\components\teachers\" />
     <Folder Include="Areas\Admin\app\components\users\" />
     <Folder Include="Areas\Admin\Models\" />

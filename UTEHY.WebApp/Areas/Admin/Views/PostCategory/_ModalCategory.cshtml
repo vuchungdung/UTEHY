@@ -25,7 +25,8 @@
                 <div class="form-group">
                     <label><i class="icon-cursor"></i>Danh mục gốc*</label>
                     <select name="select" class="form-control">
-                        <option selected>Chọn danh mục gốc</option>
+                        <option selected>Chọn danh mục gốc</option>   
+                        <option ng-repeat="item in listCategory" value="{{item.ID}}">{{item.Name}}</option>
                     </select>
                 </div>
             </div>

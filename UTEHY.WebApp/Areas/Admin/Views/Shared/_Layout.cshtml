@@ -13,6 +13,7 @@
     <link href="~/Areas/Admin/Assets/css/core.min.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/components.min.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/logo-web.ico" type="image/png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
 
@@ -40,10 +41,18 @@
     <!-- /theme JS files -->
     <!--Nhúng link angularjs và các ui của angularjs-->
     <script src="~/Assets/angular/angular.js"></script>
-    <script src="~/Areas/Admin/app/app.js"></script>
+    <script src="~/Assets/toastr/toastr.min.js"></script>
+
     <script src="~/Areas/Admin/app/shared/modules/UTEHY.Common.js"></script>
-    <script src="~/Areas/Admin/app/shared/services/notificationService.js"></script>
+    <script src="~/Areas/Admin/app/shared/services/ajaxService.js"></script>
+
+    <script src="~/Areas/Admin/app/components/post_categories/category.module.js"></script>
+
+    <script src="~/Areas/Admin/app/app.js"></script>
+
+    <script src="~/Areas/Admin/app/components/post_categories/categoryAddController.js"></script>
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
+    <script src="~/Areas/Admin/app/components/post_categories/categoryAddController.js"></script>
 </head>
 
 <body ng-app="UTEHY">

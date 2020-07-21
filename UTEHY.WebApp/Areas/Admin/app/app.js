@@ -1,4 +1,4 @@
 ﻿(function () {
     angular.module('UTEHY',
-        ['UTEHY.Common']);
+        ['UTEHY.Category','UTEHY.Common']);
 })();

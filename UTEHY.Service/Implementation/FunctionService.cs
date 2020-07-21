@@ -19,17 +19,25 @@ namespace UTEHY.Service.Implementation
             _functionRepository = functionRepository;
             _unitOfWork = unitOfWork;
         }
-        public void Add(FunctionViewModel functionVm)
+        public bool Add(FunctionViewModel functionVm)
         {
-            var model = new Function()
+            try
             {
-                FunctionId = functionVm.FunctionId,
-                Name = functionVm.Name,
-                Url = functionVm.Url,
-                SortOrder = functionVm.SortOrder,
-                ParentId = functionVm.ParentId
-            };
-            _functionRepository.Add(model);
+                var model = new Function()
+                {
+                    FunctionId = functionVm.FunctionId,
+                    Name = functionVm.Name,
+                    Url = functionVm.Url,
+                    SortOrder = functionVm.SortOrder,
+                    ParentId = functionVm.ParentId
+                };
+                _functionRepository.Add(model);
+                return true;
+            }catch(Exception error)
+            {
+                Console.WriteLine(error);
+                return false;
+            }
         }
 
         public void AddCommandToFunction(string funcId, CommandAssignRequest request)
@@ -37,11 +45,18 @@ namespace UTEHY.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public string Delete(string funcId)
+        public bool Delete(string funcId)
         {
             var model = _functionRepository.FindById(funcId);
-            _functionRepository.Remove(model);
-            return model.FunctionId;
+            if (model != null)
+            {
+                _functionRepository.Remove(model);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string DeleteCommandToFunction(string funcId, CommandAssignRequest request)
@@ -87,7 +102,7 @@ namespace UTEHY.Service.Implementation
             _unitOfWork.Commit();
         }
 
-        public void Update(FunctionViewModel functionVm)
+        public bool Update(FunctionViewModel functionVm)
         {
             throw new NotImplementedException();
         }

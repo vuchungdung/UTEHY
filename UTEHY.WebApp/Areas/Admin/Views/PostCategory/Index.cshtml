@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-<div class="panel panel-flat">
+<div class="panel panel-flat" ng-controller="categoryAddController">
     <div class="no-footer">
         <div class="datatable-header">
             <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" class="" placeholder="Nhập nội dung cần tìm..."></label></div>
@@ -74,6 +74,6 @@
             </div>
         </div>
     </div>
+    @RenderPage("_ModalCategory.cshtml")
+    @RenderPage("_ModalWarning.cshtml")
 </div>
-@RenderPage("_ModalCategory.cshtml")
-@RenderPage("_ModalWarning.cshtml")
