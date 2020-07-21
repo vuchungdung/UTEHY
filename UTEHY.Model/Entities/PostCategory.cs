@@ -20,7 +20,7 @@ namespace UTEHY.Model.Entities
             this.Posts = new HashSet<Post>();
         }
     
-        public int ID { get; set; }
+        public string CategoryId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
         public Nullable<int> ParentId { get; set; }

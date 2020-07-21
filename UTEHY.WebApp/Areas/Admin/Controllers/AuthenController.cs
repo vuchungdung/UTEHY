@@ -86,6 +86,10 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Authen");
+        }
     }
 }

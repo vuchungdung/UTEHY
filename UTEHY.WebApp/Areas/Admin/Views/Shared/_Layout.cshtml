@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+    <title>Khoa Công Nghệ Thông Tin</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -47,99 +47,15 @@
 </head>
 
 <body ng-app="UTEHY">
-
-    @{
-        var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
-    }
-    <!-- Main navbar -->
-    <div class="navbar navbar-inverse bg-indigo">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/Admin/Home">ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</a>
-
-            <ul class="nav navbar-nav pull-right visible-xs-block">
-                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-collapse collapse" id="navbar-mobile">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown language-switch">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~/Areas/Admin/Assets/images/flags/vn.png" class="position-left" alt="">
-                        Việt Nam
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a class="vietnam"><img src="~/Areas/Admin/Assets/images/flags/vn.png" alt=""> Việt Nam</a></li>
-                        <li><a class="english"><img src="~/Areas/Admin/Assets/images/flags/gb.png" alt=""> English</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown dropdown-user">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~/Areas/Admin/Assets/images/admin.png" alt="">
-                        <span>@user.Name</span>
-                        <i class="caret"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="icon-user-plus"></i> Thông tin</a></li>
-                        <li><a href="#"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
-                        <li><a href="#"><i class="icon-switch2"></i> Đăng xuất</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /main navbar -->
-    <!-- Second navbar -->
-    <div class="navbar navbar-default" id="navbar-second">
-        <ul class="nav navbar-nav no-border visible-xs-block">
-            <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
-        </ul>
-
-        <div class="navbar-collapse collapse" id="navbar-second-toggle" ng-controller="navbarController">
-            <ul class="nav navbar-nav navbar-nav-material">
-                <li class="active"><a href="/Admin/Home"><i class="icon-display4 position-left"></i> TRANG CHỦ</a></li>
-
-                <li class="dropdown" ng-repeat="item in functions">
-                    <a href="/Admin{{item.Url}}" class="dropdown-toggle" style="font-size:11px;" data-toggle="dropdown">
-                        <i class="{{item.Icons}}"></i> {{item.Name}} <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu width-200" ng-if="item.children.length > 0">
-                        <li ng-repeat="children in item.children">
-                            <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:11px">
-                                <i class="{{children.Icons}}"></i> {{children.Name}}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /second navbar -->
-    <!-- Page header -->
-    <!-- /page header -->
-    <!-- Page container -->
+    @RenderPage("_Header.cshtml")
+    @RenderPage("_Navbar.cshtml")
     <div class="page-container">
-
-        <!-- Page content -->
         <div class="page-content">
-
-            <!-- Main content -->
             @RenderBody()
-            <!-- /main content -->
-
         </div>
-        <!-- /page content -->
-
     </div>
-    <!-- /page container -->
-    <!-- Footer -->
     <div class="footer text-muted" style="bottom: 16px">
-        &copy; 2020. <a href="#" style="color:black">TRUNG TÂM PHẦN MỀM.</a>
+        &copy; 2020. <a href="#" style="color:black;font-weight:600">TRUNG TÂM PHẦN MỀM.</a>
     </div>
-    <!-- /footer -->
 </body>
 </html>

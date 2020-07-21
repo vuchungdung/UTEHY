@@ -20,10 +20,10 @@ namespace UTEHY.Model.Entities
             this.Comments = new HashSet<Comment>();
         }
     
-        public string ID { get; set; }
+        public string PostId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
         public Nullable<bool> HomeFlag { get; set; }

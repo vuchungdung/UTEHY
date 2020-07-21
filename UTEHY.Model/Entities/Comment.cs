@@ -14,10 +14,10 @@ namespace UTEHY.Model.Entities
     
     public partial class Comment
     {
-        public int CommentId { get; set; }
+        public string CommentId { get; set; }
         public string Content { get; set; }
         public string PostId { get; set; }
-        public Nullable<int> ReplyId { get; set; }
+        public string ReplyId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<bool> Status { get; set; }

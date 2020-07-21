@@ -1,0 +1,24 @@
+﻿<div class="navbar navbar-default" id="navbar-second">
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-second-toggle" ng-controller="navbarController">
+        <ul class="nav navbar-nav navbar-nav-material">
+            <li class="active"><a href="/Admin/Home"><i class="icon-display4 position-left"></i> TRANG CHỦ</a></li>
+
+            <li class="dropdown" ng-repeat="item in functions">
+                <a href="/Admin{{item.Url}}" class="dropdown-toggle" style="font-size:11px;" data-toggle="dropdown">
+                    <i class="{{item.Icons}}"></i> {{item.Name}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu width-200" ng-if="item.children.length > 0">
+                    <li ng-repeat="children in item.children">
+                        <a href="/Admin{{children.Url}}" class="dropdown-toggle" style="font-size:11px">
+                            <i class="{{children.Icons}}"></i> {{children.Name}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

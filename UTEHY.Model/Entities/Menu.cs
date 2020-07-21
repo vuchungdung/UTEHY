@@ -14,12 +14,12 @@ namespace UTEHY.Model.Entities
     
     public partial class Menu
     {
-        public int ID { get; set; }
+        public string MenuId { get; set; }
         public string Name { get; set; }
         public string URL { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
         public Nullable<bool> Status { get; set; }
-        public Nullable<int> ParentId { get; set; }
+        public string ParentId { get; set; }
         public string Content { get; set; }
     }
 }

@@ -1,0 +1,43 @@
+﻿@{
+    var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
+}
+<div class="navbar navbar-inverse bg-indigo">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/Admin/Home">ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown language-switch">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="~/Areas/Admin/Assets/images/flags/vn.png" class="position-left" alt="">
+                    Việt Nam
+                    <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="vietnam"><img src="~/Areas/Admin/Assets/images/flags/vn.png" alt=""> Việt Nam</a></li>
+                    <li><a class="english"><img src="~/Areas/Admin/Assets/images/flags/gb.png" alt=""> English</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="~/Areas/Admin/Assets/images/admin.png" alt="">
+                    <span>@user.Name</span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-user-plus"></i> Thông tin</a></li>
+                    <li><a href="#"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
+                    <li><a href="/Admin/Authen/LogOut"><i class="icon-switch2"></i> Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

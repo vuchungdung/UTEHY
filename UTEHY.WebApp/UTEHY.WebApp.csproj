@@ -2728,6 +2728,12 @@
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\FORMATTING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\NAMING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\uploaders\plupload\files\Moxie.xap" />
+    <Content Include="Areas\Admin\Views\User\_ModalUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\PostCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PostCategory\_ModalCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\PostCategory\_ModalWarning.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2768,7 +2774,6 @@
     <Folder Include="Areas\Admin\Views\Function\" />
     <Folder Include="Areas\Admin\Views\GroupUser\" />
     <Folder Include="Areas\Admin\Views\Permission\" />
-    <Folder Include="Areas\Admin\Views\PostCategory\" />
     <Folder Include="Areas\Admin\Views\Post\" />
     <Folder Include="Areas\Admin\Views\StatisticComment\" />
     <Folder Include="Areas\Admin\Views\StatisticPost\" />
