@@ -10,14 +10,14 @@
             <PropertyRef Name="CommandId" />
             <PropertyRef Name="FunctionId" />
           </Key>
-          <Property Name="CommandId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FunctionId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommandId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FunctionId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Commands">
           <Key>
             <PropertyRef Name="CommandId" />
           </Key>
-          <Property Name="CommandId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommandId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Comments">
@@ -45,11 +45,11 @@
           <Key>
             <PropertyRef Name="FunctionId" />
           </Key>
-          <Property Name="FunctionId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FunctionId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Url" Type="nvarchar" MaxLength="200" />
           <Property Name="SortOrder" Type="int" />
-          <Property Name="ParentId" Type="varchar" MaxLength="50" />
+          <Property Name="ParentId" Type="varchar" MaxLength="128" />
           <Property Name="Icons" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GroupUsers">
@@ -63,12 +63,12 @@
           <Key>
             <PropertyRef Name="MenuId" />
           </Key>
-          <Property Name="MenuId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="URL" Type="varchar" MaxLength="256" />
           <Property Name="DisplayOrder" Type="int" />
           <Property Name="Status" Type="bit" />
-          <Property Name="ParentId" Type="varchar" MaxLength="50" />
+          <Property Name="ParentId" Type="varchar" MaxLength="128" />
           <Property Name="Content" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Permissions">
@@ -77,18 +77,18 @@
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CommandId" />
           </Key>
-          <Property Name="FunctionId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FunctionId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="GroupId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="CommandId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommandId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="PostCategorys">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Alias" Type="varchar" MaxLength="50" />
-          <Property Name="ParentId" Type="varchar" MaxLength="50" />
+          <Property Name="ParentId" Type="varchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -97,7 +97,7 @@
           <Property Name="PostId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Alias" Type="varchar" MaxLength="256" />
-          <Property Name="CategoryId" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="nvarchar" MaxLength="128" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
           <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="HomeFlag" Type="bit" />
@@ -166,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CommandInFunctions_Funtions">
+        <Association Name="FK_CommandInFunctions_Functions">
           <End Role="Functions" Type="Self.Functions" Multiplicity="1" />
           <End Role="CommandInFunctions" Type="Self.CommandInFunctions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Permissions_Funtions">
+        <Association Name="FK_Permissions_Functions">
           <End Role="Functions" Type="Self.Functions" Multiplicity="1" />
           <End Role="Permissions" Type="Self.Permissions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +268,7 @@
             <End Role="Commands" EntitySet="Commands" />
             <End Role="CommandInFunctions" EntitySet="CommandInFunctions" />
           </AssociationSet>
-          <AssociationSet Name="FK_CommandInFunctions_Funtions" Association="Self.FK_CommandInFunctions_Funtions">
+          <AssociationSet Name="FK_CommandInFunctions_Functions" Association="Self.FK_CommandInFunctions_Functions">
             <End Role="Functions" EntitySet="Functions" />
             <End Role="CommandInFunctions" EntitySet="CommandInFunctions" />
           </AssociationSet>
@@ -280,7 +280,7 @@
             <End Role="Commands" EntitySet="Commands" />
             <End Role="Permissions" EntitySet="Permissions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Permissions_Funtions" Association="Self.FK_Permissions_Funtions">
+          <AssociationSet Name="FK_Permissions_Functions" Association="Self.FK_Permissions_Functions">
             <End Role="Functions" EntitySet="Functions" />
             <End Role="Permissions" EntitySet="Permissions" />
           </AssociationSet>
@@ -306,7 +306,7 @@
           <Key>
             <PropertyRef Name="CommandId" />
           </Key>
-          <Property Name="CommandId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Commands" FromRole="Commands" ToRole="Permissions" />
           <NavigationProperty Name="Functions" Relationship="Self.CommandInFunctions" FromRole="Commands" ToRole="Functions" />
@@ -337,13 +337,13 @@
           <Key>
             <PropertyRef Name="FunctionId" />
           </Key>
-          <Property Name="FunctionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FunctionId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SortOrder" Type="Int32" />
-          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="Icons" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Funtions" FromRole="Functions" ToRole="Permissions" />
+          <NavigationProperty Name="Permissions" Relationship="Self.FK_Permissions_Functions" FromRole="Functions" ToRole="Permissions" />
           <NavigationProperty Name="Commands" Relationship="Self.CommandInFunctions" FromRole="Functions" ToRole="Commands" />
         </EntityType>
         <EntityType Name="GroupUser">
@@ -359,12 +359,12 @@
           <Key>
             <PropertyRef Name="MenuId" />
           </Key>
-          <Property Name="MenuId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="URL" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="DisplayOrder" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
-          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Permission">
@@ -373,21 +373,21 @@
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CommandId" />
           </Key>
-          <Property Name="FunctionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FunctionId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GroupId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CommandId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Command" Relationship="Self.FK_Permissions_Commands" FromRole="Permissions" ToRole="Commands" />
-          <NavigationProperty Name="Function" Relationship="Self.FK_Permissions_Funtions" FromRole="Permissions" ToRole="Functions" />
+          <NavigationProperty Name="Function" Relationship="Self.FK_Permissions_Functions" FromRole="Permissions" ToRole="Functions" />
           <NavigationProperty Name="GroupUser" Relationship="Self.FK_Permissions_GroupUsers" FromRole="Permissions" ToRole="GroupUsers" />
         </EntityType>
         <EntityType Name="PostCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_PostCategorys" FromRole="PostCategorys" ToRole="Posts" />
         </EntityType>
         <EntityType Name="Post">
@@ -397,7 +397,7 @@
           <Property Name="PostId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HomeFlag" Type="Boolean" />
@@ -481,7 +481,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Permissions_Funtions">
+        <Association Name="FK_Permissions_Functions">
           <End Role="Functions" Type="Self.Function" Multiplicity="1" />
           <End Role="Permissions" Type="Self.Permission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -554,7 +554,7 @@
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Permissions_Funtions" Association="Self.FK_Permissions_Funtions">
+          <AssociationSet Name="FK_Permissions_Functions" Association="Self.FK_Permissions_Functions">
             <End Role="Functions" EntitySet="Functions" />
             <End Role="Permissions" EntitySet="Permissions" />
           </AssociationSet>
