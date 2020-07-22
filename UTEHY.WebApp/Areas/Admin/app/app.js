@@ -1,4 +1,3 @@
 ﻿(function () {
-    angular.module('UTEHY',
-        ['UTEHY.Category','UTEHY.Common']);
+    angular.module('UTEHY',['UTEHY.Common']);
 })();

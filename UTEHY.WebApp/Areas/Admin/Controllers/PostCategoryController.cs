@@ -35,29 +35,29 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult AddCategory(PostCategoryViewModel postCategoryVm)
         {
-            var result = _postCategoryService.Add(postCategoryVm);
-            if (result == true)
+            try
             {
+                var result = _postCategoryService.Add(postCategoryVm);
                 _postCategoryService.Save();
                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
             }
-            else
+            catch(Exception ex)
             {
-                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { ex }, JsonRequestBehavior.AllowGet);
             }
         }
         [HttpPut]
         public JsonResult UpdateCategory(PostCategoryViewModel postCategoryVm)
         {
-            var result = _postCategoryService.Update(postCategoryVm);
-            if (result == true)
+            try
             {
+                var result = _postCategoryService.Update(postCategoryVm);
                 _postCategoryService.Save();
                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
             }
-            else
+            catch (Exception ex)
             {
-                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { ex }, JsonRequestBehavior.AllowGet);
             }
         }
         [HttpDelete]

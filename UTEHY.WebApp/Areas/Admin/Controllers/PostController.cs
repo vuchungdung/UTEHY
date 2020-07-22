@@ -6,9 +6,8 @@ using System.Web.Mvc;
 
 namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
-    public class PostController : Controller
+    public class PostController : BaseController
     {
-        // GET: Admin/Post
         public ActionResult Index()
         {
             return View();

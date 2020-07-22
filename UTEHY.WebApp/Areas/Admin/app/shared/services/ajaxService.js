@@ -1,6 +1,8 @@
 ﻿(function (app) {
-    app.factory = ('ajaxService', ajaxService);
+    app.service('ajaxService', ajaxService);
+
     ajaxService.$inject = ['$http'];
+
     function ajaxService($http) {
         return {
             get: get,

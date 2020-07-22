@@ -1,40 +1,42 @@
 ﻿<div id="modal_default" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h5 class="modal-title">Thêm danh mục mới</h5>
-            </div>
-
-            <div class="modal-body">
-                <div class="form-group">
-                    <label><i class="icon-lock2"></i> Mã danh mục*</label>
-                    <input type="text" class="form-control" placeholder="Mã danh mục" disabled>
+            <form>
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h5 class="modal-title">Thêm danh mục mới</h5>
                 </div>
 
-                <div class="form-group">
-                    <label><i class="icon-pencil4"></i> Tên danh mục*</label>
-                    <input type="text" class="form-control" placeholder="Tên danh mục">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="icon-lock2"></i> Mã danh mục*</label>
+                        <input type="text" class="form-control" ng-model="category.ID" placeholder="Mã danh mục" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-pencil4"></i> Tên danh mục*</label>
+                        <input type="text" class="form-control" ng-change="getSeoAlias()" ng-text-change="getId()" ng-model="category.Name" placeholder="Tên danh mục" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-lock2"></i> Tiêu đề SEO*</label>
+                        <input type="text" class="form-control" ng-model="category.Alias" placeholder="Tiêu đề SEO" disabled required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-cursor"></i>Danh mục gốc*</label>
+                        <select name="select" class="form-control" ng-model="category.ParentId">
+                            <option selected value=""></option>
+                            <option ng-repeat="item in listCategories" value="{{item.ID}}">{{item.Name}}</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label><i class="icon-lock2"></i> Tiêu đề SEO*</label>
-                    <input type="text" class="form-control" placeholder="Tiêu đề SEO" disabled>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" class="btn btn-sm btn-primary legitRipple" ng-click="addCategory()">Thêm mới</button>
                 </div>
-
-                <div class="form-group">
-                    <label><i class="icon-cursor"></i>Danh mục gốc*</label>
-                    <select name="select" class="form-control">
-                        <option selected>Chọn danh mục gốc</option>   
-                        <option ng-repeat="item in listCategory" value="{{item.ID}}">{{item.Name}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
-                <button type="button" class="btn btn-sm btn-primary legitRipple">Thêm mới</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
