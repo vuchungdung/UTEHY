@@ -1,3 +1,4 @@
-﻿(function () {
-    angular.module('UTEHY.Common',[])
+﻿
+(function () {
+    angular.module('utehy.common', ['ui.router'])
 })();

@@ -1,6 +1,6 @@
 ﻿(function (app) {
     app.controller('navbarController', navbarController);
-    navbarController.$inject = ['$scope','$http']
+    navbarController.$inject = ['$scope', '$http']
     function navbarController($scope, $http) {
         var result = $http({
             method: "GET",
@@ -24,5 +24,5 @@
             }
             console.log($scope.functions);
         });
-    }     
-})(angular.module('UTEHY'));
+    }
+})(angular.module('utehy'));

@@ -41,4 +41,4 @@
             displayInfo: displayInfo
         }
     }
-})(angular.module("UTEHY.Common"))
+})(angular.module('utehy.common'));

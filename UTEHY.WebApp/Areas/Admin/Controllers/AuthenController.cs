@@ -33,22 +33,6 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
             Session.Clear();
             return View();
         }
-        //public void setCookie(string username, bool rememberme = false, string role = "normal")
-        //{
-        //    var authTicket = new FormsAuthenticationTicket(
-        //                       1,
-        //                       username,
-        //                       DateTime.Now,
-        //                       DateTime.Now.AddMinutes(120),
-        //                       rememberme,
-        //                       role
-        //                       );
-
-        //    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-
-        //    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-        //    Response.Cookies.Add(authCookie);
-        //}
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
@@ -58,7 +42,6 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 if (result == 1)
                 {
                     var user = _userService.GetUserByUserName(model.UserName);
-                    //setCookie(user.UserName, model.RememberMe, user.GroupId);
                     var userSession = new UserLogin();
                     userSession.UserId = user.UserId;
                     userSession.UserName = user.UserName;
@@ -67,7 +50,7 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                     Session.Add(UserCommon.USER_SESSION, userSession);
                     var listPermission = _permissionService.GetAllPermission();
                     Session.Add(UserCommon.PERMISSION_SESSION, listPermission);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index","Home");
                 }
                 else if (result == -1)
                 {

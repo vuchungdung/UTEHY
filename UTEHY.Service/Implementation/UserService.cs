@@ -146,7 +146,7 @@ namespace UTEHY.Service.Implementation
                             join g in groupusers on p.GroupId equals g.GroupId
                             join c in commands
                                 on p.CommandId equals c.CommandId
-                            where groupuser.GroupId == g.GroupId && c.CommandId == "VIEW"
+                            where groupuser.GroupId == g.GroupId && c.CommandId == "9A26C109-CBD0-41CB-BD7D-31C34DE9E64C"
                             select new FunctionViewModel()
                             {
                                 FunctionId = f.FunctionId,
