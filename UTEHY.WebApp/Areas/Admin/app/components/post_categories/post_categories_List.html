@@ -1,0 +1,76 @@
+﻿<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 0px 36px 24px 0;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Danh mục</span>
+                <small class="display-block"></small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-flat" ng-controller="categoriesListController">
+    <div class="no-footer">
+        <div class="datatable-header">
+            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" class="" placeholder="Nhập nội dung cần tìm..."></label></div>
+            <div class="dataTables_filter" style="padding-top:5px;">
+                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_default"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                <button type="button" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" data-toggle="modal" data-target="#modal_warning"><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+            </div>
+            <div class="dataTables_length">
+                <label>
+                    <span>Hiển thị:</span>
+                    <select>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="datatable-scroll">
+            <table class="table datatable-basic dataTable no-footer">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <div class="checker border-primary-600 text-primary-800"><span class=""><input type="checkbox" class="control-primary" checked="checked"></span></div>
+                                </label>
+                            </div>
+                        </th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">THỨ TỰ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÊN DANH MỤC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TIÊU ĐỀ SEO</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">DANH MỤC GỐC</th>
+                        <th rowspan="1" colspan="1">THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="datatable-footer">
+            <div>Hiển thị 1 đến 10 của 15 dòng</div>
+            <div class="dataTables_paginate paging_simple_numbers">
+                <a class="paginate_button previous disabled">←</a>
+                <span>
+                    <a class="paginate_button current">1</a>
+                    <a class="paginate_button">2</a>
+                </span>
+                <a class="paginate_button next">→</a>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categories_Add.html'"></div>
+</div>
