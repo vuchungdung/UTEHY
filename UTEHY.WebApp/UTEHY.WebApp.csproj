@@ -182,13 +182,13 @@
     <Content Include="Areas\Admin\app\components\homes\homeController.js" />
     <Content Include="Areas\Admin\app\components\homes\homeview.html" />
     <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Add.Controller.js" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categories_Add.html" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Edit.Controller.js" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categories_Edit.html" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.List.Controller.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categoriesController.js" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categories_List.html" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categories.Module.js" />
+    <Content Include="Areas\Admin\app\shared\directives\pageDirective.html" />
+    <Content Include="Areas\Admin\app\shared\directives\pageDirective.js" />
     <Content Include="Areas\Admin\app\shared\modules\utehy.common.js" />
     <Content Include="Areas\Admin\app\shared\services\ajaxService.js" />
     <Content Include="Areas\Admin\app\shared\services\authData.js" />
@@ -2786,7 +2786,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\app\shared\directives\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
