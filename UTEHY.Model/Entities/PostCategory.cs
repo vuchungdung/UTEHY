@@ -24,6 +24,7 @@ namespace UTEHY.Model.Entities
         public string Name { get; set; }
         public string Alias { get; set; }
         public string ParentId { get; set; }
+        public Nullable<int> DisplayOrder { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }

@@ -12,7 +12,6 @@ namespace UTEHY.Model.Constants
         {
             public const string Permissions = "permissions";
         }
-
         public class GroupUsers
         {
             public const string Admin = "Admin";

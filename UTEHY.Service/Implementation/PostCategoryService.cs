@@ -28,10 +28,11 @@ namespace UTEHY.Service.Implementation
             {
                 var model = new PostCategory()
                 {
-                    CategoryId = postCategoryVm.ID,
+                    CategoryId = Guid.NewGuid().ToString(),
                     Name = postCategoryVm.Name,
                     ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
+                    DisplayOrder = postCategoryVm.DisplayOrder
                 };
                 _postCategoryRepository.Add(model);
                 return true;
@@ -68,9 +69,48 @@ namespace UTEHY.Service.Implementation
             return result;
         }
 
-        public List<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request)
+        public PostCategoryViewModel GetSingleById(string id)
         {
-            throw new NotImplementedException();
+            var model = _postCategoryRepository.FindById(id);
+            var result = new PostCategoryViewModel()
+            {
+                ID = model.CategoryId,
+                Name = model.Name,
+                ParentId = model.ParentId,
+                Alias = model.Alias,
+                DisplayOrder = model.DisplayOrder              
+            };
+            return result;
+        }
+
+        public PageResult<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request)
+        {
+            var query = _postCategoryRepository.FindAll();
+            if(!String.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(x => x.Name.Equals(keyword));
+            }
+            var totalRecords = query.Count();
+            var listItems = query.OrderBy(x => x.DisplayOrder)
+                .Skip((request.pageIndex - 1) * request.pageSize)
+                .Take(request.pageSize)
+                .Select(y => new PostCategoryViewModel()
+                {
+                    ID = y.CategoryId,
+                    Name = y.Name,
+                    ParentId = y.ParentId,
+                    Alias = y.Alias,
+                    DisplayOrder = y.DisplayOrder
+                })              
+                .ToList();
+            var pagination = new PageResult<PostCategoryViewModel>()
+            {
+                ListItem = listItems,
+                TotalRecords = totalRecords,
+                Page = request.pageIndex,
+                TotalPages = (int)Math.Ceiling((decimal)totalRecords/request.pageSize)
+            };
+            return pagination;
         }
 
         public void Save()
@@ -88,6 +128,7 @@ namespace UTEHY.Service.Implementation
                     Name = postCategoryVm.Name,
                     ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
+                    DisplayOrder = postCategoryVm.DisplayOrder
                 };
                 _postCategoryRepository.Update(model);
                 return true;

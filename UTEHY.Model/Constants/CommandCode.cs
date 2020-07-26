@@ -11,7 +11,7 @@ namespace UTEHY.Model.Constants
         public const string CREATE = "CREATE";
         public const string UPDATE = "UPDATE";
         public const string DELETE = "DELETE";
-        public const string VIEW = "VIEW";
+        public const string VIEW = "9A26C109-CBD0-41CB-BD7D-31C34DE9E64C";
         public const string APPROVE = "APPROVE";
     }
 }

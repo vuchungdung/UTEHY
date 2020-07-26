@@ -17,16 +17,12 @@
                     console.log(error);
             });
         }
-
         getCategories();
 
         $scope.getSeoAlias = getSeoAlias;
 
         function getSeoAlias() {
             $scope.category.Alias = commonService.getSeoTitle($scope.category.Name);
-            var id = (commonService.getSeoTitle($scope.category.Name)).toUpperCase();
-            id = id.replace(/-/gi, "_");
-            $scope.category.ID = id;
         }
         $scope.addCategory = addCategory;
 
@@ -34,7 +30,7 @@
             ajaxService.post('/Admin/PostCategory/AddCategory', $scope.category, function (result) {
                 if (result.data.result == true) {
                     notificationService.displaySuccess($scope.category.Name + " đã được thêm thành công.");
-                    getCategory();
+                    getCategories();
                 }
             }, function (error) {
                 notificationService.displayError('Thêm thất bại.');

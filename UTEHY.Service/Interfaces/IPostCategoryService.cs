@@ -14,7 +14,9 @@ namespace UTEHY.Service.Interfaces
         bool Update(PostCategoryViewModel postCategoryVm);
         bool Delete(string id);
         List<PostCategoryViewModel> GetAll();
-        List<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request);
+        PageResult<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request);
+
+        PostCategoryViewModel GetSingleById(string id);
 
         void Save();
     }

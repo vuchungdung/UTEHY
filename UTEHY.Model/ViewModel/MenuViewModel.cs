@@ -15,5 +15,6 @@ namespace UTEHY.Model.ViewModel
         public bool Status { get; set; }
         public string ParentId { get; set; }
         public string Content { get; set; }
+        public string PostId { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace UTEHY.Model.Dtos
 {
     public class PageRequest
     {
-        public int pageSize { set; get; }
-        public int pageIndex { set; get; }
+        public int pageSize { get; set; }
+        public int pageIndex { get; set; }
     }
 }

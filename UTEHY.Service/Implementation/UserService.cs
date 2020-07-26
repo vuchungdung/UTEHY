@@ -8,6 +8,7 @@ using UTEHY.Model.Entities;
 using UTEHY.Model.ViewModel;
 using UTEHY.Model.Dtos;
 using UTEHY.Infrastructure.Interfaces;
+using UTEHY.Model.Constants;
 
 namespace UTEHY.Service.Implementation
 {
@@ -106,7 +107,8 @@ namespace UTEHY.Service.Implementation
                 query = query.Where(x => x.GroupId == groupId);
             }
             var totalRecords = query.Count();
-            var listItems = query.Skip((request.pageIndex - 1) * request.pageSize)
+            var listItems = query.OrderBy(x=>x.Name)
+                .Skip((request.pageIndex - 1) * request.pageSize)
                 .Take(request.pageSize)
                 .Select(x => new UserViewModel()
                 {
@@ -146,7 +148,7 @@ namespace UTEHY.Service.Implementation
                             join g in groupusers on p.GroupId equals g.GroupId
                             join c in commands
                                 on p.CommandId equals c.CommandId
-                            where groupuser.GroupId == g.GroupId && c.CommandId == "9A26C109-CBD0-41CB-BD7D-31C34DE9E64C"
+                            where groupuser.GroupId == g.GroupId && c.CommandId == CommandCode.VIEW
                             select new FunctionViewModel()
                             {
                                 FunctionId = f.FunctionId,
