@@ -70,6 +70,7 @@
           <Property Name="Status" Type="bit" />
           <Property Name="ParentId" Type="varchar" MaxLength="128" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="PostId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Permissions">
           <Key>
@@ -89,6 +90,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Alias" Type="varchar" MaxLength="50" />
           <Property Name="ParentId" Type="varchar" MaxLength="128" />
+          <Property Name="DisplayOrder" Type="int" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -366,6 +368,7 @@
           <Property Name="Status" Type="Boolean" />
           <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -388,6 +391,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="Int32" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_PostCategorys" FromRole="PostCategorys" ToRole="Posts" />
         </EntityType>
         <EntityType Name="Post">
@@ -642,6 +646,7 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -661,6 +666,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Alias" ColumnName="Alias" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

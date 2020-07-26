@@ -1,19 +1,10 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-@{
-    var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
-}
-
-<div class="page-header">
+﻿<div class="page-header">
     <div class="page-header-content">
         <div class="page-title" style="padding: 0px 36px 24px 0;">
             <h4>
                 <i class="icon-arrow-left52 position-left"></i>
-                <span>Hệ thống - Người dùng</span>
-                <small class="display-block">Xin chào, @user.Name </small>
+                <span>Hệ thống - Danh mục</span>
+                <small class="display-block"></small>
             </h4>
             <a class="heading-elements-toggle"><i class="icon-more"></i></a>
         </div>
@@ -26,19 +17,18 @@
         </div>
     </div>
 </div>
-<div class="panel panel-flat">
+<div class="panel panel-flat" ng-controller="categoriesListController">
     <div class="no-footer">
         <div class="datatable-header">
             <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" class="" placeholder="Nhập nội dung cần tìm..."></label></div>
             <div class="dataTables_filter" style="padding-top:5px;">
-                <button type="button" style="font-size:10px;" class="btn btn-sm btn-success"><i style="padding-right: 8px" class="fas fa-plus"></i>Thêm mới</button>
-                <button type="button" style="font-size:10px;" class="btn btn-sm btn-primary"><i style="padding-right: 8px" class="fas fa-sign-in-alt"></i>Nạp Excel</button>
-                <button type="button" style="font-size:10px;" class="btn btn-sm btn-warning"><i style="padding-right: 8px" class="fas fa-sign-out-alt"></i>Xuất Execl</button>
+                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_default"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                <button type="button" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" data-toggle="modal" data-target="#modal_warning"><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
             </div>
             <div class="dataTables_length">
                 <label>
                     <span>Hiển thị:</span>
-                    <select>
+                    <select ng-model="page.pageSize">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -51,18 +41,22 @@
             <table class="table datatable-basic dataTable no-footer">
                 <thead>
                     <tr role="row">
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HÌNH ẢNH</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HỌ TÊN</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">NGÀY SINH</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÀI KHOẢN</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">EMAIL</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">SỐ ĐIỆN THOẠI</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">ĐỊA CHỈ</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">NHÓM QUYỀN</th>
+                        <th>
+                            <div class="checkbox">
+                                <label>
+                                    <div class="checker border-primary-600 text-primary-800"><span class=""><input type="checkbox" class="control-primary" checked="checked"></span></div>
+                                </label>
+                            </div>
+                        </th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">THỨ TỰ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÊN DANH MỤC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TIÊU ĐỀ SEO</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">DANH MỤC GỐC</th>
                         <th rowspan="1" colspan="1">THAO TÁC</th>
                     </tr>
                 </thead>
                 <tbody>
+
                 </tbody>
             </table>
         </div>
@@ -78,4 +72,5 @@
             </div>
         </div>
     </div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categories_Add.html'"></div>
 </div>

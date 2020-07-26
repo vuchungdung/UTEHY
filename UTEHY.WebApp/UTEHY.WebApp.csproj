@@ -179,11 +179,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\app\app.js" />
+    <Content Include="Areas\Admin\app\components\homes\homeController.js" />
+    <Content Include="Areas\Admin\app\components\homes\homeview.html" />
     <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\categoriesController.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Add.Controller.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories_Add.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Edit.Controller.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories_Edit.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories.List.Controller.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories_List.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Module.js" />
+    <Content Include="Areas\Admin\app\shared\modules\utehy.common.js" />
     <Content Include="Areas\Admin\app\shared\services\ajaxService.js" />
+    <Content Include="Areas\Admin\app\shared\services\authData.js" />
+    <Content Include="Areas\Admin\app\shared\services\authenticationService.js" />
     <Content Include="Areas\Admin\app\shared\services\commonService.js" />
+    <Content Include="Areas\Admin\app\shared\services\loginService.js" />
     <Content Include="Areas\Admin\app\shared\services\notificationService.js" />
+    <Content Include="Areas\Admin\app\shared\views\baseview.html" />
+    <Content Include="Areas\Admin\app\shared\views\navbarview.html" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.css" />
     <Content Include="Areas\Admin\Assets\css\bootstrap.min.css" />
     <Content Include="Areas\Admin\Assets\css\colors.css" />
@@ -215,6 +229,7 @@
     <Content Include="Areas\Admin\Assets\images\brands\Untitled-1.png" />
     <Content Include="Areas\Admin\Assets\images\brands\youtube.png" />
     <Content Include="Areas\Admin\Assets\images\cover.jpg" />
+    <Content Include="Areas\Admin\Assets\images\download.png" />
     <Content Include="Areas\Admin\Assets\images\flags\ad.png" />
     <Content Include="Areas\Admin\Assets\images\flags\ae.png" />
     <Content Include="Areas\Admin\Assets\images\flags\af.png" />
@@ -2301,6 +2316,17 @@
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\echarts.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\theme\limitless.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\sparkline.min.js" />
+    <Content Include="Assets\angular-ui-router\jest.config.js" />
+    <Content Include="Assets\angular-ui-router\karma.conf.js" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.js" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.min.js" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.js" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.min.js" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.js" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.min.js" />
+    <Content Include="Assets\angular-ui-router\rollup.config.js" />
     <Content Include="Assets\angular\angular-csp.css" />
     <Content Include="Assets\angular\angular.js" />
     <Content Include="Assets\angular\angular.min.js" />
@@ -2673,11 +2699,8 @@
     <Content Include="ckeditor\skins\bootstrapck\scss\config\_defaults.scss" />
     <Content Include="ckeditor\skins\bootstrapck\scss\dialog\dialog.scss" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Authen\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\app\shared\modules\UTEHY.Common.js" />
     <Content Include="Assets\angular\.bower.json" />
     <Content Include="Assets\angular\angular.min.js.gzip" />
     <Content Include="Assets\angular\angular.min.js.map" />
@@ -2685,7 +2708,6 @@
     <Content Include="Assets\angular\LICENSE.md" />
     <Content Include="Assets\angular\package.json" />
     <Content Include="Assets\angular\README.md" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Admin\Assets\css\icons\fontawesome\fonts\fontawesome-webfont.woff" />
@@ -2705,12 +2727,6 @@
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\FORMATTING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\NAMING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\uploaders\plupload\files\Moxie.xap" />
-    <Content Include="Areas\Admin\Views\User\_ModalUser.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Header.cshtml" />
-    <Content Include="Areas\Admin\Views\PostCategory\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\PostCategory\_ModalCategory.cshtml" />
-    <Content Include="Areas\Admin\Views\PostCategory\_ModalWarning.cshtml" />
     <Content Include="Assets\toastr\.bower.json" />
     <Content Include="Assets\toastr\bower.json" />
     <Content Include="Assets\toastr\LICENSE" />
@@ -2718,6 +2734,30 @@
     <Content Include="Assets\toastr\toastr.js.map" />
     <Content Include="Assets\toastr\toastr.less" />
     <Content Include="Assets\toastr\toastr.scss" />
+    <Content Include="Assets\angular-ui-router\.bower.json" />
+    <Content Include="Assets\angular-ui-router\artifacts.json" />
+    <Content Include="Assets\angular-ui-router\bower.json" />
+    <Content Include="Assets\angular-ui-router\CHANGELOG.md" />
+    <Content Include="Assets\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="Assets\angular-ui-router\DOCS.md" />
+    <Content Include="Assets\angular-ui-router\downstream_projects.json" />
+    <Content Include="Assets\angular-ui-router\ISSUE_TEMPLATE.md" />
+    <Content Include="Assets\angular-ui-router\LICENSE" />
+    <Content Include="Assets\angular-ui-router\README.md" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.js.map" />
+    <Content Include="Assets\angular-ui-router\release\angular-ui-router.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.js.map" />
+    <Content Include="Assets\angular-ui-router\release\resolveService.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.js.map" />
+    <Content Include="Assets\angular-ui-router\release\stateEvents.min.js.map" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.js.map" />
+    <Content Include="Assets\angular-ui-router\release\ui-router-angularjs.min.js.map" />
+    <Content Include="Assets\angular-ui-router\tsconfig.docgen.json" />
+    <Content Include="Assets\angular-ui-router\tslint.json" />
+    <Content Include="Assets\angular-ui-router\typedoc.json" />
+    <Content Include="Assets\angular-ui-router\yarn.lock" />
+    <Content Include="Areas\Admin\Views\Home\_Header.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_Navbar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2746,21 +2786,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\app\components\functions\" />
-    <Folder Include="Areas\Admin\app\components\groupusers\" />
-    <Folder Include="Areas\Admin\app\components\posts\" />
-    <Folder Include="Areas\Admin\app\components\teachers\" />
-    <Folder Include="Areas\Admin\app\components\users\" />
+    <Folder Include="Areas\Admin\app\shared\directives\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Comment\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
-    <Folder Include="Areas\Admin\Views\Function\" />
-    <Folder Include="Areas\Admin\Views\GroupUser\" />
-    <Folder Include="Areas\Admin\Views\Permission\" />
-    <Folder Include="Areas\Admin\Views\Post\" />
-    <Folder Include="Areas\Admin\Views\StatisticComment\" />
-    <Folder Include="Areas\Admin\Views\StatisticPost\" />
-    <Folder Include="Areas\Admin\Views\Teacher\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,10 @@ namespace UTEHY.Model.Dtos
     public class PageResult<T>
     {
         public List<T> ListItem { get; set; }
-        public int TotalRecords { set; get; }
+        public int TotalRecords { get; set; }
+
+        public int Page { get; set; }
+
+        public int TotalPages { get; set; }
     }
 }
