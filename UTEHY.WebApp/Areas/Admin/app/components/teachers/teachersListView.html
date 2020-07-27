@@ -1,0 +1,78 @@
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 8px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 0px 36px 24px 0;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Giảng viên</span>
+                <small class="display-block" style="font-size:12px">Chức năng khác <i class="icon-arrow-right22"></i> Giảng viên</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-flat" ng-controller="teachersListController">
+    <div class="no-footer">
+        <div class="datatable-header">
+            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" style="width:300px" ng-change="searchCategories()" class="" ng-model="keyword" placeholder="Nhập nội dung cần tìm..."></label></div>
+            <div class="dataTables_filter" style="padding-top:5px;margin-left:2%">
+                <button type="button" ui-sref="teachers_add" style="font-size:10px;" class="btn btn-success btn-sm legitRipple"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                <button type="button" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+            </div>
+            <div class="dataTables_length">
+                <label>
+                    <span>Hiển thị:</span>
+                    <select>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="datatable-scroll">
+            <table class="table datatable-basic dataTable no-footer">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <input type="checkbox" ng-click="selectAll()" />
+                        </th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HÌNH ẢNH</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">HỌ TÊN</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">ĐIỆN THOẠI</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">FAX</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">EMAIL</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">VỊ TRÍ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">ĐƠN VỊ CÔNG TÁC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">WEBSITE</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">GIỚI THIỆU</th>
+                        <th>THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="datatable-footer">
+
+
+        </div>
+    </div>
+</div>

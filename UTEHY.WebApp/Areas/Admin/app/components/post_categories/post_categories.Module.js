@@ -9,7 +9,7 @@
         $stateProvider
             .state('post_categories', {
                 url:'/post_categories',
-                templateUrl: "/Areas/Admin/app/components/post_categories/post_categories_List.html",
+                templateUrl: "/Areas/Admin/app/components/post_categories/post_categoriesListView.html",
                 controller: "categoriesController"
             })
     };

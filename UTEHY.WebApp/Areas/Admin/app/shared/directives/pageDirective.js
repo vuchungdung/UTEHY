@@ -7,7 +7,7 @@
         return {
             scope: {
                 page: '@',
-                pageSize: '@',
+                pageCount: '@',
                 totalCount: '@',
                 searchFunc: '&',
                 customPath: '@'
@@ -29,7 +29,7 @@
                         var doubleStep = step * 2;
                         var start = Math.max(0, $scope.page - step);
                         var end = start + 1 + doubleStep;
-                        if (end > $scope.pageSize) { end = $scope.pageSize; }
+                        if (end > $scope.pageCount) { end = $scope.pageCount; }
 
                         var ret = [];
                         for (var i = start; i != end; ++i) {

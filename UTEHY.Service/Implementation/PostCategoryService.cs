@@ -88,7 +88,7 @@ namespace UTEHY.Service.Implementation
             var query = _postCategoryRepository.FindAll();
             if(!String.IsNullOrEmpty(keyword))
             {
-                query = query.Where(x => x.Name.Equals(keyword));
+                query = query.Where(x => x.Name.Contains(keyword));
             }
             var totalRecords = query.Count();
             var listItems = query.OrderBy(x => x.DisplayOrder)

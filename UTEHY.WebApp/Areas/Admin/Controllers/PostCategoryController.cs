@@ -34,6 +34,19 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
             }
         }
         [HttpGet]
+        public JsonResult GetCategoryById(string id)
+        {
+            var result = _postCategoryService.GetSingleById(id);
+            if (result != null)
+            {
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpGet]
         public JsonResult GetAllPaging(string keyword, PageRequest request)
         {
             var result = _postCategoryService.GettAllPaging(keyword,request);

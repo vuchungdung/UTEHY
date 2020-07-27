@@ -28,9 +28,9 @@
 <div class="panel panel-flat" ng-controller="categoriesController">
     <div class="no-footer">
         <div class="datatable-header">
-            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" class="" placeholder="Nhập nội dung cần tìm..."></label></div>
-            <div class="dataTables_filter" style="padding-top:5px;margin-left:5%">
-                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_default"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" style="width:300px" ng-change="searchCategories()" class="" ng-model="keyword" placeholder="Nhập nội dung cần tìm..."></label></div>
+            <div class="dataTables_filter" style="padding-top:5px;margin-left:2%">
+                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
                 <button type="button" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" data-toggle="modal" data-target="#modal_warning" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
             </div>
             <div class="dataTables_length">
@@ -54,8 +54,8 @@
                         </th>
                         <th class="sorting" tabindex="0" rowspan="1" colspan="1">THỨ TỰ</th>
                         <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÊN DANH MỤC</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TIÊU ĐỀ SEO</th>
                         <th class="sorting" tabindex="0" rowspan="1" colspan="1">DANH MỤC GỐC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TIÊU ĐỀ SEO</th>
                         <th>THAO TÁC</th>
                     </tr>
                 </thead>
@@ -66,13 +66,13 @@
                         </td>
                         <td style="padding-left:38px">{{item.DisplayOrder}}</td>
                         <td>{{item.Name}}</td>
-                        <td>{{item.Alias}}</td>
                         <td>{{item.ParentId}}</td>
+                        <td>{{item.Alias}}</td>
                         <td>
-                            <button type="button" style="width:40px;height:30px;border:none;outline:none">
+                            <button type="button" data-toggle="modal" data-target="#modal_Edit" ng-click="getCategoryById(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:#0872DF;color:white">
                                 <i class="icon-pencil"></i>
                             </button>
-                            <button type="button" style="width:40px;height:30px;border:none;outline:none">
+                            <button type="button" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:red;color:white">
                                 <i class="icon-bin2"></i>
                             </button>
                         </td>
@@ -81,9 +81,12 @@
             </table>
         </div>
         <div class="datatable-footer">
-            
-            
+            <div dir-paginate="member in members | itemsPerPage: pagerOptions.perPage" total-items="pagerOptions.total" current-page="pagerOptions.current_page">
+
+            </div>
+            <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
         </div>
     </div>
-    <div ng-include="'/areas/admin/app/components/post_categories/post_categories_Add.html'"></div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesAddView.html'"></div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesEditView.html'"></div>
 </div>

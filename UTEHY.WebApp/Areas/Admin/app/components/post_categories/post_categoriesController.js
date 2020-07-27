@@ -1,7 +1,7 @@
 ﻿(function (app) {
     app.controller('categoriesController', categoriesController);
 
-    categoriesController.$inject = ['$scope', 'ajaxService', 'notificationService','$filter','commonService'];
+    categoriesController.$inject = ['$scope', 'ajaxService', 'notificationService', '$filter', 'commonService'];
 
     function categoriesController($scope, ajaxService, notificationService, $filter, commonService) {
         //Start getCategories//
@@ -10,7 +10,7 @@
             ajaxService.get('/Admin/PostCategory/GetAll', null, function (result) {
                 if (result.data != null) {
                     console.log(result.data);
-                    $scope.listCategory = result.data.result;
+                    $scope.dropdownCategory = result.data.result;
                 }
             }, function (error) {
                 console.log(error);
@@ -19,11 +19,66 @@
         $scope.getCategories();
         //End getCategories//
 
+        //Statrt getNameById//
+        $scope.getCategoryById = getCategoryById;
+
+        function getCategoryById(id) {
+            var config = {
+                params: {
+                    id: id
+                }
+            }
+            ajaxService.get('/Admin/PostCategory/GetCategoryById', config, function (result) {
+                if (result.data != null) {
+                    console.log(result.data);
+                    $scope.categorybyid = result.data.result;
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        //End getNameById//
+
+        //Start getPagingCategories//
+        $scope.page = 0; //pageindex
+        $scope.pageCount = 0; //pageSize
+        $scope.keyword = '' //keyword
+        $scope.getPagingCategories = getPagingCategories;
+        function getPagingCategories(page) {
+            page = page || 1;
+            var config = {
+                params: {
+                    keyword: $scope.keyword,
+                    pageSize: 5,
+                    pageIndex: page
+                }
+            }
+            ajaxService.get('/Admin/PostCategory/GetAllPaging', config, function (result) {
+                if (result.data != null) {
+                    console.log(result.data);
+                    $scope.listCategories = result.data.result.ListItem;
+                    $scope.page = result.data.result.Page;
+                    $scope.totalCount = result.data.result.TotalRecords;
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        $scope.getPagingCategories();
+
+        $scope.searchCategories = searchCategories;
+        function searchCategories() {
+            getPagingCategories();
+        }
+        
+        //End getPagingCategories//
+
         //Start getSeoAlias//
         $scope.category = {};
         $scope.getSeoAlias = getSeoAlias;
         function getSeoAlias() {
             $scope.category.Alias = commonService.getSeoTitle($scope.category.Name);
+            $scope.categorybyid.Alias = commonService.getSeoTitle($scope.categorybyid.Name);
         }
         //End getSeoAlias//
 
@@ -41,38 +96,6 @@
             })
         }
         //End getCategory//
-
-        //Start getPagingCategories//
-        $scope.page = 0; //pageindex
-        $scope.pageCount = 0; //pageSize
-        $scope.keyword = '' //keyword
-        $scope.getPagingCategories = getPagingCategories;
-        function getPagingCategories(page) {
-            page = page || 0;
-            var config = {
-                params: {
-                    keyword: $scope.keyword,                    
-                    pageSize: 10,
-                    pageIndex: 1
-                }
-            }
-            ajaxService.get('/Admin/PostCategory/GetAllPaging', config, function (result) {
-                if (result.data != null) {
-                    console.log(result.data);
-                    $scope.listCategories = result.data.result.ListItem;
-                    $scope.page = result.data.result.Page; 
-                    $scope.pageCount = result.data.result.TotalPages;
-                }
-            }, function (error) {
-                console.log(error);
-            });
-        }
-        $scope.getPagingCategories();
-        //End getPagingCategories//
-
-        //Statrt getNameByParentId//
-
-        //End getNameByParentId//
 
         //Start DeleteMulti//
         $scope.selectAll = selectAll;

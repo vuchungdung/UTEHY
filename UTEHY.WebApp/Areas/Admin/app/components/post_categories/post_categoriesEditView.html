@@ -1,41 +1,41 @@
 ﻿
-<div id="modal_default" class="modal fade in" style="display: none;">
+<div id="modal_Edit" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
                 <div class="modal-header bg-primary">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h5 class="modal-title">Thêm danh mục mới</h5>
+                    <h5 class="modal-title">Cập nhật danh mục</h5>
                 </div>
 
                 <div class="modal-body">
                     <div class="form-group">
                         <label><i class="icon-pencil4"></i> Thứ tự*</label>
-                        <input type="text" class="form-control" ng-model="category.DisplayOrder" placeholder="Thứ tự" required>
+                        <input type="text" class="form-control" ng-model="categorybyid.DisplayOrder" placeholder="Thứ tự" required>
                     </div>
 
                     <div class="form-group">
                         <label><i class="icon-pencil4"></i> Tên danh mục*</label>
-                        <input type="text" class="form-control" ng-model="category.Name" ng-change="getSeoAlias()"  placeholder="Tên danh mục" required>
+                        <input type="text" class="form-control" ng-model="categorybyid.Name" ng-change="getSeoAlias()" placeholder="Tên danh mục" required>
                     </div>
 
                     <div class="form-group">
                         <label><i class="icon-lock2"></i> Tiêu đề SEO*</label>
-                        <input type="text" class="form-control" ng-model="category.Alias" placeholder="Tiêu đề SEO" disabled required>
+                        <input type="text" class="form-control" ng-model="categorybyid.Alias" placeholder="Tiêu đề SEO" disabled required>
                     </div>
 
                     <div class="form-group">
                         <label><i class="icon-cursor"></i>Danh mục gốc*</label>
-                        <select name="select" class="form-control" ng-model="category.ParentId">
+                        <select name="select" class="form-control" ng-model="categorybyid.ParentId">
                             <option selected value=""></option>
-                            <option ng-repeat="item in listCategory" value="{{item.ID}}">{{item.Name}}</option>
+                            <option ng-repeat="item in dropdownCategory" value="{{item.ID}}">{{item.Name}}</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
-                    <button type="submit" class="btn btn-sm btn-primary legitRipple" ng-click="addCategory()">Thêm mới</button>
+                    <button type="submit" class="btn btn-sm btn-primary legitRipple" ng-click="editCategory()">Cập Nhật</button>
                 </div>
             </form>
         </div>
