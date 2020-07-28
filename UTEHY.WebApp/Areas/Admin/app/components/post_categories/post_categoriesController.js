@@ -49,7 +49,7 @@
             var config = {
                 params: {
                     keyword: $scope.keyword,
-                    pageSize: 5,
+                    pageSize: 10,
                     pageIndex: page
                 }
             }

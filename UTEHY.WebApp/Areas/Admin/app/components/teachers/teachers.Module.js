@@ -9,17 +9,17 @@
         $stateProvider
             .state('teachers', {
                 url: '/teachers_list',
-                templateUrl: "/Areas/Admin/app/components/teachers/teachersList.html",
+                templateUrl: "/Areas/Admin/app/components/teachers/teachersListView.html",
                 controller: "teachersListController"
             })
             .state('teachers_add', {
                 url: '/teachers_add',
-                templateUrl: "/Areas/Admin/app/components/teachers/teachersAdd.html",
+                templateUrl: "/Areas/Admin/app/components/teachers/teachersAddView.html",
                 controller: "teachersAddController"
             })
             .state('teachers_edit', {
                 url: '/teachers_edit',
-                templateUrl: "/Areas/Admin/app/components/teachers/teachersEdit.html",
+                templateUrl: "/Areas/Admin/app/components/teachers/teachersEditView.html",
                 controller: "teachersEditController"
             })
     };

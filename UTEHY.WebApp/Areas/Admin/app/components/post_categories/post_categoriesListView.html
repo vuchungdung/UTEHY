@@ -1,9 +1,10 @@
 ﻿<style>
     .table>tbody>tr>td {
-        padding: 8px 20px;
+        padding: 6px 20px;
     }
     .table>thead:first-child>tr:first-child>th {
         padding: 8px 20px;
+        font-size:12px;
     }
 </style>
 <div class="page-header">
@@ -52,11 +53,11 @@
                         <th>
                             <input type="checkbox" ng-click="selectAll()" />
                         </th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">THỨ TỰ</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TÊN DANH MỤC</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">DANH MỤC GỐC</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1">TIÊU ĐỀ SEO</th>
-                        <th>THAO TÁC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:10%">THỨ TỰ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">TÊN DANH MỤC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">DANH MỤC GỐC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1"style="width:20%">TIÊU ĐỀ SEO</th>
+                        <th style="width:10%">THAO TÁC</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +67,7 @@
                         </td>
                         <td style="padding-left:38px">{{item.DisplayOrder}}</td>
                         <td>{{item.Name}}</td>
-                        <td>{{item.ParentId}}</td>
+                        <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
                         <td>{{item.Alias}}</td>
                         <td>
                             <button type="button" data-toggle="modal" data-target="#modal_Edit" ng-click="getCategoryById(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:#0872DF;color:white">
@@ -81,10 +82,12 @@
             </table>
         </div>
         <div class="datatable-footer">
-            <div dir-paginate="member in members | itemsPerPage: pagerOptions.perPage" total-items="pagerOptions.total" current-page="pagerOptions.current_page">
-
+            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Hiển thị 1 đến 10 của 10 dòng</div>
+            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                <a class="paginate_button previous disabled" data-dt-idx="0" tabindex="0">←</a>
+                <span><a class="paginate_button current" data-dt-idx="1" tabindex="0">1</a></span>
+                <a class="paginate_button next disabled" data-dt-idx="2" tabindex="0">→</a>
             </div>
-            <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
         </div>
     </div>
     <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesAddView.html'"></div>
