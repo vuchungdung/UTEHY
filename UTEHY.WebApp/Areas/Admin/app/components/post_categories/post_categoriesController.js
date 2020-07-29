@@ -1,14 +1,13 @@
 ﻿(function (app) {
     app.controller('categoriesController', categoriesController);
 
-    categoriesController.$inject = ['$scope', 'ajaxService', 'notificationService', '$filter', 'commonService'];
+    categoriesController.$inject = ['$scope', 'ajaxService', 'notificationService', '$filter', 'commonService','$ngBootbox'];
 
-    function categoriesController($scope, ajaxService, notificationService, $filter, commonService) {
-        //Start getCategories//
+    function categoriesController($scope, ajaxService, notificationService, $filter, commonService, $ngBootbox) {
         $scope.getCategories = getCategories;
         function getCategories() {
             ajaxService.get('/Admin/PostCategory/GetAll', null, function (result) {
-                if (result.data != null) {
+                if (result) {
                     console.log(result.data);
                     $scope.dropdownCategory = result.data.result;
                 }
@@ -17,9 +16,7 @@
             });
         }
         $scope.getCategories();
-        //End getCategories//
 
-        //Statrt getNameById//
         $scope.getCategoryById = getCategoryById;
 
         function getCategoryById(id) {
@@ -29,7 +26,7 @@
                 }
             }
             ajaxService.get('/Admin/PostCategory/GetCategoryById', config, function (result) {
-                if (result.data != null) {
+                if (result) {
                     console.log(result.data);
                     $scope.categorybyid = result.data.result;
                 }
@@ -37,12 +34,10 @@
                 console.log(error);
             });
         }
-        //End getNameById//
 
-        //Start getPagingCategories//
-        $scope.page = 0; //pageindex
-        $scope.pageCount = 0; //pageSize
-        $scope.keyword = '' //keyword
+        $scope.page = 0; 
+        $scope.pageCount = 0; 
+        $scope.keyword = '';
         $scope.getPagingCategories = getPagingCategories;
         function getPagingCategories(page) {
             page = page || 1;
@@ -54,7 +49,7 @@
                 }
             }
             ajaxService.get('/Admin/PostCategory/GetAllPaging', config, function (result) {
-                if (result.data != null) {
+                if (result) {
                     console.log(result.data);
                     $scope.listCategories = result.data.result.ListItem;
                     $scope.page = result.data.result.Page;
@@ -71,18 +66,17 @@
             getPagingCategories();
         }
         
-        //End getPagingCategories//
-
-        //Start getSeoAlias//
         $scope.category = {};
         $scope.getSeoAlias = getSeoAlias;
         function getSeoAlias() {
             $scope.category.Alias = commonService.getSeoTitle($scope.category.Name);
+        }
+
+        $scope.getSeoAliasEdit = getSeoAliasEdit;
+        function getSeoAliasEdit() {
             $scope.categorybyid.Alias = commonService.getSeoTitle($scope.categorybyid.Name);
         }
-        //End getSeoAlias//
 
-        //Start AddCategory//
         $scope.addCategory = addCategory;
         function addCategory() {
             ajaxService.post('/Admin/PostCategory/AddCategory', $scope.category, function (result) {
@@ -95,9 +89,7 @@
                 notificationService.displayError('Thêm thất bại.');
             })
         }
-        //End getCategory//
 
-        //Start DeleteMulti//
         $scope.selectAll = selectAll;
         $scope.isAll = false;
         function selectAll() {
@@ -126,6 +118,36 @@
                 $('#btnDelete').attr('disabled', 'disabled');
             }
         }, true);
-        //End DeleteMulti//
+
+        $scope.editCategory = editCategory;
+        function editCategory() {
+            ajaxService.post('/Admin/PostCategory/UpdateCategory', $scope.categorybyid, function (result) {
+                if (result.data.result != null) {
+                    notificationService.displaySuccess(result.data.result.Name + " cập nhật thành công.");
+                    $scope.getCategories();
+                    $scope.getPagingCategories();
+                }
+            }, function (error) {
+                notificationService.displayError('Cập nhật thất bại.');
+            });
+        }
+
+        $scope.deleteCategory = deleteCategory;
+        function deleteCategory(id) {
+            $ngBootbox.confirm('Bạn có muốn xóa ?').then(function () {
+                var config = {
+                    categoryId: id
+                }
+                ajaxService.post('/Admin/PostCategory/DeleteCategory', config, function (result) {
+                    if (result.data.result != null) {
+                        notificationService.displaySuccess("Xóa " + result.data.result.Name + " thành công.");
+                        $scope.getCategories();
+                        $scope.getPagingCategories();
+                    }
+                }, function (error) {
+                    notificationService.displayError('Xóa thất bại.');
+                });
+            });           
+        }
     }
 })(angular.module('utehy.categories'));

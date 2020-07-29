@@ -16,7 +16,7 @@
 
                     <div class="form-group">
                         <label><i class="icon-pencil4"></i> Tên danh mục:</label>
-                        <input type="text" class="form-control" ng-model="categorybyid.Name" ng-change="getSeoAlias()" placeholder="Tên danh mục" required>
+                        <input type="text" class="form-control" ng-model="categorybyid.Name" ng-change="getSeoAliasEdit()" placeholder="Tên danh mục" required>
                     </div>
 
                     <div class="form-group">
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
+                    <button type="reset" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
                     <button type="submit" class="btn btn-sm btn-primary legitRipple" ng-click="editCategory()">Cập Nhật</button>
                 </div>
             </form>
