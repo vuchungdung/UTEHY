@@ -1,4 +1,4 @@
 ﻿
 (function () {
-    angular.module('utehy.common', ['ui.router'])
+    angular.module('utehy.common', ['ui.router','ngBootbox'])
 })();

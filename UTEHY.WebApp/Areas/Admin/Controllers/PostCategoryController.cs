@@ -20,20 +20,30 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
         {
             return View();
         }
-        [HttpGet]
         public JsonResult GetAll()
         {
             var result = _postCategoryService.GetAll();
-            if(result != null)
+            if(result.Count() > 0)
             {
                 return Json(new { result }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new {  }, JsonRequestBehavior.AllowGet);
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-        [HttpGet]
+        public JsonResult GetCategoryById(string id)
+        {
+            var result = _postCategoryService.GetSingleById(id);
+            if (result != null)
+            {
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
         public JsonResult GetAllPaging(string keyword, PageRequest request)
         {
             var result = _postCategoryService.GettAllPaging(keyword,request);
@@ -43,10 +53,9 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
             }
             else
             {
-                return Json(new { }, JsonRequestBehavior.AllowGet);
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
-        [HttpPost]
         public JsonResult AddCategory(PostCategoryViewModel postCategoryVm)
         {
             if (ModelState.IsValid)
@@ -59,15 +68,11 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { ex }, JsonRequestBehavior.AllowGet);
+                    return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }
-            else
-            {
-                return Json(new {}, JsonRequestBehavior.AllowGet);
-            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
-        [HttpPut]
         public JsonResult UpdateCategory(PostCategoryViewModel postCategoryVm)
         {
             if (ModelState.IsValid)
@@ -75,37 +80,51 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 try
                 {
                     var result = _postCategoryService.Update(postCategoryVm);
-                    _postCategoryService.Save();
-                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    if(result != null)
+                    {
+                        _postCategoryService.Save();
+                        return Json(new { result }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(null, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { ex }, JsonRequestBehavior.AllowGet);
+                    return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }
-            else
-            {
-                return Json(new { }, JsonRequestBehavior.AllowGet);
-            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
-        [HttpDelete]
         public JsonResult DeleteCategory(string categoryId)
         {
             if(categoryId != null)
             {
                 var result = _postCategoryService.Delete(categoryId);
-                if (result == true)
+                if (result != null)
                 {
-                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    _postCategoryService.Save();
+                    return Json(new { result }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+                    return Json(null, JsonRequestBehavior.AllowGet);
                 }
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteMulti(string[] listId)
+        {
+            var result = _postCategoryService.DeleteMulti(listId);
+            if(result > 0)
+            {
+                _postCategoryService.Save();
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { }, JsonRequestBehavior.AllowGet);
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
         }
     }

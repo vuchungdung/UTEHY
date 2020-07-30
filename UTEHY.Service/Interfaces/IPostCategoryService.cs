@@ -11,13 +11,14 @@ namespace UTEHY.Service.Interfaces
     public interface IPostCategoryService
     {
         bool Add(PostCategoryViewModel postCategoryVm);
-        bool Update(PostCategoryViewModel postCategoryVm);
-        bool Delete(string id);
+        string Update(PostCategoryViewModel postCategoryVm);
+        string Delete(string id);
         List<PostCategoryViewModel> GetAll();
         PageResult<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request);
 
         PostCategoryViewModel GetSingleById(string id);
 
+        int DeleteMulti(string[] listId);
         void Save();
     }
 }

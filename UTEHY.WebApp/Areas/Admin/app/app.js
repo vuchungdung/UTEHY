@@ -1,11 +1,11 @@
 ﻿(function () {
     angular.module('utehy',
-        ['utehy.common','utehy.categories'])
+        ['utehy.common','utehy.categories','utehy.teachers'])
         .config(config);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider'];
+    config.$inject = ['$stateProvider'];
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider) {
         $stateProvider
             .state('home', {
                 url: '/admin',

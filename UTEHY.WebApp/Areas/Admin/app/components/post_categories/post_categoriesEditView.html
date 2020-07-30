@@ -1,0 +1,47 @@
+﻿
+<div id="modal_Edit" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form novalidate name="frmEditPostCategory" role="form" ng-submit="editCategory()">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h5 class="modal-title">Cập nhật danh mục</h5>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="icon-pencil4"></i> Thứ tự:</label>
+                        <input type="number" class="form-control" name="displayOrder" ng-model="categorybyid.DisplayOrder" placeholder="Thứ tự" required>
+                        <span ng-show="frmEditPostCategory.displayOrder.$invalid" class="text-danger-400">Phải nhập thứ tự</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-pencil4"></i> Tên danh mục:</label>
+                        <input type="text" ng-maxlength="50" name="name" class="form-control" ng-model="categorybyid.Name" ng-change="getSeoAliasEdit()" placeholder="Tên danh mục" required>
+                        <span ng-show="frmEditPostCategory.name.$invalid" class="text-danger-400">Phải nhập tên danh mục</span>
+                        <span ng-show="frmEditPostCategory.name.$error.maxlength" class="text-danger-400">Tên danh mục chỉ được 50 ký tự</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-lock2"></i> Tiêu đề SEO:</label>
+                        <input type="text" class="form-control" name="alias" ng-model="categorybyid.Alias" placeholder="Tiêu đề SEO" disabled required>
+                        <span ng-show="frmEditPostCategory.alias.$invalid" class="text-danger-400">Tiêu đề SEO không được trống</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-cursor"></i>Danh mục gốc:</label>
+                        <select name="ParentId" class="form-control" ng-model="categorybyid.ParentId" ng-options="option.ID as option.Name for option in dropdownCategory">
+                            <option value="">Danh mục gốc</option>
+                        </select>
+                        <input type="hidden" name="ParentId" ng-model="categorybyid.ParentId" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" ng-disabled="frmEditPostCategory.$invalid" class="btn btn-sm btn-primary legitRipple">Cập Nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -33,8 +33,12 @@
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/ui/moment/moment.min.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/pickers/daterangepicker.js"></script>
 
-    <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/forms/selects/select2.min.js"></script>
 
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/pages/datatables_basic.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/pages/datatables_sorting.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/ui/ripple.min.js"></script>
     <!-- /theme JS files -->
     <!--Nhúng link angularjs và các ui của angularjs-->
@@ -45,7 +49,21 @@
     <div class="page-container">
         <div class="page-content">
             <div class="content-wrapper">
-                <div ui-view>Chào mừng bạn đến với hệ thống !</div>
+                <div ui-view>
+                    <div class="page-header">
+                        <div class="page-header-content">
+                            <div class="page-title" style="padding: 0px 36px 24px 0;">
+                                <h4>
+                                    <i class="icon-arrow-left52 position-left"></i>
+                                    <span>KHOA CÔNG NGHỆ THÔNG TIN</span>
+                                    <small class="display-block">Chào mừng bạn đến với hệ thống!</small>
+                                </h4>
+                                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -55,6 +73,8 @@
     <script src="~/Assets/angular/angular.js"></script>
     <script src="~/Assets/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/Assets/toastr/toastr.js"></script>
+    <script src="~/Assets/bootbox/bootbox.js"></script>
+    <script src="~/Assets/ngBootbox/ngBootbox.js"></script>
 
     <script src="~/Areas/Admin/app/shared/modules/utehy.common.js"></script>
     <script src="~/Areas/Admin/app/shared/services/commonService.js"></script>
@@ -62,14 +82,17 @@
     <script src="~/Areas/Admin/app/shared/services/authenticationservice.js"></script>
     <script src="~/Areas/Admin/app/shared/services/notificationservice.js"></script>
     <script src="~/Areas/Admin/app/shared/services/ajaxservice.js"></script>
+    <script src="~/Areas/Admin/app/shared/filters/parentIdFilter.js"></script>
     <script src="~/Areas/Admin/app/shared/services/loginservice.js"></script>
     <script src="~/Areas/Admin/app/components/post_categories/post_categories.Module.js"></script>
+    <script src="~/Areas/Admin/app/components/teachers/teachers.Module.js"></script>
 
     <script src="~/Areas/Admin/app/app.js"></script>
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
     <script src="~/Areas/Admin/app/components/homes/homeController.js"></script>
-    <script src="~/Areas/Admin/app/components/post_categories/post_categories.Add.Controller.js"></script>
-    <script src="~/Areas/Admin/app/components/post_categories/post_categories.Edit.Controller.js"></script>
-    <script src="~/Areas/Admin/app/components/post_categories/post_categories.List.Controller.js"></script>
+    <script src="~/Areas/Admin/app/components/post_categories/post_categoriesController.js"></script>
+    <script src="~/Areas/Admin/app/components/teachers/teachersAddController.js"></script>
+    <script src="~/Areas/Admin/app/components/teachers/teachersEditController.js"></script>
+    <script src="~/Areas/Admin/app/components/teachers/teachersListController.js"></script>
 </body>
 </html>

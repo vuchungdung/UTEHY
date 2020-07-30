@@ -1,0 +1,95 @@
+﻿<style>
+    .table>tbody>tr>td {
+        padding: 6px 20px;
+    }
+    .table>thead:first-child>tr:first-child>th {
+        padding: 8px 20px;
+        font-size:12px;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 0px 36px 24px 0;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Danh mục</span>
+                <small class="display-block" style="font-size:12px">Quản lý nội dung <i class="icon-arrow-right22"></i> Danh mục</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-flat" ng-controller="categoriesController">
+    <div class="no-footer">
+        <div class="datatable-header">
+            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" style="width:300px" ng-change="searchCategories()" class="" ng-model="keyword" placeholder="Nhập nội dung cần tìm..."></label></div>
+            <div class="dataTables_filter" style="padding-top:5px;margin-left:2%">
+                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" data-toggle="modal" data-target="#modal_warning" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+            </div>
+            <div class="dataTables_length">
+                <label>
+                    <span>Hiển thị:</span>
+                    <select>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="datatable-scroll">
+            <table class="table datatable-basic dataTable no-footer">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <input type="checkbox" ng-click="selectAll()" />
+                        </th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:10%">THỨ TỰ</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">TÊN DANH MỤC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">DANH MỤC GỐC</th>
+                        <th class="sorting" tabindex="0" rowspan="1" colspan="1"style="width:20%">TIÊU ĐỀ SEO</th>
+                        <th style="width:10%">THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr role="row" class="odd" ng-repeat="item in listCategories">
+                        <td>
+                            <input type="checkbox" ng-model="item.checked" />
+                        </td>
+                        <td style="padding-left:38px">{{item.DisplayOrder}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
+                        <td>{{item.Alias}}</td>
+                        <td>
+                            <button type="button" data-toggle="modal" data-target="#modal_Edit" ng-click="getCategoryById(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:#0872DF;color:white">
+                                <i class="icon-pencil"></i>
+                            </button>
+                            <button type="button" ng-click="deleteCategory(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:red;color:white">
+                                <i class="icon-bin2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="datatable-footer">
+            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Hiển thị 1 đến 10 của 10 dòng</div>
+            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                <a class="paginate_button previous disabled" data-dt-idx="0" tabindex="0">←</a>
+                <span><a class="paginate_button current" data-dt-idx="1" tabindex="0">1</a></span>
+                <a class="paginate_button next disabled" data-dt-idx="2" tabindex="0">→</a>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesAddView.html'"></div>
+    <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesEditView.html'"></div>
+</div>

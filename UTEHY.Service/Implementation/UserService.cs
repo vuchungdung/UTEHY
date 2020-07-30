@@ -240,20 +240,18 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var model = new User()
-                {
-                    UserId = userVm.UserId.ToString(),
-                    Name = userVm.Name,
-                    Email = userVm.Email,
-                    PhoneNumber = userVm.PhoneNumber,
-                    Address = userVm.Address,
-                    UserName = userVm.UserName,
-                    Password = userVm.Password,
-                    FirstName = userVm.FirstName,
-                    LastName = userVm.LastName,
-                    Dob = userVm.Dob,
-                    GroupId = userVm.GroupId.ToString()
-                };
+                var model = _userRepository.FindById(userVm.UserId);
+                model.UserId = userVm.UserId.ToString();
+                model.Name = userVm.Name;
+                model.Email = userVm.Email;
+                model.PhoneNumber = userVm.PhoneNumber;
+                model.Address = userVm.Address;
+                model.UserName = userVm.UserName;
+                model.Password = userVm.Password;
+                model.FirstName = userVm.FirstName;
+                model.LastName = userVm.LastName;
+                model.Dob = userVm.Dob;
+                model.GroupId = userVm.GroupId;
                 _userRepository.Update(model);
                 return true;
             }catch(Exception error)

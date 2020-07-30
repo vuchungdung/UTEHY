@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -179,16 +181,43 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\app\app.js" />
+    <Content Include="Areas\Admin\app\components\group_users\group_users.Module.js" />
+    <Content Include="Areas\Admin\app\components\group_users\group_usersAddView.html" />
+    <Content Include="Areas\Admin\app\components\group_users\group_usersController.js" />
+    <Content Include="Areas\Admin\app\components\group_users\group_usersEditView.html" />
+    <Content Include="Areas\Admin\app\components\group_users\group_usersListView.html" />
     <Content Include="Areas\Admin\app\components\homes\homeController.js" />
     <Content Include="Areas\Admin\app\components\homes\homeview.html" />
     <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Add.Controller.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories_Add.html" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.Edit.Controller.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories_Edit.html" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories.List.Controller.js" />
-    <Content Include="Areas\Admin\app\components\post_categories\post_categories_List.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsAddController.js" />
+    <Content Include="Areas\Admin\app\components\posts\postsEdit.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsEditController.js" />
+    <Content Include="Areas\Admin\app\components\posts\postsList.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsListController.js" />
+    <Content Include="Areas\Admin\app\components\posts\posts.Module.js" />
+    <Content Include="Areas\Admin\app\components\posts\postsAdd.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categoriesAddView.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categoriesEditView.html" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categoriesController.js" />
+    <Content Include="Areas\Admin\app\components\post_categories\post_categoriesListView.html" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categories.Module.js" />
+    <Content Include="Areas\Admin\app\components\teachers\teachers.Module.js" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersAddView.html" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersAddController.js" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersEditView.html" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersEditController.js" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersListView.html" />
+    <Content Include="Areas\Admin\app\components\teachers\teachersListController.js" />
+    <Content Include="Areas\Admin\app\components\users\users.Module.js" />
+    <Content Include="Areas\Admin\app\components\users\usersAddView.html" />
+    <Content Include="Areas\Admin\app\components\users\usersAddController.js" />
+    <Content Include="Areas\Admin\app\components\users\usersEditView.html" />
+    <Content Include="Areas\Admin\app\components\users\usersEditController.js" />
+    <Content Include="Areas\Admin\app\components\users\usersListView.html" />
+    <Content Include="Areas\Admin\app\components\users\usersListController.js" />
+    <Content Include="Areas\Admin\app\shared\directives\pageDirective.html" />
+    <Content Include="Areas\Admin\app\shared\directives\pageDirective.js" />
+    <Content Include="Areas\Admin\app\shared\filters\parentIdFilter.js" />
     <Content Include="Areas\Admin\app\shared\modules\utehy.common.js" />
     <Content Include="Areas\Admin\app\shared\services\ajaxService.js" />
     <Content Include="Areas\Admin\app\shared\services\authData.js" />
@@ -2331,6 +2360,19 @@
     <Content Include="Assets\angular\angular.js" />
     <Content Include="Assets\angular\angular.min.js" />
     <Content Include="Assets\angular\index.js" />
+    <Content Include="Assets\bootbox\bootbox.js" />
+    <Content Include="Assets\ngBootbox\dist\ngBootbox.js" />
+    <Content Include="Assets\ngBootbox\dist\ngBootbox.min.js" />
+    <Content Include="Assets\ngBootbox\examples\example-1\app.js" />
+    <Content Include="Assets\ngBootbox\examples\example-1\custom-dialog.tpl.html" />
+    <Content Include="Assets\ngBootbox\examples\example-1\index.html" />
+    <Content Include="Assets\ngBootbox\examples\example-2\app.js" />
+    <Content Include="Assets\ngBootbox\examples\example-2\index.html" />
+    <Content Include="Assets\ngBootbox\examples\example-2\main.js" />
+    <Content Include="Assets\ngBootbox\examples\example-2\require.js" />
+    <Content Include="Assets\ngBootbox\examples\index.html" />
+    <Content Include="Assets\ngBootbox\gulpfile.js" />
+    <Content Include="Assets\ngBootbox\ngBootbox.js" />
     <Content Include="Assets\toastr\toastr.css" />
     <Content Include="Assets\toastr\toastr.js" />
     <Content Include="Assets\toastr\toastr.min.css" />
@@ -2646,16 +2688,9 @@
     <Content Include="ckeditor\skins\bootstrapck\sample\js\jquery-1.11.0.min.js" />
     <Content Include="ckeditor\skins\bootstrapck\skin.js" />
     <Content Include="ckeditor\styles.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ckeditor\CHANGES.md" />
     <Content Include="ckeditor\LICENSE.md" />
     <Content Include="ckeditor\plugins\pbckcode\CHANGELOG.md" />
@@ -2758,17 +2793,6 @@
     <Content Include="Assets\angular-ui-router\yarn.lock" />
     <Content Include="Areas\Admin\Views\Home\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_Navbar.cshtml" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2786,7 +2810,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\app\shared\directives\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -2795,13 +2818,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Assets\bootbox\.bower.json" />
+    <Content Include="Assets\bootbox\.gitignore" />
+    <Content Include="Assets\bootbox\.jshintrc" />
+    <Content Include="Assets\bootbox\.npmignore" />
+    <Content Include="Assets\bootbox\.travis.yml" />
+    <Content Include="Assets\bootbox\bower.json" />
+    <Content Include="Assets\bootbox\CONTRIBUTING.md" />
+    <Content Include="Assets\bootbox\LICENSE.md" />
+    <Content Include="Assets\bootbox\package.json" />
+    <Content Include="Assets\bootbox\README.md" />
+    <Content Include="Assets\ngBootbox\.bower.json" />
+    <Content Include="Assets\ngBootbox\bower.json" />
+    <Content Include="Assets\ngBootbox\package.json" />
+    <Content Include="Assets\ngBootbox\README.md" />
+    <Content Include="Assets\ngBootbox\tsd.json" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UTEHY.Infrastructure\UTEHY.Infrastructure.csproj">
@@ -2817,11 +2849,20 @@
       <Name>UTEHY.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Assets\ngBootbox\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Assets\ngBootbox\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Assets\ngBootbox\typings\tsd.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

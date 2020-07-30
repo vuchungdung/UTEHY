@@ -1,0 +1,85 @@
+﻿<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 0px 36px 24px 0;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Giảng viên</span>
+                <small class="display-block" style="font-size:12px">Chức năng khác <i class="icon-arrow-right22"></i> Giảng viên</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<form novalidate name="frmAddTeacher" role="form" ng-submit="addTeacher()">
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <div style="margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:10px">
+                <span style="font-size:16px;"><i class="icon-reading position-left"></i> Thông tin giảng viên</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label><i class="icon-pencil4"></i> Họ và tên:</label>
+                            <input name="name" type="text" ng-maxlength="80" ng-model="teacher.Name" class="form-control" placeholder="Họ tên" required>
+                            <span ng-show="frmAddTeacher.name.$invalid" class="text-danger-400">Phải nhập tên giảng viên</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-envelop5"></i> Email:</label>
+                            <input type="email" name="email" ng-maxlength="100" ng-model="teacher.Email" class="form-control" placeholder="Địa chỉ Email" required>
+                            <span ng-show="frmAddTeacher.email.$invalid" class="text-danger-400">Phải nhập thông tin Email</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-phone"></i> Điện thoại:</label>
+                            <input type="text" name="phone" ng-maxlength="20" ng-model="teacher.Phone" class="form-control" placeholder="Số điện thoại" required>
+                            <span ng-show="frmAddTeacher.phone.$invalid" class="text-danger-400">Phải nhập số điện thoại giảng viên</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-phone2"></i> FAX:</label>
+                            <input type="text" name="fax" ng-model="teacher.FAX" ng-maxlength="20" class="form-control" placeholder="FAX" required>
+                            <span ng-show="frmAddTeacher.fax.$invalid" class="text-danger-400">Phải nhập số FAX</span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label><i class="icon-office"></i> Đơn vị công tác:</label>
+                            <input type="text" class="form-control" placeholder="Đơn vị công tác" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-graduation"></i> Vị trí:</label>
+                            <input type="text" class="form-control" placeholder="Vị trí" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-mention"></i> Website:</label>
+                            <input type="text" class="form-control" placeholder="Website" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-enlarge"></i> Giới thiệu:</label>
+                            <input type="text" class="form-control" placeholder="Giới thiệu" required>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+                <button type="submit" class="btn btn-xs btn-default" ui-sref="teachers"><i class="icon-arrow-left13"></i>Quay lại </button>
+                <button type="submit" class="btn btn-xs btn-primary" >Thêm mới <i class="icon-arrow-right14"></i></button>
+
+            </div>
+        </div>
+    </div>
+</form>
