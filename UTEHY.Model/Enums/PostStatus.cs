@@ -8,5 +8,7 @@ namespace UTEHY.Model.Enums
 {
     public enum PostStatus
     {
+        Closed,
+        Opened
     }
 }

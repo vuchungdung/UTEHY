@@ -8,6 +8,7 @@ namespace UTEHY.Model.Enums
 {
     public enum ImgType
     {
-
+        Slide,
+        Provider
     }
 }

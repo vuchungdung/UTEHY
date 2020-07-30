@@ -16,5 +16,8 @@
             }
             finder.popup();
         }
+        $scope.addTeacher = addTeacher;
+        function addTeacher() {
+        }
     }
 })(angular.module('utehy.teachers'));

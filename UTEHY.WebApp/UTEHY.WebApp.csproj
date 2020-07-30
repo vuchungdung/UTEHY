@@ -194,12 +194,12 @@
     <Content Include="Areas\Admin\app\components\homes\homeview.html" />
     <Content Include="Areas\Admin\app\components\navbars\navbarController.js" />
     <Content Include="Areas\Admin\app\components\posts\postsAddController.js" />
-    <Content Include="Areas\Admin\app\components\posts\postsEdit.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsEditView.html" />
     <Content Include="Areas\Admin\app\components\posts\postsEditController.js" />
-    <Content Include="Areas\Admin\app\components\posts\postsList.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsListView.html" />
     <Content Include="Areas\Admin\app\components\posts\postsListController.js" />
     <Content Include="Areas\Admin\app\components\posts\posts.Module.js" />
-    <Content Include="Areas\Admin\app\components\posts\postsAdd.html" />
+    <Content Include="Areas\Admin\app\components\posts\postsAddView.html" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categoriesAddView.html" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categoriesEditView.html" />
     <Content Include="Areas\Admin\app\components\post_categories\post_categoriesController.js" />
