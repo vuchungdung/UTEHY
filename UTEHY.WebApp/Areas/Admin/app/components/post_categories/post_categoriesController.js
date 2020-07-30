@@ -78,7 +78,8 @@
         }
 
         $scope.addCategory = addCategory;
-        function addCategory() {
+        $scope.category.DisplayOrder = 0;
+        function addCategory() {           
             ajaxService.post('/Admin/PostCategory/AddCategory', $scope.category, function (result) {
                 if (result.data.result == true) {
                     notificationService.displaySuccess($scope.category.Name + " đã được thêm thành công.");
@@ -123,7 +124,7 @@
         function editCategory() {
             ajaxService.post('/Admin/PostCategory/UpdateCategory', $scope.categorybyid, function (result) {
                 if (result.data.result != null) {
-                    notificationService.displaySuccess(result.data.result.Name + " cập nhật thành công.");
+                    notificationService.displaySuccess(result.data.result + " cập nhật thành công.");
                     $scope.getCategories();
                     $scope.getPagingCategories();
                 }
@@ -140,7 +141,7 @@
                 }
                 ajaxService.post('/Admin/PostCategory/DeleteCategory', config, function (result) {
                     if (result.data.result != null) {
-                        notificationService.displaySuccess("Xóa " + result.data.result.Name + " thành công.");
+                        notificationService.displaySuccess("Xóa " + result.data.result + " thành công.");
                         $scope.getCategories();
                         $scope.getPagingCategories();
                     }
@@ -148,6 +149,23 @@
                     notificationService.displayError('Xóa thất bại.');
                 });
             });           
+        }
+        $scope.deleteMultiple = deleteMultiple;
+        function deleteMultiple() {
+            var listId = [];
+            $.each($scope.selected, function (i, item) {
+                listId.push(item.ID);
+            });
+            var config = {
+                listId: listId
+            }
+            ajaxService.post('/Admin/PostCategory/DeleteMulti', config, function (result) {
+                notificationService.displaySuccess('Xóa thành công ' + result.data.result + ' bản ghi.');
+                $scope.getCategories();
+                $scope.getPagingCategories();
+            }, function (error) {
+                notificationService.displayError('Xóa không thành công');
+            });
         }
     }
 })(angular.module('utehy.categories'));

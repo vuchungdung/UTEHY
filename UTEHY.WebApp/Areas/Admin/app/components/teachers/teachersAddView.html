@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<form>
+<form novalidate name="frmAddTeacher" role="form" ng-submit="addTeacher()">
     <div class="panel panel-flat">
         <div class="panel-body">
             <div style="margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:10px">
@@ -28,22 +28,26 @@
                     <fieldset>
                         <div class="form-group">
                             <label><i class="icon-pencil4"></i> Họ và tên:</label>
-                            <input type="text" class="form-control" placeholder="Họ tên" required>
+                            <input name="name" type="text" ng-maxlength="80" ng-model="teacher.Name" class="form-control" placeholder="Họ tên" required>
+                            <span ng-show="frmAddTeacher.name.$invalid" class="text-danger-400">Phải nhập tên giảng viên</span>
                         </div>
 
                         <div class="form-group">
                             <label><i class="icon-envelop5"></i> Email:</label>
-                            <input type="text" class="form-control" placeholder="Địa chỉ Email" required>
+                            <input type="email" name="email" ng-maxlength="100" ng-model="teacher.Email" class="form-control" placeholder="Địa chỉ Email" required>
+                            <span ng-show="frmAddTeacher.email.$invalid" class="text-danger-400">Phải nhập thông tin Email</span>
                         </div>
 
                         <div class="form-group">
                             <label><i class="icon-phone"></i> Điện thoại:</label>
-                            <input type="text" class="form-control" placeholder="Số điện thoại" required>
+                            <input type="text" name="phone" ng-maxlength="20" ng-model="teacher.Phone" class="form-control" placeholder="Số điện thoại" required>
+                            <span ng-show="frmAddTeacher.phone.$invalid" class="text-danger-400">Phải nhập số điện thoại giảng viên</span>
                         </div>
 
                         <div class="form-group">
                             <label><i class="icon-phone2"></i> FAX:</label>
-                            <input type="text" class="form-control" placeholder="FAX" required>
+                            <input type="text" name="fax" ng-model="teacher.FAX" ng-maxlength="20" class="form-control" placeholder="FAX" required>
+                            <span ng-show="frmAddTeacher.fax.$invalid" class="text-danger-400">Phải nhập số FAX</span>
                         </div>
                     </fieldset>
                 </div>

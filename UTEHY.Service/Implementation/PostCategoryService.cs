@@ -58,6 +58,16 @@ namespace UTEHY.Service.Implementation
             }
         }
 
+        public int DeleteMulti(string[] listId)
+        {
+            for(int i = 0; i < listId.Length; i++)
+            {
+                var model = _postCategoryRepository.FindById(listId[i]);
+                _postCategoryRepository.Remove(model);
+            }
+            return listId.Length;
+        }
+
         public List<PostCategoryViewModel> GetAll()
         {
             var result = _postCategoryRepository.FindAll().Select(x => new PostCategoryViewModel()

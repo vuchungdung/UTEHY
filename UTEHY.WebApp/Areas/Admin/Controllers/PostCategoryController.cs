@@ -71,10 +71,7 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }
-            else
-            {
-                return Json(null, JsonRequestBehavior.AllowGet);
-            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
         public JsonResult UpdateCategory(PostCategoryViewModel postCategoryVm)
         {
@@ -98,10 +95,7 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
             }
-            else
-            {
-                return Json(null, JsonRequestBehavior.AllowGet);
-            }
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
         public JsonResult DeleteCategory(string categoryId)
         {
@@ -117,6 +111,16 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 {
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
+            }
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteMulti(string[] listId)
+        {
+            var result = _postCategoryService.DeleteMulti(listId);
+            if(result > 0)
+            {
+                _postCategoryService.Save();
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
             }
             else
             {
