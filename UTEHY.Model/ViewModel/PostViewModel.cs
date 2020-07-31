@@ -24,6 +24,9 @@ namespace UTEHY.Model.ViewModel
         public DateTime UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string Img { get; set; }
+
+        public string MoreImgs { get; set; }
+
         public PostStatus Status { get; set; }
         public virtual PostCategory PostCategory { get; set; }
     }

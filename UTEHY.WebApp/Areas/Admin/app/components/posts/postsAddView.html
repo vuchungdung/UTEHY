@@ -1,10 +1,76 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 0px 36px 24px 0;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Bài đăng</span>
+                <small class="display-block" style="font-size:12px">Quản lý nội dung <i class="icon-arrow-right22"></i> Bài đăng</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
 
-</body>
-</html>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<form novalidate name="frmAddPost" ng-controller="postsAddController" role="form" ng-submit="addpost()">
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <div style="margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:10px">
+                <span style="font-size:16px;"><i class="icon-reading position-left"></i> Thông tin bài đăng</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label><i class="icon-pencil4"></i> Tiêu đề:</label>
+                            <input name="name" type="text" ng-maxlength="80" ng-model="post.Name" class="form-control" placeholder="Tiêu đề" required>
+                            <span ng-show="frmAddPost.name.$invalid" class="text-danger-400">Phải nhập tiêu đề bài đăng</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-pencil4"></i> Tiêu đề SEO:</label>
+                            <input name="alias" type="text" ng-maxlength="80" ng-model="post.Alias" class="form-control" placeholder="Tiêu đề SEO" required>
+                            <span ng-show="frmAddPost.alias.$invalid" class="text-danger-400">Phải nhập tiêu đề SEO</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-envelop5"></i> Mô tả:</label>
+                            <input type="text" name="description" ng-maxlength="256" ng-model="post.Description" class="form-control" placeholder="Mô tả ngắn" required>
+                            <span ng-show="frmAddPost.description.$invalid" class="text-danger-400">Phải nhập mô tả ngắn</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-phone"></i> Hình ảnh:</label>
+                            <input type="text" name="img" ng-maxlength="256" ng-model="post.Img" class="form-control" placeholder="Chọn hình ảnh" required>
+                            <button type="button" class="btn btn-xs btn-default position-right" style="margin-top:2px;margin-left:0px" ng-click="chooseImage()">Chọn ảnh</button>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6">
+                    <fieldset>
+                        <div class="form-group">
+                            <label><i class="icon-office"></i> Hình ảnh khác:</label>
+                            <input type="text" class="form-control" name="moreimgs" ng-model="post.MoreImgs" placeholder="Chọn thêm hình ảnh" required>
+                            <button type="button" class="btn btn-xs btn-default position-right" style="margin-top:2px;margin-left:0px" ng-click="chooseMoreImage()">Chọn ảnh</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="icon-enlarge"></i> Giới thiệu:</label>
+                            <textarea class="form-control" name="content" ng-model="post.Content" ckeditor="ckeditorOptions" required></textarea>
+                            <span ng-show="frmAddPost.content.$invalid" class="text-danger-400">Nội dung bài đăng</span>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between">
+                <button type="submit" class="btn btn-xs btn-default" ui-sref="posts"><i class="icon-arrow-left13"></i>Quay lại </button>
+                <button type="submit" class="btn btn-xs btn-primary" ng-disabled="frmAddPost.$invalid">Thêm mới <i class="icon-arrow-right14"></i></button>
+            </div>
+        </div>
+    </div>
+</form>

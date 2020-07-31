@@ -35,6 +35,7 @@ namespace UTEHY.Model.Entities
         public string UpdatedBy { get; set; }
         public string Img { get; set; }
         public Nullable<int> Status { get; set; }
+        public string MoreImgs { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

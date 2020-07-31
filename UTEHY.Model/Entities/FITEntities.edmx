@@ -111,6 +111,7 @@
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="Img" Type="nvarchar" MaxLength="256" />
           <Property Name="Status" Type="int" />
+          <Property Name="MoreImgs" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Slides">
           <Key>
@@ -413,6 +414,7 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Img" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
+          <Property Name="MoreImgs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
           <NavigationProperty Name="PostCategory" Relationship="Self.FK_Posts_PostCategorys" FromRole="Posts" ToRole="PostCategorys" />
         </EntityType>
@@ -688,6 +690,7 @@
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MoreImgs" ColumnName="MoreImgs" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

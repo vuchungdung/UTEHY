@@ -35,12 +35,11 @@ namespace UTEHY.Service.Implementation
                     CategoryId = postVm.CategoryId,
                     Description = postVm.Description,
                     Content = postVm.Content,
-                    HomeFlag = postVm.HomeFlag,
-                    ViewCount = postVm.ViewCount,
-                    LikeCount = postVm.LikeCount,
+                    HomeFlag = false,
                     CreatedDate = DateTime.Now,
                     CreatedBy = postVm.CreatedBy,
                     Img = postVm.Img,
+                    MoreImgs = postVm.MoreImgs,
                     Status = (int)PostStatus.Closed
                 };
                 _postRepository.Add(model);
@@ -89,10 +88,9 @@ namespace UTEHY.Service.Implementation
                 Description = x.Description,
                 Content = x.Content,
                 HomeFlag = x.HomeFlag,
-                ViewCount = x.ViewCount,
-                LikeCount = x.LikeCount,
                 CreatedDate = x.CreatedDate,
                 CreatedBy = x.CreatedBy,
+                MoreImgs = x.MoreImgs,
                 Img = x.Img,
                 Status = (PostStatus)x.Status
             }).ToList();
@@ -124,10 +122,9 @@ namespace UTEHY.Service.Implementation
                     Description = x.Description,
                     Content = x.Content,
                     HomeFlag = x.HomeFlag,
-                    ViewCount = x.ViewCount,
-                    LikeCount = x.LikeCount,
                     CreatedDate = x.CreatedDate,
                     CreatedBy = x.CreatedBy,
+                    MoreImgs = x.MoreImgs,
                     Img = x.Img,
                     Status = (PostStatus)x.Status
                 }).ToList();
@@ -153,10 +150,9 @@ namespace UTEHY.Service.Implementation
                 Description = model.Description,
                 Content = model.Content,
                 HomeFlag = model.HomeFlag,
-                ViewCount = model.ViewCount,
-                LikeCount = model.LikeCount,
                 CreatedDate = model.CreatedDate,
                 CreatedBy = model.CreatedBy,
+                MoreImgs = model.MoreImgs,
                 Img = model.Img,
                 Status = (PostStatus)model.Status
             };

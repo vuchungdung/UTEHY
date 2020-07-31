@@ -78,7 +78,6 @@
         }
 
         $scope.addCategory = addCategory;
-        $scope.category.DisplayOrder = 0;
         function addCategory() {           
             ajaxService.post('/Admin/PostCategory/AddCategory', $scope.category, function (result) {
                 if (result.data.result == true) {
