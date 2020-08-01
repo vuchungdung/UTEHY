@@ -12,9 +12,7 @@
     <link href="~/Areas/Admin/Assets/css/core.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/components.css" rel="stylesheet" type="text/css">
     <link href="~/Areas/Admin/Assets/css/colors.css" rel="stylesheet" type="text/css">
-    <link href="~/Assets/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="~/Areas/Admin/Assets/images/logo-web.ico" type="image/png">
-
     <!-- /global stylesheets -->
     <!-- Core JS files -->
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/loaders/pace.min.js"></script>
@@ -32,76 +30,74 @@
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/ui/moment/moment.min.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/pickers/daterangepicker.js"></script>
-
-    <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/Assets/js/pages/components_modals.js"></script>
+    <script src="~/Areas/Admin/Assets/js/plugins/notifications/pnotify.min.js"></script>
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/forms/selects/select2.min.js"></script>
-
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/core/app.js"></script>
-
     <script type="text/javascript" src="~/Areas/Admin/Assets/js/plugins/ui/ripple.min.js"></script>
     <!-- /theme JS files -->
-    <!--Nhúng link angularjs và các ui của angularjs-->
-</head>
-<body ng-app="utehy">
-    @RenderPage("_Header.cshtml")
-    @RenderPage("_Navbar.cshtml")
-    <div class="page-container">
-        <div class="page-content">
-            <div class="content-wrapper">
-                <div ui-view>
-                    <div class="page-header">
-                        <div class="page-header-content">
-                            <div class="page-title" style="padding: 0px 36px 24px 0;">
-                                <h4>
-                                    <i class="icon-arrow-left52 position-left"></i>
-                                    <span>KHOA CÔNG NGHỆ THÔNG TIN</span>
-                                    <small class="display-block">Chào mừng bạn đến với hệ thống!</small>
-                                </h4>
-                                <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer text-muted" style="bottom: 16px">
-        &copy; 2020. <a href="#" style="color:black;font-weight:600">TRUNG TÂM PHẦN MỀM.</a>
-    </div>
     <script src="~/Assets/angular/angular.js"></script>
+    <script src="~/Assets/libs/dirPagination.js"></script>
     <script src="~/Assets/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="~/Assets/toastr/toastr.js"></script>
     <script src="~/Assets/bootbox/bootbox.js"></script>
     <script src="~/Assets/ckeditor/ckeditor.js"></script>
     <script src="~/Assets/ckfinder/ckfinder.js"></script>
     <script src="~/Assets/ngBootbox/ngBootbox.js"></script>
     <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
+</head>
+<body ng-app="utehy">
+    @RenderPage("_Header.cshtml")
+    @RenderPage("_Navbar.cshtml")
+    <div ui-view>
+        <div class="page-header">
+            <div class="page-header-content">
+                <div class="page-title">
+                    <h4>
+                        <i class="icon-arrow-left52 position-left"></i>
+                        <span>Chào mứng bạn đến với hệ thống!</span>
+                    </h4>
+                    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="page-container">
+
+        </div>
+    </div>
+    @RenderPage("_Footer.cshtml")
 
     <script src="~/Areas/Admin/app/shared/modules/utehy.common.js"></script>
 
     <script src="~/Areas/Admin/app/shared/services/commonService.js"></script>
+
     <script src="~/Areas/Admin/app/shared/services/authdata.js"></script>
     <script src="~/Areas/Admin/app/shared/services/authenticationservice.js"></script>
-    <script src="~/Areas/Admin/app/shared/services/notificationservice.js"></script>
+
     <script src="~/Areas/Admin/app/shared/services/ajaxservice.js"></script>
     <script src="~/Areas/Admin/app/shared/filters/parentIdFilter.js"></script>
     <script src="~/Areas/Admin/app/shared/services/loginservice.js"></script>
 
     <script src="~/Areas/Admin/app/components/post_categories/post_categories.Module.js"></script>
+
     <script src="~/Areas/Admin/app/components/teachers/teachers.Module.js"></script>
+
     <script src="~/Areas/Admin/app/components/posts/posts.Module.js"></script>
 
     <script src="~/Areas/Admin/app/app.js"></script>
 
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
+
     <script src="~/Areas/Admin/app/components/homes/homeController.js"></script>
+
     <script src="~/Areas/Admin/app/components/post_categories/post_categoriesController.js"></script>
+
     <script src="~/Areas/Admin/app/components/teachers/teachersAddController.js"></script>
     <script src="~/Areas/Admin/app/components/teachers/teachersEditController.js"></script>
     <script src="~/Areas/Admin/app/components/teachers/teachersListController.js"></script>
+
     <script src="~/Areas/Admin/app/components/posts/postsAddController.js"></script>
     <script src="~/Areas/Admin/app/components/posts/postsEditController.js"></script>
     <script src="~/Areas/Admin/app/components/posts/postsListController.js"></script>
+
 </body>
 </html>

@@ -131,9 +131,7 @@ namespace UTEHY.Service.Implementation
             var pagination = new PageResult<PostViewModel>()
             {
                 ListItem = listItems,
-                TotalRecords = totalRecords,
-                Page = request.pageIndex,
-                TotalPages = (int)Math.Ceiling((decimal)totalRecords / request.pageSize)
+                TotalRecords = totalRecords
             };
             return pagination;
         }
