@@ -97,10 +97,10 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Alias" Type="varchar" MaxLength="256" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Alias" Type="varchar(max)" />
           <Property Name="CategoryId" Type="nvarchar" MaxLength="128" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="HomeFlag" Type="bit" />
           <Property Name="ViewCount" Type="int" />
@@ -400,10 +400,10 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Alias" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Alias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CategoryId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HomeFlag" Type="Boolean" />
           <Property Name="ViewCount" Type="Int32" />

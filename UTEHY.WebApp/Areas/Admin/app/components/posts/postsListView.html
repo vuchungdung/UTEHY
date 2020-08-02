@@ -28,7 +28,7 @@
     </div>
 </div>
 <!-- Main -->
-<div class="page-container">
+<div class="page-container" ng-controller="postsListController">
     <div class="row">
         <div class="panel panel-flat">
             <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
@@ -58,11 +58,11 @@
                 <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
                     <label>
                         <span>Hiển thị:</span>
-                        <select>
+                        <select id="pageSize" ng-model="pageSize">
+                            <option value="5">5</option>
                             <option value="10">10</option>
-                            <option value="25">25</option>
+                            <option value="20">20</option>
                             <option value="50">50</option>
-                            <option value="100">100</option>
                         </select>
                     </label>
                 </div>
@@ -71,13 +71,12 @@
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr role="row">
+                            <tr dir-paginate="item in listPosts|itemsPerPage:pageSize" total-items="totalRecords">
                                 <th>
-                                    <input type="checkbox" ng-click="selectAll()" />
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
                                 </th>
                                 <th>Hình ảnh</th>
                                 <th>Tên bài</th>
-                                <th>Tiêu đề SEO</th>
                                 <th>Mô tả</th>
                                 <th>Ngày viết</th>
                                 <th>Trạng thái</th>
@@ -86,11 +85,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr role="row" class="odd" ng-repeat="item in listCategories">
+                            <tr role="row" class="odd" ng-repeat="item in listPosts">
                                 <td>
                                     <input type="checkbox" ng-model="item.checked" />
                                 </td>
-                                
+                                <td><img ng-src="{{item.Img}}" width="100"/></td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Description}}</td>
+                                <td>{{item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                                <td>{{item.Status}}</td>
+                                <td>{{item.HomeFlag}}</td>
                                 <td class="text-center">
                                     <ul class="icons-list action">
                                         <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
@@ -98,13 +102,11 @@
                                     </ul>
                                 </td>
                             </tr>
-                            <!--<tr dir-paginate="item in listClass|itemsPerPage:PageSize" total-items="RecordCount">
-                            </tr>-->
                         </tbody>
                     </table>
                     <div style="padding-top: 10px; padding-bottom:10px; text-align:center">
-                        <dir-pagination-controls max-size="PageSize" direction-links="true" boundary-links="true"
-                                                 on-page-change="GetClass(newPageNumber)">
+                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="getPagingPosts(newPageNumber)">
                         </dir-pagination-controls>
                     </div>
                 </div>

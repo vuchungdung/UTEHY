@@ -104,7 +104,7 @@ namespace UTEHY.Service.Implementation
             {
                 query = query.Where(x => x.Name.Contains(keyword));
             }
-            if(categoryid != null)
+            if(!String.IsNullOrEmpty(categoryid))
             {
                 query = query.Where(x => x.CategoryId == categoryid);
             }

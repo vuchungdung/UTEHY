@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label><i class="icon-pencil4"></i> Tiêu đề:</label>
-                                <input name="name" type="text" ng-maxlength="80" ng-model="post.Name" class="form-control" placeholder="Tiêu đề" required>
+                                <input name="name" type="text" ng-maxlength="80" ng-change="getSeoAlias()" ng-model="post.Name" class="form-control" placeholder="Tiêu đề" required>
                                 <span ng-show="frmAddPost.name.$invalid" class="text-danger-400">Phải nhập tiêu đề bài đăng</span>
                             </div>
 
@@ -46,15 +46,25 @@
                             </div>
 
                             <div class="form-group">
+                                <label><i class="icon-cursor"></i>Danh mục gốc:</label>
+                                <select name="categoryId" class="form-control" ng-model="post.CategoryId" ng-options="option.ID as option.Name for option in listCategoryId">
+                                    <option value="">Danh mục bài đăng</option>
+                                </select>
+                                <input type="hidden" name="ParentId" ng-model="post.CategoryId" />
+                            </div>
+
+                            <div class="form-group">
                                 <label><i class="icon-file-picture"></i> Hình ảnh:</label>
                                 <input type="text" name="img" ng-maxlength="256" id="input_img" ng-model="post.Img" class="form-control" placeholder="Chọn hình ảnh" required>
                                 <button type="button" class="btn btn-xs btn-default position-right" style="margin-top:2px;margin-left:0px" ng-click="chooseImage()">Chọn ảnh</button>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6">        
                             <div class="form-group">
                                 <label><i class="icon-stack-picture"></i> Hình ảnh khác:</label>
-                                <input type="text" class="form-control" name="moreimgs" ng-model="post.MoreImgs" placeholder="Chọn thêm hình ảnh" required>
+                                <ul class="list-inline">
+                                    <li ng-repeat="img in moreImages"><img ng-src="{{img}}" width="100" /></li>
+                                </ul>
                                 <button type="button" class="btn btn-xs btn-default position-right" style="margin-top:2px;margin-left:0px" ng-click="chooseMoreImage()">Chọn ảnh</button>
                             </div>
 

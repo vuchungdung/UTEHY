@@ -1,25 +1,74 @@
 ﻿(function (app) {
     app.controller('postsAddController', postsAddController);
 
-    postsAddController.$inject = ['$scope','ajaxService'];
+    postsAddController.$inject = ['$scope', 'ajaxService', '$state','commonService'];
 
-    function postsAddController($scope) {
+    function postsAddController($scope, ajaxService, $state, commonService) {
+        $(window).load(function () {
+            $('#pageSize').val('10');
+        });
         $scope.ckeditorOptions = {
             languague: 'vi',
-            height: '200px'
+            height: '280px'
         }
         $scope.chooseImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                $('#input_img').val(fileUrl);
-                $scope.posts.Img = fileUrl;
+                $scope.$apply(function () {
+                    $scope.post.Img = fileUrl;
+                })               
             }
             finder.popup();
         }
-        $scope.addPost = addPost;
-        function addPost() {
-
+        $scope.moreImages = [];
+        $scope.chooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                });
+            }
+            finder.popup();
         }
+        $scope.addPost = function () {
+            $scope.post.MoreImgs = JSON.stringify($scope.moreImages);
+            ajaxService.post('/Admin/Post/AddPost', $scope.post, function (result) {
+                if (result.data.result == true) { 
+                    $scope.post = angular.copy({});   
+                    new PNotify({
+                        text: 'Thêm bài đăng thành công!',
+                        addclass: 'bg-success'
+                    });
+                    $state.go('posts');                                    
+                }
+                else {
+                    new PNotify({
+                        text: 'Thêm bài đăng thất bại!',
+                        addclass: 'bg-danger'
+                    });
+                }
+            }, function (error) {
+                new PNotify({
+                    text: 'Thêm danh mục thất bại!',
+                    addclass: 'bg-danger'
+                });
+            })
+        }
+
+        $scope.getSeoAlias = function () {
+            $scope.post.Alias = commonService.getSeoTitle($scope.post.Name);
+        }
+
+        $scope.getListCategoryId = function () {
+            ajaxService.get('/Admin/PostCategory/GetAll', null, function (result) {
+                if (result) {
+                    $scope.listCategoryId = result.data.result;
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        $scope.getListCategoryId();
     }
 
 })(angular.module('utehy.posts'));
