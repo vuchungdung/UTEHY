@@ -4,7 +4,6 @@
     postsListController.$inject = ['$scope', 'ajaxService','$filter', 'commonService', '$ngBootbox']
 
     function postsListController($scope,ajaxService,$filter,$ngBootbox) {
-
         $scope.page = 1;
         $scope.keyword = '';
         $scope.groupid = '';
@@ -22,10 +21,8 @@
             }
             ajaxService.get('/Admin/Post/GetAllPaging', config, function (result) {
                 if (result.data.result != null) {
-                    var resultObject = JSON.parse(result.data.result);
-                    $scope.listPosts = resultObject.ListItem;
-                    $scope.totalRecords = resultObject.TotalRecords;
-                    console.log(resultObject);
+                    $scope.listPosts = result.data.result.ListItem;
+                    $scope.totalRecords = result.data.result.TotalRecords;
                 }
             }, function (error) {
                 console.log(error);

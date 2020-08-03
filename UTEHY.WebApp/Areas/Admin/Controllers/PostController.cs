@@ -26,10 +26,9 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
         public JsonResult GetAllPaging(string keyword, PageRequest request, string groupId)
         {
             var result = _postService.GetAllPaging(keyword, groupId, request);
-            string resultJson = new JavaScriptSerializer().Serialize(result);
             if (result != null)
             {
-                return Json(new { resultJson }, JsonRequestBehavior.AllowGet);
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
             }
             else
             {

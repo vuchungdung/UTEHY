@@ -79,9 +79,9 @@
                                 <th>Tên bài</th>
                                 <th>Mô tả</th>
                                 <th>Ngày viết</th>
-                                <th>Trạng thái</th>
-                                <th>Ghim</th>
-                                <th>Nghiệp vụ</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Ghim</th>
+                                <th class="text-center">Nghiệp vụ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,13 +89,17 @@
                                 <td>
                                     <input type="checkbox" ng-model="item.checked" />
                                 </td>
-                                <td><img ng-src="{{item.Img}}" width="100"/></td>
+                                <td><img ng-src="{{item.Img}}" width="100" /></td>
                                 <td>{{item.Name}}</td>
                                 <td>{{item.Description}}</td>
-                                <td>{{item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
-                                <td>{{item.Status}}</td>
-                                <td>{{item.HomeFlag}}</td>
+                                <td>{{result |dateFilter:item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
                                 <td class="text-center">
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                </td>
+                                <td class="text-center">
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                                </td>
+                                <td class="text-center" style="width:8%">
                                     <ul class="icons-list action">
                                         <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
                                         <li class="text-danger-600"><a href="#"><i ng-click="deleteCategory(item.ID)" class="icon-trash btn-delete"></i></a></li>
