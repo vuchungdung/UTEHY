@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using UTEHY.Model.Dtos;
+using UTEHY.Model.Enums;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
 using UTEHY.WebApp.Common;
@@ -77,6 +78,12 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 }
             }
             return Json(null, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ChangeStatus(string id, PostStatus status)
+        {
+            var result =_postService.ChangeStatus(id, status);
+            _postService.Save();
+            return Json(new { result }, JsonRequestBehavior.AllowGet);
         }
     }
 }

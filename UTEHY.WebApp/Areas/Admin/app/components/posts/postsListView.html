@@ -28,7 +28,7 @@
     </div>
 </div>
 <!-- Main -->
-<div class="page-container" ng-controller="postsListController">
+<div class="page-container">
     <div class="row">
         <div class="panel panel-flat">
             <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
@@ -71,7 +71,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr dir-paginate="item in listPosts|itemsPerPage:pageSize" total-items="totalRecords">
+                            <tr>
                                 <th>
                                     <input type="checkbox" id="check" ng-click="selectAll()" />
                                 </th>
@@ -85,7 +85,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr role="row" class="odd" ng-repeat="item in listPosts">
+                            <tr dir-paginate="item in listPosts|itemsPerPage:pageSize" total-items="totalRecords">
                                 <td>
                                     <input type="checkbox" ng-model="item.checked" />
                                 </td>
@@ -94,21 +94,21 @@
                                 <td>{{item.Description}}</td>
                                 <td>{{result |dateFilter:item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
                                 <td class="text-center">
-                                    <label class="switch ">
-                                        <input type="checkbox" class="danger">
+                                    <label class="switch">
+                                        <input ng-change="changeStatus(item.ID,status)" type="checkbox" class="primary"  ng-model="status" ng-checked="item.Status==1">
                                         <span class="slider"></span>
                                     </label>                                
                                 </td>
                                 <td class="text-center">
-                                    <label class="switch ">
-                                        <input type="checkbox" class="danger">
+                                    <label class="switch">
+                                        <input type="checkbox" class="primary" ng-change="changeFlag(item.ID,homeFlag)" ng-model="homeFlag" ng-checked="item.HomeFlag == true">
                                         <span class="slider"></span>
                                     </label>
                                 </td>
                                 <td class="text-center" style="width:8%">
                                     <ul class="icons-list action">
-                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
-                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteCategory(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                        <li class="text-primary-600"><a ui-sref="posts_edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a><i ng-click="deletePost(item.ID)" class="icon-trash btn-delete"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>

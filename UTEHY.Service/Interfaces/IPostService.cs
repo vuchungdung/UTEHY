@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UTEHY.Model.Dtos;
+using UTEHY.Model.Enums;
 using UTEHY.Model.ViewModel;
 
 namespace UTEHY.Service.Interfaces
@@ -24,6 +25,9 @@ namespace UTEHY.Service.Interfaces
 
         PageResult<PostViewModel> GetAllPaging(string categoryid, string keyword, PageRequest request);
 
+        bool ChangeStatus(string id, PostStatus status);
+
+        bool ChangeFlag(string id, bool status);
         void Save();
     }
 }

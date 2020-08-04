@@ -51,6 +51,30 @@ namespace UTEHY.Service.Implementation
             }
         }
 
+        public bool ChangeFlag(string id, bool status)
+        {
+            var model = _postRepository.FindById(id);
+            if (model != null)
+            {
+                model.HomeFlag = status;
+                _postRepository.Update(model);
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangeStatus(string id, PostStatus status)
+        {
+            var model = _postRepository.FindById(id);
+            if(model!= null)
+            {
+                model.Status = (int)status;
+                _postRepository.Update(model);
+                return true;
+            }
+            return false;
+        }
+
         public string Delete(string id)
         {
             var model = _postRepository.FindById(id);
@@ -97,7 +121,7 @@ namespace UTEHY.Service.Implementation
             return result;
         }
 
-        public PageResult<PostViewModel> GetAllPaging(string categoryid, string keyword, PageRequest request)
+        public PageResult<PostViewModel> GetAllPaging(string keyword, string categoryid, PageRequest request)
         {
             var query = _postRepository.FindAll();
             if (!String.IsNullOrEmpty(keyword))
@@ -164,7 +188,21 @@ namespace UTEHY.Service.Implementation
 
         public string Update(PostViewModel postVm)
         {
-            throw new NotImplementedException();
+            var model = _postRepository.FindById(postVm.ID);
+            if(model != null)
+            {
+                model.Name = postVm.Name;
+                model.Alias = postVm.Alias;
+                model.CategoryId = postVm.CategoryId;
+                model.Description = postVm.Description;
+                model.Content = postVm.Content;
+                model.UpdatedDate = DateTime.Now;
+                model.UpdatedBy = postVm.UpdatedBy;
+                model.Img = postVm.Img;
+                model.MoreImgs = postVm.MoreImgs;
+            }
+            _postRepository.Update(model);
+            return postVm.Name;
         }
     }
 }

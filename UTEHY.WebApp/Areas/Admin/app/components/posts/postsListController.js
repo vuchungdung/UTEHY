@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('postsListController', postsListController);
 
-    postsListController.$inject = ['$scope', 'ajaxService','$filter', 'commonService', '$ngBootbox']
+    postsListController.$inject = ['$scope', 'ajaxService', '$filter', '$ngBootbox'];
 
-    function postsListController($scope,ajaxService,$filter,$ngBootbox) {
+    function postsListController($scope, ajaxService, $filter, $ngBootbox) {
         $scope.page = 1;
         $scope.keyword = '';
         $scope.groupid = '';
@@ -28,7 +28,6 @@
                 console.log(error);
             });
         };
-        $scope.getPagingPosts($scope.page);
         $scope.deletePost = function (id) {
             $ngBootbox.confirm('Bạn có muốn xóa dữ liệu này không?').then(function () {
                 var config = {
@@ -60,6 +59,8 @@
                         stack: { "dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25 }
                     });
                 });
+            }, function (error) {
+                console.log(error);
             });
         };
 
@@ -110,7 +111,7 @@
                             stack: { "dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25 }
                         });
                     }
-                    $scope.getPagingPosts($scope.curentPage);
+                    $scope.getPagingPosts($scope.currentPage);
                 }, function (error) {
                     new PNotify({
                         title: 'Hệ thống có lỗi không thể xóa được',
@@ -119,8 +120,41 @@
                         stack: { "dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25 }
                     });
                 });
+            }, function (error) {
+                console.log(error);
             });
-        };
+        }
+
+        $scope.searchPosts = function () {
+            $scope.getPagingPosts($scope.page);
+        }
+        $scope.getPagingPosts($scope.page);
+
+        $scope.changeStatus = function (id, status) {
+            if (typeof id != "undefined") {
+                var st = status == true ? 0 : 1;
+                var config = {
+                    id: id,
+                    status: st
+                }
+                ajaxService.post('/Admin/Post/ChangeStatus', config, function (result) {
+                    if (result.data.result == true) {
+                        new PNotify({
+                            text: 'Cập nhật thành công!',
+                            addclass: 'bg-success'
+                        });
+                    }
+                }, function (error) {
+                    new PNotify({
+                        text: 'Có lỗi xảy ra!',
+                        addclass: 'bg-danger'
+                    });
+                });
+            }
+            else {
+                console.log('Hello! bạn nhấm F12 nhằm mục đích gì đấy???');
+            }
+        }
     }
 
 })(angular.module('utehy.posts'));
