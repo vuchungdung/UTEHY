@@ -1,18 +1,18 @@
 ﻿<style>
-    .table>tbody>tr>td {
-        padding: 6px 20px;
-    }
-    .table>thead:first-child>tr:first-child>th {
+    .table > tbody > tr > td {
         padding: 8px 20px;
-        font-size:12px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
     }
 </style>
 <div class="page-header">
     <div class="page-header-content">
-        <div class="page-title" style="padding: 0px 36px 24px 0;">
+        <div class="page-title" style="padding: 10px;">
             <h4>
                 <i class="icon-arrow-left52 position-left"></i>
-                <span>Hệ thống - Danh mục</span>
+                <span>Hệ thống - Quản lý nội dung</span>
                 <small class="display-block" style="font-size:12px">Quản lý nội dung <i class="icon-arrow-right22"></i> Danh mục</small>
             </h4>
             <a class="heading-elements-toggle"><i class="icon-more"></i></a>
@@ -20,76 +20,92 @@
 
         <div class="heading-elements">
             <div class="heading-btn-group">
-                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thống kê</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thông báo</span></a>
                 <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
             </div>
         </div>
     </div>
 </div>
-<div class="panel panel-flat" ng-controller="categoriesController">
-    <div class="no-footer">
-        <div class="datatable-header">
-            <div class="dataTables_filter"><label><span>Tìm kiếm:</span> <input type="search" style="width:300px" ng-change="searchCategories()" class="" ng-model="keyword" placeholder="Nhập nội dung cần tìm..."></label></div>
-            <div class="dataTables_filter" style="padding-top:5px;margin-left:2%">
-                <button type="button" style="font-size:10px;" class="btn btn-success btn-sm legitRipple" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
-                <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm legitRipple" data-toggle="modal" data-target="#modal_warning" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+<!-- Main -->
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
             </div>
-            <div class="dataTables_length">
-                <label>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên danh mục:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchCategories()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">DANH SÁCH DANH MỤC</h6>
+                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
                     <span>Hiển thị:</span>
-                    <select>
+                    <select id="pageSize" ng-model="pageSize">
+                        <option value="5">5</option>
                         <option value="10">10</option>
-                        <option value="25">25</option>
+                        <option value="20">20</option>
                         <option value="50">50</option>
-                        <option value="100">100</option>
                     </select>
-                </label>
+                </div>
             </div>
-        </div>
-        <div class="datatable-scroll">
-            <table class="table datatable-basic dataTable no-footer">
-                <thead>
-                    <tr role="row">
-                        <th>
-                            <input type="checkbox" ng-click="selectAll()" />
-                        </th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:10%">THỨ TỰ</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">TÊN DANH MỤC</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:30%">DANH MỤC GỐC</th>
-                        <th class="sorting" tabindex="0" rowspan="1" colspan="1"style="width:20%">TIÊU ĐỀ SEO</th>
-                        <th style="width:10%">THAO TÁC</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr role="row" class="odd" ng-repeat="item in listCategories">
-                        <td>
-                            <input type="checkbox" ng-model="item.checked" />
-                        </td>
-                        <td style="padding-left:38px">{{item.DisplayOrder}}</td>
-                        <td>{{item.Name}}</td>
-                        <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
-                        <td>{{item.Alias}}</td>
-                        <td>
-                            <button type="button" data-toggle="modal" data-target="#modal_Edit" ng-click="getCategoryById(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:#0872DF;color:white">
-                                <i class="icon-pencil"></i>
-                            </button>
-                            <button type="button" ng-click="deleteCategory(item.ID)" style="width:36px;height:30px;border:none;outline:none;border-radius:5px;background-color:red;color:white">
-                                <i class="icon-bin2"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="datatable-footer">
-            <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Hiển thị 1 đến 10 của 10 dòng</div>
-            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                <a class="paginate_button previous disabled" data-dt-idx="0" tabindex="0">←</a>
-                <span><a class="paginate_button current" data-dt-idx="1" tabindex="0">1</a></span>
-                <a class="paginate_button next disabled" data-dt-idx="2" tabindex="0">→</a>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
+                                </th>
+                                <th class="text-center" style="width:10%">Thứ tự</th>
+                                <th style="width:30%">Tên danh mục</th>
+                                <th style="width:30%">Danh mục gốc</th>
+                                <th style="width:20%">Tiêu đề SEO</th>
+                                <th style="width:10%" class="text-center">Nghiệp vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="item in listCategories|itemsPerPage:pageSize" total-items="totalRecords">
+                                <td>
+                                    <input type="checkbox" ng-model="item.checked" />
+                                </td>
+                                <td class="text-center">{{item.DisplayOrder}}</td>
+                                <td>{{item.Name}}</td>
+                                <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
+                                <td>{{item.Alias}}</td>
+                                <td class="text-center">
+                                    <ul class="icons-list action">
+                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteCategory(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="getPagingCategories(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesAddView.html'"></div>
     <div ng-include="'/areas/admin/app/components/post_categories/post_categoriesEditView.html'"></div>
-</div>
+</div> 

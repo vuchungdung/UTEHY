@@ -1,6 +1,6 @@
 ﻿(function () {
     angular.module('utehy',
-        ['utehy.common','utehy.categories','utehy.teachers'])
+        ['utehy.common','utehy.categories','utehy.teachers','utehy.posts'])
         .config(config);
 
     config.$inject = ['$stateProvider'];

@@ -1,0 +1,126 @@
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 6px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 10px;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Quản lý nội dung</span>
+                <small class="display-block" style="font-size:12px">Quản lý nội dung <i class="icon-arrow-right22"></i> Bài đăng</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-bars-alt text-primary"></i><span>Thông báo</span></a>
+                <a href="#" class="btn btn-link btn-float has-text" style="font-size:10px"><i class="icon-calendar5 text-primary"></i> <span>Lịch hoạt động</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main -->
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên bài đăng:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchPosts()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm" ui-sref="posts_add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">DANH SÁCH BÀI ĐĂNG</h6>
+                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
+                    <label>
+                        <span>Hiển thị:</span>
+                        <select id="pageSize" ng-model="pageSize">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
+                                </th>
+                                <th>Hình ảnh</th>
+                                <th>Tên bài</th>
+                                <th>Mô tả</th>
+                                <th>Ngày viết</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Ghim</th>
+                                <th class="text-center">Nghiệp vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="item in listPosts|itemsPerPage:pageSize" total-items="totalRecords">
+                                <td>
+                                    <input type="checkbox" ng-model="item.checked" />
+                                </td>
+                                <td><img ng-src="{{item.Img}}" width="100" /></td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Description}}</td>
+                                <td>{{result |dateFilter:item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                                <td class="text-center">
+                                    <label class="switch">
+                                        <input ng-change="changeStatus(item.ID,status)" type="checkbox" class="primary"  ng-model="status" ng-checked="item.Status==1">
+                                        <span class="slider"></span>
+                                    </label>                                
+                                </td>
+                                <td class="text-center">
+                                    <label class="switch">
+                                        <input type="checkbox" class="primary" ng-change="changeFlag(item.ID,homeFlag)" ng-model="homeFlag" ng-checked="item.HomeFlag == true">
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
+                                <td class="text-center" style="width:8%">
+                                    <ul class="icons-list action">
+                                        <li class="text-primary-600"><a ui-sref="posts_edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a><i ng-click="deletePost(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="getPagingPosts(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

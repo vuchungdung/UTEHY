@@ -1,4 +1,4 @@
 ﻿
 (function () {
-    angular.module('utehy.common', ['ui.router','ngBootbox'])
+    angular.module('utehy.common', ['ui.router', 'ngBootbox', 'ngCkeditor', 'angularUtils.directives.dirPagination']);
 })();

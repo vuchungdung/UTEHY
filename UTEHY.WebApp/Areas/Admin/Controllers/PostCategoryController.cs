@@ -63,8 +63,15 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
                 try
                 {
                     var result = _postCategoryService.Add(postCategoryVm);
-                    _postCategoryService.Save();
-                    return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    if(result == true)
+                    {
+                        _postCategoryService.Save();
+                        return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(null, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 catch (Exception ex)
                 {
