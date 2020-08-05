@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UTEHY.Model.Dtos;
+using UTEHY.Model.Entities;
 using UTEHY.Model.ViewModel;
 
 namespace UTEHY.Service.Interfaces
@@ -20,7 +21,7 @@ namespace UTEHY.Service.Interfaces
         bool Add(UserViewModel userVm);
         bool Update(UserViewModel userVm);
 
-        int Login(LoginViewModel model);
+        User Login(LoginViewModel model);
 
         List<FunctionViewModel> GetMenuByUserPermission(string userId);
 

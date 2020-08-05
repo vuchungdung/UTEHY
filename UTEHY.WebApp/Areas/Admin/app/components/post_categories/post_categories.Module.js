@@ -8,7 +8,8 @@
     function config($stateProvider) {
         $stateProvider
             .state('post_categories', {
-                url:'/post_categories',
+                url: '/post_categories',
+                parent: 'base',
                 templateUrl: "/Areas/Admin/app/components/post_categories/post_categoriesListView.html",
                 controller: "categoriesController"
             })

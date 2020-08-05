@@ -10,15 +10,15 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            var session = (UserLogin)Session[UserCommon.USER_SESSION];
-            if (session == null)
-            {
-                filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Authen", action = "Login", Area = "Admin" }));
-            }
-            base.OnActionExecuting(filterContext);
-        }
+        //protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        //{
+        //    var session = (UserLogin)Session[UserCommon.USER_SESSION];
+        //    if (session == null)
+        //    {
+        //        filterContext.Result = new RedirectToRouteResult(new
+        //            RouteValueDictionary(new { controller = "Authen", action = "Login", Area = "Admin" }));
+        //    }
+        //    base.OnActionExecuting(filterContext);
+        //}
     }
 }

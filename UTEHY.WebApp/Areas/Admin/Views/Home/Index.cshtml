@@ -32,25 +32,7 @@
     <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
 </head>
 <body ng-app="utehy">
-    @RenderPage("_Header.cshtml")
-    @RenderPage("_Navbar.cshtml")
-    <div ui-view>
-        <div class="page-header">
-            <div class="page-header-content">
-                <div class="page-title">
-                    <h4>
-                        <i class="icon-arrow-left52 position-left"></i>
-                        <span>Chào mứng bạn đến với hệ thống!</span>
-                    </h4>
-                    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="page-container">
-
-        </div>
-    </div>
-    @RenderPage("_Footer.cshtml")
+    <div ui-view></div>
     <script src="~/Areas/Admin/app/shared/modules/utehy.common.js"></script>
 
     <script src="~/Areas/Admin/app/shared/services/commonService.js"></script>
@@ -72,7 +54,7 @@
     <script src="~/Areas/Admin/app/app.js"></script>
 
     <script src="~/Areas/Admin/app/components/navbars/navbarController.js"></script>
-
+    <script src="~/Areas/Admin/app/components/logins/loginsController.js"></script>
     <script src="~/Areas/Admin/app/components/homes/homeController.js"></script>
 
     <script src="~/Areas/Admin/app/components/post_categories/post_categoriesController.js"></script>

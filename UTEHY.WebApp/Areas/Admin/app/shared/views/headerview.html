@@ -1,7 +1,4 @@
-﻿@{
-    var user = (UTEHY.WebApp.Common.UserLogin)Session[UTEHY.WebApp.Common.UserCommon.USER_SESSION];
-}
-<div class="navbar navbar-inverse bg-indigo">
+﻿<div class="navbar navbar-inverse bg-indigo">
     <div class="navbar-header">
         <a class="navbar-brand" ui-sref="home" style="display:flex;justify-content:center;align-items:center;padding:0px;padding-left:24px;">
             <img src="~/Areas/Admin/Assets/images/download.png" style="width:38px;height:38px;" />
@@ -31,14 +28,14 @@
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="~/Areas/Admin/Assets/images/admin.png" alt="">
-                    <span>@user.Name</span>
+                    <span></span>
                     <i class="caret"></i>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="#"><i class="icon-user-plus"></i> Thông tin</a></li>
                     <li><a href="#"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
-                    <li><a href="/Admin/Authen/LogOut"><i class="icon-switch2"></i> Đăng xuất</a></li>
+                    <li><a ui-sref="login"><i class="icon-switch2"></i> Đăng xuất</a></li>
                 </ul>
             </li>
         </ul>
