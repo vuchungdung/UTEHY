@@ -21,7 +21,6 @@ namespace UTEHY.WebApp.App_Start
         {
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
-            ConfigAuthen(app);
         }
         private void ConfigAutofac(IAppBuilder app)
         {
@@ -32,7 +31,7 @@ namespace UTEHY.WebApp.App_Start
             // register data infrastructure
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
-
+            builder.RegisterType<AuthenService>().As<IAuthenService>().InstancePerRequest();
             // register repositories
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
 

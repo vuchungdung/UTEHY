@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Khoa Công Nghệ Thông Tin</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/colors.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/template-admin/css/site.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Assets/template-admin/images/logo-web.ico" type="image/png">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="~/Assets/template-admin/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Assets/template-admin/js/core/libraries/bootstrap.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/Assets/template-admin/js/plugins/notifications/pnotify.min.js"></script>
+    <!-- /theme JS files -->
+    <script src="~/Assets/angular/angular.js"></script>
+    <script src="~/Assets/libs/dirPagination.js"></script>
+    <script src="~/Assets/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/Assets/bootbox/bootbox.js"></script>
+    <script src="~/Assets/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/ngBootbox/ngBootbox.js"></script>
+    <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
+    <script src="~/Assets/angular-local-storage/dist/angular-local-storage.js"></script>
+</head>
+<body ng-app="utehy" ng-controller="rootController">
+    <div ui-view></div>
+    <script src="~/app/shared/modules/utehy.common.js"></script>
+
+    <script src="~/app/shared/services/commonService.js"></script>
+
+    <script src="~/app/shared/services/authdata.js"></script>
+    <script src="~/app/shared/services/authenticationservice.js"></script>
+
+    <script src="~/app/shared/services/ajaxservice.js"></script>
+    <script src="~/app/shared/filters/parentIdFilter.js"></script>
+    <script src="~/app/shared/filters/dateFilter.js"></script>
+    <script src="~/app/shared/services/loginservice.js"></script>
+
+    <script src="~/app/components/post_categories/post_categories.Module.js"></script>
+
+    <script src="~/app/components/teachers/teachers.Module.js"></script>
+
+    <script src="~/app/components/posts/posts.Module.js"></script>
+
+    <script src="~/app/app.js"></script>
+
+    <script src="~/app/components/homes/rootController.js"></script>
+    <script src="~/app/components/navbars/navbarController.js"></script>
+    <script src="~/app/components/logins/loginsController.js"></script>
+    <script src="~/app/components/homes/homeController.js"></script>
+
+    <script src="~/app/components/post_categories/post_categoriesController.js"></script>
+
+    <script src="~/app/components/teachers/teachersAddController.js"></script>
+    <script src="~/app/components/teachers/teachersEditController.js"></script>
+    <script src="~/app/components/teachers/teachersListController.js"></script>
+
+    <script src="~/app/components/posts/postsAddController.js"></script>
+    <script src="~/app/components/posts/postsEditController.js"></script>
+    <script src="~/app/components/posts/postsListController.js"></script>
+
+</body>
+</html>

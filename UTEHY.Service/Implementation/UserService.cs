@@ -76,6 +76,19 @@ namespace UTEHY.Service.Implementation
             
         }
 
+        public User FindUser(LoginViewModel model)
+        {
+            var user = _userRepository.FindSingle(x => x.UserName == model.UserName && x.Password == model.Password);
+            if(user != null)
+            {
+                return user;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public List<UserViewModel> GetAll()
         {
             var result = _userRepository.FindAll().Select(x => new UserViewModel()

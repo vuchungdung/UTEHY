@@ -13,12 +13,6 @@ namespace UTEHY.WebApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-               name: "Đăng nhập",
-               url: "dang-nhap.html",
-               defaults: new { controller = "Authen", action = "Login", id = UrlParameter.Optional },
-               namespaces: new string[] { "UTEHY.WebApp.Areas.Admin.Controllers" }
-              );
-            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
