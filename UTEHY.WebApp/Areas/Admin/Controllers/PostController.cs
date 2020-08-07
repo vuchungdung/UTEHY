@@ -42,7 +42,7 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
             {
                 try
                 {
-                    var user = (UserLogin)Session[UserCommon.USER_SESSION];
+                    var user = HttpContext.User.Identity;
                     postVm.CreatedBy = user.Name;
                     var result = _postService.Add(postVm);
                     if(result == true)

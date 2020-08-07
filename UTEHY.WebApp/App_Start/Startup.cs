@@ -1,72 +1,51 @@
 ﻿using System;
-using System.Security.Claims;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+using Autofac;
+using Autofac.Integration.Mvc;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.OAuth;
 using Owin;
-using UTEHY.Model.Entities;
-using UTEHY.Model.ViewModel;
-using static UTEHY.WebApp.App_Start.Startup;
+using UTEHY.Infrastructure.Implementation;
+using UTEHY.Infrastructure.Interfaces;
+using UTEHY.Service.Implementation;
+using UTEHY.Service.Interfaces;
 
 [assembly: OwinStartup(typeof(UTEHY.WebApp.App_Start.Startup))]
 
 namespace UTEHY.WebApp.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
-            {
-                TokenEndpointPath = new PathString("/oauth/token"),
-                Provider = new AuthorizationServerProvider(),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                AllowInsecureHttp = true,
-
-            });
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
+            ConfigAutofac(app);
+            ConfigAuthen(app);
         }
-        public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
+        private void ConfigAutofac(IAppBuilder app)
         {
-            public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
-            {
-                context.Validated();
-            }
-            public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
-            {
-                var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+            var builder = new ContainerBuilder();
+            // register controllers
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+          
+            // register data infrastructure
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+            builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
-                if (allowedOrigin == null) allowedOrigin = "*";
+            // register repositories
+            builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
 
-                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
-                FITEntities _db = new FITEntities();
-                User user;
-                try
-                {
-                    user = await _db.Users.FindAsync(context.UserName,context.Password);
-                }
-                catch
-                {
-                    context.SetError("server_error");
-                    context.Rejected();
-                    return;
-                }
-                if (user != null)
-                {
-                    ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
-                    identity.AddClaim(new Claim(ClaimTypes.Name, user.Name));
-                    identity.AddClaim(new Claim(ClaimTypes.UserData, user.UserName));
-                    identity.AddClaim(new Claim(ClaimTypes.Role, user.GroupId));
-                    identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
-                    identity.AddClaim(new Claim(ClaimTypes.Sid, user.UserId));
-                    context.Validated(identity);
-                }
-                else
-                {
-                    context.SetError("invalid_grant", "Tài khoản hoặc mật khẩu không đúng.'");
-                    context.Rejected();
-                }
-            }
+            // register services
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
+            builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
+            builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();
+            builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
+            builder.RegisterType<PostService>().As<IPostService>().InstancePerRequest();
+
+            // build and setup resolver
+            IContainer container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

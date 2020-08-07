@@ -1,10 +1,11 @@
 ﻿(function (app) {
     app.controller('navbarController', navbarController);
-    navbarController.$inject = ['$scope', '$http']
-    function navbarController($scope, $http) {
+    navbarController.$inject = ['$scope', '$http','authData']
+    function navbarController($scope, $http, authData) {
         var result = $http({
             method: "GET",
             url: "/User/GetMenuByUserPermission",
+            data: authData.userId,
             dataType: 'json',
             headers: { "Content-Type": "application/json" }
         });

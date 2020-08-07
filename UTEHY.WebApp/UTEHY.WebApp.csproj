@@ -87,6 +87,9 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -164,7 +167,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
@@ -181,14 +184,12 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Authorization\AuthorizationAttribute.cs" />
     <Compile Include="Common\CommonHelper.cs" />
-    <Compile Include="Common\UserCommon.cs" />
-    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\app\app.js" />
@@ -2359,6 +2360,12 @@
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\echarts.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\echarts\theme\limitless.js" />
     <Content Include="Areas\Admin\Assets\js\plugins\visualization\sparkline.min.js" />
+    <Content Include="Assets\angular-local-storage\demo\demo-app.js" />
+    <Content Include="Assets\angular-local-storage\demo\demo-style.css" />
+    <Content Include="Assets\angular-local-storage\demo\demo.html" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.js" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.min.js" />
+    <Content Include="Assets\angular-local-storage\index.js" />
     <Content Include="Assets\angular-ui-router\jest.config.js" />
     <Content Include="Assets\angular-ui-router\karma.conf.js" />
     <Content Include="Assets\angular-ui-router\release\angular-ui-router.js" />
@@ -6034,6 +6041,18 @@
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\FORMATTING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\pickers\pickadate\translations\NAMING.md" />
     <Content Include="Areas\Admin\Assets\js\plugins\uploaders\plupload\files\Moxie.xap" />
+    <Content Include="Assets\angular-local-storage\.bower.json" />
+    <Content Include="Assets\angular-local-storage\.bowerrc" />
+    <Content Include="Assets\angular-local-storage\.editorconfig" />
+    <Content Include="Assets\angular-local-storage\.gitattributes" />
+    <Content Include="Assets\angular-local-storage\.gitignore" />
+    <Content Include="Assets\angular-local-storage\.travis.yml" />
+    <Content Include="Assets\angular-local-storage\bower.json" />
+    <Content Include="Assets\angular-local-storage\CHANGELOG.md" />
+    <Content Include="Assets\angular-local-storage\dist\angular-local-storage.min.js.map" />
+    <Content Include="Assets\angular-local-storage\LICENSE" />
+    <Content Include="Assets\angular-local-storage\package.json" />
+    <Content Include="Assets\angular-local-storage\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

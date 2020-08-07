@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authenticated\OAuthen.cs" />
     <Compile Include="Implementation\DbFactory.cs" />
     <Compile Include="Implementation\Disposable.cs" />
     <Compile Include="Implementation\RepositoryBase.cs" />

@@ -21,8 +21,6 @@ namespace UTEHY.Service.Interfaces
         bool Add(UserViewModel userVm);
         bool Update(UserViewModel userVm);
 
-        User Login(LoginViewModel model);
-
         List<FunctionViewModel> GetMenuByUserPermission(string userId);
 
         bool Delete(string id);

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Security.Claims;
+using System.Security.Principal;
+using System.Threading;
 using System.Web.Mvc;
 using UTEHY.Model.Dtos;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
-using UTEHY.WebApp.Common;
 
 namespace UTEHY.WebApp.Areas.Admin.Controllers
 {
@@ -24,11 +22,11 @@ namespace UTEHY.WebApp.Areas.Admin.Controllers
         }
         public JsonResult GetMenuByUserPermission()
         {
-            var userSession = (UserLogin)Session[UserCommon.USER_SESSION];
-            var result = _userService.GetMenuByUserPermission(userSession.UserId);
-            if(result!= null)
+            var identity = (ClaimsIdentity)User.Identity;
+            var result = _userService.GetMenuByUserPermission(identity.FindFirst(ClaimTypes.Sid).ToString());
+            if (result != null)
             {
-                return Json(new { result }, JsonRequestBehavior.AllowGet );
+                return Json(new { result }, JsonRequestBehavior.AllowGet);
             }
             else
             {

@@ -14,22 +14,7 @@ namespace UTEHY.WebApp.Authorization
         public string CommandId { set; get; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            var session = (UserLogin)HttpContext.Current.Session[UserCommon.USER_SESSION];
-            if (session == null)
-            {
-                return false;
-            }
-
-            List<PermissionViewModel> listPermission = this.GetAllPermissionByUserName(session.UserName);
-
-            if (listPermission.Single(x=>x.CommandId==CommandId && x.FunctionId == FunctionId).GroupId == session.GroupId)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
@@ -38,10 +23,9 @@ namespace UTEHY.WebApp.Authorization
                 ViewName = "~/Areas/Admin/Views/Shared/Error.cshtml"
             };
         }
-        private List<PermissionViewModel> GetAllPermissionByUserName(string userName)
-        {
-            var listPermission = (List<PermissionViewModel>)HttpContext.Current.Session[UserCommon.PERMISSION_SESSION];
-            return listPermission;
-        }
+        //private List<PermissionViewModel> GetAllPermissionByUserName(string userName)
+        //{
+            
+        //}
     }
 }

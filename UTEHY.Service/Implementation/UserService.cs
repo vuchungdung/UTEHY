@@ -210,27 +210,6 @@ namespace UTEHY.Service.Implementation
             return model;
         }
 
-        public User Login(LoginViewModel model)
-        {
-            var username = _userRepository.FindAll(x => x.UserName == model.UserName);
-            if(username != null)
-            {
-                var userpass = username.Where(x => x.Password == model.Password).SingleOrDefault();
-                if (userpass != null)
-                {
-                    return userpass;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         public void Save()
         {
             _unitOfWork.Commit();
