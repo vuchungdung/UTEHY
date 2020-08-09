@@ -10,7 +10,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class PostViewModel
     {
-        public string ID { get; set; }
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
         public string CategoryId { get; set; }

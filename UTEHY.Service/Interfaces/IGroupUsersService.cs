@@ -11,10 +11,10 @@ namespace UTEHY.Service.Interfaces
 {
     public interface IGroupUsersService
     {
-        bool Add(GroupUserViewModel groupUserVm);
-        bool Update(GroupUserViewModel groupUserVm);
-        bool Delete(string groupId);
-        List<GroupUserViewModel> GetAll();
-        void Save();
+        //bool Add(GroupUserViewModel groupUserVm);
+        //bool Update(GroupUserViewModel groupUserVm);
+        //bool Delete(string groupId);
+        //List<GroupUserViewModel> GetAll();
+        //void Save();
     }
 }

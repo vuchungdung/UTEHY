@@ -121,7 +121,7 @@ namespace UTEHY.WebApp.Controllers
             }
             return Json(null, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult DeleteMulti(string[] listId)
+        public JsonResult DeleteMulti(Guid[] listId)
         {
             var result = _postCategoryService.DeleteMulti(listId);
             if(result > 0)

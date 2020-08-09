@@ -15,9 +15,9 @@ namespace UTEHY.Service.Implementation
 {
     public class PostService : IPostService
     {
-        private IRepositoryBase<Post, string> _postRepository;
+        private IRepositoryBase<Post, Guid> _postRepository;
         private IUnitOfWork _unitOfWork;
-        public PostService(IRepositoryBase<Post,string> postRepository, IUnitOfWork unitOfWork)
+        public PostService(IRepositoryBase<Post,Guid> postRepository, IUnitOfWork unitOfWork)
         {
             _postRepository = postRepository;
             _unitOfWork = unitOfWork;
@@ -29,7 +29,7 @@ namespace UTEHY.Service.Implementation
             {
                 var model = new Post()
                 {
-                    PostId = Guid.NewGuid().ToString(),
+                    PostId = Guid.NewGuid(),
                     Name = postVm.Name,
                     Alias = postVm.Alias,
                     CategoryId = postVm.CategoryId,
@@ -53,7 +53,7 @@ namespace UTEHY.Service.Implementation
 
         public bool ChangeFlag(string id, bool status)
         {
-            var model = _postRepository.FindById(id);
+            var model = _postRepository.FindById(Guid.Parse(id));
             if (model != null)
             {
                 model.HomeFlag = status;
@@ -65,10 +65,10 @@ namespace UTEHY.Service.Implementation
 
         public bool ChangeStatus(string id, PostStatus status)
         {
-            var model = _postRepository.FindById(id);
+            var model = _postRepository.FindById(Guid.Parse(id));
             if(model!= null)
             {
-                model.Status = (int)status;
+                model.Status = status;
                 _postRepository.Update(model);
                 return true;
             }
@@ -77,7 +77,7 @@ namespace UTEHY.Service.Implementation
 
         public string Delete(string id)
         {
-            var model = _postRepository.FindById(id);
+            var model = _postRepository.FindById(Guid.Parse(id));
             if(model != null)
             {
                 string name = model.Name;
@@ -91,7 +91,7 @@ namespace UTEHY.Service.Implementation
             
         }
 
-        public int DeleteMulti(string[] id)
+        public int DeleteMulti(Guid[] id)
         {
             for(int i = 0; i< id.Length; i++)
             {
@@ -162,7 +162,7 @@ namespace UTEHY.Service.Implementation
 
         public PostViewModel GetPostById(string id)
         {
-            var model = _postRepository.FindById(id);
+            var model = _postRepository.FindById(Guid.Parse(id));
             var result = new PostViewModel()
             {
                 ID = model.PostId,

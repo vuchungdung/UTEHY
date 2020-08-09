@@ -10,11 +10,11 @@ namespace UTEHY.Infrastructure.Implementation
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        private FITEntities dbContext;
+        private FITDbContext dbContext;
 
-        public FITEntities Init()
+        public FITDbContext Init()
         {
-            return dbContext ?? (dbContext = new FITEntities());
+            return dbContext ?? (dbContext = new FITDbContext());
         }
 
         protected override void DisposeCore()

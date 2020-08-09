@@ -11,14 +11,14 @@ namespace UTEHY.Infrastructure.Implementation
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
-        private FITEntities dbContext;
+        private FITDbContext dbContext;
 
         public UnitOfWork(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
 
-        public FITEntities DbContext
+        public FITDbContext DbContext
         {
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }

@@ -8,6 +8,7 @@ using Microsoft.Owin;
 using Owin;
 using UTEHY.Infrastructure.Implementation;
 using UTEHY.Infrastructure.Interfaces;
+using UTEHY.Model.Entities;
 using UTEHY.Service.Implementation;
 using UTEHY.Service.Interfaces;
 
@@ -21,6 +22,7 @@ namespace UTEHY.WebApp.App_Start
         {
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
+            //ConfigureAuth(app);
         }
         private void ConfigAutofac(IAppBuilder app)
         {
@@ -31,7 +33,9 @@ namespace UTEHY.WebApp.App_Start
             // register data infrastructure
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
-            builder.RegisterType<AuthenService>().As<IAuthenService>().InstancePerRequest();
+
+            builder.RegisterType<FITDbContext>().AsSelf().InstancePerRequest();
+
             // register repositories
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
 

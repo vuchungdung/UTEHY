@@ -9,12 +9,12 @@ namespace UTEHY.Model.ViewModel
 {
     public class PostCategoryViewModel
     {
-        public string ID { get; set; }
+        public Guid ID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Alias { get; set; }
-        public string ParentId { get; set; }
+        public Guid ParentId { get; set; }
         [Required]
         public int? DisplayOrder { get; set; }
     }

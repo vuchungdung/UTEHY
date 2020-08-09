@@ -49,7 +49,7 @@ namespace UTEHY.Service.Implementation
             {
                 FunctionId = x.FunctionId,
                 CommandId = x.CommandId,
-                GroupId = x.GroupId
+                RoleId = x.RoleId
             });
             return result.ToList();
         }

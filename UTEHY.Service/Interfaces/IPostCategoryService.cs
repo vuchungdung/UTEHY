@@ -18,7 +18,7 @@ namespace UTEHY.Service.Interfaces
 
         PostCategoryViewModel GetSingleById(string id);
 
-        int DeleteMulti(string[] listId);
+        int DeleteMulti(Guid[] listId);
         void Save();
     }
 }

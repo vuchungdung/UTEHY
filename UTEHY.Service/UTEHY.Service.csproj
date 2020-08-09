@@ -82,7 +82,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\AuthenService.cs" />
     <Compile Include="Implementation\CommandService.cs" />
     <Compile Include="Implementation\FunctionService.cs" />
     <Compile Include="Implementation\GroupUsersService.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="Implementation\PostCategoryService.cs" />
     <Compile Include="Implementation\PostService.cs" />
     <Compile Include="Implementation\UserService.cs" />
-    <Compile Include="Interfaces\IAuthenService.cs" />
     <Compile Include="Interfaces\ICommandService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IFooterService.cs" />
