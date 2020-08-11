@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('postsListController', postsListController);
 
-    postsListController.$inject = ['$scope', 'ajaxService', '$filter', '$ngBootbox'];
+    postsListController.$inject = ['$scope', 'apiService', '$filter', '$ngBootbox'];
 
-    function postsListController($scope, ajaxService, $filter, $ngBootbox) {
+    function postsListController($scope, apiService, $filter, $ngBootbox) {
         $scope.page = 1;
         $scope.keyword = '';
         $scope.groupid = '';
@@ -19,7 +19,7 @@
                     groupId: $scope.groupid
                 }
             }
-            ajaxService.get('/Post/GetAllPaging', config, function (result) {
+            apiService.get('/Post/GetAllPaging', config, function (result) {
                 if (result.data.result != null) {
                     $scope.listPosts = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;
@@ -33,7 +33,7 @@
                 var config = {
                     postId: id
                 }
-                ajaxService.post('/Post/DeletePost', config, function (result) {
+                apiService.post('/Post/DeletePost', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công',
@@ -102,7 +102,7 @@
                 var config = {
                     listId: listId
                 }
-                ajaxService.post('/Post/DeleteMulti', config, function (result) {
+                apiService.del('/Post/DeleteMulti', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công ' + result.data.result + ' bản ghi',
@@ -137,7 +137,7 @@
                     id: id,
                     status: st
                 }
-                ajaxService.post('/Post/ChangeStatus', config, function (result) {
+                apiService.put('/Post/ChangeStatus', config, function (result) {
                     if (result.data.result == true) {
                         new PNotify({
                             text: 'Cập nhật thành công!',

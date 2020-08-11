@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Model.Entities
 {
-    public class Command
+    public class CommandInFunction
     {
         [Key]
-        [Column(TypeName = "NVARCHAR")]
+        [Column(Order =1)]
         [StringLength(128)]
         public string CommandId { get; set; }
-        [Column(TypeName = "NVARCHAR")]
-        [StringLength(100)]
-        [Index(IsUnique = true)]
-        public string Name { get; set; }
-
+        [Key]
+        [Column(Order =2)]
+        [StringLength(128)]
+        public string FunctionId { get; set; }
     }
 }

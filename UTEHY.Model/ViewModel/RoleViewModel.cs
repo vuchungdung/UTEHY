@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Model.ViewModel
 {
-    public class CommandViewModel
+    public class RoleViewModel
     {
-        public string CommandId { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public string Discriminator { get; set; }
     }
 }

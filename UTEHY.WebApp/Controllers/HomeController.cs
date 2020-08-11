@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace UTEHY.WebApp.Controllers
 {
-    public class StatisticController : Controller
+    public class HomeController : Controller
     {
-        // GET: Admin/StatisticComment
+        // GET: Home
         public ActionResult Index()
         {
             return View();

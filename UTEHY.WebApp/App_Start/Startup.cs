@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using UTEHY.Infrastructure.Implementation;
 using UTEHY.Infrastructure.Interfaces;
@@ -22,19 +28,29 @@ namespace UTEHY.WebApp.App_Start
         {
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             ConfigAutofac(app);
-            //ConfigureAuth(app);
+            ConfiguraAuth(app);
         }
         private void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
             // register controllers
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-          
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); //Register WebApi Controllers
+
             // register data infrastructure
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
-
             builder.RegisterType<FITDbContext>().AsSelf().InstancePerRequest();
+
+            //Asp.net Identity
+            builder.RegisterType<UserManager<ApplicationUser>>().As<UserManager<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<RoleManager<ApplicationRole>>().As<RoleManager<ApplicationRole>>().InstancePerRequest();
+
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // register repositories
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
@@ -46,9 +62,12 @@ namespace UTEHY.WebApp.App_Start
             builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
             builder.RegisterType<PostService>().As<IPostService>().InstancePerRequest();
 
+
             // build and setup resolver
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
+
         }
     }
 }

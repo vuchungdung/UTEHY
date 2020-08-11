@@ -1,14 +1,8 @@
 ﻿(function (app) {
     app.controller('navbarController', navbarController);
-    navbarController.$inject = ['$scope', '$http','authData']
-    function navbarController($scope, $http, authData) {
-        var result = $http({
-            method: "GET",
-            url: "/User/GetMenuByUserPermission",
-            dataType: 'json',
-            headers: { "Content-Type": "application/json" }
-        });
-        result.then(function (respone) {
+    navbarController.$inject = ['$scope', 'apiService'];
+    function navbarController($scope, apiService) {
+        apiService.get('/api/userapi/getmenu', null, function (respone) {
             const map = {};
             $scope.functions = [];
             for (let i = 0; i < respone.data.result.length; i++) {
@@ -23,6 +17,8 @@
                 }
             }
             console.log($scope.functions);
-        });
+        }, function (error) {
+
+        })        
     }
 })(angular.module('utehy'));

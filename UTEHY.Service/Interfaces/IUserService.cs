@@ -11,22 +11,18 @@ namespace UTEHY.Service.Interfaces
 {
     public interface IUserService
     {
-        //List<UserViewModel> GetAll();
+        UserViewModel GetUserById(string id);
+        UserViewModel GetUserByUserName(string username);
 
-        //UserViewModel GetUserById(string id);
-        //UserViewModel GetUserByUserName(string username);
+        PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string roleId);
 
-        //PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string groupId);
+        bool Add(UserViewModel userVm);
+        bool Update(UserViewModel userVm);
 
-        //bool Add(UserViewModel userVm);
-        //bool Update(UserViewModel userVm);
+        List<FunctionViewModel> GetMenuByUserPermission(string userId);
 
-        //User FindUser(LoginViewModel model); 
-
-        //List<FunctionViewModel> GetMenuByUserPermission(string userId);
-
-        //bool Delete(string id);
-        //void Save();
+        bool Delete(string id);
+        void Save();
 
     }
 }

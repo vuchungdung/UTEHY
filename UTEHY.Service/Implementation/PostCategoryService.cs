@@ -13,10 +13,10 @@ namespace UTEHY.Service.Implementation
 {
     public class PostCategoryService : IPostCategoryService
     {
-        private IRepositoryBase<PostCategory, Guid> _postCategoryRepository;
+        private IRepositoryBase<PostCategory, string> _postCategoryRepository;
         private IUnitOfWork _unitOfWork;
 
-        public PostCategoryService(IRepositoryBase<PostCategory, Guid> postCategoryRepository, IUnitOfWork unitOfWork)
+        public PostCategoryService(IRepositoryBase<PostCategory, string> postCategoryRepository, IUnitOfWork unitOfWork)
         {
             _postCategoryRepository = postCategoryRepository;
             _unitOfWork = unitOfWork;
@@ -28,7 +28,7 @@ namespace UTEHY.Service.Implementation
             {
                 var model = new PostCategory()
                 {
-                    CategoryId = Guid.NewGuid(),
+                    CategoryId = Guid.NewGuid().ToString(),
                     Name = postCategoryVm.Name,
                     ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
@@ -45,7 +45,7 @@ namespace UTEHY.Service.Implementation
 
         public string Delete(string id)
         {
-            var model = _postCategoryRepository.FindById(Guid.Parse(id));
+            var model = _postCategoryRepository.FindById(id);
             if(model != null)
             {
                 var result = model.Name;
@@ -58,7 +58,7 @@ namespace UTEHY.Service.Implementation
             }
         }
 
-        public int DeleteMulti(Guid[] listId)
+        public int DeleteMulti(string[] listId)
         {
             for(int i = 0; i < listId.Length; i++)
             {
@@ -82,7 +82,7 @@ namespace UTEHY.Service.Implementation
 
         public PostCategoryViewModel GetSingleById(string id)
         {
-            var model = _postCategoryRepository.FindById(Guid.Parse(id));
+            var model = _postCategoryRepository.FindById(id);
             var result = new PostCategoryViewModel()
             {
                 ID = model.CategoryId,

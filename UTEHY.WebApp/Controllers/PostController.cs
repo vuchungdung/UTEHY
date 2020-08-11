@@ -24,9 +24,9 @@ namespace UTEHY.WebApp.Controllers
         {
             return View();
         }
-        public JsonResult GetAllPaging(string keyword, PageRequest request, string groupId)
+        public JsonResult GetAllPaging(string keyword, string categoryId, PageRequest request)
         {
-            var result = _postService.GetAllPaging(keyword, groupId, request);
+            var result = _postService.GetAllPaging(keyword,categoryId,request);
             if (result != null)
             {
                 return Json(new { result }, JsonRequestBehavior.AllowGet);

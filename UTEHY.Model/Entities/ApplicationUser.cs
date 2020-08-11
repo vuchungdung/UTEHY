@@ -21,15 +21,11 @@ namespace UTEHY.Model.Entities
 
         public DateTime? BirthDay { get; set; }
 
-        public Guid RoleId { get; set; }
-
         public string Img { get; set; }
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
         }
-        [ForeignKey("RoleId")]
-        public virtual ApplicationRole ApplicationRole { get; set; }
     }
 }

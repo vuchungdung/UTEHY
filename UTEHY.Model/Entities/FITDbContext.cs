@@ -25,8 +25,9 @@ namespace UTEHY.Model.Entities
         public DbSet<Teacher> Teachers { set; get; }
         public DbSet<Command> Commands { set; get; }
 
+        public DbSet<CommandInFunction> CommandInFunctions { set; get; }
+
         public DbSet<ApplicationRole> ApplicationRoles { set; get; }
-        public DbSet<ApplicationUser> ApplicationUsers { set; get; }
         public static FITDbContext Create()
         {
             return new FITDbContext();
@@ -34,11 +35,22 @@ namespace UTEHY.Model.Entities
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("ApplicationUserRoles");
-            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("ApplicationUserLogins");
-            builder.Entity<IdentityRole>().ToTable("ApplicationRoles");
-            builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
-            builder.Entity<IdentityUser>().ToTable("ApplicationUsers");
+            builder.Entity<IdentityUserRole>()
+                .HasKey(x => new { x.UserId,x.RoleId})
+                .ToTable("ApplicationUserRoles");
+
+            builder.Entity<IdentityUserLogin>()
+                .HasKey(i => new { i.LoginProvider, i.ProviderKey,i.UserId })
+                .ToTable("ApplicationUserLogins");
+
+            builder.Entity<IdentityRole>()
+                .ToTable("ApplicationRoles");
+
+            builder.Entity<IdentityUserClaim>()
+                .HasKey(i => i.Id)
+                .ToTable("ApplicationUserClaims");
         }
     }
 }
+
+    

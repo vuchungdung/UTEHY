@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace UTEHY.WebApp.Controllers
 {
-    public class GroupUserController : Controller
+    public class FooterController : Controller
     {
-        // GET: Admin/GroupUser
+        // GET: Footer
         public ActionResult Index()
         {
             return View();

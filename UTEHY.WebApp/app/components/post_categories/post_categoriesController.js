@@ -1,14 +1,14 @@
 ﻿(function (app) {
     app.controller('categoriesController', categoriesController);
 
-    categoriesController.$inject = ['$scope', 'ajaxService','$filter', 'commonService','$ngBootbox'];
+    categoriesController.$inject = ['$scope', 'apiService','$filter', 'commonService','$ngBootbox'];
 
-    function categoriesController($scope, ajaxService, $filter, commonService, $ngBootbox) {
+    function categoriesController($scope, apiService, $filter, commonService, $ngBootbox) {
         $(window).load(function () {
             $('#pageSize').val('10');
         });
         $scope.getCategories = function () {
-            ajaxService.get('/PostCategory/GetAll', null, function (result) {
+            apiService.get('/PostCategory/GetAll', null, function (result) {
                 if (result) {
                     $scope.dropdownCategory = result.data.result;
                 }
@@ -24,7 +24,7 @@
                     id: id
                 }
             }
-            ajaxService.get('/PostCategory/GetCategoryById', config, function (result) {
+            apiService.get('/PostCategory/GetCategoryById', config, function (result) {
                 if (result) {
                     $scope.categorybyid = result.data.result;
                 }
@@ -48,7 +48,7 @@
                     pageIndex: page
                 }
             }
-            ajaxService.get('/PostCategory/GetAllPaging', config, function (result) {
+            apiService.get('/PostCategory/GetAllPaging', config, function (result) {
                 if (result) {
                     $scope.listCategories = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;
@@ -72,7 +72,7 @@
         };
 
         $scope.addCategory = function () {
-            ajaxService.post('/PostCategory/AddCategory', $scope.category, function (result) {
+            apiService.post('/PostCategory/AddCategory', $scope.category, function (result) {
                 if (result.data.result == true) {
                     new PNotify({
                         text: 'Thêm danh mục thành công!',
@@ -125,7 +125,7 @@
         }, true);
 
         $scope.editCategory = function () {
-            ajaxService.post('/PostCategory/UpdateCategory', $scope.categorybyid, function (result) {
+            apiService.put('/PostCategory/UpdateCategory', $scope.categorybyid, function (result) {
                 if (result.data.result != null) {
                     new PNotify({
                         text: 'Cập nhật danh mục thành công!',
@@ -154,7 +154,7 @@
                 var config = {
                     categoryId: id
                 }
-                ajaxService.post('/PostCategory/DeleteCategory', config, function (result) {
+                apiService.del('/PostCategory/DeleteCategory', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công',
@@ -186,7 +186,7 @@
                 var config = {
                     listId: listId
                 }
-                ajaxService.post('/PostCategory/DeleteMulti', config, function (result) {
+                apiService.del('/PostCategory/DeleteMulti', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công ' + result.data.result + ' bản ghi',

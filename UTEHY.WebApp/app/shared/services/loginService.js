@@ -1,20 +1,19 @@
 ﻿(function (app) {
     'use strict';
-    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'ajaxService',
-        function ($http, $q, authenticationService, authData, ajaxService) {
+    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', 'apiService',
+        function ($http, $q, authenticationService, authData, apiService) {
             var userInfo;
             var deferred;
 
             this.login = function (userName, password) {
                 deferred = $q.defer();
-                var data = {
-                    UserName: userName,
-                    Password: password
-                }
-                $http.post('/Authen/Login', data)
-                    .then(function (response) {
+                var data = "grant_type=password&username=" + userName + "&password=" + password;
+                $http.post('/oauth/token', data, {
+                    headers:
+                        { 'Content-Type': 'application/x-www-form-urlencoded' }
+                }).then(function (response) {
                     userInfo = {
-                        accessToken: response.data,
+                        accessToken: response.data.access_token,
                         userName: userName
                     };
                     authenticationService.setTokenInfo(userInfo);
@@ -23,20 +22,21 @@
                     authData.authenticationData.accessToken = userInfo.accessToken;
 
                     deferred.resolve(null);
-                    }, function (err, status) {
-                        authData.authenticationData.IsAuthenticated = false;
-                        authData.authenticationData.userName = "";
-                        deferred.resolve(err);
-                    })
-                    return deferred.promise;
+                }, function (err, status) {
+                    authData.authenticationData.IsAuthenticated = false;
+                    authData.authenticationData.userName = "";
+                    deferred.resolve(err);
+                })
+                return deferred.promise;
             }
 
             this.logOut = function () {
-                ajaxService.post('/Authen/LogOut', null, function (response) {
+                apiService.post('/authen/logout', null, function (response) {
                     authenticationService.removeToken();
                     authData.authenticationData.IsAuthenticated = false;
                     authData.authenticationData.userName = "";
                     authData.authenticationData.accessToken = "";
+
                 }, null);
 
             }

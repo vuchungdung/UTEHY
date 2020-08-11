@@ -11,17 +11,22 @@ namespace UTEHY.Model.Entities
     public class Comment
     {
         [Key]
-        public Guid CommentId { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string CommentId { get; set; }
         public string Content { get; set; }
-        public Guid PostId { get; set; }
-        public Guid ReplyId { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string PostId { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string ReplyId { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public bool Status { get; set; }
         public string Email { get; set; }
+        [Column(TypeName = "NVARCHAR")]
+        [StringLength(100)]
         public string UserName { get; set; }
-
-        [ForeignKey("PostId")]
-        public virtual Post Post { get; set; }
     }
 }

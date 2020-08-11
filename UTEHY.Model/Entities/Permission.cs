@@ -11,17 +11,17 @@ namespace UTEHY.Model.Entities
     public class Permission
     {
         [Key]
-        [Column(Order =1)]
-        public Guid FunctionId { get; set; }
+        [Column(Order =1, TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string FunctionId { get; set; }
         [Key]
-        [Column(Order = 2)]
-        public Guid RoleId { get; set; }
+        [Column(Order =2, TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string RoleId { get; set; }
         [Key]
-        [Column(Order = 3)]
-        public Guid CommandId { get; set; }
+        [Column(Order =3, TypeName = "NVARCHAR")]
+        [StringLength(128)]
+        public string CommandId { get; set; }
 
-        public virtual Command Command { get; set; }
-        public virtual Function Function { get; set; }
-        public virtual ApplicationRole ApplicationRole { get; set; }
     }
 }

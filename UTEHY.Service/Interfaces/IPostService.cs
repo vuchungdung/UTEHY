@@ -21,9 +21,9 @@ namespace UTEHY.Service.Interfaces
 
         PostViewModel GetPostById(string id);
 
-        int DeleteMulti(Guid[] id);
+        int DeleteMulti(string[] id);
 
-        PageResult<PostViewModel> GetAllPaging(string categoryid, string keyword, PageRequest request);
+        PageResult<PostViewModel> GetAllPaging(string keyword, string categoryid, PageRequest request);
 
         bool ChangeStatus(string id, PostStatus status);
 

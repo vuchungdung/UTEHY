@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace UTEHY.WebApp.Controllers
 {
-    public class FunctionController : Controller
+    public class SlideController : Controller
     {
+        // GET: Slide
         public ActionResult Index()
         {
             return View();

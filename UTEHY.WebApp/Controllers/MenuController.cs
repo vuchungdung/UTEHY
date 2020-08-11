@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace UTEHY.WebApp.Controllers
 {
-    public class DashboardController : Controller
+    public class MenuController : Controller
     {
-        // GET: Admin/Dashboard
+        // GET: Menu
         public ActionResult Index()
         {
             return View();
