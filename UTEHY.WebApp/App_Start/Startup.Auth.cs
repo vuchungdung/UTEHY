@@ -6,10 +6,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using Owin;
+using UTEHY.Model.Constants;
 using UTEHY.Model.Entities;
+using UTEHY.Service.AuthorizeService;
 
 [assembly: OwinStartup(typeof(UTEHY.WebApp.App_Start.Startup))]
 
@@ -50,6 +52,7 @@ namespace UTEHY.WebApp.App_Start
                 context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
                 UserManager<User> userManager = context.OwinContext.GetUserManager<UserManager<User>>();
+                ProfileService profile = new ProfileService();
                 User user;
                 try
                 {
@@ -66,8 +69,11 @@ namespace UTEHY.WebApp.App_Start
                     ClaimsIdentity identity = await userManager.CreateIdentityAsync(
                                                             user,
                                                             DefaultAuthenticationTypes.ExternalBearer);
+                    var roles = userManager.GetRoles(user.Id);
+                    var permission = profile.GetProfileService(roles);
                     var claims = new List<Claim>();
                     claims.Add(new Claim(ClaimTypes.UserData, user.FullName));
+                    claims.Add(new Claim(SystemContants.Claims.Permissions, JsonConvert.SerializeObject(permission)));
                     identity.AddClaims(claims);
                     context.Validated(identity);
                 }

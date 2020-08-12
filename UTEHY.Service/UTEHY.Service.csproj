@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizeService\ProfileService.cs" />
     <Compile Include="Implementation\CommandService.cs" />
     <Compile Include="Implementation\FunctionService.cs" />
     <Compile Include="Implementation\GroupUsersService.cs" />

@@ -8,8 +8,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using UTEHY.Model.Constants;
 using UTEHY.Service.Interfaces;
 using UTEHY.WebApp.App_Start;
+using UTEHY.WebApp.Authorization;
 
 namespace UTEHY.WebApp.API
 {
@@ -70,6 +72,7 @@ namespace UTEHY.WebApp.API
         [HttpGet]
         [Route("getmenu")]
         [AllowAnonymous]
+        [ClaimRequirementFilter(Function =FunctionCode.SYSTEM_USER,Command =CommandCode.VIEW)]
         public HttpResponseMessage GetMenuByUserPermission(HttpRequestMessage request)
         {
             var identity = (ClaimsIdentity)User.Identity;

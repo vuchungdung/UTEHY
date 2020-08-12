@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authorization\ClaimRequirementFilter.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
@@ -5968,10 +5969,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\files\" />
-    <Folder Include="Views\Client\" />
-    <Folder Include="Views\Footer\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Menu\" />
     <Folder Include="Views\Slide\" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@
 
         protected override void Seed(UTEHY.Model.Entities.FITDbContext context)
         {
-            CreateUser(context);
+            //CreateUser(context);
         }
         private void CreateUser(FITDbContext context)
         {
