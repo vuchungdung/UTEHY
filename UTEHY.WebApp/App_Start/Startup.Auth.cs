@@ -23,7 +23,7 @@ namespace UTEHY.WebApp.App_Start
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
-            app.CreatePerOwinContext<UserManager<ApplicationUser>>(CreateManager);
+            app.CreatePerOwinContext<UserManager<User>>(CreateManager);
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/oauth/token"),
@@ -49,8 +49,8 @@ namespace UTEHY.WebApp.App_Start
 
                 context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
-                UserManager<ApplicationUser> userManager = context.OwinContext.GetUserManager<UserManager<ApplicationUser>>();
-                ApplicationUser user;
+                UserManager<User> userManager = context.OwinContext.GetUserManager<UserManager<User>>();
+                User user;
                 try
                 {
                     user = await userManager.FindAsync(context.UserName, context.Password);
@@ -78,10 +78,10 @@ namespace UTEHY.WebApp.App_Start
                 }
             }
         }
-        private static UserManager<ApplicationUser> CreateManager(IdentityFactoryOptions<UserManager<ApplicationUser>> options, IOwinContext context)
+        private static UserManager<User> CreateManager(IdentityFactoryOptions<UserManager<User>> options, IOwinContext context)
         {
-            var userStore = new UserStore<ApplicationUser>(context.Get<FITDbContext>());
-            var owinManager = new UserManager<ApplicationUser>(userStore);
+            var userStore = new UserStore<User>(context.Get<FITDbContext>());
+            var owinManager = new UserManager<User>(userStore);
             return owinManager;
         }
 

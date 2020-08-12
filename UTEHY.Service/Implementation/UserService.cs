@@ -10,30 +10,28 @@ using UTEHY.Model.Dtos;
 using UTEHY.Infrastructure.Interfaces;
 using UTEHY.Model.Constants;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UTEHY.Service.Implementation
 {
     public class UserService : IUserService
     {
-        private UserManager<ApplicationUser> _userManager;
+        private UserManager<User> _userManager;
         private FITDbContext _dbContext;
-        private RoleManager<ApplicationRole> _roleManager;
         private IUnitOfWork _unitOfWork;
-        public UserService(UserManager<ApplicationUser> userManager,
+        public UserService(UserManager<User> userManager,
             FITDbContext dbContext,
-            RoleManager<ApplicationRole> roleManager,
             IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _dbContext = dbContext;
-            _roleManager = roleManager;
             _unitOfWork = unitOfWork;
         }
         public bool Add(UserViewModel userVm)
         {
             try
             {
-                var model = new ApplicationUser()
+                var model = new User()
                 {
                     Id = Guid.NewGuid().ToString(),
                     FullName = userVm.FullName,
@@ -107,7 +105,7 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var roles = _roleManager.Roles;
+                var roles = _dbContext.Roles.ToList();
                 var user = _userManager.FindById(userId);
                 var role = _userManager.GetRoles(user.Id);
                 var query = from f in _dbContext.Functions

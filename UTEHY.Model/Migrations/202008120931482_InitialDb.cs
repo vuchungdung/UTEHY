@@ -3,35 +3,18 @@ namespace UTEHY.Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialDb : DbMigration
+    public partial class InitialDb : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.ApplicationRoles",
+                "dbo.CommandInFunctions",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(),
-                        Description = c.String(maxLength: 250),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
+                        CommandId = c.String(nullable: false, maxLength: 128),
+                        FunctionId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.ApplicationUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                        IdentityRole_Id = c.String(maxLength: 128),
-                        ApplicationUser_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.ApplicationRoles", t => t.IdentityRole_Id)
-                .ForeignKey("dbo.ApplicationUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.IdentityRole_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .PrimaryKey(t => new { t.CommandId, t.FunctionId });
             
             CreateTable(
                 "dbo.Commands",
@@ -148,6 +131,29 @@ namespace UTEHY.Model.Migrations
                 .Index(t => t.Name, unique: true);
             
             CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
                 "dbo.Slides",
                 c => new
                     {
@@ -179,7 +185,7 @@ namespace UTEHY.Model.Migrations
                 .PrimaryKey(t => t.TecherId);
             
             CreateTable(
-                "dbo.ApplicationUsers",
+                "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -187,7 +193,7 @@ namespace UTEHY.Model.Migrations
                         Address = c.String(maxLength: 256),
                         BirthDay = c.DateTime(),
                         Img = c.String(),
-                        Email = c.String(),
+                        Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
@@ -197,59 +203,62 @@ namespace UTEHY.Model.Migrations
                         LockoutEndDateUtc = c.DateTime(),
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(),
+                        UserName = c.String(nullable: false, maxLength: 256),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
-                "dbo.ApplicationUserClaims",
+                "dbo.AspNetUserClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         ClaimType = c.String(),
                         ClaimValue = c.String(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ApplicationUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.ApplicationUserLogins",
+                "dbo.AspNetUserLogins",
                 c => new
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                         UserId = c.String(nullable: false, maxLength: 128),
-                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.ApplicationUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ApplicationUserRoles", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserLogins", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserClaims", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserRoles", "IdentityRole_Id", "dbo.ApplicationRoles");
-            DropIndex("dbo.ApplicationUserLogins", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ApplicationUserClaims", new[] { "ApplicationUser_Id" });
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Posts", new[] { "Name" });
             DropIndex("dbo.PostCategories", new[] { "Name" });
             DropIndex("dbo.Menus", new[] { "Name" });
             DropIndex("dbo.Functions", new[] { "Name" });
             DropIndex("dbo.Commands", new[] { "Name" });
-            DropIndex("dbo.ApplicationUserRoles", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ApplicationUserRoles", new[] { "IdentityRole_Id" });
-            DropTable("dbo.ApplicationUserLogins");
-            DropTable("dbo.ApplicationUserClaims");
-            DropTable("dbo.ApplicationUsers");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Teachers");
             DropTable("dbo.Slides");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetRoles");
             DropTable("dbo.Posts");
             DropTable("dbo.PostCategories");
             DropTable("dbo.Permissions");
@@ -258,8 +267,7 @@ namespace UTEHY.Model.Migrations
             DropTable("dbo.Footers");
             DropTable("dbo.Comments");
             DropTable("dbo.Commands");
-            DropTable("dbo.ApplicationUserRoles");
-            DropTable("dbo.ApplicationRoles");
+            DropTable("dbo.CommandInFunctions");
         }
     }
 }

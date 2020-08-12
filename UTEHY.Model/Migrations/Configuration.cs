@@ -17,10 +17,38 @@
 
         protected override void Seed(UTEHY.Model.Entities.FITDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            CreateUser(context);
+        }
+        private void CreateUser(FITDbContext context)
+        {
+            var manager = new UserManager<User>(new UserStore<User>(new FITDbContext()));
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new FITDbContext()));
+
+            var user = new User()
+            {
+                UserName = "trungtampm",
+                Email = "trungtamphanmem@gmail.com",
+                EmailConfirmed = true,
+                BirthDay = DateTime.Now,
+                FullName = "Trung tâm phần mềm"
+
+            };
+            if (manager.Users.Count(x => x.UserName == "trungtampm") == 0)
+            {
+                manager.Create(user, "123654$");
+
+                if (!roleManager.Roles.Any())
+                {
+                    roleManager.Create(new IdentityRole { Name = "Admin" });
+                    roleManager.Create(new IdentityRole { Name = "Editor" });
+                }
+
+                var adminUser = manager.FindByEmail("trungtamphanmem@gmail.com");
+
+                manager.AddToRoles(adminUser.Id, new string[] { "Admin", "Editor" });
+            }
+
         }
     }
 }

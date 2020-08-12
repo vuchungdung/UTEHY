@@ -7,13 +7,13 @@ namespace UTEHY.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class repairdDb : IMigrationMetadata
+    public sealed partial class InitialDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(repairdDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008111529125_repairdDb"; }
+            get { return "202008120931482_InitialDb"; }
         }
         
         string IMigrationMetadata.Source

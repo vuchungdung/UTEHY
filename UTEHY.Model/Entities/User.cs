@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Model.Entities
 {
-    public class ApplicationUser : IdentityUser
+    public class User : IdentityUser
     {
         [MaxLength(256)]
         public string FullName { get; set; }
@@ -22,7 +22,7 @@ namespace UTEHY.Model.Entities
         public DateTime? BirthDay { get; set; }
 
         public string Img { get; set; }
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
