@@ -58,19 +58,6 @@ namespace UTEHY.WebApp.API
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        [Route("login")]
-        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe)
-        {
-            if (!ModelState.IsValid)
-            {
-                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-            var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
-            return request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
-        [HttpPost]
         [Route("logout")]
         [Authorize]
         public HttpResponseMessage Logout(HttpRequestMessage request)

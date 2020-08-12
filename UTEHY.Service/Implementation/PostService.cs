@@ -40,7 +40,7 @@ namespace UTEHY.Service.Implementation
                     CreatedBy = postVm.CreatedBy,
                     Img = postVm.Img,
                     MoreImgs = postVm.MoreImgs,
-                    Status = (int)PostStatus.Closed
+                    Status = PostStatus.Closed
                 };
                 _postRepository.Add(model);
                 return true;
@@ -116,7 +116,7 @@ namespace UTEHY.Service.Implementation
                 CreatedBy = x.CreatedBy,
                 MoreImgs = x.MoreImgs,
                 Img = x.Img,
-                Status = (PostStatus)x.Status
+                Status = x.Status
             }).ToList();
             return result;
         }
@@ -128,7 +128,7 @@ namespace UTEHY.Service.Implementation
             {
                 query = query.Where(x => x.Name.Contains(keyword));
             }
-            if(!String.IsNullOrEmpty(categoryid.ToString()))
+            if(!String.IsNullOrEmpty(categoryid))
             {
                 query = query.Where(x => x.CategoryId == categoryid);
             }

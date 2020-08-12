@@ -185,6 +185,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\CommandApiController.cs" />
+    <Compile Include="API\FunctionApiController.cs" />
+    <Compile Include="API\PermissionApiController.cs" />
+    <Compile Include="API\PostApiController.cs" />
+    <Compile Include="API\PostCategoryApiController.cs" />
+    <Compile Include="API\TeacherApiController.cs" />
     <Compile Include="API\UserApiController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

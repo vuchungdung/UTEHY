@@ -105,7 +105,7 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var roles = _dbContext.Roles.ToList();
+                var roles = _dbContext.Roles;
                 var user = _userManager.FindById(userId);
                 var role = _userManager.GetRoles(user.Id);
                 var query = from f in _dbContext.Functions
