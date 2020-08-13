@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('teachersAddController', teachersAddController);
 
-    teachersAddController.$inject = ['$scope', 'notificationService', 'ajaxService'];
+    teachersAddController.$inject = ['$scope', 'apiService'];
 
-    function teachersAddController($scope,notificationService,ajaxService) {
+    function teachersAddController($scope, apiService) {
         $scope.ckeditorOptions = {
             languague: 'vi',
             height: '200px'

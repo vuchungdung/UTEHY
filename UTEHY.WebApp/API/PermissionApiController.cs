@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace UTEHY.WebApp.API
 {
+    [RoutePrefix("api/permissionapi")]
+    [Authorize]
     public class PermissionApiController : ApiController
     {
     }

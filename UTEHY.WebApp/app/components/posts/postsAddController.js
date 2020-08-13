@@ -3,7 +3,7 @@
 
     postsAddController.$inject = ['$scope', 'apiService', '$state','commonService'];
 
-    function postsAddController($scope, ajaxService, $state, commonService) {
+    function postsAddController($scope, apiService, $state, commonService) {
         $(window).load(function () {
             $('#pageSize').val('10');
         });
@@ -32,7 +32,7 @@
         }
         $scope.addPost = function () {
             $scope.post.MoreImgs = JSON.stringify($scope.moreImages);
-            apiService.post('/Post/AddPost', $scope.post, function (result) {
+            apiService.post('/api/postapi/add', $scope.post, function (result) {
                 if (result.data.result == true) { 
                     $scope.post = angular.copy({});   
                     new PNotify({
@@ -60,7 +60,7 @@
         }
 
         $scope.getListCategoryId = function () {
-            apiService.get('/PostCategory/GetAll', null, function (result) {
+            apiService.get('/api/postcategoryapi/getall', null, function (result) {
                 if (result) {
                     $scope.listCategoryId = result.data.result;
                 }

@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace UTEHY.WebApp.API
 {
+    [RoutePrefix("api/functionapi")]
+    [Authorize]
     public class FunctionApiController : ApiController
     {
     }

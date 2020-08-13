@@ -8,7 +8,7 @@
             $('#pageSize').val('10');
         });
         $scope.getCategories = function () {
-            apiService.get('/PostCategory/GetAll', null, function (result) {
+            apiService.get('/api/postcategoryapi/getall', null, function (result) {
                 if (result) {
                     $scope.dropdownCategory = result.data.result;
                 }
@@ -24,7 +24,7 @@
                     id: id
                 }
             }
-            apiService.get('/PostCategory/GetCategoryById', config, function (result) {
+            apiService.get('/api/postcategoryapi/getcategorybyid', config, function (result) {
                 if (result) {
                     $scope.categorybyid = result.data.result;
                 }
@@ -48,7 +48,7 @@
                     pageIndex: page
                 }
             }
-            apiService.get('/PostCategory/GetAllPaging', config, function (result) {
+            apiService.get('/api/postcategoryapi/getpaging', config, function (result) {
                 if (result) {
                     $scope.listCategories = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;
@@ -72,7 +72,7 @@
         };
 
         $scope.addCategory = function () {
-            apiService.post('/PostCategory/AddCategory', $scope.category, function (result) {
+            apiService.post('/api/postcategoryapi/add', $scope.category, function (result) {
                 if (result.data.result == true) {
                     new PNotify({
                         text: 'Thêm danh mục thành công!',
@@ -125,7 +125,7 @@
         }, true);
 
         $scope.editCategory = function () {
-            apiService.put('/PostCategory/UpdateCategory', $scope.categorybyid, function (result) {
+            apiService.put('/api/postcategoryapi/update', $scope.categorybyid, function (result) {
                 if (result.data.result != null) {
                     new PNotify({
                         text: 'Cập nhật danh mục thành công!',
@@ -154,7 +154,7 @@
                 var config = {
                     categoryId: id
                 }
-                apiService.del('/PostCategory/DeleteCategory', config, function (result) {
+                apiService.del('/api/postcategoryapi/delete', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công',
@@ -186,7 +186,7 @@
                 var config = {
                     listId: listId
                 }
-                apiService.del('/PostCategory/DeleteMulti', config, function (result) {
+                apiService.del('/api/postcategoryapi/deletemulti', config, function (result) {
                     if (result.data.result != null) {
                         new PNotify({
                             title: 'Đã xóa thành công ' + result.data.result + ' bản ghi',

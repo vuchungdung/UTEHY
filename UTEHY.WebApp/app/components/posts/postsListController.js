@@ -6,7 +6,7 @@
     function postsListController($scope, apiService, $filter, $ngBootbox) {
         $scope.page = 1;
         $scope.keyword = '';
-        $scope.groupid = '';
+        $scope.categoryid = '';
         $scope.pageSize = 10;
         $scope.currentPage = 0;
         $scope.getPagingPosts = function (page) {
@@ -16,10 +16,10 @@
                     pageIndex: page,
                     pageSize: $scope.pageSize,
                     keyword: $scope.keyword,
-                    groupId: $scope.groupid
+                    categoryId: $scope.categoryid
                 }
             }
-            apiService.get('/Post/GetAllPaging', config, function (result) {
+            apiService.get('/api/postapi/getpaging', config, function (result) {
                 if (result.data.result != null) {
                     $scope.listPosts = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;

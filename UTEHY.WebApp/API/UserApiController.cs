@@ -22,12 +22,6 @@ namespace UTEHY.WebApp.API
         private IUserService _userService;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
-        public UserApiController()
-        {
-
-        }
-
         public UserApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserService userService)
         {
             UserManager = userManager;
