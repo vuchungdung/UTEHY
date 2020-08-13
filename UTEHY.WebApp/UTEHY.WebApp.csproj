@@ -216,11 +216,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\components\group_users\group_users.Module.js" />
-    <Content Include="app\components\group_users\group_usersAddView.html" />
-    <Content Include="app\components\group_users\group_usersController.js" />
-    <Content Include="app\components\group_users\group_usersEditView.html" />
-    <Content Include="app\components\group_users\group_usersListView.html" />
+    <Content Include="app\components\group_users\roles.Module.js" />
+    <Content Include="app\components\group_users\rolesAddView.html" />
+    <Content Include="app\components\group_users\roles.Controller.js" />
+    <Content Include="app\components\group_users\rolesEditView.html" />
+    <Content Include="app\components\group_users\rolesListView.html" />
     <Content Include="app\components\homes\homeController.js" />
     <Content Include="app\components\homes\homeview.html" />
     <Content Include="app\components\homes\rootController.js" />

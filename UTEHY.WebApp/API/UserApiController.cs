@@ -62,9 +62,8 @@ namespace UTEHY.WebApp.API
         [HttpPost]
         [Route("logout")]
         [Authorize]
-        public HttpResponseMessage Logout(HttpRequestMessage request)
-        {
-            var claim = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Sid).Value;
+        public HttpResponseMessage LogOut(HttpRequestMessage request)
+        {           
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
             return request.CreateResponse(HttpStatusCode.OK, new { success = true });
@@ -72,22 +71,29 @@ namespace UTEHY.WebApp.API
         [HttpGet]
         [Route("getmenu")]
         [AllowAnonymous]
-        [ClaimRequirementFilter(Function =FunctionCode.SYSTEM_USER,Command =CommandCode.VIEW)]
+        [ClaimRequirementFilter(Function = FunctionCode.SYSTEM_USER,Command = CommandCode.VIEW)]
         public HttpResponseMessage GetMenuByUserPermission(HttpRequestMessage request)
         {
-            var identity = (ClaimsIdentity)User.Identity;
-            var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (id == null)
+            if(User.Identity.IsAuthenticated == true)
             {
-                return request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                var identity = (ClaimsIdentity)User.Identity;
+                var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                if (id == null)
+                {
+                    return request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var responData = _userService.GetMenuByUserPermission(id);
+                    if (responData != null)
+                    {
+                        return request.CreateResponse(HttpStatusCode.OK, new { responData });
+                    }
+                    return request.CreateResponse(HttpStatusCode.BadRequest, "Lỗi hệ thống");
+                }
             }
             else
             {
-                var responData = _userService.GetMenuByUserPermission(id);
-                if (responData != null)
-                {
-                    return request.CreateResponse(HttpStatusCode.OK, new { responData });
-                }
                 return request.CreateResponse(HttpStatusCode.BadRequest, "Lỗi hệ thống");
             }
         }

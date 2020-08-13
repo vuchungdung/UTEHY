@@ -7,7 +7,10 @@ using System.Web.Http;
 
 namespace UTEHY.WebApp.API
 {
+    [RoutePrefix("api/postapi")]
+    [Authorize]
     public class PostApiController : ApiController
     {
+
     }
 }

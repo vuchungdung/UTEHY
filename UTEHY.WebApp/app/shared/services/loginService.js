@@ -31,12 +31,11 @@
             }
 
             this.logOut = function () {
-                apiService.post('/authen/logout', null, function (response) {
+                apiService.post('/api/userapi/logout', null, function (response) {
                     authenticationService.removeToken();
                     authData.authenticationData.IsAuthenticated = false;
                     authData.authenticationData.userName = "";
                     authData.authenticationData.accessToken = "";
-
                 }, null);
 
             }
