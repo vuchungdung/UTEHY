@@ -90,17 +90,19 @@
   <ItemGroup>
     <Compile Include="AuthorizeService\ProfileService.cs" />
     <Compile Include="Implementation\CommandService.cs" />
+    <Compile Include="Implementation\ErrorService.cs" />
     <Compile Include="Implementation\FunctionService.cs" />
-    <Compile Include="Implementation\GroupUsersService.cs" />
+    <Compile Include="Implementation\RoleService.cs" />
     <Compile Include="Implementation\PermissionService.cs" />
     <Compile Include="Implementation\PostCategoryService.cs" />
     <Compile Include="Implementation\PostService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="Interfaces\ICommandService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Interfaces\IErrorService.cs" />
     <Compile Include="Interfaces\IFooterService.cs" />
     <Compile Include="Interfaces\IFunctionService.cs" />
-    <Compile Include="Interfaces\IGroupUsersService.cs" />
+    <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IMenuService.cs" />
     <Compile Include="Interfaces\IPermissionService.cs" />
     <Compile Include="Interfaces\IPostCategoryService.cs" />

@@ -54,6 +54,7 @@ namespace UTEHY.WebApp.App_Start
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
 
             // register services
+            builder.RegisterType<ErrorService>().As<IErrorService>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
             builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();

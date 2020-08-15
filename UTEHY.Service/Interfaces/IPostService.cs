@@ -12,21 +12,13 @@ namespace UTEHY.Service.Interfaces
     public interface IPostService
     {
         List<PostViewModel> GetAll();
-
         bool Add(PostViewModel postVm);
-
         string Update(PostViewModel postVm);
-
         string Delete(string id);
-
         PostViewModel GetPostById(string id);
-
         int DeleteMulti(string[] id);
-
-        PageResult<PostViewModel> GetAllPaging(string keyword, string categoryid, PageRequest request);
-
+        PageResult<PostViewModel> GetAllPaging(PageRequest request);
         bool ChangeStatus(string id, PostStatus status);
-
         bool ChangeFlag(string id, bool status);
         void Save();
     }

@@ -68,27 +68,27 @@ namespace UTEHY.WebApp.API
         [ClaimRequirementFilter(Function = FunctionCode.SYSTEM_USER,Command = CommandCode.VIEW)]
         public HttpResponseMessage GetMenuByUserPermission(HttpRequestMessage request)
         {
-            if(User.Identity.IsAuthenticated == true)
+            try
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
                 if (id == null)
                 {
-                    return request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                    return request.CreateResponse(HttpStatusCode.BadRequest);
                 }
                 else
                 {
                     var responData = _userService.GetMenuByUserPermission(id);
                     if (responData != null)
                     {
-                        return request.CreateResponse(HttpStatusCode.OK, new { responData });
+                        return request.CreateResponse(HttpStatusCode.OK,responData);
                     }
-                    return request.CreateResponse(HttpStatusCode.BadRequest, "Lỗi hệ thống");
+                    return request.CreateResponse(HttpStatusCode.BadRequest);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                return request.CreateResponse(HttpStatusCode.BadRequest, "Lỗi hệ thống");
+                return request.CreateResponse(HttpStatusCode.BadRequest,ex);
             }
         }
     }

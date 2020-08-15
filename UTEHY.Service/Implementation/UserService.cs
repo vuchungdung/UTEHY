@@ -67,16 +67,16 @@ namespace UTEHY.Service.Implementation
 
         }
 
-        public PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string roleId)
+        public PageResult<UserViewModel> GetAllPaging(PageRequest request)
         {
             var query = _userManager.Users;
-            if (!String.IsNullOrEmpty(keyword))
+            if (!String.IsNullOrEmpty(request.keyword))
             {
-                query = query.Where(x => x.Equals(keyword));
+                query = query.Where(x => x.Equals(request.keyword));
             }
-            if (!String.IsNullOrEmpty(roleId))
+            if (!String.IsNullOrEmpty(request.categoryId))
             {
-                query = query.Where(x => x.Roles.First().RoleId == roleId);
+                query = query.Where(x => x.Roles.First().RoleId == request.categoryId);
             }
             var totalRecords = query.Count();
             var listItems = query.OrderBy(x => x.FullName)

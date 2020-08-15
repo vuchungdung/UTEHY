@@ -22,7 +22,6 @@ namespace UTEHY.Infrastructure.Implementation
         {
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
-
         public void Commit()
         {
             DbContext.SaveChanges();

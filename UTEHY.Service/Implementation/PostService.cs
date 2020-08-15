@@ -121,16 +121,16 @@ namespace UTEHY.Service.Implementation
             return result;
         }
 
-        public PageResult<PostViewModel> GetAllPaging(string keyword, string categoryid, PageRequest request)
+        public PageResult<PostViewModel> GetAllPaging(PageRequest request)
         {
             var query = _postRepository.FindAll();
-            if (!String.IsNullOrEmpty(keyword))
+            if (!String.IsNullOrEmpty(request.keyword))
             {
-                query = query.Where(x => x.Name.Contains(keyword));
+                query = query.Where(x => x.Name.Contains(request.keyword));
             }
-            if(!String.IsNullOrEmpty(categoryid))
+            if(!String.IsNullOrEmpty(request.categoryId))
             {
-                query = query.Where(x => x.CategoryId == categoryid);
+                query = query.Where(x => x.CategoryId == request.categoryId);
             }
             int totalRecords = query.Count();
 
@@ -176,7 +176,7 @@ namespace UTEHY.Service.Implementation
                 CreatedBy = model.CreatedBy,
                 MoreImgs = model.MoreImgs,
                 Img = model.Img,
-                Status = (PostStatus)model.Status
+                Status = model.Status
             };
             return result;
         }

@@ -211,6 +211,7 @@
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Common\CommonHelper.cs" />
+    <Compile Include="Core\ApiControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

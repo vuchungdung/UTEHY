@@ -126,6 +126,8 @@
     <Compile Include="Dtos\CommandAssignRequest.cs" />
     <Compile Include="Dtos\PageRequest.cs" />
     <Compile Include="Dtos\PageResult.cs" />
+    <Compile Include="Entities\Error.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Command.cs" />
     <Compile Include="Entities\CommandInFunction.cs" />
@@ -141,9 +143,9 @@
     <Compile Include="Entities\FITDbContext.cs" />
     <Compile Include="Enums\ImgType.cs" />
     <Compile Include="Enums\PostStatus.cs" />
-    <Compile Include="Migrations\202008120931482_InitialDb.cs" />
-    <Compile Include="Migrations\202008120931482_InitialDb.Designer.cs">
-      <DependentUpon>202008120931482_InitialDb.cs</DependentUpon>
+    <Compile Include="Migrations\202008150738536_initialDB.cs" />
+    <Compile Include="Migrations\202008150738536_initialDB.Designer.cs">
+      <DependentUpon>202008150738536_initialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,8 +172,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008120931482_InitialDb.resx">
-      <DependentUpon>202008120931482_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008150738536_initialDB.resx">
+      <DependentUpon>202008150738536_initialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

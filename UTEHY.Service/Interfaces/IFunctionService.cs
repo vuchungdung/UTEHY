@@ -12,19 +12,12 @@ namespace UTEHY.Service.Interfaces
     {
         bool Add(FunctionViewModel functionVm);
         bool Update(FunctionViewModel functionVm);
-
         bool Delete(string funcId);
-
         List<FunctionViewModel> GellAll();
-
         FunctionViewModel GetFunctionById(string funcId);
-
         FunctionViewModel GetFunctionByParentId(string parentId);
-
         CommandViewModel GetCommandInFunction(string funcId);
-
         void AddCommandToFunction(string funcId, CommandAssignRequest request);
-
         string DeleteCommandToFunction(string funcId, CommandAssignRequest request);
         PageResult<FunctionViewModel> GetAllPaging(string keyword, PageRequest request);
         void Save();

@@ -13,16 +13,11 @@ namespace UTEHY.Service.Interfaces
     {
         UserViewModel GetUserById(string id);
         UserViewModel GetUserByUserName(string username);
-
-        PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string roleId);
-
+        PageResult<UserViewModel> GetAllPaging(PageRequest request);
         bool Add(UserViewModel userVm);
         bool Update(UserViewModel userVm);
-
         List<FunctionViewModel> GetMenuByUserPermission(string userId);
-
         bool Delete(string id);
         void Save();
-
     }
 }

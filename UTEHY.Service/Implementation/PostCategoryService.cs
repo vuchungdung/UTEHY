@@ -38,7 +38,6 @@ namespace UTEHY.Service.Implementation
                 return true;
             }catch(Exception error)
             {
-                Console.WriteLine(error);
                 return false;
             }
         }
@@ -142,7 +141,6 @@ namespace UTEHY.Service.Implementation
             }
             catch (Exception error)
             {
-                Console.WriteLine(error);
                 return null;
             }
         }

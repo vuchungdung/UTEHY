@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Service.Interfaces
 {
-    class IMenuService
+    public interface IMenuService
     {
+
     }
 }

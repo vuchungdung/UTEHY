@@ -19,7 +19,7 @@
                     categoryId: $scope.categoryid
                 }
             }
-            apiService.get('/api/postapi/getpaging', config, function (result) {
+            apiService.post('/api/postapi/getpaging', config.params, function (result) {
                 if (result.data.result != null) {
                     $scope.listPosts = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;
