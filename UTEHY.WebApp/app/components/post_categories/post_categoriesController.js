@@ -24,7 +24,7 @@
                     id: id
                 }
             }
-            apiService.get('/api/postcategoryapi/getcategorybyid', config, function (result) {
+            apiService.get('/api/postcategoryapi/getall', config, function (result) {
                 if (result) {
                     $scope.categorybyid = result.data.result;
                 }
@@ -48,10 +48,10 @@
                     pageIndex: page
                 }
             }
-            apiService.get('/api/postcategoryapi/getpaging', config, function (result) {
+            apiService.post('/api/postcategoryapi/getpaging', config.params, function (result) {
                 if (result) {
-                    $scope.listCategories = result.data.result.ListItem;
-                    $scope.totalRecords = result.data.result.TotalRecords;
+                    $scope.listCategories = result.data;
+                    $scope.totalRecords = result.data.TotalRecords;
                 }
             }, function (error) {
                 console.log(error);

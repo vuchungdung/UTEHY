@@ -35,10 +35,10 @@ namespace UTEHY.WebApp.API
                 return response;
             });
         }     
-        [Route("addpost")]
+        [Route("add")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage AddPost(HttpRequestMessage request, [FromBody]PostViewModel postVm)
+        public HttpResponseMessage Add(HttpRequestMessage request, [FromBody]PostViewModel postVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -51,7 +51,7 @@ namespace UTEHY.WebApp.API
         [Route("delete")]
         [HttpDelete]       
         [AllowAnonymous]
-        public HttpResponseMessage DeletePost(HttpRequestMessage request, string postId)
+        public HttpResponseMessage Delete(HttpRequestMessage request, string postId)
         {
             return CreateHttpResponse(request, () =>
             {

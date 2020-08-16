@@ -1,6 +1,9 @@
 ﻿(function () {
     angular.module('utehy',
-        ['utehy.common','utehy.categories','utehy.teachers','utehy.posts'])
+        ['utehy.common',
+            'utehy.categories',
+            'utehy.teachers',
+            'utehy.posts'])
         .config(config)
         .config(configAuthentication);
 

@@ -1,46 +1,89 @@
-﻿<div class="login-container">
-    <div class="page-container">
-        <div class="page-content">
-            <div class="content-wrapper">
-                <form role="form" method="post" ng-submit="loginSubmit()">
-                    <div class="panel panel-body login-form">
-                        <div class="text-center">
-                            <img src="/Assets/template-admin/images/download.png" style="width:100px" />
-                            <h5 class="content-group-lg">ĐĂNG NHẬP <small class="display-block">Vui lòng nhập đầy đủ thông tin</small></h5>
-                        </div>
+﻿<div style="height:100vh" dw-loading="sample" dw-loading-options="{className: 'custom-loading',
+                                            spinnerOptions: {lines: 12,
+                                                             length: 20,
+                                                             width: 6,
+                                                             radius: 20,
+                                                             color: '#378DE4',
+                                                             direction: -1,
+                                                             speed: 1}}">
+    <div class="login-container">
+        <div class="page-header">
+            <div class="navbar navbar-inverse bg-indigo">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="home" style="display:flex;justify-content:center;align-items:center;padding:0px;padding-left:24px;">
+                        <img src="/Assets/template-admin/images/download.png" style="width:38px;height:38px;" />
+                        <span style="padding-left:6px;color:white">ĐẠI HỌC SƯ PHẠM KỸ THUẬT HƯNG YÊN - KHOA CÔNG NGHỆ THÔNG TIN</span>
+                    </a>
 
-                        <div class="form-group has-feedback has-feedback-left">
-                            <input type="text" class="form-control" ng-model="loginData.userName" placeholder="Tài khoản">
-                            <div class="form-control-feedback">
-                                <i class="icon-user text-muted"></i>
-                            </div>
-                        </div>
+                    <ul class="nav navbar-nav pull-right visible-xs-block">
+                        <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                    </ul>
+                </div>
 
-                        <div class="form-group has-feedback has-feedback-left">
-                            <input type="password" class="form-control" ng-model="loginData.password" placeholder="Mật khẩu">
-                            <div class="form-control-feedback">
-                                <i class="icon-lock2 text-muted"></i>
-                            </div>
-                        </div>
+                <div class="navbar-collapse collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown language-switch">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/Assets/template-admin/images/flags/vn.png" class="position-left" alt="">
+                                Việt Nam
+                                <span class="caret"></span>
+                            </a>
 
-                        <div class="form-group login-options">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    
-                                </div>
-
-                                <div class="col-sm-6 text-right">
-                                    <a href="login_password_recover.html">Quên mật khẩu?</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn bg-primary-400 btn-block">ĐĂNG NHẬP</button>
-                        </div>
-                    </div>
-                </form>
+                            <ul class="dropdown-menu">
+                                <li><a class="vietnam"><img src="/Assets/template-admin/images/flags/vn.png" alt=""> Việt Nam</a></li>
+                                <li><a class="english"><img src="/Assets/template-admin/images/flags/gb.png" alt=""> English</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
+        <div class="page-container">
+            <div class="page-content">
+                <div class="content-wrapper">
+                    <form role="form" method="post" ng-submit="loginSubmit()">
+                        <div class="panel panel-body login-form">
+                            <div class="text-center">
+                                <img src="/Assets/template-admin/images/download.png" style="width:100px" />
+                                <h5 class="content-group-lg">ĐĂNG NHẬP <small class="display-block">Vui lòng nhập đầy đủ thông tin</small></h5>
+                            </div>
+
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="text" class="form-control" ng-model="loginData.userName" placeholder="Tài khoản">
+                                <div class="form-control-feedback">
+                                    <i class="icon-user text-muted"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group has-feedback has-feedback-left">
+                                <input type="password" class="form-control" ng-model="loginData.password" placeholder="Mật khẩu">
+                                <div class="form-control-feedback">
+                                    <i class="icon-lock2 text-muted"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group login-options">
+                                <div class="row">
+                                    <div class="col-sm-6">
+
+                                    </div>
+
+                                    <div class="col-sm-6 text-right">
+                                        <a href="login_password_recover.html">Quên mật khẩu?</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn bg-primary-400 btn-block">ĐĂNG NHẬP</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center">
+            &copy; 2020. <a href="#">TRUNG TÂM PHÁT TRIỂN PHẦN MỀM</a>
         </div>
     </div>
 </div>

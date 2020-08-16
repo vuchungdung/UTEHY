@@ -24,22 +24,16 @@ namespace UTEHY.Service.Implementation
 
         public bool Add(PostCategoryViewModel postCategoryVm)
         {
-            try
+            var model = new PostCategory()
             {
-                var model = new PostCategory()
-                {
-                    CategoryId = Guid.NewGuid().ToString(),
-                    Name = postCategoryVm.Name,
-                    ParentId = postCategoryVm.ParentId,
-                    Alias = postCategoryVm.Alias,
-                    DisplayOrder = postCategoryVm.DisplayOrder
-                };
-                _postCategoryRepository.Add(model);
-                return true;
-            }catch(Exception error)
-            {
-                return false;
-            }
+                CategoryId = Guid.NewGuid().ToString(),
+                Name = postCategoryVm.Name,
+                ParentId = postCategoryVm.ParentId,
+                Alias = postCategoryVm.Alias,
+                DisplayOrder = postCategoryVm.DisplayOrder
+            };
+            _postCategoryRepository.Add(model);
+            return true;
         }
 
         public string Delete(string id)
@@ -93,12 +87,12 @@ namespace UTEHY.Service.Implementation
             return result;
         }
 
-        public PageResult<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request)
+        public PageResult<PostCategoryViewModel> GettAllPaging(PageRequest request)
         {
             var query = _postCategoryRepository.FindAll();
-            if(!String.IsNullOrEmpty(keyword))
+            if(!String.IsNullOrEmpty(request.keyword))
             {
-                query = query.Where(x => x.Name.Contains(keyword));
+                query = query.Where(x => x.Name.Contains(request.keyword));
             }
             var totalRecords = query.Count();
             var listItems = query.OrderBy(x => x.DisplayOrder)
@@ -128,21 +122,14 @@ namespace UTEHY.Service.Implementation
 
         public string Update(PostCategoryViewModel postCategoryVm)
         {
-            try
-            {
-                var model = _postCategoryRepository.FindById(postCategoryVm.ID);
-                model.CategoryId = postCategoryVm.ID;
-                model.Name = postCategoryVm.Name;
-                model.ParentId = postCategoryVm.ParentId;
-                model.Alias = postCategoryVm.Alias;
-                model.DisplayOrder = postCategoryVm.DisplayOrder;
-                _postCategoryRepository.Update(model);
-                return model.Name;
-            }
-            catch (Exception error)
-            {
-                return null;
-            }
+            var model = _postCategoryRepository.FindById(postCategoryVm.ID);
+            model.CategoryId = postCategoryVm.ID;
+            model.Name = postCategoryVm.Name;
+            model.ParentId = postCategoryVm.ParentId;
+            model.Alias = postCategoryVm.Alias;
+            model.DisplayOrder = postCategoryVm.DisplayOrder;
+            _postCategoryRepository.Update(model);
+            return model.Name;
         }
     }
 }
