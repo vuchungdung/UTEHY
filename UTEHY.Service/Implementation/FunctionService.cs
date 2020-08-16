@@ -35,7 +35,7 @@ namespace UTEHY.Service.Implementation
                 return true;
             }catch(Exception error)
             {
-                return false;
+                throw error;
             }
         }
 
@@ -46,15 +46,15 @@ namespace UTEHY.Service.Implementation
 
         public bool Delete(string funcId)
         {
-            var model = _functionRepository.FindById(funcId);
-            if (model != null)
+            try
             {
+                var model = _functionRepository.FindById(funcId);
                 _functionRepository.Remove(model);
                 return true;
             }
-            else
+            catch(Exception error)
             {
-                return false;
+                throw error;
             }
         }
 

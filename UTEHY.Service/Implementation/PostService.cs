@@ -47,58 +47,73 @@ namespace UTEHY.Service.Implementation
             }
             catch(Exception error)
             {
-                return false;
+                throw error;
             }
         }
 
         public bool ChangeFlag(string id, bool status)
         {
-            var model = _postRepository.FindById(id);
-            if (model != null)
+
+            try
             {
+                var model = _postRepository.FindById(id);
                 model.HomeFlag = status;
                 _postRepository.Update(model);
                 return true;
             }
-            return false;
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public bool ChangeStatus(string id, PostStatus status)
         {
-            var model = _postRepository.FindById(id);
-            if(model!= null)
+            try
             {
+                var model = _postRepository.FindById(id);
                 model.Status = status;
                 _postRepository.Update(model);
                 return true;
             }
-            return false;
-        }
-
-        public string Delete(string id)
-        {
-            var model = _postRepository.FindById(id);
-            if(model != null)
+            catch(Exception error)
             {
-                string name = model.Name;
-                _postRepository.Remove(model);
-                return name;
-            }
-            else
-            {
-                return null;
+                throw error;
             }
             
         }
 
+        public string Delete(string id)
+        {
+
+            try
+            {
+                var model = _postRepository.FindById(id);
+                string name = model.Name;
+                _postRepository.Remove(model);
+                return name;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
+        }
+
         public int DeleteMulti(string[] id)
         {
-            for(int i = 0; i< id.Length; i++)
+            try
             {
-                var model = _postRepository.FindById(id[i]);
-                _postRepository.Remove(model);
+                for (int i = 0; i < id.Length; i++)
+                {
+                    var model = _postRepository.FindById(id[i]);
+                    _postRepository.Remove(model);
+                }
+                return id.Length;
             }
-            return id.Length;
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public List<PostViewModel> GetAll()
@@ -162,23 +177,30 @@ namespace UTEHY.Service.Implementation
 
         public PostViewModel GetPostById(string id)
         {
-            var model = _postRepository.FindById(id);
-            var result = new PostViewModel()
+            try
             {
-                ID = model.PostId,
-                Name = model.Name,
-                Alias = model.Alias,
-                CategoryId = model.CategoryId,
-                Description = model.Description,
-                Content = model.Content,
-                HomeFlag = model.HomeFlag,
-                CreatedDate = model.CreatedDate,
-                CreatedBy = model.CreatedBy,
-                MoreImgs = model.MoreImgs,
-                Img = model.Img,
-                Status = model.Status
-            };
-            return result;
+                var model = _postRepository.FindById(id);
+                var result = new PostViewModel()
+                {
+                    ID = model.PostId,
+                    Name = model.Name,
+                    Alias = model.Alias,
+                    CategoryId = model.CategoryId,
+                    Description = model.Description,
+                    Content = model.Content,
+                    HomeFlag = model.HomeFlag,
+                    CreatedDate = model.CreatedDate,
+                    CreatedBy = model.CreatedBy,
+                    MoreImgs = model.MoreImgs,
+                    Img = model.Img,
+                    Status = model.Status
+                };
+                return result;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public void Save()
@@ -188,9 +210,9 @@ namespace UTEHY.Service.Implementation
 
         public string Update(PostViewModel postVm)
         {
-            var model = _postRepository.FindById(postVm.ID);
-            if(model != null)
+            try
             {
+                var model = _postRepository.FindById(postVm.ID);
                 model.Name = postVm.Name;
                 model.Alias = postVm.Alias;
                 model.CategoryId = postVm.CategoryId;
@@ -200,9 +222,13 @@ namespace UTEHY.Service.Implementation
                 model.UpdatedBy = postVm.UpdatedBy;
                 model.Img = postVm.Img;
                 model.MoreImgs = postVm.MoreImgs;
+                _postRepository.Update(model);
+                return postVm.Name;
             }
-            _postRepository.Update(model);
-            return postVm.Name;
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
     }
 }

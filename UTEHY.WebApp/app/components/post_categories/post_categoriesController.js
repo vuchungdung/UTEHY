@@ -9,8 +9,9 @@
         });
         $scope.getCategories = function () {
             apiService.get('/api/postcategoryapi/getall', null, function (result) {
-                if (result) {
-                    $scope.dropdownCategory = result.data.result;
+                if (result.status == 200) {
+                    $scope.dropdownCategory = result.data;
+                    console.log($scope.dropdownCategory)
                 }
             }, function (error) {
                 console.log(error);
@@ -24,9 +25,9 @@
                     id: id
                 }
             }
-            apiService.get('/api/postcategoryapi/getall', config, function (result) {
+            apiService.get('/api/postcategoryapi/getsingle', config, function (result) {
                 if (result) {
-                    $scope.categorybyid = result.data.result;
+                    $scope.categorybyid = result.data;
                 }
             }, function (error) {
                 console.log(error);
@@ -49,9 +50,10 @@
                 }
             }
             apiService.post('/api/postcategoryapi/getpaging', config.params, function (result) {
-                if (result) {
-                    $scope.listCategories = result.data;
+                if (result.status == 200) {                
+                    $scope.listCategories = result.data.ListItem;
                     $scope.totalRecords = result.data.TotalRecords;
+                    console.log($scope.listCategories);
                 }
             }, function (error) {
                 console.log(error);
@@ -73,7 +75,7 @@
 
         $scope.addCategory = function () {
             apiService.post('/api/postcategoryapi/add', $scope.category, function (result) {
-                if (result.data.result == true) {
+                if (result.data == true) {
                     new PNotify({
                         text: 'Thêm danh mục thành công!',
                         addclass: 'bg-success'

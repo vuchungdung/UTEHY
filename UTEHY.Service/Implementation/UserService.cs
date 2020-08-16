@@ -47,22 +47,21 @@ namespace UTEHY.Service.Implementation
             }
             catch (Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
 
         public bool Delete(string id)
         {
-            var model = _userManager.FindById(id);
-            if (model != null)
+            try
             {
+                var model = _userManager.FindById(id);
                 _userManager.Delete(model);
                 return true;
             }
-            else
+            catch(Exception error)
             {
-                return false;
+                throw error;
             }
 
         }
@@ -132,43 +131,55 @@ namespace UTEHY.Service.Implementation
             }
             catch (Exception error)
             {
-                Console.WriteLine(error);
-                return null;
+                throw error;
             }
         }
 
         public UserViewModel GetUserById(string id)
         {
-            var user = _userManager.FindById(id);
-            var model = new UserViewModel()
+            try
             {
-                Id = user.Id,
-                FullName = user.FullName,
-                Email = user.Email,
-                Phone = user.PhoneNumber,
-                Address = user.Address,
-                UserName = user.UserName,
-                Birthday = user.BirthDay,
-                Img = user.Img
-            };
-            return model;
+                var user = _userManager.FindById(id);
+                var model = new UserViewModel()
+                {
+                    Id = user.Id,
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    Address = user.Address,
+                    UserName = user.UserName,
+                    Birthday = user.BirthDay,
+                    Img = user.Img
+                };
+                return model;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public UserViewModel GetUserByUserName(string username)
         {
-            var user = _userManager.FindByName(username);
-            var model = new UserViewModel()
+            try
             {
-                Id = user.Id,
-                FullName = user.FullName,
-                Email = user.Email,
-                Phone = user.PhoneNumber,
-                Address = user.Address,
-                UserName = user.UserName,
-                Birthday = user.BirthDay,
-                Img = user.Img
-            };
-            return model;
+                var user = _userManager.FindByName(username);
+                var model = new UserViewModel()
+                {
+                    Id = user.Id,
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    Address = user.Address,
+                    UserName = user.UserName,
+                    Birthday = user.BirthDay,
+                    Img = user.Img
+                };
+                return model;
+            }catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public void Save()
@@ -193,8 +204,7 @@ namespace UTEHY.Service.Implementation
             }
             catch (Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
     }

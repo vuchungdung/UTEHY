@@ -96,6 +96,7 @@
     <Compile Include="Implementation\PermissionService.cs" />
     <Compile Include="Implementation\PostCategoryService.cs" />
     <Compile Include="Implementation\PostService.cs" />
+    <Compile Include="Implementation\TeacherService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="Interfaces\ICommandService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />

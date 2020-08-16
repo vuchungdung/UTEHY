@@ -80,7 +80,6 @@ namespace UTEHY.WebApp.API
             return CreateHttpResponse(request, () =>
             {
                 var responseData = _postCategoryService.GetAll();
-                _postCategoryService.Save();
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });

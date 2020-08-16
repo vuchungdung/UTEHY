@@ -21,40 +21,54 @@ namespace UTEHY.Service.Implementation
         }
         public bool Add(RoleViewModel roleVm)
         {
-            var model = new Role()
+            try
             {
-                Id = roleVm.Id,
-                Name = roleVm.Name,
-                Description = roleVm.Description,
-                
-            };
-            _roleRepository.Add(model);
-            return true;
+                var model = new Role()
+                {
+                    Id = roleVm.Id,
+                    Name = roleVm.Name,
+                    Description = roleVm.Description,
+
+                };
+                _roleRepository.Add(model);
+                return true;
+            }catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public bool Delete(string roleId)
         {
-            var model = _roleRepository.FindById(roleId);
-            if (model != null)
+
+            try
             {
+                var model = _roleRepository.FindById(roleId);
                 _roleRepository.Remove(model);
                 return true;
             }
-            else
+            catch(Exception error)
             {
-                return false;
+                throw error;
             }
         }
 
         public List<RoleViewModel> GetAll()
         {
-            var result = _roleRepository.FindAll().Select(x => new RoleViewModel()
+            try
             {
-                Id = x.Id,
-                Name = x.Name,
-                Description = x.Description
-            }).ToList();
-            return result;
+                var result = _roleRepository.FindAll().Select(x => new RoleViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Description = x.Description
+                }).ToList();
+                return result;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public PageResult<RoleViewModel> GetAllPaging(PageRequest request)
@@ -69,12 +83,19 @@ namespace UTEHY.Service.Implementation
 
         public bool Update(RoleViewModel roleVm)
         {
-            var model = _roleRepository.FindById(roleVm.Id);
-            model.Id = roleVm.Id;
-            model.Name = roleVm.Name;
-            model.Description = roleVm.Description;
-            _roleRepository.Update(model);
-            return true;
+            try
+            {
+                var model = _roleRepository.FindById(roleVm.Id);
+                model.Id = roleVm.Id;
+                model.Name = roleVm.Name;
+                model.Description = roleVm.Description;
+                _roleRepository.Update(model);
+                return true;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
     }
 }
