@@ -5,15 +5,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using UTEHY.Service.Interfaces;
-using UTEHY.WebApp.Core;
 
 namespace UTEHY.WebApp.API
 {
     [RoutePrefix("api/teacherapi")]
     [Authorize]
-    public class TeacherApiController : ApiControllerBase
+    public class TeacherApiController : ApiController
     {
-        public TeacherApiController(IErrorService errorService) : base(errorService)
+        public TeacherApiController()
         {
         }
     }

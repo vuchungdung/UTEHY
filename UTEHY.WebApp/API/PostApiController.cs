@@ -5,74 +5,93 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using UTEHY.Infrastructure.Utilities;
 using UTEHY.Model.Dtos;
 using UTEHY.Model.Enums;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
-using UTEHY.WebApp.Core;
 
 namespace UTEHY.WebApp.API
 {
     [RoutePrefix("api/postapi")]
     [Authorize]
-    public class PostApiController : ApiControllerBase
+    public class PostApiController : ApiController
     {
         private IPostService _postService;
+        private Logger _logger;
 
-        public PostApiController(IPostService postService,IErrorService errorService):base(errorService)
+        public PostApiController(IPostService postService, Logger logger)
         {
             _postService = postService;
+            _logger = logger;
         }    
         [Route("getpaging")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage GetAllPaging(HttpRequestMessage request, [FromBody]PageRequest pageRequest)
+        public IHttpActionResult GetAllPaging([FromBody]PageRequest pageRequest)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postService.GetAllPaging(pageRequest);
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error at method: GetAllPaging - PostApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
+            
         }     
         [Route("add")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Add(HttpRequestMessage request, [FromBody]PostViewModel postVm)
+        public IHttpActionResult Add([FromBody]PostViewModel postVm)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postService.Add(postVm);
                 _postService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: Add - PostApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("delete")]
         [HttpDelete]       
         [AllowAnonymous]
-        public HttpResponseMessage Delete(HttpRequestMessage request, string postId)
+        public IHttpActionResult Delete(string postId)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postService.Delete(postId);
                 _postService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: Delete - PostApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("changestatus")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage ChangeStatus(HttpRequestMessage request, string id, PostStatus status)
+        public IHttpActionResult ChangeStatus(string id, PostStatus status)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postService.ChangeStatus(id, status);
                 _postService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: ChangeStatus - PostApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
     }
 }

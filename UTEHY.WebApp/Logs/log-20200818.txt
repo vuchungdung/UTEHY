@@ -1,0 +1,2 @@
+2020-08-18 14:47:24.438 +07:00 [ERR] Error at method: Update - PostCategoryApi,Cannot insert duplicate key row in object 'dbo.PostCategories' with unique index 'IX_Name'. The duplicate key value is (Tin tức).
+The statement has been terminated.

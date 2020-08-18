@@ -25,7 +25,6 @@ namespace UTEHY.Model.Entities
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Command> Commands { get; set; }
         public DbSet<CommandInFunction> CommandInFunctions { get; set; }
-        public DbSet<Error> Errors { get; set; }
         public static FITDbContext Create()
         {
             return new FITDbContext();

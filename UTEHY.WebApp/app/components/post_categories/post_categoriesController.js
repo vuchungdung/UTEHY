@@ -128,7 +128,7 @@
 
         $scope.editCategory = function () {
             apiService.put('/api/postcategoryapi/update', $scope.categorybyid, function (result) {
-                if (result.data.result != null) {
+                if (result.data.status == 200) {
                     new PNotify({
                         text: 'Cập nhật danh mục thành công!',
                         addclass: 'bg-success'

@@ -3,7 +3,7 @@ namespace UTEHY.Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialDB : DbMigration
+    public partial class initialDb : DbMigration
     {
         public override void Up()
         {
@@ -41,17 +41,6 @@ namespace UTEHY.Model.Migrations
                         UserName = c.String(maxLength: 100),
                     })
                 .PrimaryKey(t => t.CommentId);
-            
-            CreateTable(
-                "dbo.Errors",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Message = c.String(),
-                        StackTrace = c.String(),
-                        CreatedDate = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Footers",
@@ -278,7 +267,6 @@ namespace UTEHY.Model.Migrations
             DropTable("dbo.Menus");
             DropTable("dbo.Functions");
             DropTable("dbo.Footers");
-            DropTable("dbo.Errors");
             DropTable("dbo.Comments");
             DropTable("dbo.Commands");
             DropTable("dbo.CommandInFunctions");

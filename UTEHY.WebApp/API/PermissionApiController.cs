@@ -5,15 +5,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using UTEHY.Service.Interfaces;
-using UTEHY.WebApp.Core;
 
 namespace UTEHY.WebApp.API
 {
     [RoutePrefix("api/permissionapi")]
     [Authorize]
-    public class PermissionApiController : ApiControllerBase
+    public class PermissionApiController : ApiController
     {
-        public PermissionApiController(IErrorService errorService) : base(errorService)
+        public PermissionApiController() 
         {
         }
     }

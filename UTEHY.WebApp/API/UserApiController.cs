@@ -8,7 +8,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using UTEHY.Infrastructure.Utilities;
 using UTEHY.Model.Constants;
+using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
 using UTEHY.WebApp.App_Start;
 using UTEHY.WebApp.Authorization;
@@ -22,11 +24,13 @@ namespace UTEHY.WebApp.API
         private IUserService _userService;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        public UserApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserService userService)
+        private Logger _logger;
+        public UserApiController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserService userService,Logger logger)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             _userService = userService;
+            _logger = logger;
         }
 
         public ApplicationSignInManager SignInManager
@@ -56,39 +60,29 @@ namespace UTEHY.WebApp.API
         [HttpPost]
         [Route("logout")]
         [Authorize]
-        public HttpResponseMessage LogOut(HttpRequestMessage request)
+        public IHttpActionResult LogOut()
         {           
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut();
-            return request.CreateResponse(HttpStatusCode.OK, new { success = true });
+            return Ok();
         }
         [HttpGet]
         [Route("getmenu")]
         [AllowAnonymous]
         [ClaimRequirementFilter(Function = FunctionCode.SYSTEM_USER,Command = CommandCode.VIEW)]
-        public HttpResponseMessage GetMenuByUserPermission(HttpRequestMessage request)
+        public IHttpActionResult GetMenuByUserPermission()
         {
             try
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
-                if (id == null)
-                {
-                    return request.CreateResponse(HttpStatusCode.BadRequest);
-                }
-                else
-                {
-                    var responData = _userService.GetMenuByUserPermission(id);
-                    if (responData != null)
-                    {
-                        return request.CreateResponse(HttpStatusCode.OK,responData);
-                    }
-                    return request.CreateResponse(HttpStatusCode.BadRequest);
-                }
+                var responData = _userService.GetMenuByUserPermission(id);
+                return Ok(responData);
             }
             catch(Exception ex)
             {
-                return request.CreateResponse(HttpStatusCode.BadRequest,ex);
+                _logger.LogError("Error at method: GetMenuByUserPermission - UserApi, "+ ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
             }
         }
     }

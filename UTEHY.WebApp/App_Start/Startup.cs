@@ -14,6 +14,7 @@ using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using UTEHY.Infrastructure.Implementation;
 using UTEHY.Infrastructure.Interfaces;
+using UTEHY.Infrastructure.Utilities;
 using UTEHY.Model.Entities;
 using UTEHY.Service.Implementation;
 using UTEHY.Service.Interfaces;
@@ -53,8 +54,9 @@ namespace UTEHY.WebApp.App_Start
             // register repositories
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>));
 
+            //Logger
+            builder.RegisterType<Logger>().As<Logger>().InstancePerRequest();
             // register services
-            builder.RegisterType<ErrorService>().As<IErrorService>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerRequest();
             builder.RegisterType<PermissionService>().As<IPermissionService>().InstancePerRequest();
             builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();

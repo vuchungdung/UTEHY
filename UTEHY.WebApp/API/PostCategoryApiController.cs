@@ -4,98 +4,123 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using UTEHY.Infrastructure.Utilities;
 using UTEHY.Model.Dtos;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
-using UTEHY.WebApp.Core;
 
 namespace UTEHY.WebApp.API
 {
     [RoutePrefix("api/postcategoryapi")]
     [Authorize]
-    public class PostCategoryApiController : ApiControllerBase
+    public class PostCategoryApiController : ApiController
     {
         private IPostCategoryService _postCategoryService;
+        private Logger _logger;
 
-        public PostCategoryApiController(IErrorService errorService,IPostCategoryService postCategoryService) : base(errorService)
+        public PostCategoryApiController(IPostCategoryService postCategoryService,Logger logger)
         {
             _postCategoryService = postCategoryService;
+            _logger = logger;
         }
         [Route("getpaging")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage GetAllPaging(HttpRequestMessage request, [FromBody]PageRequest pageRequest)
+        public IHttpActionResult GetAllPaging([FromBody]PageRequest pageRequest)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.GettAllPaging(pageRequest);
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error at method: GetAllPaging - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("add")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Add(HttpRequestMessage request, [FromBody]PostCategoryViewModel postVm)
+        public IHttpActionResult Add([FromBody]PostCategoryViewModel postVm)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.Add(postVm);
                 _postCategoryService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: Add - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("delete")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage Delete(HttpRequestMessage request, string postId)
+        public IHttpActionResult Delete([FromUri]string postId)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.Delete(postId);
                 _postCategoryService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: Delete - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, [FromBody]PostCategoryViewModel postVm)
+        public IHttpActionResult Update([FromBody]PostCategoryViewModel postVm)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.Update(postVm);
                 _postCategoryService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: Update - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("getall")]
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        public IHttpActionResult GetAll()
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.GetAll();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: GetAll - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
         [Route("getsingle")]
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage GetSignle (HttpRequestMessage request,string id)
+        public IHttpActionResult GetSignle ([FromUri]string id)
         {
-            return CreateHttpResponse(request, () =>
+            try
             {
                 var responseData = _postCategoryService.GetSingleById(id);
-                _postCategoryService.Save();
-                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                return response;
-            });
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: GetSingle - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
         }
     }
 }
