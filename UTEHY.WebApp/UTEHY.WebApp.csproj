@@ -225,11 +225,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\components\group_users\roles.Module.js" />
-    <Content Include="app\components\group_users\rolesAddView.html" />
-    <Content Include="app\components\group_users\roles.Controller.js" />
-    <Content Include="app\components\group_users\rolesEditView.html" />
-    <Content Include="app\components\group_users\rolesListView.html" />
+    <Content Include="app\components\roles\roles.Module.js" />
+    <Content Include="app\components\roles\rolesAddView.html" />
+    <Content Include="app\components\roles\roles.Controller.js" />
+    <Content Include="app\components\roles\rolesEditView.html" />
+    <Content Include="app\components\roles\rolesListView.html" />
     <Content Include="app\components\homes\homeController.js" />
     <Content Include="app\components\homes\homeview.html" />
     <Content Include="app\components\homes\rootController.js" />
@@ -5945,6 +5945,7 @@
     <Content Include="Assets\ngBootbox\examples\index.html" />
     <Content Include="Assets\ngBootbox\gulpfile.js" />
     <Content Include="Assets\ngBootbox\ngBootbox.js" />
+    <Content Include="client\app.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -5978,6 +5979,7 @@
     <Content Include="Assets\angular-ui-router\typedoc.json" />
     <Content Include="Assets\angular-ui-router\yarn.lock" />
     <Content Include="Libs\CKFinder.dll" />
+    <Content Include="Logs\log-20200818.txt" />
     <Content Include="UploadedFiles\images\49938777_275572963124503_1869718101398913024_n.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -5990,8 +5992,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\components\permissions\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Logs\" />
+    <Folder Include="client\components\" />
+    <Folder Include="client\shared\" />
     <Folder Include="UploadedFiles\files\" />
   </ItemGroup>
   <ItemGroup>

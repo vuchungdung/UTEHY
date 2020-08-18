@@ -21,7 +21,6 @@ namespace UTEHY.Model.Constants
         public const string SYSTEM = "SYSTEM";
         public const string SYSTEM_USER = "SYSTEM_USER";
         public const string SYSTEM_ROLE = "SYSTEM_ROLE";
-        public const string SYSTEM_FUNCTION = "SYSTEM_FUNCTION";
         public const string SYSTEM_PERMISSION = "SYSTEM_PERMISSION";
     }
 }

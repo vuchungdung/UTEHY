@@ -20,7 +20,7 @@
                 }
             }
             apiService.post('/api/postapi/getpaging', config.params, function (result) {
-                if (result.data.result != null) {
+                if (result.status == 200) {
                     $scope.listPosts = result.data.result.ListItem;
                     $scope.totalRecords = result.data.result.TotalRecords;
                 }
@@ -33,8 +33,8 @@
                 var config = {
                     postId: id
                 }
-                apiService.post('/Post/DeletePost', config, function (result) {
-                    if (result.data.result != null) {
+                apiService.post('/api/postapi/delete', config, function (result) {
+                    if (result.status == 200) {
                         new PNotify({
                             title: 'Đã xóa thành công',
                             icon: 'icon-checkmark3',
@@ -102,8 +102,8 @@
                 var config = {
                     listId: listId
                 }
-                apiService.del('/Post/DeleteMulti', config, function (result) {
-                    if (result.data.result != null) {
+                apiService.del('/api/postapi/deletemulti', config, function (result) {
+                    if (result.status == null) {
                         new PNotify({
                             title: 'Đã xóa thành công ' + result.data.result + ' bản ghi',
                             icon: 'icon-checkmark3',
@@ -137,8 +137,8 @@
                     id: id,
                     status: st
                 }
-                apiService.put('/Post/ChangeStatus', config, function (result) {
-                    if (result.data.result == true) {
+                apiService.put('/api/postapi/changestatus', config, function (result) {
+                    if (result.status == true) {
                         new PNotify({
                             text: 'Cập nhật thành công!',
                             addclass: 'bg-success'

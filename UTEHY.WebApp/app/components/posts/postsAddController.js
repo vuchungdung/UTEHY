@@ -33,7 +33,7 @@
         $scope.addPost = function () {
             $scope.post.MoreImgs = JSON.stringify($scope.moreImages);
             apiService.post('/api/postapi/add', $scope.post, function (result) {
-                if (result.data.result == true) { 
+                if (result.status == 200) { 
                     $scope.post = angular.copy({});   
                     new PNotify({
                         text: 'Thêm bài đăng thành công!',
@@ -61,7 +61,7 @@
 
         $scope.getListCategoryId = function () {
             apiService.get('/api/postcategoryapi/getall', null, function (result) {
-                if (result) {
+                if (result.status == 200) {
                     $scope.listCategoryId = result.data.result;
                 }
             }, function (error) {

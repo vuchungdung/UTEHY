@@ -53,7 +53,6 @@
                 if (result.status == 200) {                
                     $scope.listCategories = result.data.ListItem;
                     $scope.totalRecords = result.data.TotalRecords;
-                    console.log($scope.listCategories);
                 }
             }, function (error) {
                 console.log(error);
@@ -128,7 +127,7 @@
 
         $scope.editCategory = function () {
             apiService.put('/api/postcategoryapi/update', $scope.categorybyid, function (result) {
-                if (result.data.status == 200) {
+                if (result.status == 200) {
                     new PNotify({
                         text: 'Cập nhật danh mục thành công!',
                         addclass: 'bg-success'

@@ -62,7 +62,7 @@ namespace UTEHY.WebApp.API
         [Route("delete")]
         [HttpDelete]       
         [AllowAnonymous]
-        public IHttpActionResult Delete(string postId)
+        public IHttpActionResult Delete([FromUri]string postId)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace UTEHY.WebApp.API
         [Route("changestatus")]
         [HttpPut]
         [AllowAnonymous]
-        public IHttpActionResult ChangeStatus(string id, PostStatus status)
+        public IHttpActionResult ChangeStatus([FromUri]string id, [FromUri]PostStatus status)
         {
             try
             {
