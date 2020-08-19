@@ -62,6 +62,8 @@ namespace UTEHY.WebApp.App_Start
             builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();
             builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
             builder.RegisterType<PostService>().As<IPostService>().InstancePerRequest();
+            builder.RegisterType<RoleService>().As<IRoleService>().InstancePerRequest();
+
 
 
             // build and setup resolver

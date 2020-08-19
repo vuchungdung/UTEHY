@@ -1,6 +1,7 @@
 ﻿(function () {
     angular.module('utehy',
         ['utehy.common',
+            'utehy.permissions',
             'utehy.categories',
             'utehy.teachers',
             'utehy.posts'])

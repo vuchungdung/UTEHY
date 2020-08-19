@@ -1,0 +1,190 @@
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 8px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+    }
+    li{
+        list-style:none;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 10px;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Phân quyền</span>
+                <small class="display-block" style="font-size:12px">Quản lý hệ thống <i class="icon-arrow-right22"></i> Phân quyền</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên danh mục:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchPermissions()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Lưu lại</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Làm mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">PHÂN QUYỀN NHÓM NGƯỜI DÙNG</h6>
+                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
+                    <span>Hiển thị:</span>
+                    <select id="pageSize" ng-model="pageSize">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-framed" style="margin-bottom:20px">
+                        <thead>
+                            <tr>
+                                <th style="width:4%">
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
+                                </th>
+                                <th style="width:16%">Chức năng</th>
+                                <th style="width:80%">Nghiệp vụ của chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                                <td>Quản lý hệ thống</td>
+                                <td class="row">
+                                    <div class="col-md-3">
+                                        <div>
+                                            <input type="checkbox">
+                                            <span class="text-bold">Quản lý người dùng</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Thêm người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Sửa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xóa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xem người dùng</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div>
+                                            <input type="checkbox">
+                                            <span class="text-bold">Quản lý người dùng</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Thêm người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Sửa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xóa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xem người dùng</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div>
+                                            <input type="checkbox">
+                                            <span class="text-bold">Quản lý người dùng</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Thêm người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Sửa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xóa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xem người dùng</span>
+                                            </li>
+                                        </ul>
+                                    </div>      
+                                    <div class="col-md-3">
+                                        <div>
+                                            <input type="checkbox">
+                                            <span class="text-bold">Quản lý người dùng</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Thêm người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Sửa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xóa người dùng</span>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xem người dùng</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>                                                     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

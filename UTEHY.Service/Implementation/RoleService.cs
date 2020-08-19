@@ -13,11 +13,13 @@ namespace UTEHY.Service.Implementation
     public class RoleService : IRoleService
     {
         private IRepositoryBase<Role, string> _roleRepository;
+        private FITDbContext _context;
         private IUnitOfWork _unitOfWork;
-        public RoleService(IRepositoryBase<Role, string> roleRepository, IUnitOfWork unitOfWork)
+        public RoleService(IRepositoryBase<Role, string> roleRepository, IUnitOfWork unitOfWork, FITDbContext context)
         {
             _roleRepository = roleRepository;
             _unitOfWork = unitOfWork;
+            _context = context;
         }
         public bool Add(RoleViewModel roleVm)
         {
@@ -27,8 +29,7 @@ namespace UTEHY.Service.Implementation
                 {
                     Id = roleVm.Id,
                     Name = roleVm.Name,
-                    Description = roleVm.Description,
-
+                    Description = roleVm.Description
                 };
                 _roleRepository.Add(model);
                 return true;
@@ -72,6 +73,26 @@ namespace UTEHY.Service.Implementation
         }
 
         public PageResult<RoleViewModel> GetAllPaging(PageRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<PermissionViewModel> GetPermissionByRoleId(string roleId)
+        {
+            var listModels = from p in _context.Permissions
+                             join r in _roleRepository.FindAll()
+                             on p.RoleId equals r.Id
+                             where r.Id == roleId
+                             select new PermissionViewModel()
+                             {
+                                 CommandId = p.CommandId,
+                                 FunctionId = p.FunctionId,
+                                 RoleId = p.RoleId
+                             };
+            return listModels.ToList();
+        }
+
+        public bool PutPermissionByRoleId(string roleId, List<PermissionViewModel> models)
         {
             throw new NotImplementedException();
         }

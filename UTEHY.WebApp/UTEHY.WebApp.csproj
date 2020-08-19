@@ -199,6 +199,7 @@
     <Compile Include="API\PermissionApiController.cs" />
     <Compile Include="API\PostApiController.cs" />
     <Compile Include="API\PostCategoryApiController.cs" />
+    <Compile Include="API\RoleApiController.cs" />
     <Compile Include="API\TeacherApiController.cs" />
     <Compile Include="API\UserApiController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -225,6 +226,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\components\functions\functions.Module.js" />
+    <Content Include="app\components\functions\functionsList.Controller.js" />
+    <Content Include="app\components\functions\functionsListView.html" />
+    <Content Include="app\components\permissions\permissions.Module.js" />
+    <Content Include="app\components\permissions\permissionsList.Controller.js" />
+    <Content Include="app\components\permissions\permissionsListView.html" />
     <Content Include="app\components\roles\roles.Module.js" />
     <Content Include="app\components\roles\rolesAddView.html" />
     <Content Include="app\components\roles\roles.Controller.js" />
@@ -5992,10 +5999,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\components\permissions\" />
     <Folder Include="App_Data\" />
     <Folder Include="client\components\" />
-    <Folder Include="client\shared\" />
+    <Folder Include="client\shared\filters\" />
+    <Folder Include="client\shared\modules\" />
+    <Folder Include="client\shared\services\" />
+    <Folder Include="client\shared\views\" />
     <Folder Include="UploadedFiles\files\" />
   </ItemGroup>
   <ItemGroup>

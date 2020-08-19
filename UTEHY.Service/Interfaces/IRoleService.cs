@@ -17,6 +17,8 @@ namespace UTEHY.Service.Interfaces
         bool Delete(string roleId);
         List<RoleViewModel> GetAll();
         PageResult<RoleViewModel> GetAllPaging(PageRequest request);
+        List<PermissionViewModel> GetPermissionByRoleId(string roleId);
+        bool PutPermissionByRoleId(string roleId, List<PermissionViewModel> models);
         void Save();
     }
 }
