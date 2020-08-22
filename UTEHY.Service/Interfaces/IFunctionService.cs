@@ -16,7 +16,7 @@ namespace UTEHY.Service.Interfaces
         List<FunctionViewModel> GellAll();
         FunctionViewModel GetFunctionById(string funcId);
         FunctionViewModel GetFunctionByParentId(string parentId);
-        CommandViewModel GetCommandInFunction(string funcId);
+        List<CommandViewModel> GetCommandInFunction(string funcId);
         void AddCommandToFunction(string funcId, CommandAssignRequest request);
         string DeleteCommandToFunction(string funcId, CommandAssignRequest request);
         PageResult<FunctionViewModel> GetAllPaging(string keyword, PageRequest request);

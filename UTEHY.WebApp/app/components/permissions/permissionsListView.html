@@ -54,14 +54,11 @@
         <div class="panel panel-flat">
             <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
                 <h6 class="panel-title">PHÂN QUYỀN NHÓM NGƯỜI DÙNG</h6>
-                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
-                    <span>Hiển thị:</span>
-                    <select id="pageSize" ng-model="pageSize">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
+                <div class="heading-elements">
+                    <select ng-change="loadDataPermissions(roleId)" name="roleId" class="form-control" ng-model="roleId" ng-options="option.Id as option.Name for option in listRole">
+                        <option value="">Nhóm quyền</option>
                     </select>
+                    <input type="hidden" name="roleId" ng-model="roleId" />
                 </div>
             </div>
             <div class="container-fluid">
@@ -76,106 +73,38 @@
                                 <th style="width:80%">Nghiệp vụ của chức năng</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody ng-repeat="item in listPermission">
                             <tr>
                                 <td>
                                     <input type="checkbox">
                                 </td>
-                                <td>Quản lý hệ thống</td>
+                                <td>{{item.Name}}</td>
                                 <td class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" ng-repeat="child in item.children">
                                         <div>
                                             <input type="checkbox">
-                                            <span class="text-bold">Quản lý người dùng</span>
+                                            <span class="text-bold">{{child.Name}}</span>
                                         </div>
                                         <ul>
-                                            <li>
+                                            <li ng-if="child.HasCreate == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Thêm người dùng</span>
+                                                <span style="padding-left:2px">Thêm</span>
                                             </li>
-                                            <li>
+                                            <li ng-if="child.HasUpdate == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Sửa người dùng</span>
+                                                <span style="padding-left:2px">Sửa</span>
                                             </li>
-                                            <li>
+                                            <li ng-if="child.HasDelete == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Xóa người dùng</span>
+                                                <span style="padding-left:2px">Xóa</span>
                                             </li>
-                                            <li>
+                                            <li ng-if="child.HasView == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Xem người dùng</span>
+                                                <span style="padding-left:2px">Xem</span>
                                             </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="checkbox">
-                                            <span class="text-bold">Quản lý người dùng</span>
-                                        </div>
-                                        <ul>
-                                            <li>
+                                            <li ng-if="child.HasApprove == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Thêm người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Sửa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xóa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xem người dùng</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="checkbox">
-                                            <span class="text-bold">Quản lý người dùng</span>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Thêm người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Sửa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xóa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xem người dùng</span>
-                                            </li>
-                                        </ul>
-                                    </div>      
-                                    <div class="col-md-3">
-                                        <div>
-                                            <input type="checkbox">
-                                            <span class="text-bold">Quản lý người dùng</span>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Thêm người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Sửa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xóa người dùng</span>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox">
-                                                <span style="padding-left:2px">Xem người dùng</span>
+                                                <span style="padding-left:2px">Duyệt</span>
                                             </li>
                                         </ul>
                                     </div>

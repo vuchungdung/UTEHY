@@ -92,6 +92,18 @@ namespace UTEHY.Service.Implementation
             return listModels.ToList();
         }
 
+        public RoleViewModel GetSingle(string id)
+        {
+            var model = _roleRepository.FindById(id);
+            var result = new RoleViewModel()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description
+            };
+            return result;
+        }
+
         public bool PutPermissionByRoleId(string roleId, List<PermissionViewModel> models)
         {
             throw new NotImplementedException();

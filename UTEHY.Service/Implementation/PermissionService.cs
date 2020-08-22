@@ -21,7 +21,7 @@ namespace UTEHY.Service.Implementation
         {
             _permissionRepository = permissionRepository;
         }
-        public List<PermissionScreenViewModel> GetCommandViews()
+        public List<PermissionScreenViewModel> GetCommandViews(string roleId)
         {
             var sql = @"select f.FunctionId as FunctionId,f.Name as Name,f.ParentId as ParentId,
 		                        sum((case when c.CommandId = 'CREATE' then 1 else 0 end)) as HasCreate,
@@ -32,7 +32,7 @@ namespace UTEHY.Service.Implementation
 	                    from Functions as f inner join CommandInFunctions as cif on f.FunctionId = cif.FunctionId 
 			                    inner join Commands as c on cif.CommandId = c.CommandId
 			                    inner join Permissions as p on p.FunctionId = f.FunctionId and p.CommandId = cif.CommandId
-	                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
+                                and p.RoleId = '"+roleId+"'"+"group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
             using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-6HF17VS\SQLEXPRESS;Initial Catalog=FIT;Integrated Security=True;"))
             {
                 if (conn.State == ConnectionState.Closed)
