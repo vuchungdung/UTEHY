@@ -80,7 +80,7 @@ namespace UTEHY.Service.Implementation
         public List<PermissionViewModel> GetPermissionByRoleId(string roleId)
         {
             var listModels = from p in _context.Permissions
-                             join r in _roleRepository.FindAll()
+                             join r in _context.Roles
                              on p.RoleId equals r.Id
                              where r.Id == roleId
                              select new PermissionViewModel()

@@ -1,6 +1,9 @@
 ﻿(function () {
     angular.module('utehy',
         ['utehy.common',
+            'utehy.users',
+            'utehy.roles',
+            'utehy.functions',
             'utehy.permissions',
             'utehy.categories',
             'utehy.teachers',

@@ -233,9 +233,7 @@
     <Content Include="app\components\permissions\permissionsList.Controller.js" />
     <Content Include="app\components\permissions\permissionsListView.html" />
     <Content Include="app\components\roles\roles.Module.js" />
-    <Content Include="app\components\roles\rolesAddView.html" />
     <Content Include="app\components\roles\roles.Controller.js" />
-    <Content Include="app\components\roles\rolesEditView.html" />
     <Content Include="app\components\roles\rolesListView.html" />
     <Content Include="app\components\homes\homeController.js" />
     <Content Include="app\components\homes\homeview.html" />
@@ -5987,7 +5985,6 @@
     <Content Include="Assets\angular-ui-router\yarn.lock" />
     <Content Include="Libs\CKFinder.dll" />
     <Content Include="Logs\log-20200818.txt" />
-    <Content Include="UploadedFiles\images\49938777_275572963124503_1869718101398913024_n.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -6006,6 +6003,7 @@
     <Folder Include="client\shared\services\" />
     <Folder Include="client\shared\views\" />
     <Folder Include="UploadedFiles\files\" />
+    <Folder Include="UploadedFiles\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

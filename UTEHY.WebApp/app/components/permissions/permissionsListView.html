@@ -73,38 +73,46 @@
                                 <th style="width:80%">Nghiệp vụ của chức năng</th>
                             </tr>
                         </thead>
-                        <tbody ng-repeat="item in listPermission">
+                        <tbody ng-repeat="item in commandview">
                             <tr>
                                 <td>
                                     <input type="checkbox">
                                 </td>
-                                <td>{{item.Name}}</td>
+                                <td class="text-bold text-uppercase">{{item.Name}}</td>
                                 <td class="row">
                                     <div class="col-md-3" ng-repeat="child in item.children">
                                         <div>
                                             <input type="checkbox">
-                                            <span class="text-bold">{{child.Name}}</span>
+                                            <span class="text-bold">Quản lý {{child.Name}}</span>
                                         </div>
                                         <ul>
                                             <li ng-if="child.HasCreate == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Thêm</span>
+                                                <span style="padding-left:2px">Thêm {{child.Name}}</span>
                                             </li>
                                             <li ng-if="child.HasUpdate == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Sửa</span>
+                                                <span style="padding-left:2px">Sửa {{child.Name}}</span>
                                             </li>
                                             <li ng-if="child.HasDelete == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Xóa</span>
+                                                <span style="padding-left:2px">Xóa {{child.Name}}</span>
                                             </li>
                                             <li ng-if="child.HasView == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Xem</span>
+                                                <span style="padding-left:2px">Xem {{child.Name}}</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
                                                 <input type="checkbox">
-                                                <span style="padding-left:2px">Duyệt</span>
+                                                <span style="padding-left:2px">Duyệt {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasApprove == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Nhập FILE</span>
+                                            </li>
+                                            <li ng-if="child.HasApprove == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xuất FILE</span>
                                             </li>
                                         </ul>
                                     </div>

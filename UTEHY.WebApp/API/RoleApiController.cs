@@ -107,5 +107,20 @@ namespace UTEHY.WebApp.API
                 return BadRequest("Error System");
             }
         }
+        [HttpGet]
+        [Route("getpermission")]
+        public IHttpActionResult GetPermission([FromUri] string roleId)
+        {
+            try
+            {
+                var responseData = _roleService.GetPermissionByRoleId(roleId);
+                return Ok(responseData);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error at method: GetPermission - RoleApi," + ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
+        }
     }
 }
