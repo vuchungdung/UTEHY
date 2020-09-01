@@ -12,7 +12,7 @@ namespace UTEHY.Infrastructure.Implementation
 {
     public class RepositoryBase<T, K> : IRepositoryBase<T, K> where T : class
     {
-        private FITEntities _db;
+        private FITDbContext _db;
         private readonly IDbSet<T> _dbSet;
 
         public IDbFactory DbFactory
@@ -21,7 +21,7 @@ namespace UTEHY.Infrastructure.Implementation
             private set;
         }
 
-        public FITEntities DbContext
+        public FITDbContext DbContext
         {
             get { return _db ?? (_db = DbFactory.Init()); }
         }

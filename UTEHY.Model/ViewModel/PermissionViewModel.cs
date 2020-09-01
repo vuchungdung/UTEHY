@@ -8,7 +8,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class PermissionViewModel
     {
-        public string GroupId { get; set; }
+        public string RoleId { get; set; }
         public string CommandId { get; set; }
         public string FunctionId { get; set; }
     }

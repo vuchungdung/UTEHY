@@ -9,30 +9,23 @@ using UTEHY.Model.ViewModel;
 using UTEHY.Model.Dtos;
 using UTEHY.Infrastructure.Interfaces;
 using UTEHY.Model.Constants;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace UTEHY.Service.Implementation
 {
     public class UserService : IUserService
     {
-        private IRepositoryBase<User, string> _userRepository;
-        private IRepositoryBase<Function, string> _functionRepository;
-        private IRepositoryBase<Command, string> _commandRepository;
-        private IRepositoryBase<Permission, string> _permissionRepository;
-        private IRepositoryBase<GroupUser, string> _groupUsersRepository;
+        private UserManager<User> _userManager;
+        private FITDbContext _dbContext;
         private IUnitOfWork _unitOfWork;
-        public UserService(IRepositoryBase<User,string> userRepository,
-            IUnitOfWork unitOfWork,
-            IRepositoryBase<Function,string> functionRepository,
-            IRepositoryBase<Command, string> commandRepository,
-            IRepositoryBase<Permission, string> permissionRepository,
-            IRepositoryBase<GroupUser, string> groupUsersRepository)
+        public UserService(UserManager<User> userManager,
+            FITDbContext dbContext,
+            IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
+            _userManager = userManager;
+            _dbContext = dbContext;
             _unitOfWork = unitOfWork;
-            _functionRepository = functionRepository;
-            _commandRepository = commandRepository;
-            _permissionRepository = permissionRepository;
-            _groupUsersRepository = groupUsersRepository;
         }
         public bool Add(UserViewModel userVm)
         {
@@ -40,89 +33,64 @@ namespace UTEHY.Service.Implementation
             {
                 var model = new User()
                 {
-                    UserId = Guid.NewGuid().ToString(),
-                    Name = userVm.Name,
+                    Id = Guid.NewGuid().ToString(),
+                    FullName = userVm.FullName,
                     Email = userVm.Email,
-                    PhoneNumber = userVm.PhoneNumber,
+                    PhoneNumber = userVm.Phone,
                     Address = userVm.Address,
                     UserName = userVm.UserName,
-                    Password = userVm.Password,
-                    FirstName = userVm.FirstName,
-                    LastName = userVm.LastName,
-                    Dob = userVm.Dob,
-                    GroupId = userVm.GroupId.ToString()
+                    BirthDay = userVm.Birthday,
+                    Img = userVm.Img
                 };
-                _userRepository.Add(model);
+                _userManager.Create(model);
                 return true;
-            }catch(Exception error)
+            }
+            catch (Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
 
         public bool Delete(string id)
         {
-            var model = _userRepository.FindById(id);
-            if (model != null)
+            try
             {
-                _userRepository.Remove(id);
+                var model = _userManager.FindById(id);
+                _userManager.Delete(model);
                 return true;
             }
-            else
+            catch(Exception error)
             {
-                return false;
+                throw error;
             }
-            
+
         }
 
-        public List<UserViewModel> GetAll()
+        public PageResult<UserViewModel> GetAllPaging(PageRequest request)
         {
-            var result = _userRepository.FindAll().Select(x => new UserViewModel()
+            var query = _userManager.Users;
+            if (!String.IsNullOrEmpty(request.keyword))
             {
-                UserId = x.UserId,
-                Name = x.Name,
-                Email = x.Email,
-                PhoneNumber = x.PhoneNumber,
-                Address = x.Address,
-                UserName = x.UserName,
-                Password = x.Password,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Dob = x.Dob,
-                GroupId = x.GroupId
-            });
-            return result.ToList();
-        }
-
-        public PageResult<UserViewModel> GetAllPaging(string keyword, PageRequest request, string groupId)
-        {
-            var query = _userRepository.FindAll();
-            if (!String.IsNullOrEmpty(keyword))
-            {
-                query = query.Where(x => x.Equals(keyword));
+                query = query.Where(x => x.Equals(request.keyword));
             }
-            if (!String.IsNullOrEmpty(groupId))
+            if (!String.IsNullOrEmpty(request.categoryId))
             {
-                query = query.Where(x => x.GroupId == groupId);
+                query = query.Where(x => x.Roles.First().RoleId == request.categoryId);
             }
             var totalRecords = query.Count();
-            var listItems = query.OrderBy(x=>x.Name)
+            var listItems = query.OrderBy(x => x.FullName)
                 .Skip((request.pageIndex - 1) * request.pageSize)
                 .Take(request.pageSize)
                 .Select(x => new UserViewModel()
                 {
-                    UserId = x.UserId,
-                    Name = x.Name,
+                    Id = x.Id,
+                    FullName = x.FullName,
                     Email = x.Email,
-                    PhoneNumber = x.PhoneNumber,
+                    Phone = x.PhoneNumber,
                     Address = x.Address,
                     UserName = x.UserName,
-                    Password = x.Password,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Dob = x.Dob,
-                    GroupId = x.GroupId
+                    Birthday = x.BirthDay,
+                    Img = x.Img
                 }).ToList();
             var pagination = new PageResult<UserViewModel>()
             {
@@ -136,19 +104,16 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var functions = _functionRepository.FindAll();
-                var permissions = _permissionRepository.FindAll();
-                var commands = _commandRepository.FindAll();
-                var groupusers = _groupUsersRepository.FindAll();
-                var user = _userRepository.FindById(userId);
-                var groupuser = _groupUsersRepository.FindById(user.GroupId);
-                var query = from f in functions
-                            join p in permissions
+                var roles = _dbContext.Roles;
+                var user = _userManager.FindById(userId);
+                var role = _userManager.GetRoles(user.Id);
+                var query = from f in _dbContext.Functions
+                            join p in _dbContext.Permissions
                                 on f.FunctionId equals p.FunctionId
-                            join g in groupusers on p.GroupId equals g.GroupId
-                            join c in commands
+                            join g in roles on p.RoleId equals g.Id
+                            join c in _dbContext.Commands
                                 on p.CommandId equals c.CommandId
-                            where groupuser.GroupId == g.GroupId && c.CommandId == CommandCode.VIEW
+                            where role.Contains(g.Name) && c.CommandId == CommandCode.VIEW
                             select new FunctionViewModel()
                             {
                                 FunctionId = f.FunctionId,
@@ -163,71 +128,57 @@ namespace UTEHY.Service.Implementation
                     .ThenBy(x => x.SortOrder)
                     .ToList();
                 return data;
-            }catch(Exception error)
+            }
+            catch (Exception error)
             {
-                Console.WriteLine(error);
-                return null;
+                throw error;
             }
         }
 
         public UserViewModel GetUserById(string id)
         {
-            var user = _userRepository.FindById(id);
-            var model = new UserViewModel()
+            try
             {
-                UserId = user.UserId,
-                Name = user.Name,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,
-                UserName = user.UserName,
-                Password = user.Password,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Dob = user.Dob,
-                GroupId = user.GroupId
-            };
-            return model;
+                var user = _userManager.FindById(id);
+                var model = new UserViewModel()
+                {
+                    Id = user.Id,
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    Address = user.Address,
+                    UserName = user.UserName,
+                    Birthday = user.BirthDay,
+                    Img = user.Img
+                };
+                return model;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public UserViewModel GetUserByUserName(string username)
         {
-            var user = _userRepository.FindSingle(x=>x.UserName == username);
-            var model = new UserViewModel()
+            try
             {
-                UserId = user.UserId,
-                Name = user.Name,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address,
-                UserName = user.UserName,
-                Password = user.Password,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Dob = user.Dob,
-                GroupId = user.GroupId
-            };
-            return model;
-        }
-
-        public int Login(LoginViewModel model)
-        {
-            var username = _userRepository.FindAll(x => x.UserName == model.UserName);
-            if(username != null)
-            {
-                var userpass = username.Where(x => x.Password == model.Password).SingleOrDefault();
-                if (userpass != null)
+                var user = _userManager.FindByName(username);
+                var model = new UserViewModel()
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            else
+                    Id = user.Id,
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    Address = user.Address,
+                    UserName = user.UserName,
+                    Birthday = user.BirthDay,
+                    Img = user.Img
+                };
+                return model;
+            }catch(Exception error)
             {
-                return -1;
+                throw error;
             }
         }
 
@@ -240,24 +191,20 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var model = _userRepository.FindById(userVm.UserId);
-                model.UserId = userVm.UserId.ToString();
-                model.Name = userVm.Name;
+                var model = _userManager.FindById(userVm.Id);
+                model.FullName = userVm.FullName;
                 model.Email = userVm.Email;
-                model.PhoneNumber = userVm.PhoneNumber;
+                model.PhoneNumber = userVm.Phone;
                 model.Address = userVm.Address;
                 model.UserName = userVm.UserName;
-                model.Password = userVm.Password;
-                model.FirstName = userVm.FirstName;
-                model.LastName = userVm.LastName;
-                model.Dob = userVm.Dob;
-                model.GroupId = userVm.GroupId;
-                _userRepository.Update(model);
+                model.BirthDay = userVm.Birthday;
+                model.Img = userVm.Img;
+                _userManager.Update(model);
                 return true;
-            }catch(Exception error)
+            }
+            catch (Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
     }

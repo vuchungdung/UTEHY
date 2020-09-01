@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Service.Interfaces
 {
-    class ICommentService
+    public interface ICommentService
     {
     }
 }

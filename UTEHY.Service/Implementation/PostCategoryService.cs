@@ -32,40 +32,48 @@ namespace UTEHY.Service.Implementation
                     Name = postCategoryVm.Name,
                     ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
-                    DisplayOrder = postCategoryVm.DisplayOrder
+                    DisplayOrder = postCategoryVm.DisplayOrder,
+                    CreatedDate = DateTime.Now
                 };
                 _postCategoryRepository.Add(model);
                 return true;
-            }catch(Exception error)
+            }
+            catch(Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
 
         public string Delete(string id)
         {
-            var model = _postCategoryRepository.FindById(id);
-            if(model != null)
+            try
             {
+                var model = _postCategoryRepository.FindById(id);
                 var result = model.Name;
                 _postCategoryRepository.Remove(model);
                 return result;
             }
-            else
+            catch(Exception error)
             {
-                return null;
+                throw error;
             }
         }
 
         public int DeleteMulti(string[] listId)
         {
-            for(int i = 0; i < listId.Length; i++)
+            try
             {
-                var model = _postCategoryRepository.FindById(listId[i]);
-                _postCategoryRepository.Remove(model);
+                for (int i = 0; i < listId.Length; i++)
+                {
+                    var model = _postCategoryRepository.FindById(listId[i]);
+                    _postCategoryRepository.Remove(model);
+                }
+                return listId.Length;
             }
-            return listId.Length;
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
         public List<PostCategoryViewModel> GetAll()
@@ -82,24 +90,31 @@ namespace UTEHY.Service.Implementation
 
         public PostCategoryViewModel GetSingleById(string id)
         {
-            var model = _postCategoryRepository.FindById(id);
-            var result = new PostCategoryViewModel()
+            try
             {
-                ID = model.CategoryId,
-                Name = model.Name,
-                ParentId = model.ParentId,
-                Alias = model.Alias,
-                DisplayOrder = model.DisplayOrder              
-            };
-            return result;
+                var model = _postCategoryRepository.FindById(id);
+                var result = new PostCategoryViewModel()
+                {
+                    ID = model.CategoryId,
+                    Name = model.Name,
+                    ParentId = model.ParentId,
+                    Alias = model.Alias,
+                    DisplayOrder = model.DisplayOrder
+                };
+                return result;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
         }
 
-        public PageResult<PostCategoryViewModel> GettAllPaging(string keyword, PageRequest request)
+        public PageResult<PostCategoryViewModel> GettAllPaging(PageRequest request)
         {
             var query = _postCategoryRepository.FindAll();
-            if(!String.IsNullOrEmpty(keyword))
+            if(!String.IsNullOrEmpty(request.keyword))
             {
-                query = query.Where(x => x.Name.Contains(keyword));
+                query = query.Where(x => x.Name.Contains(request.keyword));
             }
             var totalRecords = query.Count();
             var listItems = query.OrderBy(x => x.DisplayOrder)
@@ -137,13 +152,13 @@ namespace UTEHY.Service.Implementation
                 model.ParentId = postCategoryVm.ParentId;
                 model.Alias = postCategoryVm.Alias;
                 model.DisplayOrder = postCategoryVm.DisplayOrder;
+                model.UpdatedDate = DateTime.Now;
                 _postCategoryRepository.Update(model);
                 return model.Name;
             }
-            catch (Exception error)
+            catch(Exception error)
             {
-                Console.WriteLine(error);
-                return null;
+                throw error;
             }
         }
     }

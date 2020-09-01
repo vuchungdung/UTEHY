@@ -9,7 +9,7 @@ namespace UTEHY.Model.ViewModel
 {
     public class SlideViewModel
     {
-        public int SlideId { get; set; }
+        public string SlideId { get; set; }
         public string Name { get; set; }
         public string Img { get; set; }
         public string Url { get; set; }

@@ -1,0 +1,127 @@
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 8px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+    }
+    li{
+        list-style:none;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 10px;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Phân quyền</span>
+                <small class="display-block" style="font-size:12px">Quản lý hệ thống <i class="icon-arrow-right22"></i> Phân quyền</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên danh mục:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchPermissions()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Lưu lại</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Làm mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">PHÂN QUYỀN NHÓM NGƯỜI DÙNG</h6>
+                <div class="heading-elements">
+                    <select ng-change="loadDataPermissions(roleId)" name="roleId" class="form-control" ng-model="roleId" ng-options="option.Id as option.Name for option in listRole">
+                        <option value="">Nhóm quyền</option>
+                    </select>
+                    <input type="hidden" name="roleId" ng-model="roleId" />
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-framed" style="margin-bottom:20px">
+                        <thead>
+                            <tr>
+                                <th style="width:4%">
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
+                                </th>
+                                <th style="width:16%">Chức năng</th>
+                                <th style="width:80%">Nghiệp vụ của chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="item in commandview">
+                            <tr>
+                                <td>
+                                    <input type="checkbox">
+                                </td>
+                                <td class="text-bold text-uppercase">{{item.Name}}</td>
+                                <td class="row">
+                                    <div class="col-md-3" ng-repeat="child in item.children">
+                                        <div>
+                                            <input type="checkbox">
+                                            <span class="text-bold">Quản lý {{child.Name}}</span>
+                                        </div>
+                                        <ul>
+                                            <li ng-if="child.HasCreate == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Thêm {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasUpdate == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Sửa {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasDelete == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xóa {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasView == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xem {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasApprove == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Duyệt {{child.Name}}</span>
+                                            </li>
+                                            <li ng-if="child.HasApprove == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Nhập FILE</span>
+                                            </li>
+                                            <li ng-if="child.HasApprove == true">
+                                                <input type="checkbox">
+                                                <span style="padding-left:2px">Xuất FILE</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>                                                     
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

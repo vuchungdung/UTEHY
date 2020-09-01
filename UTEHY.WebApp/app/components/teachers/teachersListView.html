@@ -1,0 +1,112 @@
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 6px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 10px;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Chức năng khác</span>
+                <small class="display-block" style="font-size:12px">Chức năng khác <i class="icon-arrow-right22"></i> Giảng viên</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main -->
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên giảng viên:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchPosts()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm" ui-sref="teachers_add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">DANH SÁCH GIẢNG VIÊN</h6>
+                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
+                    <label>
+                        <span>Hiển thị:</span>
+                        <select ng-model="pageSize">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" ng-click="selectAll()" />
+                                </th>
+                                <th>Hình ảnh</th>
+                                <th>Họ tên</th>
+                                <th>Điện thoại</th>
+                                <th>Fax</th>
+                                <th>Email</th>
+                                <th>Vị trí</th>
+                                <th>Đơn vị</th>
+                                <th>Nghiệp vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd" ng-repeat="item in listCategories">
+                                <td>
+                                    <input type="checkbox" ng-model="item.checked" />
+                                </td>
+
+                                <td class="text-center">
+                                    <ul class="icons-list action">
+                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteCategory(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <!--<tr dir-paginate="item in listClass|itemsPerPage:PageSize" total-items="RecordCount">
+                            </tr>-->
+                        </tbody>
+                    </table>
+                    <div style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                        <dir-pagination-controls max-size="PageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="GetClass(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

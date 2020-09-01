@@ -9,6 +9,6 @@ namespace UTEHY.Infrastructure.Interfaces
 {
     public interface IDbFactory : IDisposable
     {
-        FITEntities Init();
+        FITDbContext Init();
     }
 }

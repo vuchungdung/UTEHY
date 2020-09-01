@@ -21,18 +21,19 @@ namespace UTEHY.Service.Implementation
         {
             _permissionRepository = permissionRepository;
         }
-        public List<PermissionScreenViewModel> GetCommandViews()
+        public List<PermissionScreenViewModel> GetCommandViews(string roleId)
         {
             var sql = @"select f.FunctionId as FunctionId,f.Name as Name,f.ParentId as ParentId,
 		                        sum((case when c.CommandId = 'CREATE' then 1 else 0 end)) as HasCreate,
 		                        sum((case when c.CommandId = 'VIEW' then 1 else 0 end)) as HasView,
 		                        sum((case when c.CommandId = 'UPDATE' then 1 else 0 end)) as HasUpdate,
 		                        sum((case when c.CommandId = 'DELETE' then 1 else 0 end)) as HasDelete,
-		                        sum((case when c.CommandId = 'APPROVE' then 1 else 0 end)) as HasApprove
+		                        sum((case when c.CommandId = 'APPROVE' then 1 else 0 end)) as HasApprove,
+                                sum((case when c.CommandId = 'IMPORT' then 1 else 0 end)) as HasImport,
+                                sum((case when c.CommandId = 'EXPORT' then 1 else 0 end)) as HasExport
 	                    from Functions as f inner join CommandInFunctions as cif on f.FunctionId = cif.FunctionId 
 			                    inner join Commands as c on cif.CommandId = c.CommandId
-			                    inner join Permissions as p on p.FunctionId = f.FunctionId and p.CommandId = cif.CommandId
-	                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
+			                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
             using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-6HF17VS\SQLEXPRESS;Initial Catalog=FIT;Integrated Security=True;"))
             {
                 if (conn.State == ConnectionState.Closed)
@@ -49,7 +50,7 @@ namespace UTEHY.Service.Implementation
             {
                 FunctionId = x.FunctionId,
                 CommandId = x.CommandId,
-                GroupId = x.GroupId
+                RoleId = x.RoleId
             });
             return result.ToList();
         }

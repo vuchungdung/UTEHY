@@ -12,12 +12,14 @@ namespace UTEHY.Service.Implementation
     public class FunctionService : IFunctionService
     {
         private IRepositoryBase<Function, string> _functionRepository;
+        private FITDbContext _context;
         private IUnitOfWork _unitOfWork;
 
-        public FunctionService(IRepositoryBase<Function,string> functionRepository, IUnitOfWork unitOfWork)
+        public FunctionService(IRepositoryBase<Function,string> functionRepository, IUnitOfWork unitOfWork, FITDbContext context)
         {
             _functionRepository = functionRepository;
             _unitOfWork = unitOfWork;
+            _context = context;
         }
         public bool Add(FunctionViewModel functionVm)
         {
@@ -35,8 +37,7 @@ namespace UTEHY.Service.Implementation
                 return true;
             }catch(Exception error)
             {
-                Console.WriteLine(error);
-                return false;
+                throw error;
             }
         }
 
@@ -47,15 +48,15 @@ namespace UTEHY.Service.Implementation
 
         public bool Delete(string funcId)
         {
-            var model = _functionRepository.FindById(funcId);
-            if (model != null)
+            try
             {
+                var model = _functionRepository.FindById(funcId);
                 _functionRepository.Remove(model);
                 return true;
             }
-            else
+            catch(Exception error)
             {
-                return false;
+                throw error;
             }
         }
 
@@ -82,9 +83,20 @@ namespace UTEHY.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public CommandViewModel GetCommandInFunction(string funcId)
+        public List<CommandViewModel> GetCommandInFunction(string funcId)
         {
-            throw new NotImplementedException();
+            var query = from c in _context.Commands
+                        join cif in _context.CommandInFunctions
+                        on c.CommandId equals cif.CommandId
+                        join f in _functionRepository.FindAll()
+                        on cif.FunctionId equals f.FunctionId
+                        where f.FunctionId == funcId
+                        select new CommandViewModel()
+                        {
+                            CommandId = c.CommandId,
+                            Name = c.Name
+                        };
+            return query.ToList();
         }
 
         public FunctionViewModel GetFunctionById(string funcId)

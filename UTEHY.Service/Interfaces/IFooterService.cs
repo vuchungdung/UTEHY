@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Service.Interfaces
 {
-    interface IFooterService
+    public interface IFooterService
     {
     }
 }
