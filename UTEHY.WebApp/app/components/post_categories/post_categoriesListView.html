@@ -95,7 +95,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                    <div ng-if="listCategories" style="padding-top: 10px; padding-bottom:10px; text-align:center">
                         <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
                                                  on-page-change="getPagingCategories(newPageNumber)">
                         </dir-pagination-controls>

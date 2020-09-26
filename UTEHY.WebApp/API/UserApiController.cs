@@ -68,7 +68,7 @@ namespace UTEHY.WebApp.API
         }
         [HttpGet]
         [Route("getmenu")]
-        [AllowAnonymous]
+        [Authorize]
         [ClaimRequirementFilter(Function = FunctionCode.SYSTEM_USER,Command = CommandCode.VIEW)]
         public IHttpActionResult GetMenuByUserPermission()
         {
