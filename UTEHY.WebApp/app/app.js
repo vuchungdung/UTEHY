@@ -7,7 +7,9 @@
             'utehy.permissions',
             'utehy.categories',
             'utehy.teachers',
-            'utehy.posts'])
+            'utehy.posts',
+            'utehy.templates',
+            'utehy.faculties'])
         .config(config)
         .config(configAuthentication);
 
