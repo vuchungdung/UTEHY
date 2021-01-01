@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace UTEHY.Model.Entities
 {
-
-    class TemplateInFaculty
+    [Table("TemplateInFaculties")]
+    public class TemplateInFaculty
     {
         [Key]
         [Column(Order = 1)]

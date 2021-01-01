@@ -19,5 +19,7 @@ namespace UTEHY.Model.Entities
 
         public string Path { get; set; }
 
+        public string Image { get; set; }
+
     }
 }

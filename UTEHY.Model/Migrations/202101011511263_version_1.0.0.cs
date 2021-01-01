@@ -3,7 +3,7 @@ namespace UTEHY.Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialDb : DbMigration
+    public partial class version_100 : DbMigration
     {
         public override void Up()
         {
@@ -34,11 +34,15 @@ namespace UTEHY.Model.Migrations
                         Content = c.String(),
                         PostId = c.String(maxLength: 128),
                         ReplyId = c.String(maxLength: 128),
-                        CreatedDate = c.DateTime(),
-                        UpdatedDate = c.DateTime(),
                         Status = c.Boolean(nullable: false),
                         Email = c.String(),
                         UserName = c.String(maxLength: 100),
+                        FacultyId = c.String(),
+                        CreateBy = c.Int(),
+                        CreateDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.Int(),
+                        Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.CommentId);
             
@@ -77,6 +81,7 @@ namespace UTEHY.Model.Migrations
                         ParentId = c.String(maxLength: 128),
                         Content = c.String(),
                         PostId = c.String(maxLength: 128),
+                        FacultyId = c.String(),
                     })
                 .PrimaryKey(t => t.MenuId)
                 .Index(t => t.Name, unique: true);
@@ -99,9 +104,13 @@ namespace UTEHY.Model.Migrations
                         Name = c.String(maxLength: 256),
                         Alias = c.String(maxLength: 256),
                         ParentId = c.String(maxLength: 128),
-                        CreatedDate = c.DateTime(),
-                        UpdatedDate = c.DateTime(),
                         DisplayOrder = c.Int(),
+                        FacultyId = c.String(),
+                        CreateBy = c.Int(),
+                        CreateDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.Int(),
+                        Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryId)
                 .Index(t => t.Name, unique: true);
@@ -119,13 +128,15 @@ namespace UTEHY.Model.Migrations
                         HomeFlag = c.Boolean(),
                         ViewCount = c.Int(),
                         LikeCount = c.Int(),
-                        CreatedDate = c.DateTime(),
-                        CreatedBy = c.String(),
-                        UpdatedDate = c.DateTime(),
-                        UpdatedBy = c.String(),
                         Img = c.String(),
                         Status = c.Int(nullable: false),
                         MoreImgs = c.String(),
+                        FacultyId = c.String(),
+                        CreateBy = c.Int(),
+                        CreateDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.Int(),
+                        Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.PostId)
                 .Index(t => t.Name, unique: true);
@@ -166,6 +177,12 @@ namespace UTEHY.Model.Migrations
                         DisplayOrder = c.Int(),
                         Status = c.Boolean(nullable: false),
                         ImgType = c.Int(nullable: false),
+                        FacultyId = c.String(),
+                        CreateBy = c.Int(),
+                        CreateDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.Int(),
+                        Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.SlideId);
             
@@ -183,6 +200,12 @@ namespace UTEHY.Model.Migrations
                         WebSite = c.String(),
                         Content = c.String(),
                         Img = c.String(),
+                        FacultyId = c.String(),
+                        CreateBy = c.Int(),
+                        CreateDate = c.DateTime(nullable: false),
+                        UpdateDate = c.DateTime(),
+                        UpdateBy = c.Int(),
+                        Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.TecherId);
             
@@ -195,6 +218,7 @@ namespace UTEHY.Model.Migrations
                         Address = c.String(maxLength: 256),
                         BirthDay = c.DateTime(),
                         Img = c.String(),
+                        FacultyId = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

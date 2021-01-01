@@ -33,7 +33,7 @@ namespace UTEHY.Service.Implementation
                     ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
                     DisplayOrder = postCategoryVm.DisplayOrder,
-                    CreatedDate = DateTime.Now
+                    CreateDate = DateTime.Now
                 };
                 _postCategoryRepository.Add(model);
                 return true;
@@ -152,7 +152,7 @@ namespace UTEHY.Service.Implementation
                 model.ParentId = postCategoryVm.ParentId;
                 model.Alias = postCategoryVm.Alias;
                 model.DisplayOrder = postCategoryVm.DisplayOrder;
-                model.UpdatedDate = DateTime.Now;
+                model.UpdateDate = DateTime.Now;
                 _postCategoryRepository.Update(model);
                 return model.Name;
             }
