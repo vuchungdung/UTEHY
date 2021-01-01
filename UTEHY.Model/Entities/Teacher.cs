@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTEHY.Model.Dtos;
 
 namespace UTEHY.Model.Entities
 {
-    public class Teacher
+    public class Teacher : BaseModel
     {
         [Key]
         [Column(TypeName = "NVARCHAR")]
@@ -23,5 +24,7 @@ namespace UTEHY.Model.Entities
         public string WebSite { get; set; }
         public string Content { get; set; }
         public string Img { get; set; }
+        public string FacultyId { get; set; }
+
     }
 }

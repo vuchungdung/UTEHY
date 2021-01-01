@@ -123,10 +123,14 @@
     <Compile Include="Constants\CommandCode.cs" />
     <Compile Include="Constants\FunctionCode.cs" />
     <Compile Include="Constants\SystemContants.cs" />
+    <Compile Include="Dtos\BaseModel.cs" />
     <Compile Include="Dtos\CommandAssignRequest.cs" />
     <Compile Include="Dtos\PageRequest.cs" />
     <Compile Include="Dtos\PageResult.cs" />
+    <Compile Include="Entities\Faculty.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Template.cs" />
+    <Compile Include="Entities\TemplateInFaculty.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Command.cs" />
     <Compile Include="Entities\CommandInFunction.cs" />

@@ -28,5 +28,6 @@ namespace UTEHY.Model.Entities
         [Column(TypeName = "NVARCHAR")]
         [StringLength(128)]
         public string PostId { get; set; }
+        public string FacultyId { get; set; }
     }
 }

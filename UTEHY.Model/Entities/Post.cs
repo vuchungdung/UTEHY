@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTEHY.Model.Dtos;
 using UTEHY.Model.Enums;
 
 namespace UTEHY.Model.Entities
 {
-    public class Post
+    public class Post : BaseModel
     {
         [Key]
         [Column(TypeName = "NVARCHAR")]
@@ -30,12 +31,10 @@ namespace UTEHY.Model.Entities
         public bool? HomeFlag { get; set; }
         public int? ViewCount { get; set; }
         public int? LikeCount { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? UpdatedDate { get; set; }
-        public string UpdatedBy { get; set; }
         public string Img { get; set; }
         public PostStatus Status { get; set; }
         public string MoreImgs { get; set; }
+        public string FacultyId { get; set; }
+
     }
 }

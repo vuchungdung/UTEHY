@@ -9,16 +9,15 @@ using UTEHY.Model.Dtos;
 
 namespace UTEHY.Model.Entities
 {
-    public class Command
+    [Table("Templates")]
+    public class Template : BaseModel
     {
         [Key]
         [Column(TypeName = "NVARCHAR")]
         [StringLength(128)]
-        public string CommandId { get; set; }
-        [Column(TypeName = "NVARCHAR")]
-        [StringLength(100)]
-        [Index(IsUnique = true)]
-        public string Name { get; set; }
+        public string TemplateId { get; set; }
+
+        public string Path { get; set; }
 
     }
 }
