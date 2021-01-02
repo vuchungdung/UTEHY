@@ -32,21 +32,21 @@
 
             var user = new User()
             {
-                UserName = "khoacntt",
-                Email = "fit@utehy.edu.vn",
+                UserName = "khoaddt_editor",
+                Email = "fee@utehy.edu.vn",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
-                FullName = "Khoa công nghệ thông tin"
+                FullName = "Khoa điện điện tử",
             };
-            if (manager.Users.Count(x => x.UserName == "khoacntt") == 0)
+            if (manager.Users.Count(x => x.UserName == "khoaddt_editor") == 0)
             {
                 manager.Create(user, "123654$");
 
-                roleManager.Create(new IdentityRole { Name = "Faculty" });
+                roleManager.Create(new IdentityRole { Name = "Editor" });
 
-                var adminUser = manager.FindByEmail("fit@utehy.edu.vn");
+                var adminUser = manager.FindByEmail("fee@utehy.edu.vn");
 
-                manager.AddToRoles(adminUser.Id, new string[] { "Faculty" });
+                manager.AddToRoles(adminUser.Id, new string[] { "Editor" });
             }
 
         }
