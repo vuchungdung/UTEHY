@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTEHY.Model.Dtos;
 using UTEHY.Model.Enums;
 
 namespace UTEHY.Model.Entities
 {
-    public class Slide
+    public class Slide : BaseModel
     {
         [Key]
         [Column(TypeName = "NVARCHAR")]
@@ -21,5 +22,7 @@ namespace UTEHY.Model.Entities
         public int? DisplayOrder { get; set; }
         public bool Status { get; set; }
         public ImgType ImgType { get; set; }
+        public string FacultyId { get; set; }
+
     }
 }

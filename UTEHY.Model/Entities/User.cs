@@ -22,6 +22,9 @@ namespace UTEHY.Model.Entities
         public DateTime? BirthDay { get; set; }
 
         public string Img { get; set; }
+
+        public string FacultyId { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

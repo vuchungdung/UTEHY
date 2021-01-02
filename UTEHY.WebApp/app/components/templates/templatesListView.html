@@ -12,8 +12,8 @@
         <div class="page-title" style="padding: 10px;">
             <h4>
                 <i class="icon-arrow-left52 position-left"></i>
-                <span>Hệ thống - Quản lý nội dung</span>
-                <small class="display-block" style="font-size:12px">Quản lý nội dung <i class="icon-arrow-right22"></i> Danh mục</small>
+                <span>Hệ thống - Quản lý giao diện</span>
+                <small class="display-block" style="font-size:12px">Quản lý giao diện <i class="icon-arrow-right22"></i> Giao diện</small>
             </h4>
             <a class="heading-elements-toggle"><i class="icon-more"></i></a>
         </div>
@@ -35,7 +35,7 @@
                 <div class="form-group" style="margin-bottom :20px">
                     <div class="row">
                         <div class="col-md-2" style="text-align:right;margin-top:10px">
-                            <span>Tên danh mục:</span>
+                            <span>Tên giao diện:</span>
                         </div>
                         <div class="col-md-4" style="text-align:left">
                             <input type="text" ng-change="searchCategories()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
@@ -51,7 +51,7 @@
 
         <div class="panel panel-flat">
             <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
-                <h6 class="panel-title">DANH SÁCH DANH MỤC</h6>
+                <h6 class="panel-title">DANH SÁCH GIAO DIỆN</h6>
                 <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
                     <span>Hiển thị:</span>
                     <select id="pageSize" ng-model="pageSize">
@@ -70,40 +70,20 @@
                                 <th>
                                     <input type="checkbox" id="check" ng-click="selectAll()" />
                                 </th>
-                                <th class="text-center" style="width:10%">Thứ tự</th>
-                                <th style="width:30%">Tên danh mục</th>
-                                <th style="width:30%">Danh mục gốc</th>
-                                <th style="width:20%">Tiêu đề SEO</th>
+                                <th style="width:40%">Hình ảnh minh họa</th>
+                                <th style="width:50%">Đường dẫn</th>
                                 <th style="width:10%" class="text-center">Nghiệp vụ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr dir-paginate="item in listCategories|itemsPerPage:pageSize" total-items="totalRecords">
-                                <td>
-                                    <input type="checkbox" ng-model="item.checked" />
-                                </td>
-                                <td class="text-center">{{item.DisplayOrder}}</td>
-                                <td>{{item.Name}}</td>
-                                <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
-                                <td>{{item.Alias}}</td>
-                                <td class="text-center">
-                                    <ul class="icons-list action">
-                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
-                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteCategory(item.ID)" class="icon-trash btn-delete"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
-                    <div ng-if="listCategories" style="padding-top: 10px; padding-bottom:10px; text-align:center">
-                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
-                                                 on-page-change="getPagingCategories(newPageNumber)">
-                        </dir-pagination-controls>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-    <div ng-include="'/app/components/post_categories/post_categoriesAddView.html'"></div>
-    <div ng-include="'/app/components/post_categories/post_categoriesEditView.html'"></div>
+    <div ng-include="'/app/components/templates/templatesAddView.html'"></div>
+    <div ng-include="'/app/components/templates/templatesEditView.html'"></div>
 </div> 

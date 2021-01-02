@@ -90,15 +90,18 @@
   <ItemGroup>
     <Compile Include="AuthorizeService\ProfileService.cs" />
     <Compile Include="Implementation\CommandService.cs" />
+    <Compile Include="Implementation\FacultyService.cs" />
     <Compile Include="Implementation\FunctionService.cs" />
     <Compile Include="Implementation\RoleService.cs" />
     <Compile Include="Implementation\PermissionService.cs" />
     <Compile Include="Implementation\PostCategoryService.cs" />
     <Compile Include="Implementation\PostService.cs" />
     <Compile Include="Implementation\TeacherService.cs" />
+    <Compile Include="Implementation\TemplateService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="Interfaces\ICommandService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Interfaces\IFacultyService.cs" />
     <Compile Include="Interfaces\IFooterService.cs" />
     <Compile Include="Interfaces\IFunctionService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
@@ -108,6 +111,7 @@
     <Compile Include="Interfaces\IPostService.cs" />
     <Compile Include="Interfaces\ISlideService.cs" />
     <Compile Include="Interfaces\ITeacherService.cs" />
+    <Compile Include="Interfaces\ITemplateService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

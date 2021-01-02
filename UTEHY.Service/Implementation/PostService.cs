@@ -36,8 +36,8 @@ namespace UTEHY.Service.Implementation
                     Description = postVm.Description,
                     Content = postVm.Content,
                     HomeFlag = false,
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = postVm.CreatedBy,
+                    CreateDate = DateTime.Now,
+                    CreateBy = postVm.CreateBy,
                     Img = postVm.Img,
                     MoreImgs = postVm.MoreImgs,
                     Status = PostStatus.Closed
@@ -127,8 +127,8 @@ namespace UTEHY.Service.Implementation
                 Description = x.Description,
                 Content = x.Content,
                 HomeFlag = x.HomeFlag,
-                CreatedDate = x.CreatedDate,
-                CreatedBy = x.CreatedBy,
+                CreateDate = x.CreateDate,
+                CreateBy = x.CreateBy,
                 MoreImgs = x.MoreImgs,
                 Img = x.Img,
                 Status = x.Status
@@ -149,7 +149,7 @@ namespace UTEHY.Service.Implementation
             }
             int totalRecords = query.Count();
 
-            var listItems = query.OrderByDescending(x => x.CreatedDate)
+            var listItems = query.OrderByDescending(x => x.CreateDate)
                 .Skip((request.pageIndex - 1) * request.pageSize)
                 .Take(request.pageSize)
                 .Select(x => new PostViewModel()
@@ -161,8 +161,8 @@ namespace UTEHY.Service.Implementation
                     Description = x.Description,
                     Content = x.Content,
                     HomeFlag = x.HomeFlag,
-                    CreatedDate = x.CreatedDate,
-                    CreatedBy = x.CreatedBy,
+                    CreateDate = x.CreateDate,
+                    CreateBy = x.CreateBy,
                     MoreImgs = x.MoreImgs,
                     Img = x.Img,
                     Status = (PostStatus)x.Status
@@ -189,8 +189,8 @@ namespace UTEHY.Service.Implementation
                     Description = model.Description,
                     Content = model.Content,
                     HomeFlag = model.HomeFlag,
-                    CreatedDate = model.CreatedDate,
-                    CreatedBy = model.CreatedBy,
+                    CreateDate = model.CreateDate,
+                    CreateBy = model.CreateBy,
                     MoreImgs = model.MoreImgs,
                     Img = model.Img,
                     Status = model.Status
@@ -218,8 +218,8 @@ namespace UTEHY.Service.Implementation
                 model.CategoryId = postVm.CategoryId;
                 model.Description = postVm.Description;
                 model.Content = postVm.Content;
-                model.UpdatedDate = DateTime.Now;
-                model.UpdatedBy = postVm.UpdatedBy;
+                model.UpdateDate = DateTime.Now;
+                model.UpdateBy = postVm.UpdateBy;
                 model.Img = postVm.Img;
                 model.MoreImgs = postVm.MoreImgs;
                 _postRepository.Update(model);

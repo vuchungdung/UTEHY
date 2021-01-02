@@ -19,10 +19,10 @@ namespace UTEHY.Model.ViewModel
         public bool? HomeFlag { get; set; }
         public int? ViewCount { get; set; }
         public int? LikeCount { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
-        public string UpdatedBy { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public int? CreateBy { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public int UpdateBy { get; set; }
         public string Img { get; set; }
 
         public string MoreImgs { get; set; }

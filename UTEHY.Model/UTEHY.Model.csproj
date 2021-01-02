@@ -123,10 +123,14 @@
     <Compile Include="Constants\CommandCode.cs" />
     <Compile Include="Constants\FunctionCode.cs" />
     <Compile Include="Constants\SystemContants.cs" />
+    <Compile Include="Dtos\BaseModel.cs" />
     <Compile Include="Dtos\CommandAssignRequest.cs" />
     <Compile Include="Dtos\PageRequest.cs" />
     <Compile Include="Dtos\PageResult.cs" />
+    <Compile Include="Entities\Faculty.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Template.cs" />
+    <Compile Include="Entities\TemplateInFaculty.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Command.cs" />
     <Compile Include="Entities\CommandInFunction.cs" />
@@ -142,14 +146,23 @@
     <Compile Include="Entities\FITDbContext.cs" />
     <Compile Include="Enums\ImgType.cs" />
     <Compile Include="Enums\PostStatus.cs" />
-    <Compile Include="Migrations\202008180725255_initialDb.cs" />
-    <Compile Include="Migrations\202008180725255_initialDb.Designer.cs">
-      <DependentUpon>202008180725255_initialDb.cs</DependentUpon>
+    <Compile Include="Migrations\202101011511263_version_1.0.0.cs" />
+    <Compile Include="Migrations\202101011511263_version_1.0.0.Designer.cs">
+      <DependentUpon>202101011511263_version_1.0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101011539362_version_1.0.1.cs" />
+    <Compile Include="Migrations\202101011539362_version_1.0.1.Designer.cs">
+      <DependentUpon>202101011539362_version_1.0.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101011547243_version_1.0.2.cs" />
+    <Compile Include="Migrations\202101011547243_version_1.0.2.Designer.cs">
+      <DependentUpon>202101011547243_version_1.0.2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CommandViewModel.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />
+    <Compile Include="ViewModel\FacultyViewModel.cs" />
     <Compile Include="ViewModel\FooterViewModel.cs" />
     <Compile Include="ViewModel\FunctionViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -161,6 +174,7 @@
     <Compile Include="ViewModel\RoleViewModel.cs" />
     <Compile Include="ViewModel\SlideViewModel.cs" />
     <Compile Include="ViewModel\TeacherViewModel.cs" />
+    <Compile Include="ViewModel\TemplateViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,8 +185,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008180725255_initialDb.resx">
-      <DependentUpon>202008180725255_initialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101011511263_version_1.0.0.resx">
+      <DependentUpon>202101011511263_version_1.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101011539362_version_1.0.1.resx">
+      <DependentUpon>202101011539362_version_1.0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101011547243_version_1.0.2.resx">
+      <DependentUpon>202101011547243_version_1.0.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

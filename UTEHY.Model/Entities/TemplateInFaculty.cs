@@ -5,20 +5,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UTEHY.Model.Dtos;
 
 namespace UTEHY.Model.Entities
 {
-    public class Command
+    [Table("TemplateInFaculties")]
+    public class TemplateInFaculty
     {
         [Key]
-        [Column(TypeName = "NVARCHAR")]
+        [Column(Order = 1)]
         [StringLength(128)]
-        public string CommandId { get; set; }
-        [Column(TypeName = "NVARCHAR")]
-        [StringLength(100)]
-        [Index(IsUnique = true)]
-        public string Name { get; set; }
-
+        public string FacultyId { get; set; }
+        [Key]
+        [Column(Order = 2)]
+        [StringLength(128)]
+        public string TemplateId { get; set; }
     }
 }

@@ -226,6 +226,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\components\faculties\faculties.Module.js" />
+    <Content Include="app\components\faculties\facultiesAddView.html" />
+    <Content Include="app\components\faculties\facultiesController.js" />
+    <Content Include="app\components\faculties\facultiesEditView.html" />
+    <Content Include="app\components\faculties\facultiesListView.html" />
     <Content Include="app\components\functions\functions.Module.js" />
     <Content Include="app\components\functions\functionsList.Controller.js" />
     <Content Include="app\components\functions\functionsListView.html" />
@@ -260,6 +265,11 @@
     <Content Include="app\components\teachers\teachersEditController.js" />
     <Content Include="app\components\teachers\teachersListView.html" />
     <Content Include="app\components\teachers\teachersListController.js" />
+    <Content Include="app\components\templates\templates.Module.js" />
+    <Content Include="app\components\templates\templatesAddView.html" />
+    <Content Include="app\components\templates\templatesController.js" />
+    <Content Include="app\components\templates\templatesEditView.html" />
+    <Content Include="app\components\templates\templatesListView.html" />
     <Content Include="app\components\users\users.Module.js" />
     <Content Include="app\components\users\usersAddView.html" />
     <Content Include="app\components\users\usersAddController.js" />

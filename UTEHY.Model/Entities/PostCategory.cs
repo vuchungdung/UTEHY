@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTEHY.Model.Dtos;
 
 namespace UTEHY.Model.Entities
 {
-    public class PostCategory
+    public class PostCategory : BaseModel
     {
         [Key]
         [Column(TypeName = "NVARCHAR")]
@@ -24,8 +25,8 @@ namespace UTEHY.Model.Entities
         [Column(TypeName = "NVARCHAR")]
         [StringLength(128)]
         public string ParentId { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
         public int? DisplayOrder { get; set; }
+        public string FacultyId { get; set; }
+
     }
 }
