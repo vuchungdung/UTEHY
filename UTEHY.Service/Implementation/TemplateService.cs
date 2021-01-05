@@ -63,13 +63,13 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var result = _templateRepository.FindAll().Select(x => new TemplateViewModel()
+                var query = _templateRepository.FindAll().OrderBy(x=>x.CreateDate).Select(x => new TemplateViewModel()
                 {
                     TemplateId = x.TemplateId,
                     Image = x.Image,
                     Path = x.Path
-                }).ToList();
-                return result.ToList();
+                });
+                return query.ToList();
             }
             catch(Exception ex)
             {
