@@ -28,7 +28,7 @@ namespace UTEHY.Service.Implementation
             {
                 var model = new Faculty()
                 {
-                    FacultyId = Guid.NewGuid().ToString(),
+                    FacultyId = facultyVm.FacultyId,
                     Deleted = false,
                     CreateDate = DateTime.Now,
                     Name = facultyVm.Name

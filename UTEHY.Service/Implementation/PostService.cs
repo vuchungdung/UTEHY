@@ -40,7 +40,8 @@ namespace UTEHY.Service.Implementation
                     CreateBy = postVm.CreateBy,
                     Img = postVm.Img,
                     MoreImgs = postVm.MoreImgs,
-                    Status = PostStatus.Closed
+                    Status = PostStatus.Draft,
+                    Deleted = false
                 };
                 _postRepository.Add(model);
                 return true;

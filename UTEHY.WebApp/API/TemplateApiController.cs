@@ -11,7 +11,7 @@ using UTEHY.Service.Interfaces;
 
 namespace UTEHY.WebApp.API
 {
-    [RoutePrefix("api/facultyapi")]
+    [RoutePrefix("api/templateapi")]
     [Authorize]
     public class TemplateApiController : ApiController
     {

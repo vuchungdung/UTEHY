@@ -38,7 +38,7 @@
                             <span>Tên khoa:</span>
                         </div>
                         <div class="col-md-4" style="text-align:left">
-                            <input type="text" ng-change="searchCategories()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                            <input type="text" ng-change="searchFaculties()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
                         </div>
                         <div class="col-md-6" style="text-align:left">
                             <button type="button" style="font-size:10px;" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
@@ -76,9 +76,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr dir-paginate="item in listFaculties|itemsPerPage:pageSize" total-items="totalRecords">
+                                <td>
+                                    <input type="checkbox" ng-model="item.checked" />
+                                </td>
+                                <td>{{item.FacultyId}}</td>
+                                <td>{{item.Name}}</td>
+                                <td class="text-center">
+                                    <ul class="icons-list action">
+                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteFaculty(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-
+                    <div ng-if="listFaculties" style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="getPagingFaculties(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
                 </div>
             </div>
         </div>

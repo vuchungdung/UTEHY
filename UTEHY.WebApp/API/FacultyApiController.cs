@@ -23,7 +23,9 @@ namespace UTEHY.WebApp.API
             _facultyService = facultyService;
             _logger = logger;
         }
-
+        [Route("getallpaging")]
+        [HttpPost]
+        [AllowAnonymous]
         public IHttpActionResult GetAllPaging([FromBody] PageRequest pageRequest)
         {
             try

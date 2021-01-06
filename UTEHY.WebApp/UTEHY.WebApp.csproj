@@ -274,11 +274,9 @@
     <Content Include="app\components\templates\templatesListView.html" />
     <Content Include="app\components\users\users.Module.js" />
     <Content Include="app\components\users\usersAddView.html" />
-    <Content Include="app\components\users\usersAddController.js" />
     <Content Include="app\components\users\usersEditView.html" />
-    <Content Include="app\components\users\usersEditController.js" />
     <Content Include="app\components\users\usersListView.html" />
-    <Content Include="app\components\users\usersListController.js" />
+    <Content Include="app\components\users\usersController.js" />
     <Content Include="app\shared\filters\dateFilter.js" />
     <Content Include="app\shared\filters\parentIdFilter.js" />
     <Content Include="app\shared\modules\utehy.common.js" />
