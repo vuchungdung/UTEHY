@@ -15,11 +15,13 @@ namespace UTEHY.Service.Implementation
     {
         private readonly IRepositoryBase<Faculty, string> _facultyRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private FITDbContext _dbContext;
 
-        public FacultyService(IRepositoryBase<Faculty,string> facultyRepository, IUnitOfWork unitOfWork)
+        public FacultyService(IRepositoryBase<Faculty,string> facultyRepository, IUnitOfWork unitOfWork, FITDbContext dbContext)
         {
             _facultyRepository = facultyRepository;
             _unitOfWork = unitOfWork;
+            _dbContext = dbContext;
         }
 
         public bool Add(FacultyViewModel facultyVm)
@@ -85,7 +87,16 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var query = _facultyRepository.FindAll();
+                var query = from f in _dbContext.Faculties
+                            join t in _dbContext.Templates
+                            on f.TemplateId equals t.TemplateId
+                            select new FacultyViewModel()
+                            {
+                                FacultyId = f.FacultyId,
+                                Name = f.Name,
+                                CreateDate = f.CreateDate,
+                                Image = t.Image
+                            };
 
                 if (!String.IsNullOrEmpty(request.keyword))
                 {
@@ -97,11 +108,7 @@ namespace UTEHY.Service.Implementation
                 var listItems = query.OrderBy(x => x.CreateDate)
                     .Skip((request.pageIndex - 1) * request.pageSize)
                     .Take(request.pageSize)
-                    .Select(x => new FacultyViewModel()
-                    {
-                        FacultyId = x.FacultyId,
-                        Name = x.Name
-                    }).ToList();
+                    .ToList();
 
                 var pagination = new PageResult<FacultyViewModel>()
                 {

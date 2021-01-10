@@ -30,8 +30,6 @@ namespace UTEHY.Model.Entities
 
         public DbSet<Faculty> Faculties { get; set; }
 
-        public DbSet<TemplateInFaculty> TemplateInFaculties { get; set; }
-
         public static FITDbContext Create()
         {
             return new FITDbContext();

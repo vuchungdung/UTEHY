@@ -2,7 +2,7 @@
 <div id="modal_Add" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form novalidate name="frmAddPostCategory" role="form" ng-submit="addCategory()">
+            <form novalidate name="frmAddPostCategory" role="form" ng-submit="addTemplate()">
                 <div class="modal-header bg-primary">
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h5 class="modal-title">Thêm mới giao diện</h5>
@@ -11,14 +11,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label><i class="icon-pencil4"></i> Đường dẫn:</label>
-                        <input type="text" ng-maxlength="50" name="name" class="form-control" ng-model="category.Name" ng-change="getSeoAlias()" placeholder="Tên danh mục" required>
-                        <span ng-show="frmAddPostCategory.name.$invalid" class="text-danger-400">Phải nhập đường dẫn</span>
-                        <!--<span ng-show="frmAddPostCategory.name.$error.maxlength" class="text-danger-400"></span>-->
+                        <input type="text" ng-maxlength="50" name="Path" class="form-control" ng-model="template.Path" ng-change="getSeoAlias()" placeholder="Tên danh mục" required>
+                        <span ng-show="frmAddPostCategory.Path.$invalid" class="text-danger-400">Phải nhập đường dẫn</span>
                     </div>
                     <div class="form-group">
-                        <label><i class="icon-lock2"></i> Hình ảnh minh họa:</label>
-                        <input type="file" class="form-control" name="alias" ng-model="category.Alias" placeholder="Tiêu đề SEO" required>
-                        <span ng-show="frmAddPostCategory.alias.$invalid" class="text-danger-400">Phải nhập đường dẫn</span>
+                        <label><i class="icon-file-picture"></i> Hình ảnh:</label>
+                        <input type="text" name="img" ng-maxlength="256" id="input_img" ng-model="template.Image" class="form-control" placeholder="Chọn hình ảnh" required>
+                        <button type="button" class="btn btn-xs btn-default position-right" style="margin-top:2px;margin-left:0px" ng-click="chooseImage()">Chọn ảnh</button>
                     </div>
                 </div>
 

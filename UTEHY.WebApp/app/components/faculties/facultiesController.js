@@ -40,6 +40,7 @@
             }
             apiService.post('/api/facultyapi/getallpaging', config.params, function (result) {
                 if (result.status == 200) {
+                    console.log(result.data.ListItem);
                     $scope.listFaculties = result.data.ListItem;
                     $scope.totalRecords = result.data.TotalRecords;
                 }

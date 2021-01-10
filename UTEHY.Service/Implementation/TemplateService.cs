@@ -29,7 +29,9 @@ namespace UTEHY.Service.Implementation
                 {
                     TemplateId = Guid.NewGuid().ToString(),
                     Image = templateVm.Image,
-                    Path = templateVm.Path
+                    Path = templateVm.Path,
+                    CreateDate = DateTime.Now,
+                    Deleted = false
                 };
                 _templateRepository.Add(model);
                 return true;

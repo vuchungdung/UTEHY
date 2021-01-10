@@ -11,5 +11,9 @@ namespace UTEHY.Model.ViewModel
         public string FacultyId { get; set; }
 
         public string Name { get; set; }
+
+        public string Image { get; set; }
+
+        public DateTime CreateDate { get; set; }
     }
 }

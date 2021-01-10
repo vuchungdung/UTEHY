@@ -83,14 +83,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr dir-paginate="item in listCategories|itemsPerPage:pageSize" total-items="totalRecords">
+                            <tr dir-paginate="item in listUsers|itemsPerPage:pageSize" total-items="totalRecords">
                                 <td>
                                     <input type="checkbox" ng-model="item.checked" />
                                 </td>
-                                <td class="text-center">{{item.DisplayOrder}}</td>
-                                <td>{{item.Name}}</td>
-                                <td>{{result|parentIdFilter:dropdownCategory:item.ParentId}}</td>
-                                <td>{{item.Alias}}</td>
+                                <td class="text-center">{{item.Image}}</td>
+                                <td>{{item.UserName}}</td>
+                                <td>{{item.FullName}}</td>
+                                <td>{{item.FacultyName}}</td>
+                                <td>{{item.Email}}</td>
+                                <td>{{item.Phone}}</td>
                                 <td class="text-center">
                                     <ul class="icons-list action">
                                         <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
@@ -100,7 +102,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div ng-if="listCategories" style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                    <div ng-if="listUsers" style="padding-top: 10px; padding-bottom:10px; text-align:center">
                         <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
                                                  on-page-change="getPagingCategories(newPageNumber)">
                         </dir-pagination-controls>

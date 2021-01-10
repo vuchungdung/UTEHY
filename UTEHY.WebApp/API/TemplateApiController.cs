@@ -24,6 +24,8 @@ namespace UTEHY.WebApp.API
             _logger = logger;
         }
 
+        [HttpPost]
+        [Route("getpaging")]
         public IHttpActionResult GetAllPaging([FromBody] PageRequest pageRequest)
         {
             try

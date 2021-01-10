@@ -68,35 +68,40 @@ namespace UTEHY.Service.Implementation
 
         public PageResult<UserViewModel> GetAllPaging(PageRequest request)
         {
-            var query = _userManager.Users;
+            var query = from u in _userManager.Users
+                        join k in _dbContext.Faculties
+                        on u.FacultyId equals k.FacultyId
+                        select new UserViewModel()
+                        {
+                            Id = u.Id,
+                            FullName = u.FullName,
+                            Email = u.Email,
+                            Phone = u.PhoneNumber,
+                            Address = u.Address,
+                            UserName = u.UserName,
+                            Birthday = u.BirthDay,
+                            Img = u.Img,
+                            FacultyName = k.Name
+                        };
+
             if (!String.IsNullOrEmpty(request.keyword))
             {
                 query = query.Where(x => x.Equals(request.keyword));
             }
-            if (!String.IsNullOrEmpty(request.categoryId))
-            {
-                query = query.Where(x => x.Roles.First().RoleId == request.categoryId);
-            }
+
             var totalRecords = query.Count();
+
             var listItems = query.OrderBy(x => x.FullName)
                 .Skip((request.pageIndex - 1) * request.pageSize)
                 .Take(request.pageSize)
-                .Select(x => new UserViewModel()
-                {
-                    Id = x.Id,
-                    FullName = x.FullName,
-                    Email = x.Email,
-                    Phone = x.PhoneNumber,
-                    Address = x.Address,
-                    UserName = x.UserName,
-                    Birthday = x.BirthDay,
-                    Img = x.Img
-                }).ToList();
+                .ToList();
+
             var pagination = new PageResult<UserViewModel>()
             {
                 ListItem = listItems,
                 TotalRecords = totalRecords
             };
+
             return pagination;
         }
 

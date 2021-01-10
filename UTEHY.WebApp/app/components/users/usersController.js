@@ -23,6 +23,7 @@
             }
             apiService.post('/api/userapi/getpaging', config.params, function (result) {
                 if (result.status == 200) {
+                    console.log(result.data.ListItem);
                     $scope.listUsers = result.data.ListItem;
                     $scope.totalRecords = result.data.TotalRecords;
                 }
@@ -30,7 +31,7 @@
                 console.log(error);
             });
         }
-
+        $scope.getPagingUsers($scope.page);
 
     }
 })(angular.module('utehy.users'));
