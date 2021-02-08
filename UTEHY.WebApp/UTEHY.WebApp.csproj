@@ -241,6 +241,8 @@
     <Content Include="app\components\permissions\permissionsListView.html" />
     <Content Include="app\components\roles\roles.Module.js" />
     <Content Include="app\components\roles\roles.Controller.js" />
+    <Content Include="app\components\roles\rolesAddView.html" />
+    <Content Include="app\components\roles\rolesEditView.html" />
     <Content Include="app\components\roles\rolesListView.html" />
     <Content Include="app\components\homes\homeController.js" />
     <Content Include="app\components\homes\homeview.html" />

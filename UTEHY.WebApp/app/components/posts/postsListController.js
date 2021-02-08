@@ -21,8 +21,8 @@
             }
             apiService.post('/api/postapi/getpaging', config.params, function (result) {
                 if (result.status == 200) {
-                    $scope.listPosts = result.data.result.ListItem;
-                    $scope.totalRecords = result.data.result.TotalRecords;
+                    $scope.listPosts = result.data.ListItem;
+                    $scope.totalRecords = result.data.TotalRecords;
                 }
             }, function (error) {
                 console.log(error);
