@@ -40,7 +40,8 @@ namespace UTEHY.Service.Implementation
                     Address = userVm.Address,
                     UserName = userVm.UserName,
                     BirthDay = userVm.Birthday,
-                    Img = userVm.Img
+                    Img = userVm.Img,
+                    Deleted = false
                 };
                 _userManager.Create(model);
                 return true;

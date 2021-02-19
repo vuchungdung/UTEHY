@@ -34,7 +34,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetCommandView - permissionapi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetCommandView - permissionapi," + ex.InnerException.Message + "");
                 return BadRequest("Error System");
             }
         }

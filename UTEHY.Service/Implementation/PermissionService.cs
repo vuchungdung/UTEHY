@@ -34,7 +34,7 @@ namespace UTEHY.Service.Implementation
 	                    from Functions as f inner join CommandInFunctions as cif on f.FunctionId = cif.FunctionId 
 			                    inner join Commands as c on cif.CommandId = c.CommandId
 			                    group by f.FunctionId,f.Name,f.ParentId order by f.ParentId";
-            using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-6HF17VS\SQLEXPRESS;Initial Catalog=FIT;Integrated Security=True;"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-G6EPV8T\SQLEXPRESS;Initial Catalog=FIT;Integrated Security=True;"))
             {
                 if (conn.State == ConnectionState.Closed)
                 {

@@ -58,11 +58,10 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var result = _roleRepository.FindAll().Select(x => new RoleViewModel()
+                var result = _context.Roles.Select(x => new RoleViewModel()
                 {
                     Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
+                    Name = x.Name
                 }).ToList();
                 return result;
             }
