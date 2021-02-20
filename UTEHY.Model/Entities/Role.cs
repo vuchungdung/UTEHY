@@ -10,6 +10,9 @@ namespace UTEHY.Model.Entities
 {
     public class Role: IdentityRole
     {
-        public string Description { get; set; }
+        public Role() : base()
+        {
+
+        }
     }
 }

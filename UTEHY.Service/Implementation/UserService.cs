@@ -18,11 +18,14 @@ namespace UTEHY.Service.Implementation
     {
         private UserManager<User> _userManager;
         private FITDbContext _dbContext;
+        private IRepositoryBase<Role,string> _roleRepository;
         private IUnitOfWork _unitOfWork;
         public UserService(UserManager<User> userManager,
             FITDbContext dbContext,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IRepositoryBase<Role,string> roleRepository)
         {
+            _roleRepository = roleRepository;
             _userManager = userManager;
             _dbContext = dbContext;
             _unitOfWork = unitOfWork;
