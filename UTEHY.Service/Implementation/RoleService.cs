@@ -70,7 +70,38 @@ namespace UTEHY.Service.Implementation
 
         public PageResult<RoleViewModel> GetAllPaging(PageRequest request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = _context.Roles.ToList();
+                if (!String.IsNullOrEmpty(request.keyword))
+                {
+                    query = query.Where(x => x.Name.Contains(request.keyword)).ToList();
+                }
+                if (!String.IsNullOrEmpty(request.categoryId))
+                {
+                    
+                }
+                int totalRecords = query.Count();
+
+                var listItems = query.OrderByDescending(x => x.Name)
+                    .Skip((request.pageIndex - 1) * request.pageSize)
+                    .Take(request.pageSize)
+                    .Select(x => new RoleViewModel()
+                    {
+                        Id = x.Id,
+                        Name = x.Name                        
+                    }).ToList();
+                var pagination = new PageResult<RoleViewModel>()
+                {
+                    ListItem = listItems,
+                    TotalRecords = totalRecords
+                };
+                return pagination;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PermissionViewModel> GetPermissionByRoleId(string roleId)

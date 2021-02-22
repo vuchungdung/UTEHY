@@ -73,8 +73,7 @@
                                 <th style="width:5%">
                                     <input type="checkbox" id="check" ng-click="selectAll()" />
                                 </th>
-                                <th>Tên nhóm quyền</th>
-                                <th>Mô tả chi tiết</th>
+                                <th style="width:86%">Tên nhóm quyền</th>
                                 <th class="text-center">Nghiệp vụ</th>
                             </tr>
                         </thead>
@@ -82,7 +81,10 @@
                             <tr dir-paginate="item in listRoles|itemsPerPage:pageSize" total-items="totalRecords">
                                 <td>
                                     <input type="checkbox" ng-model="item.checked" />
-                                </td>                                
+                                </td>                        
+                                <td>
+                                    {{item.Name}}
+                                </td>
                                 <td class="text-center">
                                     <ul class="icons-list action">
                                         <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getRoleById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
@@ -94,7 +96,7 @@
                     </table>
                     <div ng-if="listRoles" style="padding-top: 10px; padding-bottom:10px; text-align:center">
                         <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
-                                                 on-page-change="getPagingRoles(newPageNumber)">
+                                                 on-page-change="getPaging(newPageNumber)">
                         </dir-pagination-controls>
                     </div>
                 </div>
