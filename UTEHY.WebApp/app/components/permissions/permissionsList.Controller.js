@@ -4,7 +4,9 @@
     permissionsController.$inject = ['$scope', 'apiService', '$ngBootbox'];
 
     function permissionsController($scope, apiService, $ngBootbox) {
-        
+
+        $scope.checked = true;
+
         $scope.loadDataPermissions = function (roleid) {
             var config = {
                 params: {

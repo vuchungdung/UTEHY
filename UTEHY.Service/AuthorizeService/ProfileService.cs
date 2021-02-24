@@ -29,5 +29,6 @@ namespace UTEHY.Service.AuthorizeService
             var permissions = query.Distinct().ToList();
             return permissions;
         }
+
     }
 }

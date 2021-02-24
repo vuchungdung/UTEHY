@@ -78,6 +78,7 @@ namespace UTEHY.WebApp.API
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var khoa = identity.FindFirst(ClaimTypes.Country).Value;                
                 var responData = _userService.GetMenuByUserPermission(id);
                 return Ok(responData);
             }
