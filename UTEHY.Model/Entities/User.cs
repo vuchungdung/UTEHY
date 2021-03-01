@@ -25,6 +25,23 @@ namespace UTEHY.Model.Entities
 
         public string FacultyId { get; set; }
 
+        [Column(TypeName = "int")]
+        public int? CreateBy { get; set; }
+
+        [Column(TypeName = "datetime")]
+        [Required]
+        public DateTime CreateDate { get; set; }
+
+        [Column(TypeName = "datetime")]
+        public DateTime? UpdateDate { get; set; }
+
+        [Column(TypeName = "int")]
+        public int? UpdateBy { get; set; }
+
+        [Column(TypeName = "bit")]
+        [Required]
+        public bool Deleted { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

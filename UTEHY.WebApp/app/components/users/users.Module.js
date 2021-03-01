@@ -12,7 +12,7 @@
                 url: '/users',
                 parent: 'base',
                 templateUrl: "/app/components/users/usersListView.html",
-                controller: "permissionsController"
+                controller: "usersListController"
             })
     };
 })();

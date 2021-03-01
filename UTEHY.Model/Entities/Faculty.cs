@@ -17,5 +17,7 @@ namespace UTEHY.Model.Entities
         public string FacultyId { get; set; }
 
         public string Name { get; set; }
+
+        public string TemplateId { get; set; }
     }
 }

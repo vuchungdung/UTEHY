@@ -63,6 +63,8 @@ namespace UTEHY.WebApp.App_Start
             builder.RegisterType<FunctionService>().As<IFunctionService>().InstancePerRequest();
             builder.RegisterType<PostService>().As<IPostService>().InstancePerRequest();
             builder.RegisterType<RoleService>().As<IRoleService>().InstancePerRequest();
+            builder.RegisterType<FacultyService>().As<IFacultyService>().InstancePerRequest();
+            builder.RegisterType<TemplateService>().As<ITemplateService>().InstancePerRequest();
 
 
 

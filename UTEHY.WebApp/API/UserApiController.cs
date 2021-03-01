@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Http;
 using UTEHY.Infrastructure.Utilities;
 using UTEHY.Model.Constants;
+using UTEHY.Model.Dtos;
 using UTEHY.Model.ViewModel;
 using UTEHY.Service.Interfaces;
 using UTEHY.WebApp.App_Start;
@@ -66,6 +67,7 @@ namespace UTEHY.WebApp.API
             authenticationManager.SignOut();
             return Ok();
         }
+
         [HttpGet]
         [Route("getmenu")]
         [Authorize]
@@ -76,12 +78,30 @@ namespace UTEHY.WebApp.API
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var khoa = identity.FindFirst(ClaimTypes.Country).Value;                
                 var responData = _userService.GetMenuByUserPermission(id);
                 return Ok(responData);
             }
             catch(Exception ex)
             {
                 _logger.LogError("Error at method: GetMenuByUserPermission - UserApi, "+ ex.InnerException.InnerException.Message + "");
+                return BadRequest("Error System");
+            }
+        }
+
+        [HttpPost]
+        [Route("getpaging")]
+        [Authorize]
+        public IHttpActionResult GetAllPaging([FromBody] PageRequest pageRequest)
+        {
+            try
+            {
+                var responseData = _userService.GetAllPaging(pageRequest);
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: GetAllPaging - UserApi," + ex.InnerException.InnerException.Message + "");
                 return BadRequest("Error System");
             }
         }

@@ -1,1 +1,107 @@
-﻿<h5>Quản lý khoa</h5>
+﻿<style>
+    .table > tbody > tr > td {
+        padding: 8px 20px;
+    }
+
+    .table > thead:first-child > tr:first-child > th {
+        padding: 8px 20px;
+    }
+</style>
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title" style="padding: 10px;">
+            <h4>
+                <i class="icon-arrow-left52 position-left"></i>
+                <span>Hệ thống - Quản lý giao diện</span>
+                <small class="display-block" style="font-size:12px">Quản lý giao diện <i class="icon-arrow-right22"></i> Giao diện</small>
+            </h4>
+            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main -->
+<div class="page-container">
+    <div class="row">
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:0px">
+                <h6 class="panel-title">CHỨC NĂNG</h6>
+            </div>
+            <div class="container-fluid">
+                <div class="form-group" style="margin-bottom :20px">
+                    <div class="row">
+                        <div class="col-md-2" style="text-align:right;margin-top:10px">
+                            <span>Tên khoa:</span>
+                        </div>
+                        <div class="col-md-4" style="text-align:left">
+                            <input type="text" ng-change="searchFaculties()" class="form-control" ng-model="keyword" placeholder="Nhập nội dung cần tìm...">
+                        </div>
+                        <div class="col-md-6" style="text-align:left">
+                            <button type="button" style="font-size:10px;" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_Add"><i class="icon-plus3" style="font-size:13px;padding-right:8px"></i>Thêm mới</button>
+                            <button type="button" ng-click="deleteMultiple()" id="btnDelete" style="font-size:10px;" class="btn btn-danger btn-sm" disabled><i class="icon-bin" style="font-size:13px;padding-right:8px"></i>Xóa nhiều</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-flat">
+            <div class="panel-heading" style="padding-top:10px; padding-bottom:10px">
+                <h6 class="panel-title">DANH SÁCH KHOA</h6>
+                <div class="heading-elements" style="padding-top:10px; padding-bottom:10px">
+                    <span>Hiển thị:</span>
+                    <select id="pageSize" ng-model="pageSize">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="check" ng-click="selectAll()" />
+                                </th>
+                                <th style="width:40%">Mã khoa</th>
+                                <th style="width:40%">Tên khoa</th>
+                                <th style="width:10%">Hình ảnh</th>
+                                <th style="width:10%" class="text-center">Nghiệp vụ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="item in listFaculties|itemsPerPage:pageSize" total-items="totalRecords">
+                                <td>
+                                    <input type="checkbox" ng-model="item.checked" />
+                                </td>
+                                <td>{{item.FacultyId}}</td>
+                                <td>{{item.Name}}</td>
+                                <td><img src="{{item.Image}}" style="width:100px;height:100px" alt="photo" /></td>
+                                <td class="text-center">
+                                    <ul class="icons-list action">
+                                        <li class="text-primary-600"><a data-toggle="modal" data-target="#modal_Edit"><i ng-click="getCategoryById(item.ID)" class="icon-pencil7 btn-update"></i></a></li>
+                                        <li class="text-danger-600"><a href="#"><i ng-click="deleteFaculty(item.ID)" class="icon-trash btn-delete"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="listFaculties" style="padding-top: 10px; padding-bottom:10px; text-align:center">
+                        <dir-pagination-controls max-size="pageSize" direction-links="true" boundary-links="true"
+                                                 on-page-change="getPagingFaculties(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'/app/components/faculties/facultiesAddView.html'"></div>
+    <div ng-include="'/app/components/faculties/facultiesEditView.html'"></div>
+</div> 

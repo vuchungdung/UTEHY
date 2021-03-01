@@ -12,12 +12,10 @@ namespace UTEHY.Service.Implementation
 {
     public class RoleService : IRoleService
     {
-        private IRepositoryBase<Role, string> _roleRepository;
         private FITDbContext _context;
         private IUnitOfWork _unitOfWork;
-        public RoleService(IRepositoryBase<Role, string> roleRepository, IUnitOfWork unitOfWork, FITDbContext context)
+        public RoleService(IUnitOfWork unitOfWork, FITDbContext context)
         {
-            _roleRepository = roleRepository;
             _unitOfWork = unitOfWork;
             _context = context;
         }
@@ -28,10 +26,9 @@ namespace UTEHY.Service.Implementation
                 var model = new Role()
                 {
                     Id = roleVm.Id,
-                    Name = roleVm.Name,
-                    Description = roleVm.Description
+                    Name = roleVm.Name
                 };
-                _roleRepository.Add(model);
+                _context.Roles.Add(model);
                 return true;
             }catch(Exception error)
             {
@@ -44,8 +41,8 @@ namespace UTEHY.Service.Implementation
 
             try
             {
-                var model = _roleRepository.FindById(roleId);
-                _roleRepository.Remove(model);
+                var model = _context.Roles.Find(roleId);
+                _context.Roles.Remove(model);
                 return true;
             }
             catch(Exception error)
@@ -58,11 +55,10 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var result = _roleRepository.FindAll().Select(x => new RoleViewModel()
+                var result = _context.Roles.Select(x => new RoleViewModel()
                 {
                     Id = x.Id,
-                    Name = x.Name,
-                    Description = x.Description
+                    Name = x.Name
                 }).ToList();
                 return result;
             }
@@ -74,7 +70,38 @@ namespace UTEHY.Service.Implementation
 
         public PageResult<RoleViewModel> GetAllPaging(PageRequest request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var query = _context.Roles.ToList();
+                if (!String.IsNullOrEmpty(request.keyword))
+                {
+                    query = query.Where(x => x.Name.Contains(request.keyword)).ToList();
+                }
+                if (!String.IsNullOrEmpty(request.categoryId))
+                {
+                    
+                }
+                int totalRecords = query.Count();
+
+                var listItems = query.OrderByDescending(x => x.Name)
+                    .Skip((request.pageIndex - 1) * request.pageSize)
+                    .Take(request.pageSize)
+                    .Select(x => new RoleViewModel()
+                    {
+                        Id = x.Id,
+                        Name = x.Name                        
+                    }).ToList();
+                var pagination = new PageResult<RoleViewModel>()
+                {
+                    ListItem = listItems,
+                    TotalRecords = totalRecords
+                };
+                return pagination;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<PermissionViewModel> GetPermissionByRoleId(string roleId)
@@ -94,12 +121,11 @@ namespace UTEHY.Service.Implementation
 
         public RoleViewModel GetSingle(string id)
         {
-            var model = _roleRepository.FindById(id);
+            var model = _context.Roles.Find(id);
             var result = new RoleViewModel()
             {
                 Id = model.Id,
-                Name = model.Name,
-                Description = model.Description
+                Name = model.Name
             };
             return result;
         }
@@ -118,11 +144,10 @@ namespace UTEHY.Service.Implementation
         {
             try
             {
-                var model = _roleRepository.FindById(roleVm.Id);
+                var model = _context.Roles.Find(roleVm.Id);
                 model.Id = roleVm.Id;
                 model.Name = roleVm.Name;
-                model.Description = roleVm.Description;
-                _roleRepository.Update(model);
+                _context.Roles.Attach(model);
                 return true;
             }
             catch(Exception error)

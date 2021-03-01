@@ -72,7 +72,8 @@ namespace UTEHY.WebApp.App_Start
                                                             DefaultAuthenticationTypes.ExternalBearer);
                     var roles = userManager.GetRoles(user.Id);
                     var permission = profile.GetProfileService(roles);
-                    var claims = new List<Claim>();
+                    
+                    var claims = new List<Claim>();                    
                     claims.Add(new Claim(ClaimTypes.UserData, user.FullName));
                     claims.Add(new Claim(SystemContants.Claims.Permissions, JsonConvert.SerializeObject(permission)));
                     identity.AddClaims(claims);

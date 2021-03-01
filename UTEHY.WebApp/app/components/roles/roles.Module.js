@@ -12,7 +12,7 @@
                 url: '/roles',
                 parent: 'base',
                 templateUrl: "/app/components/roles/rolesListView.html",
-                controller: "permissionsController"
+                controller: "rolesController"
             })
     };
 })();
