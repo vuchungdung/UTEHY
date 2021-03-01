@@ -73,8 +73,7 @@ namespace UTEHY.WebApp.App_Start
                     var roles = userManager.GetRoles(user.Id);
                     var permission = profile.GetProfileService(roles);
                     
-                    var claims = new List<Claim>();
-                    //claims.Add(new Claim(ClaimTypes.Country, user.FacultyId));
+                    var claims = new List<Claim>();                    
                     claims.Add(new Claim(ClaimTypes.UserData, user.FullName));
                     claims.Add(new Claim(SystemContants.Claims.Permissions, JsonConvert.SerializeObject(permission)));
                     identity.AddClaims(claims);

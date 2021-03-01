@@ -87,31 +87,31 @@
                                         </div>
                                         <ul>
                                             <li ng-if="child.HasCreate == true">
-                                                <input type="checkbox" ng-model="checked">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'CREATE')">
                                                 <span style="padding-left:2px">Thêm mới</span>
                                             </li>
                                             <li ng-if="child.HasUpdate == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'UPDATE')">
                                                 <span style="padding-left:2px">Chỉnh sửa</span>
                                             </li>
                                             <li ng-if="child.HasDelete == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'DELETE')">
                                                 <span style="padding-left:2px">Xóa bỏ</span>
                                             </li>
                                             <li ng-if="child.HasView == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'VIEW')">
                                                 <span style="padding-left:2px">Truy cập</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'APPROVE')">
                                                 <span style="padding-left:2px">Duyệt bài</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'IMPORT')">
                                                 <span style="padding-left:2px">Nhập File</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
-                                                <input type="checkbox">
+                                                <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'EXPORT')">
                                                 <span style="padding-left:2px">Xuất File</span>
                                             </li>
                                         </ul>

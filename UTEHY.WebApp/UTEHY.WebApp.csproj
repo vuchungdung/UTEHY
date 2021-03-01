@@ -6519,13 +6519,6 @@
     <Content Include="Assets\template-client\js\vertical-timeline\img\cd-icon-location.svg" />
     <Content Include="Assets\template-client\js\vertical-timeline\img\cd-icon-movie.svg" />
     <Content Include="Assets\template-client\js\vertical-timeline\img\cd-icon-picture.svg" />
-    <Content Include="client\app.js" />
-    <Content Include="client\shared\views\baseview.html" />
-    <Content Include="client\shared\views\footerview.html" />
-    <Content Include="client\shared\views\headerview.html" />
-    <Content Include="client\shared\views\menuview.html" />
-    <Content Include="client\shared\views\preloaderview.html" />
-    <Content Include="client\shared\views\slideview.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -6695,8 +6688,13 @@
     <None Include="packages.config" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Shared\_Preloader.cshtml" />
+    <Content Include="Views\Shared\_TopHeader.cshtml" />
+    <Content Include="Views\Shared\_MiddleHeader.cshtml" />
+    <Content Include="Views\Shared\_NavHeader.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UTEHY.Infrastructure\UTEHY.Infrastructure.csproj">
