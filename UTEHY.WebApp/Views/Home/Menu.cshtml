@@ -1,0 +1,43 @@
+﻿@model List<UTEHY.Model.ViewModel.MenuViewModel> 
+
+<div class="header-nav">
+    <div class="header-nav-wrapper navbar-scrolltofixed bg-white">
+        <div class="container">
+            <nav id="menuzord" class="menuzord blue">
+                <ul class="menuzord-menu">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <li>
+                                <a href="@item.URL" style="font-size:13px">@item.Name</a>
+                                @if(item.SubMenu != null)
+                                {
+                                    <ul class="dropdown">
+                                    @{
+                                        foreach (var sub in item.SubMenu)
+                                        {
+                                            <li>
+                                                <a href="@sub.URL" style="font-size:13px">@sub.Name</a>
+                                                <ul class="dropdown">
+                                                    @{
+                                                        foreach (var subsm in sub.SubMenu)
+                                                        {
+                                                            <li><a href="@subsm.URL" style="font-size:13px">@subsm.Name</a></li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                                }
+                            </li>
+                        }
+                    }
+                </ul>
+                <div class="pull-right sm-pull-none mb-sm-15">
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

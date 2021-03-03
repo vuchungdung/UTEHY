@@ -30,9 +30,7 @@ namespace UTEHY.Service.Implementation
                 {
                     CategoryId = Guid.NewGuid().ToString(),
                     Name = postCategoryVm.Name,
-                    ParentId = postCategoryVm.ParentId,
                     Alias = postCategoryVm.Alias,
-                    DisplayOrder = postCategoryVm.DisplayOrder,
                     CreateDate = DateTime.Now
                 };
                 _postCategoryRepository.Add(model);
@@ -82,7 +80,6 @@ namespace UTEHY.Service.Implementation
             {
                 ID = x.CategoryId,
                 Name = x.Name,
-                ParentId = x.ParentId,
                 Alias = x.Alias,
             }).ToList();
             return result.ToList();
@@ -97,9 +94,7 @@ namespace UTEHY.Service.Implementation
                 {
                     ID = model.CategoryId,
                     Name = model.Name,
-                    ParentId = model.ParentId,
                     Alias = model.Alias,
-                    DisplayOrder = model.DisplayOrder
                 };
                 return result;
             }
@@ -117,16 +112,14 @@ namespace UTEHY.Service.Implementation
                 query = query.Where(x => x.Name.Contains(request.keyword));
             }
             var totalRecords = query.Count();
-            var listItems = query.OrderBy(x => x.DisplayOrder)
+            var listItems = query.OrderBy(x => x.CreateDate)
                 .Skip((request.pageIndex - 1) * request.pageSize)
                 .Take(request.pageSize)
                 .Select(y => new PostCategoryViewModel()
                 {
                     ID = y.CategoryId,
                     Name = y.Name,
-                    ParentId = y.ParentId,
                     Alias = y.Alias,
-                    DisplayOrder = y.DisplayOrder
                 })              
                 .ToList();
             var pagination = new PageResult<PostCategoryViewModel>()
@@ -149,9 +142,7 @@ namespace UTEHY.Service.Implementation
                 var model = _postCategoryRepository.FindById(postCategoryVm.ID);
                 model.CategoryId = postCategoryVm.ID;
                 model.Name = postCategoryVm.Name;
-                model.ParentId = postCategoryVm.ParentId;
                 model.Alias = postCategoryVm.Alias;
-                model.DisplayOrder = postCategoryVm.DisplayOrder;
                 model.UpdateDate = DateTime.Now;
                 _postCategoryRepository.Update(model);
                 return model.Name;

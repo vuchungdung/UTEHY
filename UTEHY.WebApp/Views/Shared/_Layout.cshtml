@@ -49,9 +49,9 @@
 
         <header id="header" class="header">
         </header>
-            @Html.Partial("_TopHeader")
-            @Html.Partial("_MiddleHeader")
-            @Html.Partial("_NavHeader")
+        @Html.Partial("_TopHeader")
+        @Html.Partial("_MiddleHeader")
+        @{Html.RenderAction("Menu", "Home");}
         <div class="main-content">
             @RenderBody()
         </div>

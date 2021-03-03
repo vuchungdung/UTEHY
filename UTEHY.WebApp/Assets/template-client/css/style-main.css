@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*------------------------------------------------------------------
 [Master Stylesheet]
 
@@ -1413,7 +1413,7 @@ section > .container-fluid {
   margin: 0;
 }
 .menuzord-menu ul.dropdown li a {
-  color: #666666;
+  color: black;
   font-size: 13px;
   font-weight: 600;
   padding: 7px 25px 7px 22px;

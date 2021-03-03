@@ -52,6 +52,21 @@ namespace UTEHY.Service.Implementation
             }
         }
 
+        public bool Approve(string postId)
+        {
+            try
+            {
+                var model = _postRepository.FindById(postId);
+                model.Status = PostStatus.Post;
+                _postRepository.Update(model);
+                return true;
+            }
+            catch(Exception error)
+            {
+                throw error;
+            }
+        }
+
         public bool ChangeFlag(string id, bool status)
         {
 
@@ -83,6 +98,23 @@ namespace UTEHY.Service.Implementation
             }
             
         }
+
+        public bool ToApprove(string id)
+        {
+            try
+            {
+                var model = _postRepository.FindById(id);
+                model.Status = PostStatus.Wait;
+                _postRepository.Update(model);
+                return true;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+        }
+
 
         public string Delete(string id)
         {

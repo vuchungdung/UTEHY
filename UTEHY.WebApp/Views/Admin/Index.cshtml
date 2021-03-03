@@ -30,7 +30,7 @@
     <script src="~/Assets/ng-ckeditor/ng-ckeditor.js"></script>
     <script src="~/Assets/angular-local-storage/dist/angular-local-storage.js"></script>
 </head>
-<body ng-app="utehy" ng-controller="rootController">
+<body onunload="handleOnClose()" ng-app="utehy" ng-controller="rootController">
     <div ui-view></div>
     <script src="~/app/shared/modules/utehy.common.js"></script>
 
@@ -40,7 +40,6 @@
     <script src="~/app/shared/services/authenticationservice.js"></script>
 
     <script src="~/app/shared/services/apiservice.js"></script>
-    <script src="~/app/shared/filters/parentIdFilter.js"></script>
     <script src="~/app/shared/filters/dateFilter.js"></script>
     <script src="~/app/shared/services/loginservice.js"></script>
 
@@ -73,6 +72,5 @@
     <script src="~/app/components/posts/postsListController.js"></script>
     <script src="~/app/components/faculties/facultiesController.js"></script>
     <script src="~/app/components/templates/templatesController.js"></script>
-
 </body>
 </html>

@@ -35,7 +35,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetAllPaging - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAllPaging - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -52,7 +52,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Add - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Add - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -69,7 +69,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Delete - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Delete - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -86,7 +86,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Update - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Update - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -102,7 +102,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetAll - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAll - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -118,7 +118,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetSingle - TemplateApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetSingle - TemplateApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

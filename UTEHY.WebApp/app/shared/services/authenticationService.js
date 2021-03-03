@@ -25,6 +25,7 @@
                     authData.authenticationData.IsAuthenticated = true;
                     authData.authenticationData.userName = tokenInfo.userName;
                     authData.authenticationData.accessToken = tokenInfo.accessToken;
+                    authData.authenticationData.role = tokenInfo.role;
                 }
             }
 

@@ -66,53 +66,46 @@
                     <table class="table table-bordered table-framed" style="margin-bottom:20px">
                         <thead>
                             <tr>
-                                <th style="width:4%">
-                                    <input type="checkbox" id="check" ng-click="selectAll()" />
-                                </th>
-                                <th style="width:16%">Chức năng</th>
-                                <th style="width:80%">Nghiệp vụ của chức năng</th>
+                                <th class="text-center" style="width:16%">Chức năng</th>
+                                <th class="text-center" style="width:80%">Nghiệp vụ của chức năng</th>
                             </tr>
                         </thead>
                         <tbody ng-repeat="item in commandview">
                             <tr>
-                                <td>
-                                    <input type="checkbox">
-                                </td>
-                                <td class="text-bold text-uppercase">{{item.Name}}</td>
+                                <td class="text-bold text-uppercase text-center">{{item.Name}}</td>
                                 <td class="row">
                                     <div class="col-md-3" ng-repeat="child in item.children">
                                         <div>
-                                            <input type="checkbox">
                                             <span class="text-bold">Quản lý {{child.Name}}</span>
                                         </div>
                                         <ul>
                                             <li ng-if="child.HasCreate == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'CREATE')">
-                                                <span style="padding-left:2px">Thêm mới</span>
+                                                <span >Thêm mới</span>
                                             </li>
                                             <li ng-if="child.HasUpdate == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'UPDATE')">
-                                                <span style="padding-left:2px">Chỉnh sửa</span>
+                                                <span >Chỉnh sửa</span>
                                             </li>
                                             <li ng-if="child.HasDelete == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'DELETE')">
-                                                <span style="padding-left:2px">Xóa bỏ</span>
+                                                <span >Xóa bỏ</span>
                                             </li>
                                             <li ng-if="child.HasView == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'VIEW')">
-                                                <span style="padding-left:2px">Truy cập</span>
+                                                <span >Truy cập</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'APPROVE')">
-                                                <span style="padding-left:2px">Duyệt bài</span>
+                                                <span >Duyệt bài</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'IMPORT')">
-                                                <span style="padding-left:2px">Nhập File</span>
+                                                <span >Nhập File</span>
                                             </li>
                                             <li ng-if="child.HasApprove == true">
                                                 <input type="checkbox" ng-checked="checkedCommand(child.FunctionId,'EXPORT')">
-                                                <span style="padding-left:2px">Xuất File</span>
+                                                <span >Xuất File</span>
                                             </li>
                                         </ul>
                                     </div>

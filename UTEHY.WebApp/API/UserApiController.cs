@@ -84,7 +84,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetMenuByUserPermission - UserApi, "+ ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetMenuByUserPermission - UserApi, "+ ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -101,7 +101,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetAllPaging - UserApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAllPaging - UserApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

@@ -92,6 +92,7 @@
     <Compile Include="Implementation\CommandService.cs" />
     <Compile Include="Implementation\FacultyService.cs" />
     <Compile Include="Implementation\FunctionService.cs" />
+    <Compile Include="Implementation\MenuService.cs" />
     <Compile Include="Implementation\RoleService.cs" />
     <Compile Include="Implementation\PermissionService.cs" />
     <Compile Include="Implementation\PostCategoryService.cs" />

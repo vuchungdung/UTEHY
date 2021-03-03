@@ -9,6 +9,11 @@
             loginService.logOut();
             $state.go('login');
         }
+        $scope.handleOnClose = function () {
+            if (window.event.clientX < 0 && window.event.clientY < 0) {
+                loginService.logOut();
+            }
+        }
         $scope.authentication = authData.authenticationData;
     }
 })(angular.module('utehy'));

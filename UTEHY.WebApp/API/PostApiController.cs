@@ -37,7 +37,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetAllPaging - PostApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAllPaging - PostApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
             
@@ -55,8 +55,25 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Add - PostApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Add - PostApi," + ex.Message + "");
                 return BadRequest("Error System");
+            }
+        }
+        [Route("approve")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public IHttpActionResult Approve([FromUri] string postId)
+        {
+            try
+            {
+                var responseDate = _postService.Approve(postId);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error at method: Add - PostApi," + ex.Message + "");
+                return BadRequest("Error System");
+
             }
         }
         [Route("delete")]
@@ -72,7 +89,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Delete - PostApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Delete - PostApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -89,7 +106,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: ChangeStatus - PostApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: ChangeStatus - PostApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
