@@ -6033,6 +6033,7 @@
     <Content Include="Assets\template-client\css\prettyPhoto\light_square\btnPrevious.png" />
     <Content Include="Assets\template-client\css\prettyPhoto\light_square\sprite.png" />
     <Content Include="Assets\template-client\css\responsive.css" />
+    <Content Include="Assets\template-client\css\slideshow.css" />
     <Content Include="Assets\template-client\css\stroke-gap-icons.css" />
     <Content Include="Assets\template-client\css\style-main-dark.css" />
     <Content Include="Assets\template-client\css\style-main.css" />
@@ -6694,7 +6695,6 @@
     <Content Include="Views\Shared\_Preloader.cshtml" />
     <Content Include="Views\Shared\_TopHeader.cshtml" />
     <Content Include="Views\Shared\_MiddleHeader.cshtml" />
-    <Content Include="Views\Shared\_NavHeader.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
   </ItemGroup>

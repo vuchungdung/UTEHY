@@ -32,7 +32,7 @@ namespace UTEHY.Service.Implementation
                     DisplayOrder = x.DisplayOrder,
                     ParentId = x.ParentId
                     
-                }).ToList();
+                }).OrderBy(x=>x.DisplayOrder).ToList();
 
                 List<MenuViewModel> listResult = new List<MenuViewModel>();
 
@@ -50,9 +50,19 @@ namespace UTEHY.Service.Implementation
                         }
                         listResult.Add(item);
                     }
+                    else
+                    {
+                        foreach(var sub in result)
+                        {
+                            if(sub.ParentId == item.ID)
+                            {
+                                item.SubMenu.Add(sub);
+                            }
+                        }
+                    }
                 }
 
-                return listResult;
+                return listResult.OrderBy(x => x.DisplayOrder).ToList();
             }
             catch(Exception ex)
             {
