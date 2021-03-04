@@ -9,6 +9,8 @@ namespace UTEHY.Service.Interfaces
     public interface IPermissionService
     {
         List<PermissionScreenViewModel> GetCommandViews(string roleId);
-        List<PermissionViewModel> GetAllPermission();      
+        List<PermissionViewModel> GetAllPermission();
+
+        List<string> GetProfileService(string roleId);
     }
 }

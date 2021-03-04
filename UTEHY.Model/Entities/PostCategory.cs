@@ -24,8 +24,6 @@ namespace UTEHY.Model.Entities
         public string Alias { get; set; }
         [Column(TypeName = "NVARCHAR")]
         [StringLength(128)]
-        public string ParentId { get; set; }
-        public int? DisplayOrder { get; set; }
         public string FacultyId { get; set; }
 
     }

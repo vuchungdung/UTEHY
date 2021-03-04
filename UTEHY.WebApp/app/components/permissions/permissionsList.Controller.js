@@ -18,8 +18,6 @@
             
             }
 
-            
-
             apiService.get("/api/roleapi/getpermission", config, function (response) {
                 $scope.listPermissons = response.data;
                 console.log($scope.listPermissons);

@@ -215,7 +215,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -279,14 +278,15 @@
     <Content Include="app\components\users\usersEditView.html" />
     <Content Include="app\components\users\usersListView.html" />
     <Content Include="app\components\users\usersController.js" />
+    <Content Include="app\shared\directives\appPermission.js" />
     <Content Include="app\shared\filters\dateFilter.js" />
-    <Content Include="app\shared\filters\parentIdFilter.js" />
     <Content Include="app\shared\modules\utehy.common.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\authData.js" />
     <Content Include="app\shared\services\authenticationService.js" />
     <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\loginService.js" />
+    <Content Include="app\shared\services\permissionService.js" />
     <Content Include="app\shared\views\baseview.html" />
     <Content Include="app\shared\views\footerview.html" />
     <Content Include="app\shared\views\headerview.html" />
@@ -6033,6 +6033,7 @@
     <Content Include="Assets\template-client\css\prettyPhoto\light_square\btnPrevious.png" />
     <Content Include="Assets\template-client\css\prettyPhoto\light_square\sprite.png" />
     <Content Include="Assets\template-client\css\responsive.css" />
+    <Content Include="Assets\template-client\css\slideshow.css" />
     <Content Include="Assets\template-client\css\stroke-gap-icons.css" />
     <Content Include="Assets\template-client\css\style-main-dark.css" />
     <Content Include="Assets\template-client\css\style-main.css" />
@@ -6440,7 +6441,8 @@
     <Content Include="Assets\template-client\images\logo-square.html" />
     <Content Include="Assets\template-client\images\logo-wide-white.png" />
     <Content Include="Assets\template-client\images\logo-wide.png" />
-    <Content Include="Assets\template-client\images\logo.png" />
+    <Content Include="Assets\template-client\images\logo1.png" />
+    <Content Include="Assets\template-client\images\logo2.png" />
     <Content Include="Assets\template-client\images\megamenu\megamenu-dropdown.jpg" />
     <Content Include="Assets\template-client\images\megamenu\megamenu-sale-off.jpg" />
     <Content Include="Assets\template-client\images\pattern1.png" />
@@ -6693,8 +6695,8 @@
     <Content Include="Views\Shared\_Preloader.cshtml" />
     <Content Include="Views\Shared\_TopHeader.cshtml" />
     <Content Include="Views\Shared\_MiddleHeader.cshtml" />
-    <Content Include="Views\Shared\_NavHeader.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UTEHY.Infrastructure\UTEHY.Infrastructure.csproj">

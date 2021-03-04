@@ -76,6 +76,7 @@ namespace UTEHY.WebApp.App_Start
                     var claims = new List<Claim>();                    
                     claims.Add(new Claim(ClaimTypes.UserData, user.FullName));
                     claims.Add(new Claim(SystemContants.Claims.Permissions, JsonConvert.SerializeObject(permission)));
+                    claims.Add(new Claim(ClaimTypes.Role, roles.ElementAt(0)));
                     identity.AddClaims(claims);
                     context.Validated(identity);
                 }

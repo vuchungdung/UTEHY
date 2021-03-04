@@ -35,7 +35,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetAllPaging - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAllPaging - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -52,7 +52,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Add - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Add - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -69,7 +69,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Delete - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Delete - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -86,7 +86,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Update - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Update - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -102,7 +102,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetAll - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAll - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -118,7 +118,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetSingle - PostCategoryApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetSingle - PostCategoryApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

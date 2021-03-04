@@ -16,5 +16,7 @@ namespace UTEHY.Model.ViewModel
         public string ParentId { get; set; }
         public string Content { get; set; }
         public string PostId { get; set; }
+
+        public List<MenuViewModel> SubMenu { get; set; } = new List<MenuViewModel>();
     }
 }

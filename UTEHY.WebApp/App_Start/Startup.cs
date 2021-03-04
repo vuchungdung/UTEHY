@@ -65,6 +65,7 @@ namespace UTEHY.WebApp.App_Start
             builder.RegisterType<RoleService>().As<IRoleService>().InstancePerRequest();
             builder.RegisterType<FacultyService>().As<IFacultyService>().InstancePerRequest();
             builder.RegisterType<TemplateService>().As<ITemplateService>().InstancePerRequest();
+            builder.RegisterType<MenuService>().As<IMenuService>().InstancePerRequest();
 
 
 

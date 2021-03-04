@@ -28,7 +28,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetAll - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAll - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -43,7 +43,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetPaging - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetPaging - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -58,7 +58,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: Add - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Add - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -73,7 +73,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetSingle - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetSingle - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -88,7 +88,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Update - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Update - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -103,7 +103,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Delete - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Delete - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -118,7 +118,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetPermission - RoleApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetPermission - RoleApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

@@ -35,7 +35,7 @@ namespace UTEHY.WebApp.API
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error at method: GetAllPaging - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAllPaging - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -52,7 +52,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Add - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Add - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -69,7 +69,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Delete - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Delete - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -86,7 +86,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: Update - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: Update - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -102,7 +102,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetAll - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetAll - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }
@@ -118,7 +118,7 @@ namespace UTEHY.WebApp.API
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error at method: GetSingle - FacultyApi," + ex.InnerException.InnerException.Message + "");
+                _logger.LogError("Error at method: GetSingle - FacultyApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

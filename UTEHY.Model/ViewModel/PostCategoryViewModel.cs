@@ -15,7 +15,6 @@ namespace UTEHY.Model.ViewModel
         [Required]
         public string Alias { get; set; }
         public string ParentId { get; set; }
-        [Required]
-        public int? DisplayOrder { get; set; }
+
     }
 }

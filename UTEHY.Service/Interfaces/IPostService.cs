@@ -13,6 +13,7 @@ namespace UTEHY.Service.Interfaces
     {
         List<PostViewModel> GetAll();
         bool Add(PostViewModel postVm);
+        bool Approve(string postId);
         string Update(PostViewModel postVm);
         string Delete(string id);
         PostViewModel GetPostById(string id);

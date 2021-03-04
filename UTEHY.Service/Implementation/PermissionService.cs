@@ -10,16 +10,20 @@ using System.Threading.Tasks;
 using UTEHY.Model.Entities;
 using UTEHY.Model.ViewModel;
 using UTEHY.Infrastructure.Interfaces;
+using Microsoft.AspNet.Identity;
 
 namespace UTEHY.Service.Implementation
 {
     public class PermissionService : IPermissionService
     {
         private readonly IRepositoryBase<Permission, string> _permissionRepository;
+        private readonly FITDbContext _db;
 
-        public PermissionService(IRepositoryBase<Permission,string> permissionRepository)
+
+        public PermissionService(IRepositoryBase<Permission,string> permissionRepository, FITDbContext db)
         {
             _permissionRepository = permissionRepository;
+            _db = db;
         }
         public List<PermissionScreenViewModel> GetCommandViews(string roleId)
         {
@@ -43,6 +47,19 @@ namespace UTEHY.Service.Implementation
                 var result = conn.Query<PermissionScreenViewModel>(sql, null, null, true, 120, CommandType.Text);
                 return result.ToList();
             }
+        }
+        public List<string> GetProfileService(string roleId)
+        {
+            var query = from f in _db.Functions
+                        join p in _db.Permissions
+                        on f.FunctionId equals p.FunctionId
+                        join c in _db.Commands
+                        on p.CommandId equals c.CommandId
+                        join r in _db.Roles on p.RoleId equals r.Id
+                        where r.Id == roleId
+                        select f.FunctionId + "_" + c.CommandId;
+            var permissions = query.Distinct().ToList();
+            return permissions;
         }
         public List<PermissionViewModel> GetAllPermission()
         {

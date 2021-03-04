@@ -6,18 +6,7 @@
     function categoriesController($scope, apiService, $filter, commonService, $ngBootbox) {
         $(window).load(function () {
             $('#pageSize').val('10');
-        });
-        $scope.getCategories = function () {
-            apiService.get('/api/postcategoryapi/getall', null, function (result) {
-                if (result.status == 200) {
-                    $scope.dropdownCategory = result.data;
-                    console.log($scope.dropdownCategory)
-                }
-            }, function (error) {
-                console.log(error);
-            });
-        };
-        $scope.getCategories();
+        });        
 
         $scope.getCategoryById = function (id) {
             var config = {
@@ -80,7 +69,6 @@
                         addclass: 'bg-success'
                     });
                     $scope.category = angular.copy({});
-                    $scope.getCategories();
                     $scope.getPagingCategories($scope.curPage);
                 }
                 else {
