@@ -1,4 +1,4 @@
-﻿
+﻿@model UTEHY.Model.ViewModel.HomeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,11 +7,10 @@
 
 <section id="home" class="container">
     <div class="container-fluid p-0">
-
+        <div style="height:380px;width:1140px;background-color:red"></div>
     </div>
 </section>
 
-<!-- start Section: About -->
 <section>
     <div class="container">
         <div class="section-title mt-0 mb-0">
@@ -25,32 +24,46 @@
         <div class="section-content">
             <div class="row">
                 <div class="col-md-6 mb-sm-30">
-                    <div class="box-hover-effect play-button">
+                    <div>
                         <div class="effect-wrapper">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/about/4.jpg" alt="project">
+                                <img class="img-fullwidth" style="border-radius:5px" src="@Model.BaiGhim.Img" alt="project">
                             </div>
-                            <div class="text-holder text-holder-middle">
-                                <a href="https://www.youtube.com/watch?v=F3QpgXBtDeo" data-lightbox-gallery="youtube-video" title="Youtube Video"><img alt="" src="~/Assets/template-client/images/play-button/s1.png"></a>
+                            <div>
+                                <a href="#"><i class="fa fa-calendar"></i>@Model.BaiGhim.CreateDate.ToString("dd/MM/yyyy")</a>
+                                <a href="#">
+                                    <h3 style="margin: 5px;">@Model.BaiGhim.Name</h3>
+                                </a>
+                                <span style="text-align: justify;">
+                                    @Model.BaiGhim.Description
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-sm-30">
-                    <div class="thumb-one">
-                        <img src="~/Assets/template-client/images/about/2.jpg" alt="">
-                        <h4>About Education</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-                        <a class="btn hvr-bounce-to-bottom btn-theme-colored" href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumb-tow">
-                        <img src="~/Assets/template-client/images/about/3.jpg" alt="">
-                        <h4>Student Life</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-                        <a class="btn btn-dark btn-theme-colored" href="#">Read More</a>
-                    </div>
+                <div class="col-md-6 mb-sm-30">
+                    @{
+                        foreach (var item in Model.TinTucs.Take(5))
+                        {
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div>
+                                            <img style="border-radius:5px;width:100%;height:90px" src="@item.Img">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 pl-0">
+                                        <div>
+                                            <a href="#"><i class="fa fa-calendar"></i>@item.CreateDate.ToString("dd/MM/yyyy")</a>
+                                            <a href="#">
+                                                <h4 style="margin: 5px;">@item.Name</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -63,7 +76,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN TỨC</h1>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -71,86 +84,33 @@
         <div class="row multi-row-clearfix">
             <div class="col-md-12">
                 <div class="owl-carousel-3col" data-nav="true">
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/1.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
+                    @{
+                        foreach (var item in Model.TinTucs)
+                        {
+                            <div class="item">
+                                <div class="campaign bg-white maxwidth500 mb-30">
+                                    <div class="thumb">
+                                        <img src="@item.Img" style="width:327px;height:280px" alt="" class="img-fullwidth">
+                                        <div class="campaign-overlay"></div>
+                                    </div>
+                                    <div class="campaign-details clearfix p-30">
+                                        @if (item.Name.Length > 24)
+                                        {
+                                            <h3 class="mt-0 mb-0"><a href="#">@item.Name.Substring(0, 24)...</a></h3>
+                                        }
+                                        else
+                                        {
+                                            <h3 class="mt-0 mb-0"><a href="#">@item.Name</a></h3>
+                                        }
+                                        <ul class="mb-10">
+                                            <li class="text-theme-colored2"><span class="text-theme-colored">@item.CreateDate.ToString("dd/MM/yyyy")</span></li>
+                                        </ul>
+                                        <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Đọc thêm</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Accounting Technologie</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/2.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Modern Technologies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/3.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Chemical Engineering</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/4.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Computer Technologies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/5.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Development Studies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
                 </div>
             </div>
         </div>

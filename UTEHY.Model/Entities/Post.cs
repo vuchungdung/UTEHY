@@ -29,8 +29,7 @@ namespace UTEHY.Model.Entities
         public string Description { get; set; }
         public string Content { get; set; }
         public bool? HomeFlag { get; set; }
-        public int? ViewCount { get; set; }
-        public int? LikeCount { get; set; }
+        public bool? HotFlag { get; set; }
         public string Img { get; set; }
         public PostStatus Status { get; set; }
         public string MoreImgs { get; set; }

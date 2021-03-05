@@ -20,21 +20,12 @@ namespace UTEHY.WebApp.Controllers
         {
             _postService = postService;
         }
+
         public ActionResult Index()
         {
-            return View();
+            var listItem = _postService.GetAll();
+            return View(listItem);
         }
-        public JsonResult GetAllPaging(PageRequest request)
-        {
-            var result = _postService.GetAllPaging(request);
-            if (result != null)
-            {
-                return Json(new { result }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(null, JsonRequestBehavior.AllowGet);
-            }
-        }
+        
     }
 }

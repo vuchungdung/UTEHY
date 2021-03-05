@@ -4,11 +4,17 @@
     postsListController.$inject = ['$scope', 'apiService', '$filter', '$ngBootbox'];
 
     function postsListController($scope, apiService, $filter, $ngBootbox) {
+
         $scope.page = 1;
+
         $scope.keyword = '';
+
         $scope.categoryid = '';
+
         $scope.pageSize = 10;
+
         $scope.currentPage = 0;
+
         $scope.getPagingPosts = function (page) {
             $scope.currentPage = page;
             var config = {
@@ -23,17 +29,16 @@
                 if (result.status == 200) {
                     $scope.listPosts = result.data.ListItem;
                     $scope.totalRecords = result.data.TotalRecords;
+                    console.log($scope.listPosts);
                 }
             }, function (error) {
                 console.log(error);
             });
         };
+
         $scope.deletePost = function (id) {
             $ngBootbox.confirm('Bạn có muốn xóa dữ liệu này không?').then(function () {
-                var config = {
-                    postId: id
-                }
-                apiService.post('/api/postapi/delete', config, function (result) {
+                apiService.del('/api/postapi/delete?postId=' + id, null, function (result) {
                     if (result.status == 200) {
                         new PNotify({
                             title: 'Đã xóa thành công',
@@ -65,6 +70,7 @@
         };
 
         $scope.isAll = false;
+
         $scope.selectAll = function () {
             if ($scope.isAll === false) {
                 angular.forEach($scope.listPosts, function (item) {
@@ -128,17 +134,76 @@
         $scope.searchPosts = function () {
             $scope.getPagingPosts($scope.page);
         }
+
         $scope.getPagingPosts($scope.page);
 
         $scope.changeStatus = function (id, status) {
             if (typeof id != "undefined") {
-                var st = status == true ? 0 : 1;
+                var st = status == 1 ? 0 : 1;
                 var config = {
-                    id: id,
-                    status: st
+                    params: {
+                        id: id,
+                        status: st
+                    }
                 }
-                apiService.put('/api/postapi/changestatus', config, function (result) {
-                    if (result.status == true) {
+                apiService.post('/api/postapi/changestatus', config.params, function (result) {
+                    if (result.status == 200) {
+                        new PNotify({
+                            text: 'Cập nhật thành công!',
+                            addclass: 'bg-success'
+                        });
+                    }
+                }, function (error) {
+                    new PNotify({
+                        text: 'Có lỗi xảy ra!',
+                        addclass: 'bg-danger'
+                    });
+                });
+            }
+            else {
+                console.log('Hello! bạn nhấm F12 nhằm mục đích gì đấy???');
+            }
+        }
+
+        $scope.changeHot = function (id, status) {           
+            if (typeof id != "undefined") {
+                var st = status == true ? false : true;
+                var config = {
+                    params: {
+                        id: id,
+                        status: st
+                    }
+                }
+                apiService.post('/api/postapi/changehot', config.params, function (result) {
+                    if (result.status == 200) {
+                        new PNotify({
+                            text: 'Cập nhật thành công!',
+                            addclass: 'bg-success'
+                        });
+                    }
+                }, function (error) {
+                    new PNotify({
+                        text: 'Có lỗi xảy ra!',
+                        addclass: 'bg-danger'
+                    });
+                });
+            }
+            else {
+                console.log('Hello! bạn nhấm F12 nhằm mục đích gì đấy???');
+            }
+        }
+
+        $scope.changeHome = function (id, status) {
+            if (typeof id != "undefined") {
+                var st = status == true ? false : true;
+                var config = {
+                    params: {
+                        id: id,
+                        status: st
+                    }
+                }
+                apiService.post('/api/postapi/changehome', config.params, function (result) {
+                    if (result.status == 200) {
                         new PNotify({
                             text: 'Cập nhật thành công!',
                             addclass: 'bg-success'

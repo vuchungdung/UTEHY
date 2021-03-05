@@ -124,6 +124,9 @@ a {
   color: #999999;
   text-decoration: none;
 }
+.item{
+    margin-bottom:20px;
+}
 a:hover,
 a:focus {
   color: #737373;

@@ -6697,6 +6697,7 @@
     <Content Include="Views\Shared\_MiddleHeader.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UTEHY.Infrastructure\UTEHY.Infrastructure.csproj">

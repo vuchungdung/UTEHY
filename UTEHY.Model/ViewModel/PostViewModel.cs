@@ -17,9 +17,8 @@ namespace UTEHY.Model.ViewModel
         public string Description { get; set; }
         public string Content { get; set; }
         public bool? HomeFlag { get; set; }
-        public int? ViewCount { get; set; }
-        public int? LikeCount { get; set; }
-        public DateTime? CreateDate { get; set; }
+        public bool? HotFlag { get; set; }
+        public DateTime CreateDate { get; set; }
         public int? CreateBy { get; set; }
         public DateTime UpdateDate { get; set; }
         public int UpdateBy { get; set; }
