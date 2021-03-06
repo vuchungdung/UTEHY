@@ -53,5 +53,10 @@ namespace UTEHY.WebApp.Controllers
             }
             return PartialView(listItem);
         }
+        public ActionResult PostDetail(string id)
+        {
+            var result = _postService.GetPostById(id);
+            return View(result);
+        }
     }
 }
