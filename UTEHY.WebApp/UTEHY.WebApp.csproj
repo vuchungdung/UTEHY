@@ -5988,6 +5988,7 @@
     <Content Include="Assets\template-client\css\lightbox\loading.gif" />
     <Content Include="Assets\template-client\css\lightbox\next.png" />
     <Content Include="Assets\template-client\css\lightbox\prev.png" />
+    <Content Include="Assets\template-client\css\main.css" />
     <Content Include="Assets\template-client\css\menuzord-skins\menuzord-boxed.css" />
     <Content Include="Assets\template-client\css\nivolightbox-themes\default\close%402x.png" />
     <Content Include="Assets\template-client\css\nivolightbox-themes\default\close.png" />
@@ -6533,6 +6534,34 @@
     <Content Include="Assets\angular\README.md" />
     <Content Include="Libs\CKFinder.dll" />
     <Content Include="Logs\log-20200818.txt" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\01.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\02.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\03.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\04.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\05.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\06.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\112151-hoang-thach-1.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\150019535_3983562381675104_6262033791966214780_o.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\162752_167246369987484_100001063677866_368229_541290_n.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\anhtuyensinh.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\cannon.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dhnnk13.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dhnnk14.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dt-05.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dt-08.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dtk3-01.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\dtk5-02.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\festo_logo12.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\khoa-ddt.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\ktk-01.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\ln-logo-kopf.gif" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\pohe.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\resized_2012-10-14-09_15_06.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\Screenshot 2021-02-07 084116.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\siemenslog2o.jpg" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\umc.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\umc_hy.png" />
+    <Content Include="UploadedFiles\images\Khoa ĐĐT\viettel.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -6545,7 +6574,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -6698,6 +6726,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Category.cshtml" />
+    <Content Include="Views\Post\PostRelate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UTEHY.Infrastructure\UTEHY.Infrastructure.csproj">

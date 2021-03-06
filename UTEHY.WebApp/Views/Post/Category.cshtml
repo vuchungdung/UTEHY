@@ -1,0 +1,15 @@
+﻿@model List<UTEHY.Model.ViewModel.PostCategoryViewModel>
+
+<div class="widget">
+    <h5 class="widget-title line-bottom">Danh mục bài viết</h5>
+    <div class="categories">
+        <ul class="list list-border angle-double-right">
+            @{
+                foreach (var item in Model)
+                {
+                    <li><a href="#">@item.Name</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
