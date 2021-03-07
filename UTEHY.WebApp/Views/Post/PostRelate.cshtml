@@ -1,0 +1,15 @@
+﻿@model List<UTEHY.Model.ViewModel.PostViewModel>
+<div class="latest-posts">
+    @{
+        foreach (var item in Model.Take(4))
+        {
+            <article class="post media-post clearfix pb-0 mb-10">
+                <a class="post-thumb" href="#"><img style="width:75px;height:75px" src="@item.Img" alt=""></a>
+                <div class="post-right">
+                    <h5 class="post-title mt-0"><a href="#">@item.Name.Substring(0,24) ...</a></h5>
+                    <p>@item.CreateDate.ToString("dd/MM/yyyy")</p>
+                </div>
+            </article>
+        }
+    }
+</div>

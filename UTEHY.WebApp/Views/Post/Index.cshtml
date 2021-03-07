@@ -1,0 +1,74 @@
+﻿@model List<UTEHY.Model.ViewModel.PostViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <div class="upcoming-events bg-white-f3 mb-20">
+                            <div class="row">
+                                <div class="col-sm-4 pr-0 pr-sm-15">
+                                    <div class="thumb p-15">
+                                        <img class="img-fullwidth" style="width:256px;height:195px" src="@item.Img" alt="...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 pl-0 pl-sm-15">
+                                    <div class="event-details p-15 mt-20">
+                                        <h4 class="media-heading text-uppercase font-weight-500">@item.Name.Substring(0,18)</h4>
+                                        <p>@item.Description.</p>
+                                        <p>@item.CreateDate.ToString("dd/MM/yyyy")</p>
+                                        <a href="/Post/PostDetail?id=@item.ID" class="btn btn-flat btn-dark btn-theme-colored btn-sm">Chi tiết <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+         
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <div class="col-sm-12">
+                        <nav>
+                            <ul class="pagination theme-colored pull-right xs-pull-center mb-xs-40">
+                                <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">...</a></li>
+                                <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar sidebar-right mt-sm-30">
+                    <div class="widget">
+                        <h5 class="widget-title line-bottom">Tìm kiếm</h5>
+                        <div class="search-form">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @{Html.RenderAction("Category", "Post");}
+                <div class="widget">
+                    <h5 class="widget-title line-bottom">Bài viết liên quan</h5>
+                    @{Html.RenderAction("PostRelate", "Post");}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

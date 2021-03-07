@@ -35,7 +35,7 @@ namespace UTEHY.Service.Implementation
                     CategoryId = postVm.CategoryId,
                     Description = postVm.Description,
                     Content = postVm.Content,
-                    HomeFlag = false,
+                    HomeFlag = false,                   
                     CreateDate = DateTime.Now,
                     CreateBy = postVm.CreateBy,
                     Img = postVm.Img,
@@ -123,7 +123,8 @@ namespace UTEHY.Service.Implementation
             {
                 var model = _postRepository.FindById(id);
                 string name = model.Name;
-                _postRepository.Remove(model);
+                model.Deleted = true;
+                _postRepository.Update(model);
                 return name;
             }
             catch(Exception error)
@@ -139,7 +140,8 @@ namespace UTEHY.Service.Implementation
                 for (int i = 0; i < id.Length; i++)
                 {
                     var model = _postRepository.FindById(id[i]);
-                    _postRepository.Remove(model);
+                    model.Deleted = true;
+                    _postRepository.Update(model);
                 }
                 return id.Length;
             }
@@ -171,7 +173,7 @@ namespace UTEHY.Service.Implementation
 
         public PageResult<PostViewModel> GetAllPaging(PageRequest request)
         {
-            var query = _postRepository.FindAll();
+            var query = _postRepository.FindAll().Where(x => x.Deleted == false);
             if (!String.IsNullOrEmpty(request.keyword))
             {
                 query = query.Where(x => x.Name.Contains(request.keyword));
@@ -194,6 +196,7 @@ namespace UTEHY.Service.Implementation
                     Description = x.Description,
                     Content = x.Content,
                     HomeFlag = x.HomeFlag,
+                    HotFlag = x.HotFlag,
                     CreateDate = x.CreateDate,
                     CreateBy = x.CreateBy,
                     MoreImgs = x.MoreImgs,
@@ -259,6 +262,21 @@ namespace UTEHY.Service.Implementation
                 return postVm.Name;
             }
             catch(Exception error)
+            {
+                throw error;
+            }
+        }
+
+        public bool ChangeHot(string id, bool status)
+        {
+            try
+            {
+                var model = _postRepository.FindById(id);
+                model.HotFlag = status;
+                _postRepository.Update(model);
+                return true;
+            }
+            catch (Exception error)
             {
                 throw error;
             }

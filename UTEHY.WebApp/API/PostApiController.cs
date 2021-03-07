@@ -62,7 +62,7 @@ namespace UTEHY.WebApp.API
         [Route("approve")]
         [HttpDelete]
         [AllowAnonymous]
-        public IHttpActionResult Approve([FromUri] string postId)
+        public IHttpActionResult Approve(string postId)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace UTEHY.WebApp.API
         [Route("delete")]
         [HttpDelete]       
         [AllowAnonymous]
-        public IHttpActionResult Delete([FromUri]string postId)
+        public IHttpActionResult Delete(string postId)
         {
             try
             {
@@ -94,19 +94,68 @@ namespace UTEHY.WebApp.API
             }
         }
         [Route("changestatus")]
-        [HttpPut]
+        [HttpPost]
         [AllowAnonymous]
-        public IHttpActionResult ChangeStatus([FromUri]string id, [FromUri]PostStatus status)
+        public IHttpActionResult ChangeStatus(StatusRequest request)
         {
             try
             {
-                var responseData = _postService.ChangeStatus(id, status);
+                var responseData = _postService.ChangeStatus(request.Id, request.Status);
                 _postService.Save();
                 return Ok(responseData);
             }
             catch (Exception ex)
             {
                 _logger.LogError("Error at method: ChangeStatus - PostApi," + ex.Message + "");
+                return BadRequest("Error System");
+            }
+        }
+        [Route("changehot")]
+        [HttpPost]
+        [AllowAnonymous]
+        public IHttpActionResult ChangeHot([FromBody] HotFlagRequest request)
+        {
+            try
+            {
+                var responseData = _postService.ChangeHot(request.Id, request.Status);
+                _postService.Save();
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: ChangeHot - PostApi," + ex.Message + "");
+                return BadRequest("Error System");
+            }
+        }
+        [Route("changehome")]
+        [HttpPost]
+        [AllowAnonymous]
+        public IHttpActionResult ChangeHomeFlag([FromBody] HomeFlagRequest request)
+        {
+            try
+            {
+                var responseData = _postService.ChangeFlag(request.Id, request.Status);
+                _postService.Save();
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: ChangeHot - PostApi," + ex.Message + "");
+                return BadRequest("Error System");
+            }
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IHttpActionResult GetById(string id)
+        {
+            try
+            {
+                var responseData = _postService.GetPostById(id);
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error at method: GetById - PostApi," + ex.Message + "");
                 return BadRequest("Error System");
             }
         }

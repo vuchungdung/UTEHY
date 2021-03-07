@@ -63,7 +63,6 @@
             apiService.get('/api/postcategoryapi/getall', null, function (result) {
                 if (result.status == 200) {
                     $scope.listCategoryId = result.data;
-                    console.log(res.data);
                 }
             }, function (error) {
                 console.log(error);

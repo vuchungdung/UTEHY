@@ -177,6 +177,10 @@
     <Compile Include="Migrations\202103030738550_version_1.0.7.Designer.cs">
       <DependentUpon>202103030738550_version_1.0.7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103050929065_version_1.0.8.cs" />
+    <Compile Include="Migrations\202103050929065_version_1.0.8.Designer.cs">
+      <DependentUpon>202103050929065_version_1.0.8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CommandViewModel.cs" />
@@ -184,6 +188,9 @@
     <Compile Include="ViewModel\FacultyViewModel.cs" />
     <Compile Include="ViewModel\FooterViewModel.cs" />
     <Compile Include="ViewModel\FunctionViewModel.cs" />
+    <Compile Include="ViewModel\HomeFlagRequest.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\HotFlagRequest.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\PermissionScreenViewModel.cs" />
@@ -192,6 +199,7 @@
     <Compile Include="ViewModel\PostViewModel.cs" />
     <Compile Include="ViewModel\RoleViewModel.cs" />
     <Compile Include="ViewModel\SlideViewModel.cs" />
+    <Compile Include="ViewModel\StatusRequest.cs" />
     <Compile Include="ViewModel\TeacherViewModel.cs" />
     <Compile Include="ViewModel\TemplateViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
@@ -227,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103030738550_version_1.0.7.resx">
       <DependentUpon>202103030738550_version_1.0.7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050929065_version_1.0.8.resx">
+      <DependentUpon>202103050929065_version_1.0.8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

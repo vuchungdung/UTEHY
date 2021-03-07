@@ -75,10 +75,10 @@
                                 </th>
                                 <th>Hình ảnh</th>
                                 <th>Tên bài</th>
-                                <th>Mô tả</th>
                                 <th>Ngày viết</th>
                                 <th class="text-center">Trạng thái</th>
-                                <th class="text-center">Ghim</th>
+                                <th class="text-center">Tin nổi bật</th>
+                                <th class="text-center">Tin được ghim</th>
                                 <th class="text-center">Nghiệp vụ</th>
                             </tr>
                         </thead>
@@ -89,19 +89,15 @@
                                 </td>
                                 <td><img ng-src="{{item.Img}}" width="100" /></td>
                                 <td>{{item.Name}}</td>
-                                <td>{{item.Description}}</td>
-                                <td>{{result |dateFilter:item.CreatedDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                                <td>{{item.CreateDate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
                                 <td class="text-center">
-                                    <label class="switch">
-                                        <input ng-change="changeStatus(item.ID,status)" type="checkbox" class="primary"  ng-model="status" ng-checked="item.Status==1">
-                                        <span class="slider"></span>
-                                    </label>                                
+                                    <input type="checkbox" ng-click="changeStatus(item.ID,item.Status)" ng-model="status" ng-checked="item.Status == 1">
                                 </td>
                                 <td class="text-center">
-                                    <label class="switch">
-                                        <input type="checkbox" class="primary" ng-change="changeFlag(item.ID,homeFlag)" ng-model="homeFlag" ng-checked="item.HomeFlag == true">
-                                        <span class="slider"></span>
-                                    </label>
+                                    <input type="checkbox" ng-click="changeHome(item.ID,item.HomeFlag)" ng-model="homeFlag" ng-checked="item.HomeFlag==true">
+                                </td>
+                                <td class="text-center">
+                                    <input type="checkbox" ng-click="changeHot(item.ID,item.HotFlag)" ng-model="hotFlag" ng-checked="item.HotFlag==true">
                                 </td>
                                 <td class="text-center" style="width:8%">
                                     <ul class="icons-list action">

@@ -1,0 +1,41 @@
+﻿@model UTEHY.Model.ViewModel.PostViewModel
+
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h4 style="color:black">@Model.Name</h4>
+                <p style="padding-left:30px">@Model.CreateDate.ToString("dd/MM/yyyy")</p>
+                <p style="color:black">@Html.Raw(Model.Content)</p>
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar sidebar-right mt-sm-30">
+                    <div class="widget">
+                        <h5 class="widget-title line-bottom">Tìm kiếm</h5>
+                        <div class="search-form">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @{Html.RenderAction("Category", "Post");}
+                    <div class="widget">
+                        <h5 class="widget-title line-bottom">Bài viết liên quan</h5>
+                        @{Html.RenderAction("PostRelate", "Post");}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

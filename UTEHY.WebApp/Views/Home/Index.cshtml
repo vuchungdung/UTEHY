@@ -1,4 +1,4 @@
-﻿
+﻿@model UTEHY.Model.ViewModel.HomeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,11 +7,10 @@
 
 <section id="home" class="container">
     <div class="container-fluid p-0">
-
+        <div style="height:380px;width:1140px;background-color:red"></div>
     </div>
 </section>
 
-<!-- start Section: About -->
 <section>
     <div class="container">
         <div class="section-title mt-0 mb-0">
@@ -25,32 +24,46 @@
         <div class="section-content">
             <div class="row">
                 <div class="col-md-6 mb-sm-30">
-                    <div class="box-hover-effect play-button">
+                    <div>
                         <div class="effect-wrapper">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/about/4.jpg" alt="project">
+                                <img class="img-fullwidth" style="border-radius:5px" src="@Model.BaiGhim.Img" alt="project">
                             </div>
-                            <div class="text-holder text-holder-middle">
-                                <a href="https://www.youtube.com/watch?v=F3QpgXBtDeo" data-lightbox-gallery="youtube-video" title="Youtube Video"><img alt="" src="~/Assets/template-client/images/play-button/s1.png"></a>
+                            <div>
+                                <a href="#"><i class="fa fa-calendar"></i>@Model.BaiGhim.CreateDate.ToString("dd/MM/yyyy")</a>
+                                <a href="#">
+                                    <h3 style="margin: 5px;">@Model.BaiGhim.Name</h3>
+                                </a>
+                                <span style="text-align: justify;">
+                                    @Model.BaiGhim.Description
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-sm-30">
-                    <div class="thumb-one">
-                        <img src="~/Assets/template-client/images/about/2.jpg" alt="">
-                        <h4>About Education</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-                        <a class="btn hvr-bounce-to-bottom btn-theme-colored" href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumb-tow">
-                        <img src="~/Assets/template-client/images/about/3.jpg" alt="">
-                        <h4>Student Life</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
-                        <a class="btn btn-dark btn-theme-colored" href="#">Read More</a>
-                    </div>
+                <div class="col-md-6 mb-sm-30">
+                    @{
+                        foreach (var item in Model.TinTucs.Take(5))
+                        {
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div>
+                                            <img style="border-radius:5px;width:100%;height:90px" src="@item.Img">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 pl-0">
+                                        <div>
+                                            <a href="#"><i class="fa fa-calendar"></i>@item.CreateDate.ToString("dd/MM/yyyy")</a>
+                                            <a href="#">
+                                                <h4 style="margin: 5px;">@item.Name</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -63,7 +76,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN TỨC</h1>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -71,92 +84,134 @@
         <div class="row multi-row-clearfix">
             <div class="col-md-12">
                 <div class="owl-carousel-3col" data-nav="true">
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/1.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
+                    @{
+                        foreach (var item in Model.TinTucs)
+                        {
+                            <div class="item">
+                                <div class="campaign bg-white maxwidth500 mb-30">
+                                    <div class="thumb">
+                                        <img src="@item.Img" style="width:327px;height:280px" alt="" class="img-fullwidth">
+                                        <div class="campaign-overlay"></div>
+                                    </div>
+                                    <div class="campaign-details clearfix p-30">
+                                        @if (item.Name.Length > 24)
+                                        {
+                                            <h3 class="mt-0 mb-0"><a href="#">@item.Name.Substring(0, 24)...</a></h3>
+                                        }
+                                        else
+                                        {
+                                            <h3 class="mt-0 mb-0"><a href="#">@item.Name</a></h3>
+                                        }
+                                        <ul class="mb-10">
+                                            <li class="text-theme-colored2"><span class="text-theme-colored">@item.CreateDate.ToString("dd/MM/yyyy")</span></li>
+                                        </ul>
+                                        <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Đọc thêm</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Accounting Technologie</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="section-title mt-0 mb-0">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <div class="double-line-bottom-theme-colored-2"></div>
+                    <article style="margin-bottom:10px">
+                        <div style="margin: 4px 0; position: relative;">
+                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
+                                <!---->
+                                <!---->
+                                <ul class="text-white font-18 font-weight-600">
+                                    <li class="border-bottom">19</li>
+                                    <li class="">Th2</li>
                                 </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
+                            </div>
+                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
+                                        <!---->
+                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
+                                            THÔNG
+                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
+                                            BỆNH COVID-19.
+                                        </a>
+                                    </h4>
+                                    <!---->
+                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/2.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Modern Technologies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
+                    </article>
+                    <article style="margin-bottom:10px">
+                        <div style="margin: 4px 0; position: relative;">
+                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
+                                <!---->
+                                <!---->
+                                <ul class="text-white font-18 font-weight-600">
+                                    <li class="border-bottom">19</li>
+                                    <li class="">Th2</li>
                                 </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
+                            </div>
+                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
+                                        <!---->
+                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
+                                            THÔNG
+                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
+                                            BỆNH COVID-19.
+                                        </a>
+                                    </h4>
+                                    <!---->
+                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/3.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Chemical Engineering</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
+                    </article>
+                    <article style="margin-bottom:10px">
+                        <div style="margin: 4px 0; position: relative;">
+                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
+                                <!---->
+                                <!---->
+                                <ul class="text-white font-18 font-weight-600">
+                                    <li class="border-bottom">19</li>
+                                    <li class="">Th2</li>
                                 </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
+                            </div>
+                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
+                                        <!---->
+                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
+                                            THÔNG
+                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
+                                            BỆNH COVID-19.
+                                        </a>
+                                    </h4>
+                                    <!---->
+                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/4.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Computer Technologies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="campaign bg-white maxwidth500 mb-30">
-                            <div class="thumb">
-                                <img src="~/Assets/template-client/images/course/5.jpg" alt="" class="img-fullwidth">
-                                <div class="campaign-overlay"></div>
-                            </div>
-                            <div class="campaign-details clearfix p-30">
-                                <h3 class="mt-0 mb-0"><a href="#">Development Studies</a></h3>
-                                <ul class="mb-10">
-                                    <li class="text-theme-colored2 mr-5">Course Fee: <span class="text-theme-colored">$890</span></li>
-                                </ul>
-                                <p>Lorem ipsum dolor adipisicing elit. Praesent quossit sit amet consect adipisicing elit quossit Contrary to popular belief....</p>
-                                <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Read More</a>
-                            </div>
-                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TUYỂN DỤNG</h1>
+                    <div aria-multiselectable="true" class="panel-group accordion-stylished-left-border accordion-icon-filled accordion-no-border accordion-icon-left accordion-icon-filled-theme-colored2" id="accordion6" role="tablist" style="text-align: center;">
+                        <!----><a href="#/news-list/news-detail/bec7e6f4-82c7-46d1-b285-871e8d9172d6"><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/anhtuyensinh.png" style="margin-top: 10px;"></a><a style="cursor: pointer;"><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/viettel.jpg" style="margin-top: 10px;"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <!--start funfact Section-->
 <section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="/Assets/template-client/images/bg/bg2.jpg">
     <div class="container pt-90 pb-90">
@@ -196,95 +251,7 @@
 </section>
 
 <!--start teacher Section-->
-<section>
-    <div class="container">
-        <div class="section-title mt-0 mb-0">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
-                    <div class="double-line-bottom-theme-colored-2"></div>
-                </div>
-            </div>
-        </div>
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel-4col">
-                        <div class="item">
-                            <div class="team-member">
-                                <div class="thumb">
-                                    <img src="~/Assets/template-client/images/team/1.jpg" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3 class="text-uppercase mb-0"><a href="#">Lucy Martin</a></h3>
-                                    <h5 class="text-theme-colored2 mt-0">Vice Principle</h5>
-                                    <p>Mauris vitae sollicitudin massa. Integer lacinia leo vel ullamcorper viverra.</p>
-                                    <ul class="styled-icons icon-dark">
-                                        <li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-member">
-                                <div class="thumb">
-                                    <img src="~/Assets/template-client/images/team/2.jpg" alt="">
-                                </div>
-                                <div class="details">
 
-                                    <h3 class="text-uppercase mb-0"><a href="#">John Vettori</a></h3>
-                                    <h5 class="text-theme-colored2 mt-0">Biology Professor</h5>
-                                    <p>Mauris vitae sollicitudin massa. Integer lacinia leo vel ullamcorper viverra.</p>
-                                    <ul class="styled-icons icon-dark">
-                                        <li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-member">
-                                <div class="thumb">
-                                    <img src="~/Assets/template-client/images/team/3.jpg" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3 class="text-uppercase mb-0"><a href="#">Lucy Martin</a></h3>
-                                    <h5 class="text-theme-colored2 mt-0">Mathmatics Professor</h5>
-                                    <p>Mauris vitae sollicitudin massa. Integer lacinia leo vel ullamcorper viverra.</p>
-                                    <ul class="styled-icons icon-dark">
-                                        <li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-member">
-                                <div class="thumb">
-                                    <img src="~/Assets/template-client/images/team/4.jpg" alt="">
-                                </div>
-                                <div class="details">
-                                    <h3 class="text-uppercase mb-0"><a href="#">Chris Evans</a></h3>
-                                    <h5 class="text-theme-colored2 mt-0">Physics Professor</h5>
-                                    <p>Mauris vitae sollicitudin massa. Integer lacinia leo vel ullamcorper viverra.</p>
-                                    <ul class="styled-icons icon-dark">
-                                        <li><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" data-bg-color="#4C75A3"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!--start gallary Section-->
 <section class="bg-lighter">
@@ -292,7 +259,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">Hình ảnh cuả khoa</h1>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -300,20 +267,16 @@
         <div class="section-content">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Portfolio Filter -->
-                    <div class="portfolio-filter text-center">
+                    @*<div class="portfolio-filter text-center">
                         <a href="#" class="active" data-filter="*">All</a>
                         <a href="#branding" class="" data-filter=".branding">Branding</a>
                         <a href="#design" class="" data-filter=".design">Design</a>
                         <a href="#photography" class="" data-filter=".photography">Photography</a>
-                    </div>
-                    <!-- End Portfolio Filter -->
-                    <!-- Portfolio Gallery Grid -->
+                    </div>*@
                     <div class="gallery-isotope default-animation-effect grid-3 gutter-small clearfix" data-lightbox="gallery">
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item design">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/1.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/01.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -321,17 +284,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/1.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/01.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item branding photography">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/2.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/02.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -339,17 +300,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/2.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/02.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item design">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/3.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/03.png" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -357,17 +316,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/3.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/03.png" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item branding">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/4.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/04.png" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -375,17 +332,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/4.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/04.png" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item design photography">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/5.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/05.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -393,17 +348,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/5.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/05.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
                         <div class="gallery-item photography">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/6.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/06.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -411,17 +364,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/6.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/06.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
-                        <div class="gallery-item branding">
+                        <div class="gallery-item design">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/7.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/01.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -429,17 +380,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/7.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/01.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
-                        <div class="gallery-item photography">
+                        <div class="gallery-item branding photography">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/8.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/02.jpg" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -447,17 +396,15 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/8.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/02.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
-                        <!-- Portfolio Item Start -->
-                        <div class="gallery-item branding">
+                        <div class="gallery-item design">
                             <div class="thumb">
-                                <img class="img-fullwidth" src="~/Assets/template-client/images/gallery/9.jpg" alt="project">
+                                <img class="img-fullwidth" style="width:378px;height:212px" src="~/UploadedFiles/images/Khoa ĐĐT/03.png" alt="project">
                                 <div class="overlay-shade"></div>
                                 <div class="text-holder">
                                     <div class="title text-center">Sample Title</div>
@@ -465,13 +412,12 @@
                                 <div class="icons-holder">
                                     <div class="icons-holder-inner">
                                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                            <a href="~/Assets/template-client/images/gallery/9.jpg" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
+                                            <a href="~/UploadedFiles/images/Khoa ĐĐT/03.png" data-lightbox-gallery="gallery" title="Your Title Here"><i class="fa fa-picture-o"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Portfolio Item End -->
                     </div>
                     <!-- End Portfolio Gallery Grid -->
                 </div>
@@ -486,7 +432,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">Cựu sinh viên</h1>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -542,122 +488,20 @@
     </div>
 </section>
 
-<!--start blog Section-->
-<section class="bg-lighter">
-    <div class="container">
-        <div class="section-title mt-0 mb-0">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
-                    <div class="double-line-bottom-theme-colored-2"></div>
-                </div>
-            </div>
-        </div>
-        <div class="section-content">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <article class="post clearfix maxwidth500 mb-sm-30">
-                        <div class="entry-header">
-                            <div class="post-thumb">
-                                <img src="~/Assets/template-client/images/blog/1.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                            <div class="entry-date media-left text-center flip bg-theme-colored border-top-theme-color-2-3px pt-5 pr-15 pb-5 pl-15">
-                                <ul>
-                                    <li class="font-16 text-white font-weight-600">28</li>
-                                    <li class="font-12 text-white text-uppercase">Feb</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="entry-content border-bottom-theme-color-2-1px bg-white p-30">
-                            <h3 class="entry-title text-uppercase mt-0"><a href="#">Post title here</a></h3>
-                            <p>Lorem ipsum dolor adipisicing amet, consectetur sit elit. Aspernatur incidihil quo officia.</p>
-                            <div class="entry-meta pull-right flip mt-10">
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-thumbs-o-up text-theme-colored2 mr-5"></i> 13</li>
-                                    <li><i class="fa fa-comments-o text-theme-colored2 mr-5"></i> 43</li>
-                                </ul>
-                            </div>
-                            <a class="btn btn-theme-colored mt-10 mb-0 pull-left flip" href="#">Read more <i class="fa fa-angle-double-right"></i></a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <article class="post clearfix maxwidth500 mb-sm-30">
-                        <div class="entry-header">
-                            <div class="post-thumb">
-                                <img src="~/Assets/template-client/images/blog/3.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                            <div class="entry-date media-left text-center flip bg-theme-colored border-top-theme-color-2-3px pt-5 pr-15 pb-5 pl-15">
-                                <ul>
-                                    <li class="font-16 text-white font-weight-600">27</li>
-                                    <li class="font-12 text-white text-uppercase">Feb</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="entry-content border-bottom-theme-color-2-1px bg-white p-30">
-                            <h3 class="entry-title text-uppercase mt-0"><a href="#">Post title here</a></h3>
-                            <p>Lorem ipsum dolor adipisicing amet, consectetur sit elit. Aspernatur incidihil quo officia.</p>
-                            <div class="entry-meta pull-right flip mt-10">
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-thumbs-o-up text-theme-colored2 mr-5"></i> 13</li>
-                                    <li><i class="fa fa-comments-o text-theme-colored2 mr-5"></i> 43</li>
-                                </ul>
-                            </div>
-                            <a class="btn btn-theme-colored mt-10 mb-0 pull-left flip" href="#">Read more <i class="fa fa-angle-double-right"></i></a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <article class="post clearfix maxwidth500">
-                        <div class="entry-header">
-                            <div class="post-thumb">
-                                <img src="~/Assets/template-client/images/blog/2.jpg" alt="" class="img-responsive img-fullwidth">
-                            </div>
-                            <div class="entry-date media-left text-center flip bg-theme-colored border-top-theme-color-2-3px pt-5 pr-15 pb-5 pl-15">
-                                <ul>
-                                    <li class="font-16 text-white font-weight-600">26</li>
-                                    <li class="font-12 text-white text-uppercase">Feb</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="entry-content border-bottom-theme-color-2-1px bg-white p-30">
-                            <h3 class="entry-title text-uppercase mt-0"><a href="#">Post title here</a></h3>
-                            <p>Lorem ipsum dolor adipisicing amet, consectetur sit elit. Aspernatur incidihil quo officia.</p>
-                            <div class="entry-meta pull-right flip mt-10">
-                                <ul class="list-inline">
-                                    <li><i class="fa fa-thumbs-o-up text-theme-colored2 mr-5"></i> 13</li>
-                                    <li><i class="fa fa-comments-o text-theme-colored2 mr-5"></i> 43</li>
-                                </ul>
-                            </div>
-                            <a class="btn btn-theme-colored mt-10 mb-0 pull-left flip" href="#">Read more <i class="fa fa-angle-double-right"></i></a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--start Clients Section-->
-<section class="clients bg-theme-colored2">
+<section class="clients bg-current">
     <div class="container pt-10 pb-0">
         <div class="row">
             <div class="col-md-12">
                 <!-- Section: Clients -->
                 <div class="owl-carousel-6col text-center">
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w1.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w2.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w3.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w4.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w5.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w6.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w3.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w4.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w5.png" alt=""></a></div>
-                    <div class="item"> <a href="#"><img src="~/Assets/template-client/images/clients/w6.png" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/festo_logo12.jpg" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/ln-logo-kopf.gif" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/pohe.png" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/siemenslog2o.jpg" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/festo_logo12.jpg" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/ln-logo-kopf.gif" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/pohe.png" alt=""></a></div>
+                    <div class="item"> <a href="#"><img style="width:177.5px;height:106.5px" src="~/UploadedFiles/images/Khoa ĐĐT/siemenslog2o.jpg" alt=""></a></div>
                 </div>
             </div>
         </div>
