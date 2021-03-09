@@ -6050,6 +6050,9 @@
     <Content Include="Assets\template-client\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\template-client\fonts\ionicons790f.svg" />
     <Content Include="Assets\template-client\fonts\Pe-icon-7-strokebb1d.svg" />
+    <Content Include="Assets\template-client\images\1.png" />
+    <Content Include="Assets\template-client\images\2.jpg" />
+    <Content Include="Assets\template-client\images\3.jpg" />
     <Content Include="Assets\template-client\images\about\2.jpg" />
     <Content Include="Assets\template-client\images\about\3.jpg" />
     <Content Include="Assets\template-client\images\about\4.jpg" />
