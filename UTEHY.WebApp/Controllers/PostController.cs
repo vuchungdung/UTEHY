@@ -28,7 +28,7 @@ namespace UTEHY.WebApp.Controllers
             _db = db;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             var listItem = _postService.GetAll();
             return View(listItem);

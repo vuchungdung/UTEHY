@@ -197,6 +197,7 @@
     <Compile Include="API\CommandApiController.cs" />
     <Compile Include="API\FacultyApiController.cs" />
     <Compile Include="API\FunctionApiController.cs" />
+    <Compile Include="API\MenuApiController.cs" />
     <Compile Include="API\PermissionApiController.cs" />
     <Compile Include="API\PostApiController.cs" />
     <Compile Include="API\PostCategoryApiController.cs" />
@@ -235,6 +236,11 @@
     <Content Include="app\components\functions\functions.Module.js" />
     <Content Include="app\components\functions\functionsList.Controller.js" />
     <Content Include="app\components\functions\functionsListView.html" />
+    <Content Include="app\components\menus\menus.Module.js" />
+    <Content Include="app\components\menus\menusAddView.html" />
+    <Content Include="app\components\menus\menusController.js" />
+    <Content Include="app\components\menus\menusEditView.html" />
+    <Content Include="app\components\menus\menusListView.html" />
     <Content Include="app\components\permissions\permissions.Module.js" />
     <Content Include="app\components\permissions\permissionsList.Controller.js" />
     <Content Include="app\components\permissions\permissionsListView.html" />

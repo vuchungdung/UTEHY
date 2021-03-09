@@ -1,0 +1,35 @@
+﻿
+<div id="modal_Add" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form novalidate name="frmAddPostMenu" role="form" ng-submit="addMenu()">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h5 class="modal-title">Thêm mới danh mục</h5>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="icon-pencil4"></i> Tên danh mục:</label>
+                        <input type="text" ng-maxlength="50" name="name" class="form-control" ng-model="menu.Name" ng-change="getSeoAlias()" placeholder="Tên danh mục" required>
+                        <span ng-show="frmAddMenu.name.$invalid" class="text-danger-400">Phải nhập tên danh mục</span>
+                        <span ng-show="frmAddMenu.name.$error.maxlength" class="text-danger-400">Tên danh mục chỉ được 50 ký tự</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-cursor"></i>Danh mục cha:</label>
+                        <select name="categoryId" class="form-control" ng-model="post.parentId" ng-options="option.menuId as option.Name for option in listMenuId">
+                            <option value="">Chọn danh mục cha</option>
+                        </select>
+                        <input type="hidden" name="ParentId" ng-model="post.parentId" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" ng-disabled="frmAddMenu.$invalid" class="btn btn-sm btn-primary legitRipple">Thêm mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

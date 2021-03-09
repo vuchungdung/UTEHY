@@ -9,7 +9,14 @@
                         foreach (var item in Model)
                         {
                             <li>
-                                <a href="@item.URL" style="font-size:13px">@item.Name</a>
+                                @if (item.URL == "/Home/Index")
+                                {
+                                    <a href="@item.URL" style="font-size:13px">@item.Name</a>
+                                }
+                                else
+                                {
+                                    <a href="@item.URL@item.ID" style="font-size:13px">@item.Name</a>
+                                }
                                 @if(item.SubMenu.Count () != 0)
                                 {
                                     <ul class="dropdown">
@@ -17,14 +24,14 @@
                                         foreach (var sub in item.SubMenu)
                                         {
                                             <li>
-                                                <a href="@sub.URL" style="font-size:13px">@sub.Name</a>
+                                                <a href="@sub.URL@sub.ID" style="font-size:13px">@sub.Name</a>
                                                 @if(sub.SubMenu.Count() != 0)
                                                 {
                                                     <ul class="dropdown">
                                                     @{
                                                         foreach (var subsm in sub.SubMenu)
                                                         {
-                                                            <li><a href="@subsm.URL" style="font-size:13px">@subsm.Name</a></li>
+                                                            <li><a href="@subsm.URL@subsm.ID" style="font-size:13px">@subsm.Name</a></li>
                                                         }
                                                     }
                                                 </ul>

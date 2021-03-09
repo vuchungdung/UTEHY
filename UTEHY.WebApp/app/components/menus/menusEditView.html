@@ -1,0 +1,35 @@
+﻿
+<div id="modal_Edit" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form novalidate name="frmEditPostCategory" role="form" ng-submit="editMenu()">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h5 class="modal-title">Cập nhật danh mục</h5>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><i class="icon-pencil4"></i> Tên danh mục:</label>
+                        <input type="text" ng-maxlength="50" name="name" class="form-control" ng-model="menubyid.Name" ng-change="getSeoAliasEdit()" placeholder="Tên danh mục" required>
+                        <span ng-show="frmEditMenu.name.$invalid" class="text-danger-400">Phải nhập tên danh mục</span>
+                        <span ng-show="frmEditMenu.name.$error.maxlength" class="text-danger-400">Tên danh mục chỉ được 50 ký tự</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="icon-cursor"></i>Danh mục cha:</label>
+                        <select name="categoryId" class="form-control" ng-model="menubyid.parentId" ng-options="option.menuId as option.Name for option in listMenus">
+                            <option value="">Chọn danh mục cha</option>
+                        </select>
+                        <input type="hidden" name="ParentId" ng-model="menubyid.parentId" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-sm btn-default legitRipple" data-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" ng-disabled="frmEditMenu.$invalid" class="btn btn-sm btn-primary legitRipple">Cập Nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

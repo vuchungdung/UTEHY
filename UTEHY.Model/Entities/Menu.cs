@@ -29,5 +29,8 @@ namespace UTEHY.Model.Entities
         [StringLength(128)]
         public string PostId { get; set; }
         public string FacultyId { get; set; }
+
+        [Column(TypeName = "DateTime")]
+        public DateTime CreateDate { get; set; }
     }
 }

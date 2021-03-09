@@ -9,7 +9,8 @@
             'utehy.teachers',
             'utehy.posts',
             'utehy.templates',
-            'utehy.faculties'])
+            'utehy.faculties',
+            'utehy.menus'])
         .config(config)
         .config(configAuthentication);
 

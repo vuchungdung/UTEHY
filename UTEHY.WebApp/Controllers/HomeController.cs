@@ -28,6 +28,7 @@ namespace UTEHY.WebApp.Controllers
             listResult.ThongBaos = _db.Posts.Where(x => x.CategoryId == "7d2e0b22-a9aa-432b-9fa0-b025e152e720")
                                             .Select(x => new PostViewModel()
                                             {
+                                                ID = x.PostId,
                                                 Name = x.Name,
                                                 Description = x.Description,
                                                 Img = x.Img,
@@ -36,6 +37,7 @@ namespace UTEHY.WebApp.Controllers
             listResult.TinNoiBats = _db.Posts.Where(x => x.CategoryId == "7d2e0b22-a9aa-432b-9fa0-b025e152e720" && x.HomeFlag == true)
                                             .Select(x => new PostViewModel()
                                             {
+                                                ID = x.PostId,
                                                 Name = x.Name,
                                                 Description = x.Description,
                                                 Img = x.Img,
@@ -44,6 +46,7 @@ namespace UTEHY.WebApp.Controllers
             listResult.TinTucs = _db.Posts.Where(x => x.Deleted == false)
                                             .Select(x => new PostViewModel()
                                             {
+                                                ID = x.PostId,
                                                 Name = x.Name,
                                                 Description = x.Description,
                                                 Img = x.Img,
@@ -52,6 +55,7 @@ namespace UTEHY.WebApp.Controllers
             listResult.TinTuyenDung = _db.Posts.Where(x => x.CategoryId == "b45ed418-5515-4faa-a7d5-1bc27b4a959e")
                                             .Select(x => new PostViewModel()
                                             {
+                                                ID = x.PostId,
                                                 Name = x.Name,
                                                 Description = x.Description,
                                                 Img = x.Img,
@@ -60,6 +64,7 @@ namespace UTEHY.WebApp.Controllers
             listResult.BaiGhim = _db.Posts.Where(x => x.HotFlag == true)
                                             .Select(x => new PostViewModel()
                                             {
+                                                ID = x.PostId,
                                                 Name = x.Name,
                                                 Description = x.Description,
                                                 Img = x.Img,
@@ -71,7 +76,7 @@ namespace UTEHY.WebApp.Controllers
         [HttpGet]
         public ActionResult Menu()
         {
-            var responseData = _menuService.GetAll();
+            var responseData = _menuService.GetMenu();
             return PartialView(responseData);
         }
     }

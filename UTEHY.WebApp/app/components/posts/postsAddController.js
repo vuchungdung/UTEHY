@@ -69,6 +69,16 @@
             });
         }
         $scope.getListCategoryId();
+        $scope.getListMenuId = function () {
+            apiService.get('/api/menuapi/getall', null, function (result) {
+                if (result.status == 200) {
+                    $scope.listMenuId = result.data;
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        $scope.getListMenuId();
     }
 
 })(angular.module('utehy.posts'));

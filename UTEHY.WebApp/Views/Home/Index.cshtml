@@ -16,7 +16,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h2 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h2>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -27,12 +27,12 @@
                     <div>
                         <div class="effect-wrapper">
                             <div class="thumb">
-                                <img class="img-fullwidth" style="border-radius:5px" src="@Model.BaiGhim.Img" alt="project">
+                                <img class="img-fullwidth" style="border-radius:5px; margin-bottom:8px" src="@Model.BaiGhim.Img" alt="project">
                             </div>
                             <div>
-                                <a href="#"><i class="fa fa-calendar"></i>@Model.BaiGhim.CreateDate.ToString("dd/MM/yyyy")</a>
-                                <a href="#">
-                                    <h3 style="margin: 5px;">@Model.BaiGhim.Name</h3>
+                                <a href="#"><i class="fa fa-calendar" style="padding-right:10px;"></i>Ngày @Model.BaiGhim.CreateDate.ToString("dd/MM/yyyy")</a>
+                                <a href="/Post/PostDetail?id=@Model.BaiGhim.ID">
+                                    <h3 style="margin-top:0">@Model.BaiGhim.Name</h3>
                                 </a>
                                 <span style="text-align: justify;">
                                     @Model.BaiGhim.Description
@@ -54,8 +54,8 @@
                                     </div>
                                     <div class="col-sm-8 pl-0">
                                         <div>
-                                            <a href="#"><i class="fa fa-calendar"></i>@item.CreateDate.ToString("dd/MM/yyyy")</a>
-                                            <a href="#">
+                                            <a href="/Post/PostDetail?id=@item.ID"><i class="fa fa-calendar" style="padding-right:10px"></i>Ngày @item.CreateDate.ToString("dd/MM/yyyy")</a>
+                                            <a href="/Post/PostDetail?id=@item.ID">
                                                 <h4 style="margin: 5px;">@item.Name</h4>
                                             </a>
                                         </div>
@@ -76,7 +76,7 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN TỨC</h1>
+                    <h2 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN TỨC</h2>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -103,9 +103,9 @@
                                             <h3 class="mt-0 mb-0"><a href="#">@item.Name</a></h3>
                                         }
                                         <ul class="mb-10">
-                                            <li class="text-theme-colored2"><span class="text-theme-colored">@item.CreateDate.ToString("dd/MM/yyyy")</span></li>
+                                            <li class="text-theme-colored2"><span class="text-theme-colored">Ngày @item.CreateDate.ToString("dd/MM/yyyy")</span></li>
                                         </ul>
-                                        <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="#">Đọc thêm</a>
+                                        <a class="btn btn-theme-colored font-weight-600 font-11 mt-10" href="/Post/PostDetail?id=@item.ID">Đọc thêm</a>
                                     </div>
                                 </div>
                             </div>
@@ -121,145 +121,55 @@
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TIN NỔI BẬT</h1>
+                    <h2 class="mt-0 line-height-1" style="color: #5D9CEC;">THÔNG BÁO</h2>
                     <div class="double-line-bottom-theme-colored-2"></div>
-                    <article style="margin-bottom:10px">
-                        <div style="margin: 4px 0; position: relative;">
-                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
-                                <!---->
-                                <!---->
-                                <ul class="text-white font-18 font-weight-600">
-                                    <li class="border-bottom">19</li>
-                                    <li class="">Th2</li>
-                                </ul>
-                            </div>
-                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
+                    @{
+                        foreach (var item in Model.ThongBaos)
+                        {
+                            <article style="margin-bottom:10px">
+                                <div style="margin: 4px 0; position: relative;">
+                                    <div style="padding: 6px 18px; position: absolute; top: 14px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
                                         <!---->
-                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
-                                            THÔNG
-                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
-                                            BỆNH COVID-19.
-                                        </a>
-                                    </h4>
-                                    <!---->
-                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article style="margin-bottom:10px">
-                        <div style="margin: 4px 0; position: relative;">
-                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
-                                <!---->
-                                <!---->
-                                <ul class="text-white font-18 font-weight-600">
-                                    <li class="border-bottom">19</li>
-                                    <li class="">Th2</li>
-                                </ul>
-                            </div>
-                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
                                         <!---->
-                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
-                                            THÔNG
-                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
-                                            BỆNH COVID-19.
-                                        </a>
-                                    </h4>
-                                    <!---->
-                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
+                                        <ul class="text-white font-18 font-weight-600">
+                                            <li class="border-bottom text-center">@item.CreateDate.Day</li>
+                                            <li class="">Th @item.CreateDate.Month</li>
+                                        </ul>
+                                    </div>
+                                    <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 100px!important;margin-left: 40px;padding-top:12px;background-color:#f5f5f5">
+                                        <div class="event-content pull-left flip">
+                                            <h4 class="event-title media-heading font-roboto-slab font-weight-700">
+                                                <!---->
+                                                <!----><a href="/Post/PostDetail?id=@item.ID">
+                                                    @item.Name
+                                                </a>
+                                            </h4>
+                                            <!---->
+                                            <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Ngày @item.CreateDate.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article style="margin-bottom:10px">
-                        <div style="margin: 4px 0; position: relative;">
-                            <div style="padding: 6px 18px; position: absolute; top: 24px; transition: all 200ms ease-in-out 0s; background: #43b14b !important;">
-                                <!---->
-                                <!---->
-                                <ul class="text-white font-18 font-weight-600">
-                                    <li class="border-bottom">19</li>
-                                    <li class="">Th2</li>
-                                </ul>
-                            </div>
-                            <div class="event-meta border-1px pl-40" style="width: 95%!important; height: 110px!important;margin-left: 32px;padding-top:12px">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="event-title media-heading font-roboto-slab font-weight-700">
-                                        <!---->
-                                        <!----><a href="#/news-list/news-detail/thong-bao-so-105-ve-viec-thuc-hien-ke-hoach-giang-day-va-hoc-tap-trong-giai-doan-phong-chong-dich-benh-covid19-e76cb33a-5e7e-4c6f-b295-544474e7e5d3">
-                                            THÔNG
-                                            BÁO SỐ 105 VỀ VIỆC THỰC HIỆN KẾ HOẠCH GIẢNG DẠY VÀ HỌC TẬP TRONG GIAI ĐOẠN PHÒNG, CHỐNG DỊCH
-                                            BỆNH COVID-19.
-                                        </a>
-                                    </h4>
-                                    <!---->
-                                    <!----><span class="mb-10 text-black mr-10"><i class="fa fa-calendar mr-5 text-theme-colored"></i>Thứ 6, ngày 19/02/2021</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                            </article>
+                        }
+                    }
                 </div>
                 <div class="col-md-4">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">TUYỂN DỤNG</h1>
+                    <h2 class="mt-0 line-height-1" style="color: #5D9CEC;">TUYỂN DỤNG</h2>
+                    <div class="double-line-bottom-theme-colored-2"></div>
                     <div aria-multiselectable="true" class="panel-group accordion-stylished-left-border accordion-icon-filled accordion-no-border accordion-icon-left accordion-icon-filled-theme-colored2" id="accordion6" role="tablist" style="text-align: center;">
-                        <!----><a href="#/news-list/news-detail/bec7e6f4-82c7-46d1-b285-871e8d9172d6"><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/anhtuyensinh.png" style="margin-top: 10px;"></a><a style="cursor: pointer;"><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/viettel.jpg" style="margin-top: 10px;"></a>
+                        <!----><a href=""><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/anhtuyensinh.png" style="margin-top: 10px;"></a><a style="cursor: pointer;"><img alt="" src="~/UploadedFiles/images/Khoa ĐĐT/viettel.jpg" style="margin-top: 10px;"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!--start funfact Section-->
-<section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="/Assets/template-client/images/bg/bg2.jpg">
-    <div class="container pt-90 pb-90">
-        <div class="section-content">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="pe-7s-smile text-theme-colored2"></i>
-                        <h2 data-animation-duration="2000" data-value="5100" class="animate-number text-white font-38">0</h2>
-                        <h5 class="text-white text-uppercase mb-0">Happy Students</h5>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="pe-7s-users text-theme-colored2"></i>
-                        <h2 data-animation-duration="2000" data-value="200" class="animate-number text-white font-38">0</h2>
-                        <h5 class="text-white text-uppercase mb-0">Our Teachers</h5>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="pe-7s-cup text-theme-colored2"></i>
-                        <h2 data-animation-duration="2000" data-value="20" class="animate-number text-white font-38">0</h2>
-                        <h5 class="text-white text-uppercase mb-0">Awards Won</h5>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-0">
-                    <div class="funfact text-center">
-                        <i class="pe-7s-note2 text-theme-colored2"></i>
-                        <h2 data-animation-duration="2000" data-value="600" class="animate-number text-white font-38">0</h2>
-                        <h5 class="text-white text-uppercase mb-0">Our Courses</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--start teacher Section-->
-
-
-<!--start gallary Section-->
 <section class="bg-lighter">
     <div class="container">
         <div class="section-title mt-0 mb-0">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">Hình ảnh cuả khoa</h1>
+                    <h2 class="mt-0 line-height-1" style="color: #5D9CEC;">Hình ảnh cuả khoa</h2>
                     <div class="double-line-bottom-theme-colored-2"></div>
                 </div>
             </div>
@@ -267,12 +177,7 @@
         <div class="section-content">
             <div class="row">
                 <div class="col-md-12">
-                    @*<div class="portfolio-filter text-center">
-                        <a href="#" class="active" data-filter="*">All</a>
-                        <a href="#branding" class="" data-filter=".branding">Branding</a>
-                        <a href="#design" class="" data-filter=".design">Design</a>
-                        <a href="#photography" class="" data-filter=".photography">Photography</a>
-                    </div>*@
+                    
                     <div class="gallery-isotope default-animation-effect grid-3 gutter-small clearfix" data-lightbox="gallery">
                         <div class="gallery-item design">
                             <div class="thumb">
@@ -420,68 +325,6 @@
                         </div>
                     </div>
                     <!-- End Portfolio Gallery Grid -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--start testimonial Section-->
-<section class="divider parallax layer-overlay overlay-dark-9" data-background-ratio="0.7" data-bg-img="/Assets/template-client/images/bg/bg2.jpg">
-    <div class="container">
-        <div class="section-title mt-0 mb-0">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="mt-0 line-height-1" style="color: #5D9CEC;">Cựu sinh viên</h1>
-                    <div class="double-line-bottom-theme-colored-2"></div>
-                </div>
-            </div>
-        </div>
-        <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel-3col" data-dots="true">
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center bg-theme-colored p-30">
-                                <div class="thumb mb-30"><img class="img-circle img-thumbnail" alt="" src="~/Assets/template-client/images/testimonials/1.jpg"></div>
-                                <div class="content">
-                                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio</p>
-                                    <h4 class="author text-white mb-0">Jacob Smith</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Student</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center bg-theme-colored p-30">
-                                <div class="thumb mb-30"><img class="img-circle img-thumbnail" alt="" src="~/Assets/template-client/images/testimonials/2.jpg"></div>
-                                <div class="content">
-                                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio</p>
-                                    <h4 class="author text-white mb-0">Jacob Smith</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Student</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center bg-theme-colored p-30">
-                                <div class="thumb mb-30"><img class="img-circle img-thumbnail" alt="" src="~/Assets/template-client/images/testimonials/3.jpg"></div>
-                                <div class="content">
-                                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio</p>
-                                    <h4 class="author text-white mb-0">Jacob Smith</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Student</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-wrapper text-center bg-theme-colored p-30">
-                                <div class="thumb mb-30"><img class="img-circle img-thumbnail" alt="" src="~/Assets/template-client/images/testimonials/2.jpg"></div>
-                                <div class="content">
-                                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque est quasi, quas ipsam, expedita placeat facilis odio</p>
-                                    <h4 class="author text-white mb-0">Jacob Smith</h4>
-                                    <h6 class="title text-white mt-0 mb-15">Student</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

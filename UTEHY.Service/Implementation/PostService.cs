@@ -281,5 +281,29 @@ namespace UTEHY.Service.Implementation
                 throw error;
             }
         }
+
+        public List<PostViewModel> GetByMenuId(string id)
+        {
+            var query = _postRepository.FindAll().Where(x => x.Deleted == false);
+            var listItems = query.OrderByDescending(x => x.CreateDate)
+                .Select(x => new PostViewModel()
+                {
+                    ID = x.PostId,
+                    Name = x.Name,
+                    Alias = x.Alias,
+                    CategoryId = x.CategoryId,
+                    Description = x.Description,
+                    Content = x.Content,
+                    HomeFlag = x.HomeFlag,
+                    HotFlag = x.HotFlag,
+                    CreateDate = x.CreateDate,
+                    CreateBy = x.CreateBy,
+                    MoreImgs = x.MoreImgs,
+                    Img = x.Img,
+                    Status = (PostStatus)x.Status
+                }).ToList();
+
+            return listItems;
+        }
     }
 }

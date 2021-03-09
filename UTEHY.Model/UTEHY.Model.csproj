@@ -145,6 +145,7 @@
     <Compile Include="Entities\FITDbContext.cs" />
     <Compile Include="Enums\ImgType.cs" />
     <Compile Include="Enums\PostStatus.cs" />
+    <Compile Include="Enums\PostType.cs" />
     <Compile Include="Migrations\202101011511263_version_1.0.0.cs" />
     <Compile Include="Migrations\202101011511263_version_1.0.0.Designer.cs">
       <DependentUpon>202101011511263_version_1.0.0.cs</DependentUpon>
@@ -180,6 +181,10 @@
     <Compile Include="Migrations\202103050929065_version_1.0.8.cs" />
     <Compile Include="Migrations\202103050929065_version_1.0.8.Designer.cs">
       <DependentUpon>202103050929065_version_1.0.8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103090337079_version_1.0.9.cs" />
+    <Compile Include="Migrations\202103090337079_version_1.0.9.Designer.cs">
+      <DependentUpon>202103090337079_version_1.0.9.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103050929065_version_1.0.8.resx">
       <DependentUpon>202103050929065_version_1.0.8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103090337079_version_1.0.9.resx">
+      <DependentUpon>202103090337079_version_1.0.9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

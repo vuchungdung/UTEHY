@@ -26,6 +26,7 @@ namespace UTEHY.Model.Entities
         [Column(TypeName = "NVARCHAR")]
         [StringLength(128)]
         public string CategoryId { get; set; }
+        public string MenuId { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
         public bool? HomeFlag { get; set; }
