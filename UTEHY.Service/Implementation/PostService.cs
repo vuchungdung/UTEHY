@@ -38,6 +38,7 @@ namespace UTEHY.Service.Implementation
                     HomeFlag = false,                   
                     CreateDate = DateTime.Now,
                     CreateBy = postVm.CreateBy,
+                    MenuId = postVm.MenuId,
                     Img = postVm.Img,
                     MoreImgs = postVm.MoreImgs,
                     Status = PostStatus.Draft,

@@ -14,6 +14,7 @@ namespace UTEHY.Model.ViewModel
         public string Name { get; set; }
         public string Alias { get; set; }
         public string CategoryId { get; set; }
+        public string MenuId { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
         public bool? HomeFlag { get; set; }
@@ -23,10 +24,7 @@ namespace UTEHY.Model.ViewModel
         public DateTime UpdateDate { get; set; }
         public int UpdateBy { get; set; }
         public string Img { get; set; }
-
         public string MoreImgs { get; set; }
-
         public PostStatus Status { get; set; }
-        public virtual PostCategory PostCategory { get; set; }
     }
 }

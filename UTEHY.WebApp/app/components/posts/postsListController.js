@@ -148,12 +148,14 @@
                 }
                 apiService.post('/api/postapi/changestatus', config.params, function (result) {
                     if (result.status == 200) {
+                        $scope.getPagingPosts($scope.currentPage);
                         new PNotify({
                             text: 'Cập nhật thành công!',
                             addclass: 'bg-success'
                         });
                     }
                 }, function (error) {
+                    $scope.getPagingPosts($scope.currentPage);
                     new PNotify({
                         text: 'Có lỗi xảy ra!',
                         addclass: 'bg-danger'
@@ -176,12 +178,14 @@
                 }
                 apiService.post('/api/postapi/changehot', config.params, function (result) {
                     if (result.status == 200) {
+                        $scope.getPagingPosts($scope.currentPage);
                         new PNotify({
                             text: 'Cập nhật thành công!',
                             addclass: 'bg-success'
                         });
                     }
                 }, function (error) {
+                        $scope.getPagingPosts($scope.currentPage);
                     new PNotify({
                         text: 'Có lỗi xảy ra!',
                         addclass: 'bg-danger'
@@ -204,12 +208,14 @@
                 }
                 apiService.post('/api/postapi/changehome', config.params, function (result) {
                     if (result.status == 200) {
+                        $scope.getPagingPosts($scope.currentPage);
                         new PNotify({
                             text: 'Cập nhật thành công!',
                             addclass: 'bg-success'
                         });
                     }
                 }, function (error) {
+                        $scope.getPagingPosts($scope.currentPage);
                     new PNotify({
                         text: 'Có lỗi xảy ra!',
                         addclass: 'bg-danger'

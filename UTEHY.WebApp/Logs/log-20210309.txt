@@ -1,0 +1,2 @@
+2021-03-09 12:06:40.100 +07:00 [ERR] Error at method: Add - PostApi,An error occurred while updating the entries. See the inner exception for details.
+2021-03-09 12:11:28.443 +07:00 [ERR] Error at method: Add - PostApi,An error occurred while updating the entries. See the inner exception for details.
